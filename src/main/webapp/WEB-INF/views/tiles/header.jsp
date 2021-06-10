@@ -44,7 +44,7 @@
             </ul>
           </li>
           <li class="has-children">
-            <a href="#">관리자</a>
+            <a href="adminPage.do">관리자</a>
           </li>
           <li class="d-lg-none"><a href="#">로그인</a></li>
         </ul>
