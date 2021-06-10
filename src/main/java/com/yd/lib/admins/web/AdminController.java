@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AdminController {
 
-	@RequestMapping("/wish.do")
+	@RequestMapping("/wishManagement.do")
 	public String wish(Model model) {
 		return "admins/wish";
 	}
@@ -18,4 +18,13 @@ public class AdminController {
 		return "admins/bookManagement";
 	}
 
+	@RequestMapping("/bookDetailManage.do")
+	public String bookDetailManage(Model model) {
+		return "admins/bookDetailManage";
+	}
+
+	@RequestMapping("/bookInputManage.do")
+	public String bookInputManage(Model model) {
+		return "admins/bookInputManage";
+	}
 }

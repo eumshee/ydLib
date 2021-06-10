@@ -1,5 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<style>
+.pagination {
+	display: inline-block;
+	margin: auto;
+}
+
+.pagination a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color .3s;
+}
+
+.pagination a.active {
+	background-color: lightgray;
+	color: #fff;
+	border: 1px solid lightgray;
+}
+
+.pagination a:hover:not(.active) {
+	background-color: #ddd;
+}
+</style>
+
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
 	style="background-image: url('resources/images/hero_1.jpg');" id="home-section">
@@ -21,11 +47,22 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
+				<div align="right">
+					<button type="submit" class="btn btn-primary text-white btn-search"
+					onclick="location.href='bookInputManage.do'">
+					<span class="icon-plus mx-auto"></span>&nbsp;등록
+					</button>
+					<button type="submit" class="btn btn-primary text-white btn-search"
+					onclick="location.href='bookDetailManage.do'">
+					<span class="icon-search-plus mx-auto"></span>&nbsp;상세
+					</button>
+					<br>
+					<br>
+				</div>
 				<table class="table">
 					<tr>
 						<th>번호</th>
 						<th>구분</th>
-						<th>책사진</th>
 						<th>책제목</th>
 						<th>저자</th>
 						<th>출판사</th>
@@ -37,39 +74,56 @@
 					<tr>
 						<td>1</td>
 						<td>4</td>
-						<td>img</td>
 						<td>과학</td>
 						<td>김과학</td>
 						<td>책책책</td>
 						<td>2021/04/10</td>
 						<td>2021/06/10</td>
 						<td>2구역</td>
-						<td>훼손</td>
+						<td>
+							<select id="bookStatus">
+								<option hidden=""></option>
+								<option value="분실" selected>분실</option>
+								<option value="훼손">훼손</option>
+							</select>
+							<button type="button">수정</button>
+						</td>
 					</tr>
 					<tr>
 						<td>2</td>
 						<td>6</td>
 						<td>예술</td>
-						<td>img</td>
 						<td>김다빈치</td>
 						<td>책책책</td>
 						<td>2021/01/30</td>
 						<td>2021/04/10</td>
 						<td>3구역</td>
-						<td></td>
+						<td>
+							<select id="bookStatus">
+								<option hidden="" selected></option>
+								<option value="분실">분실</option>
+								<option value="훼손">훼손</option>
+							</select>
+							<button type="button">수정</button>
+						</td>
 					</tr>
 					<tr>
 						<td>3</td>
 						<td>8</td>
 						<td>고전문학</td>
-						<td>img</td>
 						<td>김문학</td>
 						<td>책책책</td>
 						<td>2021/03/03</td>
 						<td>2021/05/08</td>
 						<td>1구역</td>
-						<td>분실</td>
-					</tr>
+						<td>
+							<select id="bookStatus">
+								<option hidden=""></option>
+								<option value="분실">분실</option>
+								<option value="훼손" selected>훼손</option>
+							</select>
+							<button type="button">수정</button></td>
+						</tr>
 				</table>
 				<!-- 페이징처리 -->
 				<div class="col-lg-12 text-center">
