@@ -6,17 +6,15 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" align="center">
-				<h1 class="text-white font-weight-bold">관리자</h1>
-				<h1 class="text-white font-weight-bold">관리자 페이지</h1>
+				<h1 class="text-white font-weight-bold">관리자페이지</h1>
 				<div class="custom-breadcrumbs">
 					<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
-						class="text-white"><strong>관리자 페이지</strong></span>
+						class="text-white"><strong>관리자페이지</strong></span>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
-
 <section class="site-section services-section bg-light block__62849"
 	id="next-section">
 	<div class="container">
