@@ -59,7 +59,7 @@
 			</div>
 			<div class="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5">
 
-				<a href="#" class="block__16443 text-center d-block"> <span
+				<a href="bookManagement.do" class="block__16443 text-center d-block"> <span
 					class="custom-icon mx-auto"><span
 						class="icon-paper-plane d-block"></span></span>
 					<h3>장서관리</h3>
