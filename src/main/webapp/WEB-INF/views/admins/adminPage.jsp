@@ -21,7 +21,7 @@
 		<div class="row">
 
 			<div class="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5">
-				<a href="#" class="block__16443 text-center d-block"> <span
+				<a href="memberManagemant.do" class="block__16443 text-center d-block"> <span
 					class="custom-icon mx-auto"><span
 						class="icon-magnet d-block"></span></span>
 					<h3>회원목록 관리</h3>
@@ -30,7 +30,7 @@
 			</div>
 
 			<div class="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5">
-				<a href="#" class="block__16443 text-center d-block"> <span
+				<a href="ronlreManagemant.do" class="block__16443 text-center d-block"> <span
 					class="custom-icon mx-auto"><span
 						class="icon-trophy d-block"></span></span>
 					<h3>대출/반납 관리</h3>
@@ -39,7 +39,7 @@
 			</div>
 
 			<div class="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5">
-				<a href="#" class="block__16443 text-center d-block"> <span
+				<a href="yeyakmanagemant.do" class="block__16443 text-center d-block"> <span
 					class="custom-icon mx-auto"><span
 						class="icon-laptop d-block"></span></span>
 					<h3>예약도서 관리</h3>

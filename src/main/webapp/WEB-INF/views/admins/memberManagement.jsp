@@ -31,7 +31,7 @@
 <section class="site-section block__18514" id="next-section">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-3 mr-3">
+			<div class="col-lg-3" style="max-width:20%;">
 				<div class="rounded">
 					<div class="sidenav">
 						<ul class="list-unstyled">
@@ -53,15 +53,15 @@
 						<th>성별</th>
 						<th>생일</th>
 						<th>전화번호</th>
-						<th width="35%">주소</th>
+						<th width="25%">주소</th>
 						<th>회원등급</th>
 						<th>대출정지</th>
 						<th>삭제</th>
 					</tr>
 					<tr>
-						<td>id</td>
-						<td>이름</td>
-						<td>남자</td>
+						<td>test id</td>
+						<td>test name</td>
+						<td>남</td>
 						<td>1999-01-31</td>
 						<td>010-1111-1111</td>
 						<td>(13536)경기 성남시 분당구 판교역로 4 경기 성남시 분당구 백현동 582-7어느 한적한곳 (백현동)</td>
