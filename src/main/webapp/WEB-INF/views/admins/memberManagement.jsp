@@ -1,13 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <style>
-.site-section>.container {
-	width: 100%;
-	padding-right: 15px;
-	padding-left: 15px;
-	margin-right: 10%;
-	margin-left: 5%;
-	max-width: 1800px;
+.pagination {
+	display: inline-block;
+	margin: auto;
+}
+
+.pagination a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color .3s;
+}
+
+.pagination a.active {
+	background-color: lightgray;
+	color: #fff;
+	border: 1px solid lightgray;
+}
+
+.pagination a:hover:not(.active) {
+	background-color: #ddd;
 }
 </style>
 <!-- 상단배너 -->
@@ -18,7 +32,7 @@
 			<div class="col-md-12" align="center">
 				<h1 class="text-white font-weight-bold">회원 관리</h1>
 				<div class="custom-breadcrumbs">
-					<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
+					<a href="adminPage.do">Home</a> <span class="mx-2 slash">/</span> <span
 						class="text-white"><strong>회원 관리</strong></span>
 				</div>
 			</div>
@@ -31,53 +45,41 @@
 <section class="site-section block__18514" id="next-section">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-3" style="max-width:20%;">
-				<div class="rounded">
-					<div class="sidenav">
-						<ul class="list-unstyled">
-							<li class="sideactive"><a href="#">회원관리</a></li>
-							<li><a href="#">대출반납 관리</a></li>
-							<li><a href="#">예약도서 관리</a></li>
-							<li><a href="#">희망도서 관리</a></li>
-							<li><a href="#">장서 관리</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
 			<!--컨텐츠 영역-->
 			<div class="col-lg-8">
+				<div align="right">
+					<button type="submit" class="btn btn-primary text-white btn-search">글쓰기
+					</button>
+					<br>
+					<br>
+				</div>
 				<table class="table">
 					<tr>
 						<th>아이디</th>
 						<th>이름</th>
 						<th>성별</th>
-						<th>생일</th>
+						<th>생년월일</th>
 						<th>전화번호</th>
-						<th width="25%">주소</th>
+						<th>주소</th>
+						<th>E-mail</th>
 						<th>회원등급</th>
-						<th>대출정지</th>
-						<th>삭제</th>
+						<th>비고</th>
 					</tr>
 					<tr>
-						<td>test id</td>
-						<td>test name</td>
-						<td>남</td>
-						<td>1999-01-31</td>
-						<td>010-1111-1111</td>
-						<td>(13536)경기 성남시 분당구 판교역로 4 경기 성남시 분당구 백현동 582-7어느 한적한곳 (백현동)</td>
-						<td>준회원</td>
-						<td>2021-10-10</td>
-						<td><button type="button">삭제</button></td>
+						<td>1</td>
+						<td>글제목</td>
+						<td>접수</td>
+						<td>김김밥</td>
+						<td>2021-06-10</td>
+						<td>1</td>
 					</tr>
 					<tr>
 						<td>2</td>
 						<td>글제목</td>
 						<td>접수</td>
 						<td>김김밥</td>
-						<td>김김밥</td>
 						<td>2021-06-10</td>
 						<td>1</td>
-						<td>2</td>
 					</tr>
 				</table>
 				<!-- 페이징처리 -->
@@ -93,8 +95,17 @@
 					</jsp:include>
 				</div>
 				<p>
-					<a href="#" class="btn btn-primary btn-md mt-4">Hire Us, Our Agency</a>
+					<a href="#" class="btn btn-primary btn-md mt-4">큰버튼</a>
 				</p>
+
+				<!-- 검색창 -->
+				<div align="center">
+					<input type="text" id="search" name="search"
+						placeholder="검색어를 입력하세요" size="30">
+					<button type="submit" class="btn btn-primary text-white btn-search">
+						<span class="icon-search icon mr-2"></span>검색
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>

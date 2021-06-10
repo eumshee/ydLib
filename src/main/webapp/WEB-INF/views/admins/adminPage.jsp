@@ -8,8 +8,8 @@
 			<div class="col-md-12" align="center">
 				<h1 class="text-white font-weight-bold">관리자페이지</h1>
 				<div class="custom-breadcrumbs">
-					<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
-						class="text-white"><strong>관리자페이지</strong></span>
+					<a href="adminPage.do">Home</a> <span class="mx-2 slash">/</span> <span
+						class="text-white"><strong>관리자 페이지</strong></span>
 				</div>
 			</div>
 		</div>
