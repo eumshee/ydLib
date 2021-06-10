@@ -63,6 +63,18 @@
 					</tr>
 				</table>
 				ㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱ
+				<!-- 페이징처리 -->
+				<div class="col-lg-12 text-center">
+					<jsp:include page="../common/paging.jsp" flush="true">
+						<jsp:param name="firstPageNo" value="${paging.firstPageNo}" />
+						<jsp:param name="prevPageNo" value="${paging.prevPageNo}" />
+						<jsp:param name="startPageNo" value="${paging.startPageNo}" />
+						<jsp:param name="pageNo" value="${paging.pageNo}" />
+						<jsp:param name="endPageNo" value="${paging.endPageNo}" />
+						<jsp:param name="nextPageNo" value="${paging.nextPageNo}" />
+						<jsp:param name="finalPageNo" value="${paging.finalPageNo}" />
+					</jsp:include>
+				</div>
 				<p>
 					<a href="#" class="btn btn-primary btn-md mt-4">Hire Us, Our
 						Agency</a>
