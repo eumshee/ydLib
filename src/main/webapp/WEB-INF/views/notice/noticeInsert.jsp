@@ -3,7 +3,28 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <style>
+.pagination {
+	display: inline-block;
+	margin: auto;
+}
 
+.pagination a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color .3s;
+}
+
+.pagination a.active {
+	background-color: lightgray;
+	color: #fff;
+	border: 1px solid lightgray;
+}
+
+.pagination a:hover:not(.active) {
+	background-color: #ddd;
+}
 </style>
 
 <!-- 상단배너 -->
@@ -43,6 +64,7 @@
 				</div>
 				<table class="table">
 					<tr>
+						<th>번호</th>
 						<th width="50%">제목</th>
 						<th>작성자</th>
 						<th>작성일</th>
