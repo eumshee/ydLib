@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class NoticeController {
-	@RequestMapping("/notice.do")
+	@RequestMapping("/noticeList.do")
 	public String test() {
 		return "notice/noticeList";
 	}
