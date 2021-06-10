@@ -1,35 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-
-
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
 	style="background-image: url('images/hero_1.jpg');" id="home-section">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" align="center">
-				<h1 class="text-white font-weight-bold">자료이용</h1>
+				<h1 class="text-white font-weight-bold">열린공간</h1>
 				<div class="custom-breadcrumbs">
 					<a href="#">Home</a> <span class="mx-2 slash">/</span> <span
-						class="text-white"><strong>자료이용</strong></span>
+						class="text-white"><strong>열린공간</strong></span>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
-
 <section class="site-section block__18514" id="next-section">
 	<div class="container">
 		<div class="row">
+			<!-- 왼쪽네비 -->
 			<div class="col-lg-3 mr-3">
 				<div class="rounded">
 					<div class="sidenav">
 						<ul class="list-unstyled">
-							<li class="sideactive"><a href="#">통합자료검색</a></li>
-							<li><a href="#">신착자료</a></li>
-							<li><a href="#">대출 베스트</a></li>
-							<li><a href="#">희망도서 신청</a></li>
+							<li class="sideactive"><a href="#">공지사항</a></li>
+							<li><a href="#">묻고답하기</a></li>
 						</ul>
 					</div>
 				</div>
