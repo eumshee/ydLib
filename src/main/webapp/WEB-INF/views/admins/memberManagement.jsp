@@ -51,7 +51,7 @@ text-align: center;
 		<!-- 검색창 -->
 		<form action="" method="post">
 			<div align="right">
-				<input type="submit" id="search" name="search" placeholder="검색할 이름을 입력하세요." size="30">
+				<input type="text" id="search" name="search" placeholder="검색할 이름을 입력하세요." size="30">
 				<button type="submit" class="btn btn-primary text-white btn-search">
 					<span class="icon-search icon mr-2"></span>검색
 				</button>
