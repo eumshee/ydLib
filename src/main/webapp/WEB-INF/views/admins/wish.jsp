@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- HOME -->
-<section class="section-hero overlay inner-page bg-image" style="background-image: url('images/hero_1.jpg');" id="home-section">
+<!-- 상단배너 -->
+<section class="section-hero overlay inner-page bg-image" style="background-image: url('resources/images/hero_1.jpg');" id="home-section">
   <div class="container">
     <div class="row">
-      <div class="col-md-7">
+      <div class="col-md-12" align="center">
         <h1 class="text-white font-weight-bold">희망도서관리</h1>
         <div class="custom-breadcrumbs">
           <a href="adminPage.do">Admin</a> <span class="mx-2 slash">/</span>
@@ -15,6 +15,7 @@
   </div>
 </section>
 
+<!-- 내용 -->
 <section class="site-section" id="next-section">
   <div class="container">
     
@@ -42,7 +43,42 @@
         </div>
       </div>
 
-
+		<div class="col-lg-12">
+			<table class="table">
+				<tr>
+					<th>번호</th>
+					<th>신청자</th>
+					<th>책제목</th>
+					<th>저자</th>
+					<th>출판사</th>
+					<th>출판연도</th>
+					<th>ISBN</th>
+					<th>비고</th>
+					<th>가격</th>
+					<th>처리과정</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>user1</td>
+					<td>정글의왕</td>
+					<td>타잔</td>
+					<td>책책책</td>
+					<td>2021</td>
+					<td>0</td>
+					<td>부탁드립니다!</td>
+					<td>15000</td>
+					<td>
+						<select>
+							<option value="신청">신청</option>
+							<option value="처리">처리</option>
+							<option value="소장">소장</option>
+							<option value="취소">취소</option>
+						</select>
+						<button type="button">수정</button>
+					</td>
+				</tr>
+			</table>
+		</div>
     </div>
   </div>
 </section>
