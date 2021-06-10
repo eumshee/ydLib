@@ -2,10 +2,35 @@
 	pageEncoding="UTF-8"%>
 
 
+<style>
+.pagination {
+	display: inline-block;
+	margin: auto;
+}
+
+.pagination a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color .3s;
+}
+
+.pagination a.active {
+	background-color: lightgray;
+	color: #fff;
+	border: 1px solid lightgray;
+}
+
+.pagination a:hover:not(.active) {
+	background-color: #ddd;
+}
+</style>
+
 
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
-	style="background-image: url('images/hero_1.jpg');" id="home-section">
+	style="background-image: url('resources/images/hero_1.jpg');" id="home-section">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" align="center">
@@ -36,6 +61,12 @@
 			</div>
 			<!--컨텐츠 영역-->
 			<div class="col-lg-8">
+				<div align="right">
+					<button type="submit" class="btn btn-primary text-white btn-search">글쓰기
+					</button>
+					<br>
+					<br>
+				</div>
 				<table class="table">
 					<tr>
 						<th>번호</th>
@@ -62,7 +93,6 @@
 						<td>1</td>
 					</tr>
 				</table>
-				ㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱ
 				<!-- 페이징처리 -->
 				<div class="col-lg-12 text-center">
 					<jsp:include page="../common/paging.jsp" flush="true">
@@ -76,9 +106,17 @@
 					</jsp:include>
 				</div>
 				<p>
-					<a href="#" class="btn btn-primary btn-md mt-4">Hire Us, Our
-						Agency</a>
+					<a href="#" class="btn btn-primary btn-md mt-4">큰버튼</a>
 				</p>
+
+				<!-- 검색창 -->
+				<div align="center">
+					<input type="text" id="search" name="search"
+						placeholder="검색어를 입력하세요" size="30">
+					<button type="submit" class="btn btn-primary text-white btn-search">
+						<span class="icon-search icon mr-2"></span>검색
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>

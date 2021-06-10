@@ -1,12 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<style>
+.pagination {
+	display: inline-block;
+	margin: auto;
+}
+.pagination a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color .3s;
+}
+.pagination a.active {
+	background-color: #89BA16;
+	color: #fff;
+	border: 1px solid #89BA16;
+}
+.pagination a:hover:not(.active) {
+	background-color: #ddd;
+}
+</style>
+
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
 	style="background-image: url('images/hero_1.jpg');" id="home-section">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" align="center">
-				<h1 class="text-white font-weight-bold">열린공간</h1>
+				<h1 class="text-white font-weight-bold">공지사항</h1>
 				<div class="custom-breadcrumbs">
 					<a href="#">Home</a> <span class="mx-2 slash">/</span> <span
 						class="text-white"><strong>열린공간</strong></span>
@@ -31,35 +55,30 @@
 			</div>
 			<!--컨텐츠 영역-->
 			<div class="col-lg-8">
+				<div align="right">
+				<button type="submit" class="btn btn-primary text-white btn-search">글쓰기
+				</button><br><br>
+				</div>
 				<table class="table">
 					<tr>
 						<th>번호</th>
 						<th width="50%">제목</th>
-						<th>처리</th>
 						<th>작성자</th>
 						<th>작성일</th>
 						<th>조회수</th>
 					</tr>
-					<tr>
-						<td>1</td>
-						<td>글제목</td>
-						<td>접수</td>
-						<td>김김밥</td>
-						<td>2021-06-10</td>
-						<td>1</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>글제목</td>
-						<td>접수</td>
-						<td>김김밥</td>
-						<td>2021-06-10</td>
-						<td>1</td>
-					</tr>
+					<c:forEach var="vo" items="${notice }">
+						<tr>
+							<td>${vo.notice_Id }</td>
+							<td>${vo.notice_Title }</td>
+							<td>관리자</td>
+							<td>${vo.notice_Date }</td>
+							<td>${vo.notice_Hit }</td>
+						</tr>
+					</c:forEach>
 				</table>
-				ㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱ
 				<!-- 페이징처리 -->
-				<div class="col-lg-12 text-center">
+				<div class="col-lg-12 text-center" align="center">
 					<jsp:include page="../common/paging.jsp" flush="true">
 						<jsp:param name="firstPageNo" value="${paging.firstPageNo}" />
 						<jsp:param name="prevPageNo" value="${paging.prevPageNo}" />
@@ -70,10 +89,14 @@
 						<jsp:param name="finalPageNo" value="${paging.finalPageNo}" />
 					</jsp:include>
 				</div>
-				<p>
-					<a href="#" class="btn btn-primary btn-md mt-4">Hire Us, Our
-						Agency</a>
-				</p>
+
+				<!-- 검색 -->
+				<div align="center">
+					<input type="text" id="search" name="search" placeholder="검색어를 입력하세요" size="30">
+					<button type="submit" class="btn btn-primary text-white btn-search">
+						<span class="icon-search icon mr-2"></span>검색
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>
