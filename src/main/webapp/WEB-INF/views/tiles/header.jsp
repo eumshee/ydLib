@@ -45,13 +45,6 @@
           </li>
           <li class="has-children">
             <a href="#">관리자</a>
-            <ul class="dropdown">
-              <li><a href="#">희원관리</a></li>
-              <li><a href="#">대출반납</a></li>
-              <li><a href="#">예약도서</a></li>
-              <li><a href="#">희망도서</a></li>
-              <li><a href="#">장서관리</a></li>
-            </ul>
           </li>
           <li class="d-lg-none"><a href="#">로그인</a></li>
         </ul>
