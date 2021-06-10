@@ -6,11 +6,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" align="center">
-				<h1 class="text-white font-weight-bold">자료이용</h1>
-				<div class="custom-breadcrumbs">
-					<a href="#">Home</a> <span class="mx-2 slash">/</span> <span
-						class="text-white"><strong>자료이용</strong></span>
-				</div>
+				<h1 class="text-white font-weight-bold">관리자</h1>
 			</div>
 		</div>
 	</div>
@@ -49,7 +45,7 @@
 			</div>
 
 			<div class="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5">
-				<a href="service-single.html"
+				<a href="wish.do"
 					class="block__16443 text-center d-block"> <span
 					class="custom-icon mx-auto"><span
 						class="icon-search d-block"></span></span>
@@ -69,7 +65,7 @@
 			</div>
 
 			<div class="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5">
-				<a href="service-single.html"
+				<a href="home.do"
 					class="block__16443 text-center d-block"> <span
 					class="custom-icon mx-auto"><span class="icon-plug d-block"></span></span>
 					<h3>홈으로</h3>
