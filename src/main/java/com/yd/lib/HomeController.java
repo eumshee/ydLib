@@ -15,9 +15,5 @@ public class HomeController {
 	public String home(Model model) {
 		return "main/home";
 	}
-	
-	@RequestMapping("/adminPage.do")
-	public String admin(Model model) {
-		return "admins/adminPage";
-	}
+
 }

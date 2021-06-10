@@ -30,7 +30,7 @@
           <li class="has-children">
             <a href="#">열린공간</a>
             <ul class="dropdown">
-              <li><a href="#">공지사항</a></li>
+              <li><a href="noticeList.do">공지사항</a></li>
               <li><a href="#">묻고답하기</a></li>
             </ul>
           </li>
@@ -43,7 +43,7 @@
               <li><a href="#">내정보 수정</a></li>
             </ul>
           </li>
-          <li class="has-children">
+          <li>
             <a href="adminPage.do">관리자</a>
           </li>
           <li class="d-lg-none"><a href="#">로그인</a></li>
