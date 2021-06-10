@@ -1,11 +1,11 @@
-package com.yd.lib.book.vo;
+package com.yd.lib.book.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class BookController {
-	@RequestMapping("/test.do")
+	@RequestMapping("/bookSerch.do")
 	public String test() {
 		return "test/test";
 	}
