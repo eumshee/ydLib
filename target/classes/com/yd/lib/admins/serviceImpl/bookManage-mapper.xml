@@ -6,6 +6,6 @@
 	</select>
 
 	<select id="bookManageSelectOne" resultType="com.yd.lib.book.vo.BookVO">
-		select * from book where book_Num = #{book_Num, jdbcType=VARCHAR}	
+		select * from book where book_Num = #{book_Num, jdbcType=NUMERIC}	
 	</select>
 </mapper>

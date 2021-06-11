@@ -18,7 +18,7 @@ public class BookManageImpl {
 	}
 
 	public BookVO bookManageSelectOne(BookVO vo) {
-		return sqlsession.selectOne("bookManageSelectOne");
+		return sqlsession.selectOne("bookManageSelectOne",vo);
 	}
 
 }
