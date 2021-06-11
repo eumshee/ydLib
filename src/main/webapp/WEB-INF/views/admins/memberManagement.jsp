@@ -27,6 +27,11 @@
 width: 80px;
 text-align: center;
 }
+
+.btn{
+	margin-top: 5px;
+	border: 1px ridge black;
+}
 </style>
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
@@ -85,7 +90,9 @@ text-align: center;
 						<td width="20%">(13536)경기 성남시 분당구 판교역로 4 경기 성남시 분당구 백현동 582-7어느 한적한곳 (백현동)</td>
 						<td>testemail@naver.com</td>
 						<td>정회원</td>
-						<td><button type="button">수정</button></td>
+						<td><button class="btn" type="button">수정</button><br>
+						<button class="btn" type="button">삭제</button></td>
+						
 					</tr>
 
 				</table>
