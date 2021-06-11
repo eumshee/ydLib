@@ -12,7 +12,7 @@
           <li class="has-children">
             <a href="bookSerch.do">자료이용</a>
             <ul class="dropdown">
-              <li><a href="bookSerch.do">통합자료검색</a></li>
+              <li><a href="bookSerchForm.do">통합자료검색</a></li>
               <li><a href="newBook.do">신착자료</a></li>
               <li><a href="bestBook.do">대출 베스트</a></li>
               <li><a href="wishBook.do">희망도서신청</a></li>
