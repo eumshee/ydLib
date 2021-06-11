@@ -51,15 +51,16 @@
 							<li	class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
 								<a href="book.do?$book_Id=${book.book_Num }"></a>
 								<div class="job-listing-logo">
-									<img src="${book.book_Img }" alt="Image" class="img-fluid">
+									<img src="${book.book_Img }" alt="Image" class="img-fluid" width="100%">
 								</div>
 								<div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
 									<div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-										<h2>${book.book_Title }</h2>
-										<strong>${book.book_Aut }</strong>
+										<h2>제목 : ${book.book_Title }</h2>
+										<br>
+										<h2>저자 : ${book.book_Aut }</h2> 
 									</div>
 									<div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-										${book.book_Location }
+										${book.book_Location }번서가
 									</div>
 									<div class="job-listing-meta">
 										<c:if test="${book.book_Byn eq 'n' }">
