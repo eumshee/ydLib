@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
 	style="background-image: url('resources/images/hero_1.jpg');"
@@ -60,21 +59,23 @@
 						<tr>
 							<td><label for="book_Gubun">분류</label> <input
 								type="text" class="form-control" id="book_Gubun"
-								name="book_Gubun"></td>
+								name="book_Gubun" value="${bookMgOne.book_Gubun }"></td>
 						</tr>
 						<tr>
 							<td><label for="book_Num">번호</label> <input
 								type="text" class="form-control" id="book_Num"
-								name="book_Num"></td>
+								name="book_Num" value="${bookMgOne.book_Num }"></td>
 						</tr>
 						<tr>
 							<td><label for="book_Title">제목</label> <input type="text"
-								class="form-control" id="book_Title" name="book_Title">
+								class="form-control" id="book_Title" name="book_Title"
+								value="${bookMgOne.book_Title }">
 							</td>
 						</tr>
 						<tr>
 							<td><label for="book_Aut">저자</label> <input type="text"
-								class="form-control" id="book_Aut" name="book_Aut"></td>
+								class="form-control" id="book_Aut" name="book_Aut"
+								 value="${bookMgOne.book_Aut }"></td>
 						</tr>
 						<tr>
 							<td><label for="book_Pub">출판사</label> <input type="text"
@@ -82,39 +83,51 @@
 						</tr>
 						<tr>
 							<td><label for="book_Pubdate">출판일</label> <input type="date"
-								class="form-control" id="book_Pubdate" name="book_Pubdate">
+								class="form-control" id="book_Pubdate" name="book_Pubdate"
+								 value="${bookMgOne.book_Pubdate }">
 							</td>
 						</tr>
 						<tr>
 							<td><label for="book_Indate">입고날</label> <input type="date"
-								class="form-control" id="book_Indate" name="book_Indate">
+								class="form-control" id="book_Indate" name="book_Indate"
+								 value="${bookMgOne.book_Indate }">
 							</td>
 						</tr>
 						<tr>
 							<td><label for="book_Location">위치</label> <input type="text"
-								class="form-control" id="book_Location" name="book_Location">
+								class="form-control" id="book_Location" name="book_Location"
+								 value="${bookMgOne.book_Location }">
 							</td>
 						</tr>
 						<tr>
 							<td><label for="book_Byn">반납여부</label> <input type="text"
-								class="form-control" id="book_Byn" name="book_Byn">
+								class="form-control" id="book_Byn" name="book_Byn"
+								 value="${bookMgOne.book_Byn }">
 							</td>
 						</tr>
 						<tr>
 							<td><label for="book_Img">책사진</label> <input type="text"
-								class="form-control" id="book_Img" name="book_Img"></td>
+								class="form-control" id="book_Img" name="book_Img"
+								 value="${bookMgOne.book_Img }">
+							</td>
 						</tr>
 						<tr>
 							<td><label for="book_Desc">책설명</label> <input type="text"
-								class="form-control" id="book_Desc" name="book_Desc"></td>
+								class="form-control" id="book_Desc" name="book_Desc"
+								 value="${bookMgOne.book_Desc }">
+							</td>
 						</tr>
 						<tr>
 							<td><label for="book_Isbn">isbn</label> <input type="text"
-								class="form-control" id="book_Isbn" name="book_Isbn"></td>
+								class="form-control" id="book_Isbn" name="book_Isbn"
+								 value="${bookMgOne.book_Isbn }">
+							</td>
 						</tr>
 						<tr>
 							<td><label for="book_Bigo">비고</label> <input type="text"
-								class="form-control" id="book_Bigo" name="book_Bigo"></td>
+								class="form-control" id="book_Bigo" name="book_Bigo"
+								 value="${bookMgOne.book_Bigo }">
+							</td>
 						</tr>
 					</table>
 				</form>
