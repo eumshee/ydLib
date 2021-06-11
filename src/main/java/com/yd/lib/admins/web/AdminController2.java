@@ -47,10 +47,6 @@ public class AdminController2 {
 		
 		return "admins/roanreturnManagement";
 	}
-	
-	@RequestMapping("/adminMemberSearch2.do")
-	public String adminMemberSearch2() {
-		return "";
-	}
+
 	
 }
