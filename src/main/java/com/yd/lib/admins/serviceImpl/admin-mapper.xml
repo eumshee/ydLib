@@ -5,5 +5,11 @@
 		select * from users
 	</select>
 	
+	<select id="adminSelect" resultType="com.yd.lib.users.vo.UsersVO" parameterType="com.yd.lib.users.vo.UsersVO">
+		select * from users where user_name = #{user_Name}
+	</select>
 	
+	<update id="adminUserUpdate" parameterType="com.yd.lib.users.vo.UsersVO">
+		update users set user_name = #{user_Name} where user_id = #{user_Id}
+	</update>
 </mapper>

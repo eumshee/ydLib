@@ -29,16 +29,18 @@ public class AdminController2 {
 	
 	//멤버 한명검색
 	@RequestMapping("adminMemberSearch.do")
-	public String AdminMemberSelect(Model model) {
-		return "";
+	public String AdminMemberSelect(UsersVO vo, Model model) {
+		model.addAttribute("user",his.adminUsersSelect(vo));
+		return "admins/memberManagement";
 	}
 	
 	
 	//멤버수정
 	@RequestMapping("/adminMemberUpdate.do")
-	public String AdminMemberUpdate() {
-		
-		return "";
+	public String AdminMemberUpdate(UsersVO vo) {
+		System.out.println(vo.getUser_Id()+vo.getUser_Name());
+		his.adminUserUpdate(vo);
+		return ("redirect:memberManagemant.do");
 	}
 	
 	//멤버 삭제

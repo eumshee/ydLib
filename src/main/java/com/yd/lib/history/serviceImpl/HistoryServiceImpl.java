@@ -22,8 +22,15 @@ public class HistoryServiceImpl implements HistoryService{
 	}
 
 	public UsersVO adminUsersSelect(UsersVO vo) {
-		return null;
+		return sqlSession.selectOne("adminSelect",vo);
 	}
+	
+	public int adminUserUpdate(UsersVO vo) {
+		
+		return sqlSession.update("adminUserUpdate",vo);
+	}
+	
+	
 	@Override
 	public List<HistoryVO> historySelectList() {
 
