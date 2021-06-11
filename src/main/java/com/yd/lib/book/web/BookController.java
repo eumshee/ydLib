@@ -19,16 +19,13 @@ public class BookController {
 	private BookService dao;
 	
 	@RequestMapping("/bookSerchForm.do")
-	public String bookSerchForm(Model model) {
+	public String bookSerchForm(Model model ,  HttpServletRequest req) {
 		return "book/bookSerchForm";
 	}
 	
 	@RequestMapping("/bookSerch.do")
 	public String bookSerch(Model model , BookVO vo , HttpServletRequest req) {
-		System.out.println(vo.getBook_Title() + "1");
-		HttpSession session = req.getSession();
-		session.setAttribute("bookSerchList", dao.searchBookList(vo));
-		System.out.println(dao.searchBookList(vo).size());
-		return ("redirect:bookSerchForm.do");
+		req.setAttribute("bookSerchList", dao.searchBookList(vo));
+		return "book/bookSerchForm";
 	}
 }
