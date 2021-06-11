@@ -49,56 +49,61 @@
 									<option value="8">8</option>
 									<option value="9">9</option>
 							</select></td>
-							<td rowspan="12" style="width: 50%; text-align: center;">
-								<label for="company-website-tw d-block">Upload Image</label><br>
-								<label class="btn btn-primary btn-md btn-file">Browse File
-									<input type="file">
-								</label>
-							</td>
+							<td rowspan="12" style="width: 50%; text-align: center;"><label
+								for="company-website-tw d-block">Upload Image</label><br> <label
+								class="btn btn-primary btn-md btn-file">Browse File <input
+									type="file">
+							</label></td>
 						</tr>
 						<tr>
 							<td><label for="book_Gubun">분류&nbsp;</label> <input
 								type="text" class="form-control" id="book_Gubun"
-								name="book_Gubun"></td>
+								placeholder="분류" name="book_Gubun"></td>
 						</tr>
 						<tr>
 							<td><label for="book_Title">제목</label> <input type="text"
-								class="form-control" id="book_Title" name="book_Title">
-							</td>
+								placeholder="제목" class="form-control" id="book_Title"
+								name="book_Title"></td>
 						</tr>
 						<tr>
 							<td><label for="book_Aut">저자</label> <input type="text"
-								class="form-control" id="book_Aut" name="book_Aut"></td>
+								placeholder="저자" class="form-control" id="book_Aut"
+								name="book_Aut"></td>
 						</tr>
 						<tr>
 							<td><label for="book_Pub">출판사</label> <input type="text"
-								class="form-control" id="book_Pub" name="book_Pub"></td>
+								placeholder="출판사" class="form-control" id="book_Pub"
+								name="book_Pub"></td>
 						</tr>
 						<tr>
-							<td><label for="book_Pubdate">출판일</label> <input type="date"
-								class="form-control" id="book_Pubdate" name="book_Pubdate">
-							</td>
+							<td><label for="book_Pubdate">출판일</label> <input type="text"
+								class="form-control" id="book_Pubdate" name="book_Pubdate"
+								placeholder="yyyy-mm-dd"></td>
 						</tr>
 						<tr>
-							<td><label for="book_Indate">입고날</label> <input type="date"
-								class="form-control" id="book_Indate" name="book_Indate">
-							</td>
+							<td><label for="book_Indate">입고날</label> <input type="text"
+								class="form-control" id="book_Indate" name="book_Indate"
+								placeholder="yyyy-mm-dd"></td>
 						</tr>
 						<tr>
-							<td><label for="book_Img">책사진</label> <input type="text"
-								class="form-control" id="book_Img" name="book_Img"></td>
+							<td><label for="book_Img">사진</label> <input type="text"
+								placeholder="사진" class="form-control" id="book_Img"
+								name="book_Img"></td>
 						</tr>
 						<tr>
-							<td><label for="book_Desc">책설명</label> <input type="text"
-								class="form-control" id="book_Desc" name="book_Desc"></td>
+							<td><label for="book_Desc">설명</label> <input type="text"
+								placeholder="설명" class="form-control" id="book_Desc"
+								name="book_Desc"></td>
 						</tr>
 						<tr>
-							<td><label for="book_Isbn">isbn</label> <input type="text"
-								class="form-control" id="book_Isbn" name="book_Isbn"></td>
+							<td><label for="book_Isbn">ISBN</label> <input type="text"
+								placeholder="ISBN" class="form-control" id="book_Isbn"
+								name="book_Isbn"></td>
 						</tr>
 						<tr>
 							<td><label for="book_Bigo">비고</label> <input type="text"
-								class="form-control" id="book_Bigo" name="book_Bigo"></td>
+								placeholder="비고" class="form-control" id="book_Bigo"
+								name="book_Bigo"></td>
 						</tr>
 					</table>
 				</form>

@@ -5,7 +5,28 @@
 		select * from book
 	</select>
 
-	<select id="bookManageSelectOne" resultType="com.yd.lib.book.vo.BookVO">
+	<select id="bookManageSelectOne" parameterType="com.yd.lib.book.vo.BookVO" resultType="com.yd.lib.book.vo.BookVO">
 		select * from book where book_Num = #{book_Num, jdbcType=NUMERIC}	
 	</select>
+
+	<select id="bookManageSelectList" parameterType="com.yd.lib.book.vo.BookVO" resultType="com.yd.lib.book.vo.BookVO">
+		select * from book where book_Isbn = #{book_Isbn, jdbcType=NUMERIC}
+	</select>
+	
+	<!-- 책비고 수정 -->
+	<update id="bookManageBigoUpdate" parameterType="com.yd.lib.book.vo.BookVO">
+		update book set book_Bigo = #{book_Bigo} where book_Num = #{book_Num}
+	</update>
+	
+	<!-- 책정보 수정 -->
+	<update id="bookOneUpdate" parameterType="com.yd.lib.book.vo.BookVO">
+		update book set book_subject = #{book_Subject}, book_gubun=#{book_Gubun},
+		book_title = #{book_Title}, book_aut = #{book_Aut}, book_pub = #{book_Pub},
+		book_pubdate = #{book_Pubdate}, book_indate = #{book_Indate},
+		book_location = #{book_Location}, book_byn = #{book_Byn},
+		book_img = #{book_Img}, book_desc = #{book_Desc},
+		book_isbn = #{book_Isbn}, book_bigo = #{book_Bigo}
+		where book_num = #{book_Num}
+	</update>
+	
 </mapper>

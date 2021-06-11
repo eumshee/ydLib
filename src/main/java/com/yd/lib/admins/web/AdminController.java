@@ -28,6 +28,7 @@ public class AdminController {
 	@RequestMapping("/bookDetailManage.do")
 	public String bookDetailManage(Model model, BookVO vo) {
 		model.addAttribute("bookMgOne", bmi.bookManageSelectOne(vo));
+		model.addAttribute("bookMgOver",bmi.booKManageSelectList(vo));
 		return "admins/bookDetailManage";
 	}
 

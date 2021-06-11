@@ -95,9 +95,15 @@
 							<td onclick="formSubmit(${vo.book_Num })">${vo.book_Location }</td>
 							<td>
 								<select id="bookStatus">
-									<option hidden="" selected></option>
-									<option value="분실">분실</option>
-									<option value="훼손">훼손</option>
+									<option hidden=""
+									<c:if test="${vo.book_Bigo eq ''}">selected</c:if>
+									></option>
+									<option value="분실"
+									<c:if test="${vo.book_Bigo eq '분실'}">selected</c:if>
+									>분실</option>
+									<option value="훼손"
+									<c:if test="${vo.book_Bigo eq '훼손'}">selected</c:if>
+									>훼손</option>
 								</select>
 								<button type="button">수정</button>
 							</td>

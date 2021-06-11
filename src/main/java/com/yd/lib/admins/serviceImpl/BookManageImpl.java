@@ -21,4 +21,8 @@ public class BookManageImpl {
 		return sqlsession.selectOne("bookManageSelectOne",vo);
 	}
 
+	public List<BookVO> booKManageSelectList(BookVO vo) {
+		return sqlsession.selectList("bookManageSelectList",vo);
+	}
+	
 }
