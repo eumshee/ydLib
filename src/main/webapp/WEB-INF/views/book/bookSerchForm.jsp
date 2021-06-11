@@ -54,7 +54,7 @@
 						<ul class="job-listings mb-5">
 							<c:forEach items="${bookSerchList }" var="book">
 								<li	class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-									<a href="book.do?$book_Id=${book.book_Num }"></a>
+									<a href="bookInfo.do?$book_Id=${book.book_Num }"></a>
 									<div class="job-listing-logo">
 										<img src="${book.book_Img }" alt="Image" class="img-fluid" width="100%">
 									</div>
@@ -68,6 +68,9 @@
 										</div>
 										<div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
 											${book.book_Location }번서가
+										</div>
+										<div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
+											수량 : ${book.book_Cnt }권
 										</div>
 										<div class="job-listing-meta">
 											<c:if test="${book.book_Byn eq 'N' }">
