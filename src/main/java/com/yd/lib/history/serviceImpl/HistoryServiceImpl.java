@@ -16,11 +16,8 @@ public class HistoryServiceImpl implements HistoryService{
 	private SqlSession sqlSession; 
 	
 	public UsersVO adminUsersSelect(UsersVO vo) {
-		
 		return null;
 	}
-
-
 	@Override
 	public List<HistoryVO> historySelectList() {
 
