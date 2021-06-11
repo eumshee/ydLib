@@ -87,7 +87,7 @@ public class BookVO {
 		this.book_Subject = book_Subject;
 	}
 	public String getBook_Isbn() {
-		return book_Isbn;
+		return this.book_Isbn;
 	}
 	public void setBook_Isbn(String book_Isbn) {
 		this.book_Isbn = book_Isbn;

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     
 <style>
 .pagination {
@@ -26,6 +27,15 @@
 	background-color: #ddd;
 }
 </style>
+<script>
+		function formSubmit(num) {
+			frm.book_Num.value = num;
+			frm.submit();
+		}
+</script>
+<form id="frm" action="bookDetailManage.do" method="post">
+	<input type="text" id="book_Num" name="book_Num">
+</form>
 
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
@@ -72,27 +82,27 @@
 						<th>위치</th>
 						<th>비고</th>
 					</tr>
-					<!-- 
+					
 					<c:forEach items="${bookMgList }" var="vo">
 						<tr>
-							<td>${vo.book_Num }</td>
-							<td>${vo.book_Subject }</td>
-							<td>${vo.book_Title }</td>
-							<td>${vo.book_Aut }</td>
-							<td>${vo.book_Pubdate }</td>
-							<td>${vo.book_Indate }</td>
-							<td>${vo.book_Location }</td>
+							<td onclick="formSubmit(${vo.book_Num })">${vo.book_Num }</td>
+							<td onclick="formSubmit(${vo.book_Num })">${vo.book_Gubun }</td>
+							<td onclick="formSubmit(${vo.book_Num })">${vo.book_Title }</td>
+							<td onclick="formSubmit(${vo.book_Num })">${vo.book_Aut }</td>
+							<td onclick="formSubmit(${vo.book_Num })">${vo.book_Pub }</td>
+							<td onclick="formSubmit(${vo.book_Num })">${fn:substring(vo.book_Pubdate,0,10) }</td>
+							<td onclick="formSubmit(${vo.book_Num })">${fn:substring(vo.book_Indate,0,10) }</td>
+							<td onclick="formSubmit(${vo.book_Num })">${vo.book_Location }</td>
 							<td>
 								<select id="bookStatus">
-									<option hidden=""></option>
-									<option value="분실" selected>분실</option>
+									<option hidden="" selected></option>
+									<option value="분실">분실</option>
 									<option value="훼손">훼손</option>
 								</select>
 								<button type="button">수정</button>
 							</td>
 						</tr>
 					</c:forEach>
-					 -->
 				</table>
 				<!-- 페이징처리 -->
 				<div class="col-lg-12 text-center">
