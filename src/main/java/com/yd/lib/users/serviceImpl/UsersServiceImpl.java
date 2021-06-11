@@ -23,5 +23,10 @@ public class UsersServiceImpl {
 		
 		return sqlSession.selectOne("loginCheck",vo);
 	}
+	
+	public UsersVO emailCheck(UsersVO vo) {
+		
+		return sqlSession.selectOne("emailCheck",vo);
+	}
 
 }

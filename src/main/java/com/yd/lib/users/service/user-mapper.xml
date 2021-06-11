@@ -6,13 +6,29 @@
 		select * from users where user_id = #{user_Id} and user_pw = #{user_Pw}
 	</select>
 	
+	
+	
+	
 	<insert id="userJoin">
 		insert into users values(#{user_Id},#{user_Name},#{user_Pw},#{user_Gubun},#{user_Gender},
 		#{user_Birth},#{user_Phone},#{user_Addr},#{user_Email})
 	</insert>
+	
+	
+	<select id="emailCheck" parameterType="com.yd.lib.users.vo.UsersVO" resultType="com.yd.lib.users.vo.UsersVO" >
+		select * from users where email = #{user_Email}
+	</select>
+	
+	
+	
+	
+	
+	
 
 	<update id="userUpdate">
 		
 	</update>
+	
+	
 	
 </mapper>
