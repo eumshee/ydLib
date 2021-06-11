@@ -3,7 +3,7 @@
 <mapper namespace="com.yd.lib.book.service.Book-mapper">
 	
 	<select id="bookSerchList" parameterType="com.yd.lib.book.vo.BookVO" resultType="com.yd.lib.book.vo.BookVO" >
-		select * from book where book_title like '%' || #{ book_Title } || '%'
+		select * from book where book_title like '%' || #{ book_Title } || '%' and book_aut like '%' || #{ book_Aut } || '%' and book_pub like '%' || #{ book_Pub } || '%'
 	</select>
 	
 	

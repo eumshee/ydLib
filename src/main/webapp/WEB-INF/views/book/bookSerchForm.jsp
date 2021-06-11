@@ -62,7 +62,9 @@
 										<div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
 											<h2>제목 : ${book.book_Title }</h2>
 											<br>
-											<h2>저자 : ${book.book_Aut }</h2> 
+											<h2>저자 : ${book.book_Aut }</h2>
+											<br>
+											<h2>출판사 : ${book.book_Pub }</h2>  
 										</div>
 										<div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
 											${book.book_Location }번서가
