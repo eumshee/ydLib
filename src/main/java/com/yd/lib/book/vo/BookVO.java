@@ -13,7 +13,7 @@ public class BookVO {
 	private String book_Img;
 	private String book_Desc;
 	private String book_Subject;
-	private int book_Isbn;
+	private String book_Isbn;
 	public int getBook_Num() {
 		return book_Num;
 	}
@@ -86,10 +86,10 @@ public class BookVO {
 	public void setBook_Subject(String book_Subject) {
 		this.book_Subject = book_Subject;
 	}
-	public int getBook_Isbn() {
+	public String getBook_Isbn() {
 		return book_Isbn;
 	}
-	public void setBook_Isbn(int book_Isbn) {
+	public void setBook_Isbn(String book_Isbn) {
 		this.book_Isbn = book_Isbn;
 	}
 	
