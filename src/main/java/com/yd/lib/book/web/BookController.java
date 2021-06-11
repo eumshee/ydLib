@@ -1,5 +1,8 @@
 package com.yd.lib.book.web;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,9 +24,10 @@ public class BookController {
 	}
 	
 	@RequestMapping("/bookSerch.do")
-	public String bookSerch(Model model , BookVO vo) {
+	public String bookSerch(Model model , BookVO vo , HttpServletRequest req) {
 		System.out.println(vo.getBook_Title() + "1");
-		model.addAttribute("bookSerchList", dao.searchBookList(vo));
+		HttpSession session = req.getSession();
+		session.setAttribute("bookSerchList", dao.searchBookList(vo));
 		System.out.println(dao.searchBookList(vo).size());
 		return ("redirect:bookSerchForm.do");
 	}

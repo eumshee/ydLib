@@ -49,7 +49,7 @@
 					<ul class="job-listings mb-5">
 						<c:forEach items="${bookSerchList }" var="book">
 							<li	class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-								<a href="book.do?$book_Id=${book.book_Id }"></a>
+								<a href="book.do?$book_Id=${book.book_Num }"></a>
 								<div class="job-listing-logo">
 									<img src="${book.book_Img }" alt="Image" class="img-fluid">
 								</div>
