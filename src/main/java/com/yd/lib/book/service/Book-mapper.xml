@@ -3,7 +3,17 @@
 <mapper namespace="com.yd.lib.book.service.Book-mapper">
 	
 	<select id="bookSerchList" parameterType="com.yd.lib.book.vo.BookVO" resultType="com.yd.lib.book.vo.BookVO" >
-		select * from book where book_title like '%' || #{ book_Title } || '%' and book_aut like '%' || #{ book_Aut } || '%' and book_pub like '%' || #{ book_Pub } || '%'
+		select *
+		from 
+        	(SELECT ROW_NUMBER() OVER(PARTITION BY b1.book_isbn ORDER BY b1.book_num DESC ) AS RNUM, b1.* , b2.cnt as book_cnt
+        	FROM book b1 join (select book_isbn , COUNT(book_isbn) as  cnt
+                               from book
+                               GROUP BY book_isbn
+                               ) b2
+        	on b1.book_isbn = b2.book_isbn
+        	where book_title like '%' || #{ book_Title } || '%' and book_aut like '%' || #{ book_Aut } || '%' and book_pub like '%' || #{ book_Pub } || '%'
+        	)bk
+		where RNUM = 1
 	</select>
 	
 	
