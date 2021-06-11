@@ -38,7 +38,8 @@ public class UsersController {
 		 * 
 		 * MemberVO vo = new MemberVO(); vo.setId(id); vo.setPwd(pwd);
 		 * 
-		 * MemberServiceImpl service = new MemberServiceImpl(); ProductServiceImpl
+		 * MemberServiceImpl service = new MemberServiceImpl(); 
+		 * ProductServiceImpl
 		 * service1 = new ProductServiceImpl(); ProductServiceImpl service2 = new
 		 * ProductServiceImpl(); MemberVO rvo = service.loginCheck(vo);
 		 * 
@@ -67,7 +68,7 @@ public class UsersController {
 		 * 
 		 * 
 		 */ 
-		 return "home.do";
+		 return "";
 		 
 	}
 	
