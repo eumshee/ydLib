@@ -40,7 +40,7 @@ function updateForm(){
 		<!-- 검색창 -->
 		<form action="adminMemberSearch.do" method="post">
 			<div align="right">
-				<input type="text" id="search" name="search" placeholder="검색할 이름을 입력하세요." size="30">
+				<input type="text" id="user_id" name="user_id" placeholder="검색할 이름을 입력하세요." size="30">
 				<button type="submit" class="btn btn-primary text-white btn-search">
 					<span class="icon-search icon mr-2"></span>검색
 				</button>
@@ -65,8 +65,9 @@ function updateForm(){
 							<th>회원등급</th>
 							<th>비고</th>
 						</tr>
+						<c:forEach items="${user }"></c:forEach>
 						<tr>
-							<td>longtestid</td>
+							<td></td>
 							<td><input type="text" id="user_name" name="user_namename" value="세글자"></td>
 							<td>남자</td>
 							<td>2020-10-10</td>

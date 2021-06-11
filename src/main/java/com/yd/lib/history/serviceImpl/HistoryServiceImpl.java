@@ -8,12 +8,19 @@ import org.springframework.stereotype.Repository;
 
 import com.yd.lib.history.service.HistoryService;
 import com.yd.lib.history.vo.HistoryVO;
+import com.yd.lib.users.vo.UsersVO;
 
 @Repository
 public class HistoryServiceImpl implements HistoryService{
 @Autowired
 	private SqlSession sqlSession; 
 	
+	public UsersVO adminUsersSelect(UsersVO vo) {
+		
+		return null;
+	}
+
+
 	@Override
 	public List<HistoryVO> historySelectList() {
 

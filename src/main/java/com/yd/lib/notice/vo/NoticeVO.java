@@ -13,7 +13,7 @@ public class NoticeVO {
 	
 	private int notice_Id;
 	private String notice_Title;
-	private String notice_Contente;
+	private String notice_Content;
 	private Date notice_Date;
 	private int notice_Hit;
 	
@@ -29,11 +29,11 @@ public class NoticeVO {
 	public void setNotice_Title(String notice_Title) {
 		this.notice_Title = notice_Title;
 	}
-	public String getNotice_Contente() {
-		return notice_Contente;
+	public String getNotice_Content() {
+		return notice_Content;
 	}
-	public void setNotice_Contente(String notice_Contente) {
-		this.notice_Contente = notice_Contente;
+	public void setNotice_Content(String notice_Content) {
+		this.notice_Content = notice_Content;
 	}
 	public Date getNotice_Date() {
 		return notice_Date;
