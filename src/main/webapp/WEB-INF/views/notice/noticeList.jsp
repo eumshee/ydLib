@@ -2,9 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<style>
-
-</style>
+<script>
+function formSubmit(id) {
+	frm.notice_Id.value = id;
+	console.log(id);
+	frm.submit();
+}
+</script>
 
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
@@ -38,18 +42,23 @@
 			<!--컨텐츠 영역-->
 			<div class="col-lg-8">
 				<div align="right">
-				<a href="noticeInsertForm.do"><button type="submit" class="btn btn-primary text-white btn-search">글쓰기
-				</button></a><br><br>
+					<a href="noticeInsertForm.do"><button type="submit"
+							class="btn btn-primary text-white btn-search">글쓰기</button></a><br>
+					<br>
 				</div>
+				<form id="frm" action="noticeSelect.do" method="post">
+					<input type="hidden" id="notice_Id" name="notice_Id">
+				</form>
 				<table class="table">
 					<tr>
+						<th>순번</th>
 						<th width="50%">제목</th>
 						<th>작성자</th>
 						<th>작성일</th>
 						<th>조회수</th>
 					</tr>
 					<c:forEach var="vo" items="${notice }">
-						<tr>
+						<tr onclick="formSubmit(${vo.notice_Id})">
 							<td>${vo.notice_Id }</td>
 							<td>${vo.notice_Title }</td>
 							<td>관리자</td>
@@ -73,7 +82,8 @@
 
 				<!-- 검색 -->
 				<div align="center">
-					<input type="text" id="search" name="search" placeholder="검색어를 입력하세요" size="30">
+					<input type="text" id="search" name="search"
+						placeholder="검색어를 입력하세요" size="30">
 					<button type="submit" class="btn btn-primary text-white btn-search">
 						<span class="icon-search icon mr-2"></span>검색
 					</button>
