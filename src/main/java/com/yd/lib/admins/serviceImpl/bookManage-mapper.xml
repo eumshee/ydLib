@@ -24,9 +24,9 @@
 		book_title = #{book_Title}, book_aut = #{book_Aut}, book_pub = #{book_Pub},
 		book_pubdate = #{book_Pubdate}, book_indate = #{book_Indate},
 		book_location = #{book_Location}, book_byn = #{book_Byn},
-		book_img = #{book_Img}, book_desc = #{book_Desc},
-		book_isbn = #{book_Isbn}, book_bigo = #{book_Bigo}
+		book_img = #{book_Img}, book_desc = #{book_Desc, jdbcType=VARCHAR},
+		book_isbn = #{book_Isbn}, book_bigo = #{book_Bigo, jdbcType=VARCHAR}
 		where book_num = #{book_Num}
 	</update>
-	
+
 </mapper>

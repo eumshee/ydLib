@@ -2,6 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<script>
+	function bookOneUpdate() {
+		frm.submit();
+	}
+</script>
+
+
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
 	style="background-image: url('resources/images/hero_1.jpg');"
@@ -25,22 +32,18 @@
 		<div align="right">
 			<div class="col-lg-3">
 				<div class="col-4">
-					<a href="#" class="btn btn-block btn-primary btn-md">수정</a>
+					<button type="button" onclick="bookOneUpdate()" class="btn btn-block btn-primary btn-md">수정</button>
 				</div>
 			</div>
 		</div>
 		<div class="row mb-5">
 			<div class="col-lg-12">
-				<form class="p-4 p-md-5 border rounded" method="post">
+				<form class="p-4 p-md-5 border rounded" id="frm" action="bookOneUpdate.do" method="post">
 					<h3 class="text-black mb-5 border-bottom pb-2">Book Detail</h3>
-					<table border="1" style="width: 100%;">
+					<table style="width: 100%;">
 						<tr>
 							<td rowspan="16" style="width: 50%; text-align: center;">
-								<label for="company-website-tw d-block">Upload Image</label><br>
-								<label class="btn btn-primary btn-md btn-file">Browse File
-									<input type="file">
-								</label>
-								<img src="${bookMgOne.book_Img }" width="50%">
+								<img src="${bookMgOne.book_Img }" width="70%">
 							</td>
 							<td class="form-group"><label for="book_Subject">책주제&nbsp;</label>
 								<select class="selectpicker border rounded" id="book_Subject"

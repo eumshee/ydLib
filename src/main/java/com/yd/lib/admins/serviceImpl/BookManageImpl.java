@@ -25,4 +25,9 @@ public class BookManageImpl {
 		return sqlsession.selectList("bookManageSelectList",vo);
 	}
 	
+	public int bookOneUpdate(BookVO vo) {
+		return sqlsession.update("bookOneUpdate",vo);
+	}
+
+	
 }
