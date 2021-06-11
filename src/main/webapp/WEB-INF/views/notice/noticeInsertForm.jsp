@@ -4,9 +4,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="//cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
 <script>
+
 $(function() {CKEDITOR.replace('notice_Content',
 		{
-			filebrowserUploadUrl : '${pageContext.request.contextPath}/fileUpload',
+			filebrowserUploadUrl : '${pageContext.request.contextPath}/FileUpload',
 			height : '500px',
 			width : '100%'
 			});
@@ -44,35 +45,30 @@ $(function() {CKEDITOR.replace('notice_Content',
 			</div>
 			<!--컨텐츠 영역-->
 			<div class="col-lg-8">
-				<form class="p-4 p-md-5 border rounded" method="post">
+				<form class="p-4 p-md-5 border rounded" action="noticeInsert.do" method="post" enctype="Multipart/form-data">
 					<h3 class="text-black mb-5 border-bottom pb-2">공지사항 작성</h3>
 					<div class="form-group">
 						<label for="title">글 제목</label> <input type="text"
 							class="form-control" id="notice_Title" name="notice_Title" placeholder="글 제목">
 					</div>
 					<div class="form-group">
-						<label for="job-title">글 내용</label> <input type="text"
-							class="form-control" id="notice_Content" name="notice_Content"
-							placeholder="글 내용">
+						<label for="job-title">글 내용</label> <textarea 	class="form-control" id="notice_Content" name="notice_Content"></textarea>
+
 					</div>
 					<div class="form-group">
 						<label for="company-website-tw d-block">파일 첨부</label>
-						<label class="btn btn-light">Browse File<input type="file" hidden>
-						</label>
+						<input type="file" id="notice_File" name="notice_File">
 					</div>
 					
 					<div align="center">
-					<button type="reset" class="btn btn-light">작성취소</button>
-					<button type="submit" class="btn btn-primary text-white">작성하기</button><br>
+						<button type="reset" class="btn btn-light">작성취소</button>
+						<button type="submit" class="btn btn-primary text-white">작성하기</button><br>
 					</div>
 					<div align="right">
-					<button type="button" onclick="location.herf='noticeList.do'" class="btn btn-light">목록으로</button>
+						<button type="button" onclick="location.herf='noticeList.do'" class="btn btn-light">목록으로</button>
 					</div>
 				</form>
 			</div>
-
-
 		</div>
-
 	</div>
 </section>

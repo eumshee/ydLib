@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yd.lib.notice.serviceImpl.NoticeServiceImpl;
+import com.yd.lib.notice.vo.NoticeVO;
 
 
 
@@ -22,8 +23,25 @@ public class NoticeController {
 		return "notice/noticeList";
 	}
 
-	@RequestMapping("/noticeInsertForm.do")
-	public String noticeInserForm() {
+	@RequestMapping("/noticeSelect.do")
+	public String noticeSelect(Model model, NoticeVO vo) {
+		model.addAttribute("vo", dao.noticeSelect(vo));
+		
+		return "notice/noticeSelect";
+	}
+
+	@RequestMapping("/noticeInsertForm.do") 	// 작성 폼으로 호출
+	public String noticeInsertForm() {
 		return "notice/noticeInsertForm";
 	}
+	
+	@RequestMapping("/noticeInsert.do")		// 작성 후 버튼누르면
+	public String noticeInsert(NoticeVO vo) {
+		int n = dao.noticeInsert(vo);
+		return "redirect:noticeList.do";
+	}	
+	
+	
+	
+	
 }

@@ -16,7 +16,15 @@ public class NoticeVO {
 	private String notice_Content;
 	private Date notice_Date;
 	private int notice_Hit;
+	private String notice_File;
 	
+	
+	public String getNotice_File() {
+		return notice_File;
+	}
+	public void setNotice_File(String notice_File) {
+		this.notice_File = notice_File;
+	}
 	public int getNotice_Id() {
 		return notice_Id;
 	}

@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.jen.ex02.member.service.member-map">
+
 	<select id="noticeListSelect" resultType="com.yd.lib.notice.vo.NoticeVO">
 		select * from notice
 	</select>
 	
-<!-- 
-	<select id="memberSelect" parameterType="co.jen.ex02.member.vo.MemberVO"
-		resultType="co.jen.ex02.member.vo.MemberVO">
-		select * from member where id = #{id}		
+	<select id="noticeSelect" parameterType="com.yd.lib.notice.vo.NoticeVO"
+		resultType="com.yd.lib.notice.vo.NoticeVO">
+		select * from notice where notice_id = #{notice_Id}		
 	</select>
 	
-	<insert id="memberInsert" parameterType="co.jen.ex02.member.vo.MemberVO">
-		insert into member
-		values(#{id},#{password},#{name},#{tel})
+	<insert id="noticeInsert" parameterType="com.yd.lib.notice.vo.NoticeVO">
+		insert into notice
+		values(notice_seq.nextval, #{notice_Title}, #{notice_Content}, sysdate, 0, #{notice_File})
 	</insert>
--->
 </mapper>
