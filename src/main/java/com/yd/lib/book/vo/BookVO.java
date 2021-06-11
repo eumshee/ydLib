@@ -15,7 +15,9 @@ public class BookVO {
 	private String book_Subject;
 	private String book_Isbn;
 	private String book_Bigo;
-	private String book_Cnt; //중복 책 수
+	private int all_Book_Cnt; //중복 책 수
+	private int can_Book_Cnt; //중복 책 중 대출가능한 책의 수
+	
 	
 	public String getBook_Bigo() {
 		return book_Bigo;
@@ -101,11 +103,17 @@ public class BookVO {
 	public void setBook_Isbn(String book_Isbn) {
 		this.book_Isbn = book_Isbn;
 	}
-	public String getBook_Cnt() {
-		return book_Cnt;
+	public int getAll_Book_Cnt() {
+		return all_Book_Cnt;
 	}
-	public void setBook_Cnt(String book_Cnt) {
-		this.book_Cnt = book_Cnt;
+	public void setAll_Book_Cnt(int all_Book_Cnt) {
+		this.all_Book_Cnt = all_Book_Cnt;
+	}
+	public int getCan_Book_Cnt() {
+		return can_Book_Cnt;
+	}
+	public void setCan_Book_Cnt(int can_Book_Cnt) {
+		this.can_Book_Cnt = can_Book_Cnt;
 	}
 	
 	

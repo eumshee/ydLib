@@ -70,13 +70,14 @@
 											${book.book_Location }번서가
 										</div>
 										<div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-											수량 : ${book.book_Cnt }권
+											수량 : ${book.all_Book_Cnt }권
 										</div>
 										<div class="job-listing-meta">
-											<c:if test="${book.book_Byn eq 'N' }">
+											
+											<c:if test="${book.can_Book_Cnt <= 0 }">
 												<span class="badge badge-danger">대출불가</span>
 											</c:if>
-											<c:if test="${book.book_Byn eq 'Y' }">
+											<c:if test="${book.can_Book_Cnt > 0 }">
 												<span class="badge badge-success">대출가능</span>
 											</c:if>
 										</div>
