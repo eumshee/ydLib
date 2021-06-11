@@ -5,5 +5,5 @@ import java.util.List;
 import com.yd.lib.book.vo.BookVO;
 
 public interface BookService {
-	public List<BookVO> getBookList();
+	public List<BookVO> searchBookList(BookVO vo);
 }

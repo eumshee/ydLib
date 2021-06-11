@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,61 +38,70 @@
 				<!--컨텐츠 영역-->
 				<div class="col-lg-8">
 					<form action="bookSerch.do" method="get">
-
 						<input type="text" id="book_Title" name="book_Title" placeholder="도서 제목을 입력하세요">
+						<br> 
+						저자 : <input type="text" id="book_Aut" name="book_Aut">
+						<br> 
+						출판사 : <input type="text" id="book_Pub" name="book_Pub">
+						<br>
 						<input type="submit" value="검색">
-						<table class="table">
-							<tr>
-								<th>등록번호</th>
-								<th width="50%">제목</th>
-								<th>저자</th>
-								<th>출판사</th>
-								<th>KDC</th>
-								<th>배가위치</th>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>글제목</td>
-								<td>접수</td>
-								<td>김김밥</td>
-								<td>2021-06-10</td>
-								<td>1</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>글제목</td>
-								<td>접수</td>
-								<td>김김밥</td>
-								<td>2021-06-10</td>
-								<td>1</td>
-							</tr>
-						</table>
-						<!-- 페이징처리 -->
-						<div class="col-lg-12 text-center">
-							<jsp:include page="../common/paging.jsp" flush="true">
-								<jsp:param name="firstPageNo" value="${paging.firstPageNo}" />
-								<jsp:param name="prevPageNo" value="${paging.prevPageNo}" />
-								<jsp:param name="startPageNo" value="${paging.startPageNo}" />
-								<jsp:param name="pageNo" value="${paging.pageNo}" />
-								<jsp:param name="endPageNo" value="${paging.endPageNo}" />
-								<jsp:param name="nextPageNo" value="${paging.nextPageNo}" />
-								<jsp:param name="finalPageNo" value="${paging.finalPageNo}" />
-							</jsp:include>
-						</div>
-						<p>
-							<a href="#" class="btn btn-primary btn-md mt-4">큰버튼</a>
-						</p>
-
-						<!-- 검색창 -->
-						<div align="center">
-							<input type="text" id="search" name="search"
-								placeholder="검색어를 입력하세요" size="30">
-							<button type="submit"
-								class="btn btn-primary text-white btn-search">
-								<span class="icon-search icon mr-2"></span>검색
-							</button>
-						</div>
 					</form>
+					<ul class="job-listings mb-5">
+						<c:forEach items="${bookSerchList }" var="book">
+							<li	class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
+								<a href="book.do?$book_Id=${book.book_Num }"></a>
+								<div class="job-listing-logo">
+									<img src="${book.book_Img }" alt="Image" class="img-fluid">
+								</div>
+								<div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+									<div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
+										<h2>${book.book_Title }</h2>
+										<strong>${book.book_Aut }</strong>
+									</div>
+									<div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
+										${book.book_Location }
+									</div>
+									<div class="job-listing-meta">
+										<c:if test="${book.book_Byn eq 'n' }">
+											<span class="badge badge-danger">대출불가</span>
+										</c:if>
+										<c:if test="${book.book_Byn eq 'y' }">
+											<span class="badge badge-success">대출가능</span>
+										</c:if>
+									</div>
+								</div>
+							</li>
+						</c:forEach>
+					</ul>
+
+
+
+					<!-- 페이징처리 -->
+					<div class="col-lg-12 text-center">
+						<jsp:include page="../common/paging.jsp" flush="true">
+							<jsp:param name="firstPageNo" value="${paging.firstPageNo}" />
+							<jsp:param name="prevPageNo" value="${paging.prevPageNo}" />
+							<jsp:param name="startPageNo" value="${paging.startPageNo}" />
+							<jsp:param name="pageNo" value="${paging.pageNo}" />
+							<jsp:param name="endPageNo" value="${paging.endPageNo}" />
+							<jsp:param name="nextPageNo" value="${paging.nextPageNo}" />
+							<jsp:param name="finalPageNo" value="${paging.finalPageNo}" />
+						</jsp:include>
+					</div>
+					<p>
+						<a href="#" class="btn btn-primary btn-md mt-4">큰버튼</a>
+					</p>
+
+					<!-- 검색창 -->
+					<div align="center">
+						<input type="text" id="search" name="search"
+							placeholder="검색어를 입력하세요" size="30">
+						<button type="submit"
+							class="btn btn-primary text-white btn-search">
+							<span class="icon-search icon mr-2"></span>검색
+						</button>
+					</div>
+
 				</div>
 			</div>
 		</div>

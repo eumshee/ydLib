@@ -34,7 +34,7 @@
 		}
 </script>
 <form id="frm" action="bookDetailManage.do" method="post">
-	<input type="text" id="book_Num" name="book_Num">
+	<input type="text" id="book_Num" name="book_Num" hidden="">
 </form>
 
 <!-- 상단배너 -->

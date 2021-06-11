@@ -18,7 +18,6 @@
 </section>
 
 <!-- 도서조회폼 -->
-<!-- 도서입력폼 -->
 <section class="site-section">
 	<div class="container">
 		<div align="right">
@@ -79,16 +78,19 @@
 						</tr>
 						<tr>
 							<td><label for="book_Pub">출판사</label> <input type="text"
-								class="form-control" id="book_Pub" name="book_Pub"></td>
+								class="form-control" id="book_Pub" name="book_Pub"
+								value="${bookMgOne.book_Pub }">
+	
+							</td>
 						</tr>
 						<tr>
-							<td><label for="book_Pubdate">출판일</label> <input type="date"
+							<td><label for="book_Pubdate">출판일</label> <input type="text"
 								class="form-control" id="book_Pubdate" name="book_Pubdate"
 								 value="${bookMgOne.book_Pubdate }">
 							</td>
 						</tr>
 						<tr>
-							<td><label for="book_Indate">입고날</label> <input type="date"
+							<td><label for="book_Indate">입고날</label> <input type="text"
 								class="form-control" id="book_Indate" name="book_Indate"
 								 value="${bookMgOne.book_Indate }">
 							</td>
@@ -114,6 +116,7 @@
 						<tr>
 							<td><label for="book_Desc">책설명</label> <input type="text"
 								class="form-control" id="book_Desc" name="book_Desc"
+								placeholder="비어있습니다."
 								 value="${bookMgOne.book_Desc }">
 							</td>
 						</tr>
@@ -126,7 +129,8 @@
 						<tr>
 							<td><label for="book_Bigo">비고</label> <input type="text"
 								class="form-control" id="book_Bigo" name="book_Bigo"
-								 value="${bookMgOne.book_Bigo }">
+								placeholder="비어있습니다."
+								value="${bookMgOne.book_Bigo }">
 							</td>
 						</tr>
 					</table>
