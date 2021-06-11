@@ -14,6 +14,13 @@ public class BookVO {
 	private String book_Desc;
 	private String book_Subject;
 	private String book_Isbn;
+	private String book_Bigo;
+	public String getBook_Bigo() {
+		return book_Bigo;
+	}
+	public void setBook_Bigo(String book_Bigo) {
+		this.book_Bigo = book_Bigo;
+	}
 	public int getBook_Num() {
 		return book_Num;
 	}
