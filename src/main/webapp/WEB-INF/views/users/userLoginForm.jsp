@@ -5,7 +5,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
 rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"></head>
 <script>
-	function formCheck() {
+	function loginCheck() {
 		if (frm.user_Id.value == "") {
 			alert("아이디를 입력하세요.");
 			frm.user_Id.focus();
@@ -16,8 +16,22 @@ rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbi
 			frm.user_Pw.focus();
 			return false;
 		}
-		alert("정상적으로 로그인 되었습니다.");
-		frm.submit();
+	
+		$.ajax({
+			url : 'userLogin.do',
+			data : $('#frm').serialize(),
+			type : 'post',
+			success : function(user_Id) {
+				if(user_Id != null) {
+					alert( user_Id + "님이 정상적으로 로그인 되었습니다.");
+					window.location = 'home.do';
+				} 
+			},
+			error : function(err) {
+				alert("해당하는 회원정보가 없습니다. 다시 시도해주세요.");
+			}
+		});
+		
 	}
 </script>
 
@@ -29,7 +43,7 @@ rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbi
 			<div class="col-md-12" align="center">
 				<h1 class="text-white font-weight-bold">로그인</h1>
 				<div class="custom-breadcrumbs">
-					<a href="#">Home</a> <span class="mx-2 slash">/</span> <span
+					<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
 						class="text-white"><strong>로그인</strong></span>
 				</div>
 			</div>
@@ -45,7 +59,7 @@ rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbi
 					<div class="sidenav">
 						<ul class="list-unstyled">
 							<li class="sideactive"><a href="#">로그인</a></li>
-							<li><a href="#">회원가입</a></li>
+							<li><a href="userJoinForm.do">회원가입</a></li>
 						</ul>
 					</div>
 				</div>
@@ -73,12 +87,10 @@ rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbi
 							</table>
 						</div>
 						<div>
-							<button class="btn btn-light" type="button" onclick="formCheck()">로그인</button>
-							<button class="btn btn-light" type="button" onclick="location.href='memberJoinForm.do'">회원가입</button>
+							<button class="btn btn-light" type="button" onclick="loginCheck()">로그인</button>
+							<button class="btn btn-light" type="button" onclick="location.href='userJoinForm.do'">회원가입</button>
 						</div>
 					</form></div>
-
-
 			</div>
 		</div>
 </section>
