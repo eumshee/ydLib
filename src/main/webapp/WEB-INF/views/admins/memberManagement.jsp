@@ -65,19 +65,23 @@ function updateForm(){
 							<th>회원등급</th>
 							<th>비고</th>
 						</tr>
-						<c:forEach items="${user }"></c:forEach>
-						<tr>
-							<td></td>
-							<td><input type="text" id="user_name" name="user_namename" value="세글자"></td>
-							<td>남자</td>
-							<td>2020-10-10</td>
-							<td>010-1111-1111</td>
-							<td width="20%">(13536)경기 성남시 분당구 판교역로 4 경기 성남시 분당구 백현동 582-7어느 한적한곳 (백현동)</td>
-							<td>testemail@naver.com</td>
-							<td>정회원</td>
-							<td><button class="btn" type="submit">수정</button><br>
-							<button class="btn" type="button" onclick="updateForm()">삭제</button></td>
-						</tr>
+						<c:forEach items="${users }" var="vo">
+							<tr>
+								<td>${vo.user_Id }</td>
+								<td><input type="text" id="user_name" name="user_namename" value="${vo.user_Name }"></td>
+								<td>
+									<c:if test="${vo.user_Gender eq 'M'}">남자</c:if>
+									<c:if test="${vo.user_Gender eq 'W'}">여자</c:if>
+								</td>
+								<td>${vo.user_Birth }</td>
+								<td>${vo.user_Phone }</td>
+								<td width="20%">${vo.user_Addr }</td>
+								<td>${vo.user_Email }</td>
+								<td>${vo.user_Gubun }</td>
+								<td><button class="btn" type="submit">수정</button><br>
+								<button class="btn" type="button" onclick="updateForm()">삭제</button></td>
+							</tr>
+						</c:forEach>
 					</table>
 				</form>
 			</div>

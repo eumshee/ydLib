@@ -15,6 +15,12 @@ public class HistoryServiceImpl implements HistoryService{
 @Autowired
 	private SqlSession sqlSession; 
 	
+
+	public List<UsersVO> adminSelectList(){
+		
+		return sqlSession.selectList("adminSelectList");
+	}
+
 	public UsersVO adminUsersSelect(UsersVO vo) {
 		
 		return null;

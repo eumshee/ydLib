@@ -22,16 +22,15 @@ public class AdminController2 {
 	
 	//회원관리 페이지
 	@RequestMapping("/memberManagemant.do")
-	public String MemberManagemant() {
-		
+	public String MemberManagemant(Model model) {
+		model.addAttribute("users",his.adminSelectList());
 		return "admins/memberManagement";
 	}
 	
 	//멤버 한명검색
 	@RequestMapping("adminMemberSearch.do")
-	public String AdminMemberSelect(UsersVO vo, Model model) {
-		model.addAttribute("users", his.adminUsersSelect(vo));
-		return "redirect:memberManagemant.do";
+	public String AdminMemberSelect(Model model) {
+		return "";
 	}
 	
 	
