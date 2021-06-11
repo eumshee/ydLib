@@ -22,11 +22,8 @@ public class HistoryServiceImpl implements HistoryService{
 	}
 
 	public UsersVO adminUsersSelect(UsersVO vo) {
-		
 		return null;
 	}
-
-
 	@Override
 	public List<HistoryVO> historySelectList() {
 

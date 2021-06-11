@@ -19,7 +19,9 @@ public class BookController {
 	private BookService dao;
 	
 	@RequestMapping("/bookSerchForm.do")
-	public String bookSerchForm(Model model) {
+	public String bookSerchForm(Model model ,  HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		session.setAttribute("bookSerchList", null);
 		return "book/bookSerchForm";
 	}
 	
