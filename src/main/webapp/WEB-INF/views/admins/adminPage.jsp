@@ -18,7 +18,7 @@
 			</div>
 			<div class="col-md-12" align="center">
 				<span><a href="memberManagemant.do">회원목록관리</a></span>&nbsp;&nbsp;
-				<span><a href="ronlreManagemant.do">대출/반납관리</a></span>&nbsp;&nbsp;
+				<span><a href="loanreManagemant.do">대출/반납관리</a></span>&nbsp;&nbsp;
 				<span><a href="yeyakmanagemant.do">예약도서관리</a></span>&nbsp;&nbsp;
 				<span><a href="wishManagement.do">희망도서관리</a></span>&nbsp;&nbsp;
 				<span><a href="bookManagement.do">장서관리</a></span>&nbsp;&nbsp;
@@ -43,7 +43,7 @@
 			</div>
 
 			<div class="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5">
-				<a href="ronlreManagemant.do"
+				<a href="loanreManagemant.do"
 					class="block__16443 text-center d-block"> <span
 					class="custom-icon mx-auto"><span class="icon-vcard d-block"></span></span>
 					<h3>대출/반납 관리</h3>
