@@ -15,7 +15,7 @@
 	
 	<!-- 책비고 수정 -->
 	<update id="bookManageBigoUpdate" parameterType="com.yd.lib.book.vo.BookVO">
-		update book set book_Bigo = #{book_Bigo} where book_Num = #{book_Num}
+		update book set book_Bigo = #{book_Bigo, jdbcType=VARCHAR} where book_Num = #{book_Num}
 	</update>
 	
 	<!-- 책정보 수정 -->

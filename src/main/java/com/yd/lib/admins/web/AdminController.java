@@ -40,6 +40,12 @@ public class AdminController {
 		bmi.bookOneUpdate(vo);
 		return "redirect:bookDetailManage.do?book_Num="+vo.getBook_Num();
 	}
+
+	@RequestMapping("/bookManageBigoUpdate.do")
+	public String bookManageBigoUpdate(Model model, BookVO vo) {
+		bmi.bookManageBigoUpdate(vo);
+		return "redirect:bookManagement.do";
+	}
 	
 	// 도서등록
 	@RequestMapping("/bookInputManage.do")

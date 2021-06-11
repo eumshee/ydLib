@@ -29,5 +29,9 @@ public class BookManageImpl {
 		return sqlsession.update("bookOneUpdate",vo);
 	}
 
+	public int bookManageBigoUpdate(BookVO vo) {
+		return sqlsession.update("bookManageBigoUpdate",vo);
+	}
+
 	
 }

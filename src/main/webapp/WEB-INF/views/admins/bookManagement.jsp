@@ -32,8 +32,17 @@
 			frm.book_Num.value = num;
 			frm.submit();
 		}
+		function bigoSubmit(num) {
+			bigo.book_Bigo.value = $('#'+num+' option:selected').val();
+			bigo.book_Num.value = num;
+			bigo.submit();
+		}
 </script>
 <form id="frm" action="bookDetailManage.do" method="post">
+	<input type="text" id="book_Num" name="book_Num" hidden="">
+</form>
+<form id="bigo" action="bookManageBigoUpdate.do" method="post">
+	<input type="text" id="book_Bigo" name="book_Bigo" hidden="">
 	<input type="text" id="book_Num" name="book_Num" hidden="">
 </form>
 
@@ -94,18 +103,22 @@
 							<td onclick="formSubmit(${vo.book_Num })">${fn:substring(vo.book_Indate,0,10) }</td>
 							<td onclick="formSubmit(${vo.book_Num })">${vo.book_Location }</td>
 							<td>
-								<select id="bookStatus">
+								<select id="${vo.book_Num}">
 									<option hidden=""
 									<c:if test="${vo.book_Bigo eq ''}">selected</c:if>
 									></option>
+									<option value=""></option>
 									<option value="분실"
 									<c:if test="${vo.book_Bigo eq '분실'}">selected</c:if>
 									>분실</option>
 									<option value="훼손"
 									<c:if test="${vo.book_Bigo eq '훼손'}">selected</c:if>
 									>훼손</option>
+									<option value="서가정리"
+									<c:if test="${vo.book_Bigo eq '서가정리'}">selected</c:if>
+									>서가정리</option>
 								</select>
-								<button type="button">수정</button>
+								<button type="button" onclick="bigoSubmit(${vo.book_Num})">수정</button>
 							</td>
 						</tr>
 					</c:forEach>
