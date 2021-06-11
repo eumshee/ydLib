@@ -1,12 +1,20 @@
 package com.yd.lib.admins.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.yd.lib.history.service.HistoryService;
+import com.yd.lib.history.serviceImpl.HistoryServiceImpl;
+import com.yd.lib.users.vo.UsersVO;
+
 @Controller
 public class AdminController2 {
 	//관리자 첫 페이지
+	@Autowired
+	private HistoryServiceImpl his;
+	
 	@RequestMapping("/adminPage.do")
 	public String admin(Model model) {
 		return "admins/adminPage";
@@ -21,9 +29,9 @@ public class AdminController2 {
 	
 	//멤버 한명검색
 	@RequestMapping("adminMemberSearch.do")
-	public String AdminMemberSelect() {
-		
-		return "";
+	public String AdminMemberSelect(UsersVO vo, Model model) {
+		model.addAttribute("users", his.adminUsersSelect(vo));
+		return "redirect:memberManagemant.do";
 	}
 	
 	
