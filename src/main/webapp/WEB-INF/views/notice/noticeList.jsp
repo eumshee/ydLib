@@ -38,8 +38,8 @@
 			<!--컨텐츠 영역-->
 			<div class="col-lg-8">
 				<div align="right">
-				<button type="submit" class="btn btn-primary text-white btn-search">글쓰기
-				</button><br><br>
+				<a href="noticeInsertForm.do"><button type="submit" class="btn btn-primary text-white btn-search">글쓰기
+				</button></a><br><br>
 				</div>
 				<table class="table">
 					<tr>
