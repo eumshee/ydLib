@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <style>
 .pagination {
@@ -71,59 +72,27 @@
 						<th>위치</th>
 						<th>비고</th>
 					</tr>
-					<tr>
-						<td>1</td>
-						<td>4</td>
-						<td>과학</td>
-						<td>김과학</td>
-						<td>책책책</td>
-						<td>2021/04/10</td>
-						<td>2021/06/10</td>
-						<td>2구역</td>
-						<td>
-							<select id="bookStatus">
-								<option hidden=""></option>
-								<option value="분실" selected>분실</option>
-								<option value="훼손">훼손</option>
-							</select>
-							<button type="button">수정</button>
-						</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>6</td>
-						<td>예술</td>
-						<td>김다빈치</td>
-						<td>책책책</td>
-						<td>2021/01/30</td>
-						<td>2021/04/10</td>
-						<td>3구역</td>
-						<td>
-							<select id="bookStatus">
-								<option hidden="" selected></option>
-								<option value="분실">분실</option>
-								<option value="훼손">훼손</option>
-							</select>
-							<button type="button">수정</button>
-						</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>8</td>
-						<td>고전문학</td>
-						<td>김문학</td>
-						<td>책책책</td>
-						<td>2021/03/03</td>
-						<td>2021/05/08</td>
-						<td>1구역</td>
-						<td>
-							<select id="bookStatus">
-								<option hidden=""></option>
-								<option value="분실">분실</option>
-								<option value="훼손" selected>훼손</option>
-							</select>
-							<button type="button">수정</button></td>
+					<!-- 
+					<c:forEach items="${bookMgList }" var="vo">
+						<tr>
+							<td>${vo.book_Num }</td>
+							<td>${vo.book_Subject }</td>
+							<td>${vo.book_Title }</td>
+							<td>${vo.book_Aut }</td>
+							<td>${vo.book_Pubdate }</td>
+							<td>${vo.book_Indate }</td>
+							<td>${vo.book_Location }</td>
+							<td>
+								<select id="bookStatus">
+									<option hidden=""></option>
+									<option value="분실" selected>분실</option>
+									<option value="훼손">훼손</option>
+								</select>
+								<button type="button">수정</button>
+							</td>
 						</tr>
+					</c:forEach>
+					 -->
 				</table>
 				<!-- 페이징처리 -->
 				<div class="col-lg-12 text-center">
