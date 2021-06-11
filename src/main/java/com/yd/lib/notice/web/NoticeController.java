@@ -19,4 +19,9 @@ public class NoticeController {
 
 		return "notice/noticeList";
 	}
+
+	@RequestMapping("/noticeInsertForm.do")
+	public String noticeInserForm() {
+		return "notice/noticeInsertForm";
+	}
 }
