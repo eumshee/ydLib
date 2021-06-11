@@ -6,14 +6,14 @@
 rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"></head>
 <script>
 	function formCheck() {
-		if (frm.memberId.value == "") {
+		if (frm.user_Id.value == "") {
 			alert("아이디를 입력하세요.");
-			frm.memberId.focus();
+			frm.user_Id.focus();
 			return false;
 		}
-		if (frm.memberPwd.value == "") {
+		if (frm.user_Pw.value == "") {
 			alert("비밀번호를 입력하세요.");
-			frm.memberPwd.focus();
+			frm.user_Pw.focus();
 			return false;
 		}
 		alert("정상적으로 로그인 되었습니다.");
@@ -79,10 +79,6 @@ rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbi
 					</form></div>
 
 
-				<!-- <p>
-					<a href="#" class="btn btn-primary btn-md mt-4">Hire Us, Our
-						Agency</a>
-				</p> -->
 			</div>
 		</div>
 </section>
