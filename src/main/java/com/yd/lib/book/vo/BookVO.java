@@ -15,6 +15,8 @@ public class BookVO {
 	private String book_Subject;
 	private String book_Isbn;
 	private String book_Bigo;
+	private String book_Cnt; //중복 책 수
+	
 	public String getBook_Bigo() {
 		return book_Bigo;
 	}
@@ -98,6 +100,12 @@ public class BookVO {
 	}
 	public void setBook_Isbn(String book_Isbn) {
 		this.book_Isbn = book_Isbn;
+	}
+	public String getBook_Cnt() {
+		return book_Cnt;
+	}
+	public void setBook_Cnt(String book_Cnt) {
+		this.book_Cnt = book_Cnt;
 	}
 	
 	

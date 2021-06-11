@@ -18,15 +18,13 @@ public class NoticeServiceImpl {
 		return sqlSession.selectList("noticeListSelect");
 	}
 
-//	@Override
-//	public MemberVO memberSelect(MemberVO vo) {
-//		return null;
-//	}
-//
-//	@Override
-//	public int memberInsert(MemberVO vo) {
-//		return sqlSession.insert("memberInsert", vo);
-//	}
+	public NoticeVO noticeSelect(NoticeVO vo) {
+		return sqlSession.selectOne("noticeSelect", vo);
+	}
+
+	public int noticeInsert(NoticeVO vo) {
+		return sqlSession.insert("noticeInsert", vo);
+	}
 //
 //	@Override
 //	public int memberDelete(MemberVO vo) {
