@@ -3,62 +3,131 @@ package com.yd.lib.history.vo;
 import java.sql.Date;
 
 public class HistoryVO {
-	private int loan_id;
-	private String user_id;
-	private int book_num;
-	private Date loan_date;
-	private Date return_duedate;
-	private Date return_date;
-	private Date return_delaydats;
-	private String loan_status;
-	
-	public int getLoan_id() {
-		return loan_id;
+	private int loan_Id;
+	private String user_Id;
+	private int book_Num;
+	private Date loan_Date;
+	private Date return_Duedate;
+	private Date return_Date;
+	private Date return_Delaydats;
+	private String loan_Status;
+	private String user_Name;
+	private String user_Gubun;
+	private String user_Gender;
+	private String user_Birth;
+	private String user_Phone;
+	private String user_Email;
+
+	public int getLoan_Id() {
+		return loan_Id;
 	}
-	public void setLoan_id(int loan_id) {
-		this.loan_id = loan_id;
+
+	public void setLoan_Id(int loan_Id) {
+		this.loan_Id = loan_Id;
 	}
-	public String getUser_id() {
-		return user_id;
+
+	public String getUser_Id() {
+		return user_Id;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+
+	public void setUser_Id(String user_Id) {
+		this.user_Id = user_Id;
 	}
-	public int getBook_num() {
-		return book_num;
+
+	public int getBook_Num() {
+		return book_Num;
 	}
-	public void setBook_num(int book_num) {
-		this.book_num = book_num;
+
+	public void setBook_Num(int book_Num) {
+		this.book_Num = book_Num;
 	}
-	public Date getLoan_date() {
-		return loan_date;
+
+	public Date getLoan_Date() {
+		return loan_Date;
 	}
-	public void setLoan_date(Date loan_date) {
-		this.loan_date = loan_date;
+
+	public void setLoan_Date(Date loan_Date) {
+		this.loan_Date = loan_Date;
 	}
-	public Date getReturn_duedate() {
-		return return_duedate;
+
+	public Date getReturn_Duedate() {
+		return return_Duedate;
 	}
-	public void setReturn_duedate(Date return_duedate) {
-		this.return_duedate = return_duedate;
+
+	public void setReturn_Duedate(Date return_Duedate) {
+		this.return_Duedate = return_Duedate;
 	}
-	public Date getReturn_date() {
-		return return_date;
+
+	public Date getReturn_Date() {
+		return return_Date;
 	}
-	public void setReturn_date(Date return_date) {
-		this.return_date = return_date;
+
+	public void setReturn_Date(Date return_Date) {
+		this.return_Date = return_Date;
 	}
-	public Date getReturn_delaydats() {
-		return return_delaydats;
+
+	public Date getReturn_Delaydats() {
+		return return_Delaydats;
 	}
-	public void setReturn_delaydats(Date return_delaydats) {
-		this.return_delaydats = return_delaydats;
+
+	public void setReturn_Delaydats(Date return_Delaydats) {
+		this.return_Delaydats = return_Delaydats;
 	}
-	public String getLoan_status() {
-		return loan_status;
+
+	public String getLoan_Status() {
+		return loan_Status;
 	}
-	public void setLoan_status(String loan_status) {
-		this.loan_status = loan_status;
+
+	public void setLoan_Status(String loan_Status) {
+		this.loan_Status = loan_Status;
 	}
-	
+
+	public String getUser_Name() {
+		return user_Name;
+	}
+
+	public void setUser_Name(String user_Name) {
+		this.user_Name = user_Name;
+	}
+
+	public String getUser_Gubun() {
+		return user_Gubun;
+	}
+
+	public void setUser_Gubun(String user_Gubun) {
+		this.user_Gubun = user_Gubun;
+	}
+
+	public String getUser_Gender() {
+		return user_Gender;
+	}
+
+	public void setUser_Gender(String user_Gender) {
+		this.user_Gender = user_Gender;
+	}
+
+	public String getUser_Birth() {
+		return user_Birth;
+	}
+
+	public void setUser_Birth(String user_Birth) {
+		this.user_Birth = user_Birth;
+	}
+
+	public String getUser_Phone() {
+		return user_Phone;
+	}
+
+	public void setUser_Phone(String user_Phone) {
+		this.user_Phone = user_Phone;
+	}
+
+	public String getUser_Email() {
+		return user_Email;
+	}
+
+	public void setUser_Email(String user_Email) {
+		this.user_Email = user_Email;
+	}
+
 }

@@ -30,6 +30,15 @@ public class HistoryServiceImpl implements HistoryService{
 		return sqlSession.update("adminUserUpdate",vo);
 	}
 	
+	public int adminUserDelete(UsersVO vo) {
+		
+		return sqlSession.delete("adminUserDelete",vo);
+	}
+	
+	public List<HistoryVO> userHistorySelect(HistoryVO vo){
+		
+		return sqlSession.selectList("adminHistorySelect", vo);
+	}
 	
 	@Override
 	public List<HistoryVO> historySelectList() {
@@ -38,13 +47,14 @@ public class HistoryServiceImpl implements HistoryService{
 	}
 
 	@Override
-	public HistoryVO historySelect() {
-		return null;
+	public HistoryVO historySelect(HistoryVO vo) {
+		return sqlSession.selectOne("adminUserSelect",vo);
 	}
 
 	@Override
 	public int historyInsert(HistoryVO vo) {
-		return 0;
+		
+		return sqlSession.insert("historyInsert", vo);
 	}
 
 	@Override
