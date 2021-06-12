@@ -3,16 +3,21 @@
 <mapper namespace="co.jen.ex02.member.service.member-map">
 
 	<select id="noticeListSelect" resultType="com.yd.lib.notice.vo.NoticeVO">
-		select * from notice
+		select * from notice order by 1 desc
 	</select>
 	
 	<select id="noticeSelect" parameterType="com.yd.lib.notice.vo.NoticeVO"
 		resultType="com.yd.lib.notice.vo.NoticeVO">
-		select * from notice where notice_id = #{notice_Id}		
+		select * from notice where notice_id = #{notice_Id}	
 	</select>
 	
 	<insert id="noticeInsert" parameterType="com.yd.lib.notice.vo.NoticeVO">
 		insert into notice
-		values(notice_seq.nextval, #{notice_Title}, #{notice_Content}, sysdate, 0, #{notice_File})
+		values(notice_seq.nextval, #{notice_Title}, #{notice_Content}, sysdate, 0, #{notice_File,jdbcType=VARCHAR})
 	</insert>
+	
+	<update id="noticeHitUpdate" parameterType="com.yd.lib.notice.vo.NoticeVO">
+		update notice set notice_hit = notice_hit + 1 where notice_id = #{notice_Id}	
+	</update>
+	
 </mapper>

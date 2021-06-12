@@ -35,6 +35,9 @@
 	        </beans:list>
 	    </beans:property>
 	</beans:bean>
+	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+	
 		
 	<context:component-scan base-package="com.yd.lib" />
 	

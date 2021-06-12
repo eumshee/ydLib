@@ -19,14 +19,13 @@ public class NoticeController {
 	@RequestMapping("/noticeList.do")
 	public String noticeList(Model model) {
 		model.addAttribute("notice", dao.noticeSelectList());
-
 		return "notice/noticeList";
 	}
 
 	@RequestMapping("/noticeSelect.do")
 	public String noticeSelect(Model model, NoticeVO vo) {
+		dao.noticeHitUpdate(vo.getNotice_Id());		//조회수 업데이트
 		model.addAttribute("vo", dao.noticeSelect(vo));
-		
 		return "notice/noticeSelect";
 	}
 

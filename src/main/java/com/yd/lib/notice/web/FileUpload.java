@@ -49,7 +49,7 @@ public class FileUpload extends HttpServlet {
 	      NoticeVO vo = new NoticeVO();
 	      vo.setNotice_Title(title);
 	      vo.setNotice_Content(content);
-	      vo.setNotice_File(fileName);
+//	      vo.setNotice_File(fileName);
 
 	}
 

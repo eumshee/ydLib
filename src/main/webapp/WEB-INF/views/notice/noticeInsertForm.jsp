@@ -7,7 +7,7 @@
 
 $(function() {CKEDITOR.replace('notice_Content',
 		{
-			filebrowserUploadUrl : '${pageContext.request.contextPath}/FileUpload',
+			filebrowserUploadUrl : '${pageContext.request.contextPath}/ckupload',
 			height : '500px',
 			width : '100%'
 			});
@@ -16,7 +16,7 @@ $(function() {CKEDITOR.replace('notice_Content',
 
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
-	style="background-image: url('resources/images/hero_1.jpg');" id="home-section">
+	style="background-image: url('resources/images/main.jpg');" id="home-section">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" align="center">
@@ -45,7 +45,7 @@ $(function() {CKEDITOR.replace('notice_Content',
 			</div>
 			<!--컨텐츠 영역-->
 			<div class="col-lg-8">
-				<form class="p-4 p-md-5 border rounded" action="noticeInsert.do" method="post" enctype="Multipart/form-data">
+				<form class="p-4 p-md-5 border rounded" action="noticeInsert.do" method="post">
 					<h3 class="text-black mb-5 border-bottom pb-2">공지사항 작성</h3>
 					<div class="form-group">
 						<label for="title">글 제목</label> <input type="text"

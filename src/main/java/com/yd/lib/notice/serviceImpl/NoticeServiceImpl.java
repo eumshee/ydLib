@@ -25,6 +25,12 @@ public class NoticeServiceImpl {
 	public int noticeInsert(NoticeVO vo) {
 		return sqlSession.insert("noticeInsert", vo);
 	}
+
+	public int noticeHitUpdate(int notice_Id) {
+		return sqlSession.update("noticeHitUpdate", notice_Id);
+	}
+	
+	
 //
 //	@Override
 //	public int memberDelete(MemberVO vo) {

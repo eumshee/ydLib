@@ -12,7 +12,7 @@ function formSubmit(id) {
 
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
-	style="background-image: url('images/hero_1.jpg');" id="home-section">
+	style="background-image: url('resources/images/main.jpg');" id="home-section">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" align="center">
