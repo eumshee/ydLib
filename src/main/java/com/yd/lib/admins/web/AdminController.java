@@ -38,18 +38,31 @@ public class AdminController {
 	@RequestMapping("/bookOneUpdate.do")
 	public String bookOneUpdate(Model model, BookVO vo) {
 		bmi.bookOneUpdate(vo);
-		return "redirect:bookDetailManage.do?book_Num="+vo.getBook_Num();
+		return "redirect:bookDetailManage.do?book_Num="+vo.getBook_Num()+"&book_Isbn="+vo.getBook_Isbn();
 	}
 
 	@RequestMapping("/bookManageBigoUpdate.do")
 	public String bookManageBigoUpdate(Model model, BookVO vo) {
 		bmi.bookManageBigoUpdate(vo);
-		return "redirect:bookManagement.do";
+		return "redirect:bookDetailManage.do?book_Num="+vo.getBook_Num()+"&book_Isbn="+vo.getBook_Isbn();
 	}
 	
+	@RequestMapping("/bookOneDelete.do")
+	public String bookOneDelete(Model model, BookVO vo) {
+		bmi.bookOneDelete(vo);
+		return "redirect:bookManagement.do";
+	}
+
 	// 도서등록
 	@RequestMapping("/bookInputManage.do")
 	public String bookInputManage(Model model) {
 		return "admins/bookInputManage";
 	}
+	
+	@RequestMapping("/bookOneInsert.do")
+	public String bookOneInsert(Model model, BookVO vo) {
+		bmi.bookOneInsert(vo);
+		return "redirect:bookDetailManage.do?book_Num="+vo.getBook_Num()+"&book_Isbn="+vo.getBook_Isbn();
+	}
+	
 }

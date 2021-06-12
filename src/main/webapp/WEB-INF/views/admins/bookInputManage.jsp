@@ -1,6 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<style>
+th, td {
+	vertical-align: middle !important;
+	padding: 1em;
+}
+</style>
+<script>	
+	function imgCheck() {
+		let imgChk = frm.book_Img.value;
+		$('#book_Img').attr("src", imgChk);
+	}
 
+	function frmCheck() {
+		if ($('#book_Subject option:selected').val() == "") {
+			frm.book_Subject.focus();
+			alert('주제를 선택하세요.');
+			return;
+		}
+		if ($('#book_Gubun').val() == "") {
+			frm.book_Gubun.focus();
+			alert('분류를 입력하세요.');
+			return;
+		}
+		if ($('#book_Title').val() == "") {
+			frm.book_Title.focus();
+			alert('제목을 입력하세요.');
+			return;
+		}
+		if ($('#book_Aut').val() == "") {
+			frm.book_Aut.focus();
+			alert('저자를 입력하세요.');
+			return;
+		}
+		if ($('#book_Pub').val() == "") {
+			frm.book_Pub.focus();
+			alert('출판사를 입력하세요.');
+			return;
+		}
+		if ($('#book_Pubdate').val() == "") {
+			frm.book_Pubdate.focus();
+			alert('출판일을 입력하세요.');
+			return;
+		}
+		if ($('#book_Indate').val() == "") {
+			frm.book_Indate.focus();
+			alert('입고일을 입력하세요.');
+			return;
+		}
+		if ($('#book_Isbn').val() == "") {
+			frm.book_Isbn.focus();
+			alert('ISBN을 입력하세요.');
+			return;
+		}
+		frm.submit();
+	}
+</script>
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
 	style="background-image: url('resources/images/hero_1.jpg');"
@@ -23,21 +79,41 @@
 	<div class="container">
 		<div align="right">
 			<div class="col-lg-3">
-				<div class="col-4">
-					<a href="#" class="btn btn-block btn-primary btn-md">등록</a>
-				</div>
+				<span class="col-3">
+					<button type="button" class="btn btn-primary text-white btn-search"
+						onclick="location.href='bookDetailManage.do'">
+						<span class="icon-search-plus mx-auto"></span>&nbsp;상세
+					</button>
+				</span> <span class="col-3">
+					<button type="button" class="btn btn-primary text-white btn-search"
+						onclick="frmCheck()">
+						<span class="icon-plus mx-auto"></span>&nbsp;등록
+					</button>
+				</span>
 			</div>
 		</div>
 		<div class="row mb-5">
 			<div class="col-lg-12">
-				<form class="p-4 p-md-5 border rounded" method="post">
+				<form id="frm" class="p-4 p-md-5 border rounded"
+					action="bookOneInsert.do" method="post">
 					<h3 class="text-black mb-5 border-bottom pb-2">Book Input</h3>
 					<table style="width: 100%;">
 						<tr>
-							<td class="form-group"><label for="book_Subject">책주제&nbsp;</label>
-								<select class="selectpicker border rounded" id="book_Subject"
+							<td rowspan="12" style="width: 40%; text-align: center;">
+								<div class="form-group">
+									<img id="book_Img" alt="Upload Image"><br>
+									<button type="button" class="btn btn-primary btn-md btn-file"
+										onclick="imgCheck()">이미지 확인</button>
+								</div>
+							</td>
+							<th class="form-group" style="width: 10%;"><label
+								for="book_Subject">책주제&nbsp;</label><span
+								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+							<td style="width: 40%;"><select
+								class="selectpicker border rounded" id="book_Subject"
 								name="book_Subject" data-style="btn-black"
 								data-live-search="true" title="Select Subject">
+									<option value="" hidden="" selected></option>
 									<option value="0">0</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
@@ -49,61 +125,71 @@
 									<option value="8">8</option>
 									<option value="9">9</option>
 							</select></td>
-							<td rowspan="12" style="width: 50%; text-align: center;"><label
-								for="company-website-tw d-block">Upload Image</label><br> <label
-								class="btn btn-primary btn-md btn-file">Browse File <input
-									type="file">
-							</label></td>
 						</tr>
 						<tr>
-							<td><label for="book_Gubun">분류&nbsp;</label> <input
-								type="text" class="form-control" id="book_Gubun"
+							<th class="form-group"><label for="book_Gubun">분류</label>&nbsp;<span
+								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+							<td><input type="text" class="form-control" id="book_Gubun"
 								placeholder="분류" name="book_Gubun"></td>
 						</tr>
 						<tr>
-							<td><label for="book_Title">제목</label> <input type="text"
-								placeholder="제목" class="form-control" id="book_Title"
-								name="book_Title"></td>
+							<th class="form-group"><label for="book_Title">제목</label>&nbsp;<span
+								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+							<td><input type="text" placeholder="제목" class="form-control"
+								id="book_Title" name="book_Title"></td>
 						</tr>
 						<tr>
-							<td><label for="book_Aut">저자</label> <input type="text"
-								placeholder="저자" class="form-control" id="book_Aut"
-								name="book_Aut"></td>
+							<th class="form-group"><label for="book_Aut">저자</label>&nbsp;<span
+								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+							<td><input type="text" placeholder="저자" class="form-control"
+								id="book_Aut" name="book_Aut"></td>
 						</tr>
 						<tr>
-							<td><label for="book_Pub">출판사</label> <input type="text"
-								placeholder="출판사" class="form-control" id="book_Pub"
-								name="book_Pub"></td>
+							<th class="form-group"><label for="book_Pub">출판사</label>&nbsp;<span
+								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+							<td><input type="text" placeholder="출판사"
+								class="form-control" id="book_Pub" name="book_Pub"></td>
 						</tr>
 						<tr>
-							<td><label for="book_Pubdate">출판일</label> <input type="text"
-								class="form-control" id="book_Pubdate" name="book_Pubdate"
-								placeholder="yyyy-mm-dd"></td>
+							<th class="form-group"><label for="book_Pubdate">출판일</label>&nbsp;<span
+								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+							<td><input type="text" class="form-control"
+								id="book_Pubdate" name="book_Pubdate" placeholder="yyyy-mm-dd"></td>
 						</tr>
 						<tr>
-							<td><label for="book_Indate">입고날</label> <input type="text"
-								class="form-control" id="book_Indate" name="book_Indate"
-								placeholder="yyyy-mm-dd"></td>
+							<th class="form-group"><label for="book_Indate">입고일</label>&nbsp;<span
+								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+							<td><input type="text" class="form-control" id="book_Indate"
+								name="book_Indate" placeholder="yyyy-mm-dd"></td>
 						</tr>
 						<tr>
-							<td><label for="book_Img">사진</label> <input type="text"
-								placeholder="사진" class="form-control" id="book_Img"
-								name="book_Img"></td>
+							<th class="form-group"><label for="book_Location">위치</label>
+
+							</th>
+							<td><input type="text" class="form-control"
+								id="book_Location" name="book_Location"
+								placeholder="1 ~ 4(012/345/679/8)"></td>
 						</tr>
 						<tr>
-							<td><label for="book_Desc">설명</label> <input type="text"
-								placeholder="설명" class="form-control" id="book_Desc"
-								name="book_Desc"></td>
+							<th class="form-group"><label for="book_Img">이미지</label></th>
+							<td><input type="text" placeholder="이미지링크"
+								class="form-control" id="book_Img" name="book_Img"></td>
 						</tr>
 						<tr>
-							<td><label for="book_Isbn">ISBN</label> <input type="text"
-								placeholder="ISBN" class="form-control" id="book_Isbn"
-								name="book_Isbn"></td>
+							<th class="form-group"><label for="book_Desc">설명</label></th>
+							<td><input type="text" placeholder="설명" class="form-control"
+								id="book_Desc" name="book_Desc"></td>
 						</tr>
 						<tr>
-							<td><label for="book_Bigo">비고</label> <input type="text"
-								placeholder="비고" class="form-control" id="book_Bigo"
-								name="book_Bigo"></td>
+							<th class="form-group"><label for="book_Isbn">ISBN</label>&nbsp;<span
+								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+							<td><input type="text" placeholder="ISBN"
+								class="form-control" id="book_Isbn" name="book_Isbn"></td>
+						</tr>
+						<tr>
+							<th class="form-group"><label for="book_Bigo">비고</label></th>
+							<td><input type="text" placeholder="비고" class="form-control"
+								id="book_Bigo" name="book_Bigo"></td>
 						</tr>
 					</table>
 				</form>

@@ -28,22 +28,26 @@
 }
 </style>
 <script>
-		function formSubmit(num) {
+		function formSubmit(num,isbn) {
 			frm.book_Num.value = num;
+			frm.book_Isbn.value = isbn;
 			frm.submit();
 		}
-		function bigoSubmit(num) {
-			bigo.book_Bigo.value = $('#'+num+' option:selected').val();
+		function bigoSubmit(num,isbn) {
+			bigo.book_Bigo.value = $('#bookNum'+num+' option:selected').val();
 			bigo.book_Num.value = num;
+			bigo.book_Isbn.value = isbn;
 			bigo.submit();
 		}
 </script>
 <form id="frm" action="bookDetailManage.do" method="post">
 	<input type="text" id="book_Num" name="book_Num" hidden="">
+	<input type="text" id="book_Isbn" name="book_Isbn" hidden="">
 </form>
 <form id="bigo" action="bookManageBigoUpdate.do" method="post">
 	<input type="text" id="book_Bigo" name="book_Bigo" hidden="">
 	<input type="text" id="book_Num" name="book_Num" hidden="">
+	<input type="text" id="book_Isbn" name="book_Isbn" hidden="">
 </form>
 
 <!-- 상단배너 -->
@@ -72,10 +76,6 @@
 					onclick="location.href='bookInputManage.do'">
 					<span class="icon-plus mx-auto"></span>&nbsp;등록
 					</button>
-					<button type="submit" class="btn btn-primary text-white btn-search"
-					onclick="location.href='bookDetailManage.do'">
-					<span class="icon-search-plus mx-auto"></span>&nbsp;상세
-					</button>
 					<br>
 					<br>
 				</div>
@@ -94,16 +94,16 @@
 					
 					<c:forEach items="${bookMgList }" var="vo">
 						<tr>
-							<td onclick="formSubmit(${vo.book_Num })">${vo.book_Num }</td>
-							<td onclick="formSubmit(${vo.book_Num })">${vo.book_Gubun }</td>
-							<td onclick="formSubmit(${vo.book_Num })">${vo.book_Title }</td>
-							<td onclick="formSubmit(${vo.book_Num })">${vo.book_Aut }</td>
-							<td onclick="formSubmit(${vo.book_Num })">${vo.book_Pub }</td>
-							<td onclick="formSubmit(${vo.book_Num })">${fn:substring(vo.book_Pubdate,0,10) }</td>
-							<td onclick="formSubmit(${vo.book_Num })">${fn:substring(vo.book_Indate,0,10) }</td>
-							<td onclick="formSubmit(${vo.book_Num })">${vo.book_Location }</td>
+							<td onclick="formSubmit(${vo.book_Num },'${vo.book_Isbn }')">${vo.book_Num }</td>
+							<td onclick="formSubmit(${vo.book_Num },'${vo.book_Isbn }')">${vo.book_Gubun }</td>
+							<td onclick="formSubmit(${vo.book_Num },'${vo.book_Isbn }')">${vo.book_Title }</td>
+							<td onclick="formSubmit(${vo.book_Num },'${vo.book_Isbn }')">${vo.book_Aut }</td>
+							<td onclick="formSubmit(${vo.book_Num },'${vo.book_Isbn }')">${vo.book_Pub }</td>
+							<td onclick="formSubmit(${vo.book_Num },'${vo.book_Isbn }')">${fn:substring(vo.book_Pubdate,0,10) }</td>
+							<td onclick="formSubmit(${vo.book_Num },'${vo.book_Isbn }')">${fn:substring(vo.book_Indate,0,10) }</td>
+							<td onclick="formSubmit(${vo.book_Num },'${vo.book_Isbn }')">${vo.book_Location }번서가</td>
 							<td>
-								<select id="${vo.book_Num}">
+								<select id="bookNum${vo.book_Num}">
 									<option hidden=""
 									<c:if test="${vo.book_Bigo eq ''}">selected</c:if>
 									></option>
@@ -118,7 +118,7 @@
 									<c:if test="${vo.book_Bigo eq '서가정리'}">selected</c:if>
 									>서가정리</option>
 								</select>
-								<button type="button" onclick="bigoSubmit(${vo.book_Num})">수정</button>
+								<button type="button" onclick="bigoSubmit(${vo.book_Num},'${vo.book_Isbn }')">수정</button>
 							</td>
 						</tr>
 					</c:forEach>

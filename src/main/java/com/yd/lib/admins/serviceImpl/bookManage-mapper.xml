@@ -2,15 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yd.lib.admins.serviceImpl.bookManage-mapper">
 	<select id="bookManageList" resultType="com.yd.lib.book.vo.BookVO">
-		select * from book
+		select * from book order by book_Num
 	</select>
 
+	<!-- 단일책정보 -->
 	<select id="bookManageSelectOne" parameterType="com.yd.lib.book.vo.BookVO" resultType="com.yd.lib.book.vo.BookVO">
 		select * from book where book_Num = #{book_Num, jdbcType=NUMERIC}	
 	</select>
 
+	<!-- 중복도서목록 -->
 	<select id="bookManageSelectList" parameterType="com.yd.lib.book.vo.BookVO" resultType="com.yd.lib.book.vo.BookVO">
 		select * from book where book_Isbn = #{book_Isbn, jdbcType=NUMERIC}
+		and book_Num <![CDATA[<>]]> #{book_Num, jdbcType=NUMERIC}
+		order by book_Num
 	</select>
 	
 	<!-- 책비고 수정 -->
@@ -18,7 +22,7 @@
 		update book set book_Bigo = #{book_Bigo, jdbcType=VARCHAR} where book_Num = #{book_Num}
 	</update>
 	
-	<!-- 책정보 수정 -->
+	<!-- 도서정보 수정 -->
 	<update id="bookOneUpdate" parameterType="com.yd.lib.book.vo.BookVO">
 		update book set book_subject = #{book_Subject}, book_gubun=#{book_Gubun},
 		book_title = #{book_Title}, book_aut = #{book_Aut}, book_pub = #{book_Pub},
@@ -29,4 +33,15 @@
 		where book_num = #{book_Num}
 	</update>
 
+	<delete id="bookOneDelete" parameterType="com.yd.lib.book.vo.BookVO">
+		delete from book where book_num = #{book_Num}
+	</delete>
+	
+	<!-- 도서등록 -->
+	<insert id="bookOneInsert" parameterType="com.yd.lib.book.vo.BookVO">
+		insert into book values(book_num_seq.nextval,#{book_Gubun},#{book_Title}, #{book_Aut},
+		#{book_Location, jdbcType=VARCHAR}, 'N', #{book_Pub}, #{book_Pubdate}, #{book_Indate},
+		#{book_Img, jdbcType=VARCHAR}, #{book_Desc, jdbcType=VARCHAR}, #{book_Subject},
+		#{book_Isbn},#{book_Bigo, jdbcType=VARCHAR})
+	</insert>
 </mapper>
