@@ -12,4 +12,8 @@
 	<update id="adminUserUpdate" parameterType="com.yd.lib.users.vo.UsersVO">
 		update users set user_name = #{user_Name} where user_id = #{user_Id}
 	</update>
+	
+	<delete id="adminUserDelete" parameterType="com.yd.lib.users.vo.UsersVO">
+		delete from users where user_id =#{user_Id}
+	</delete>
 </mapper>

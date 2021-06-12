@@ -45,15 +45,14 @@ public class AdminController2 {
 	
 	//멤버 삭제
 	@RequestMapping("/adminMemberDelete.do")
-	public String AdminMemberDelete() {
-		
-		return "";
+	public String AdminMemberDelete(UsersVO vo) {
+		his.adminUserDelete(vo);
+		return ("redirect:memberManagemant.do");
 	}
 	
 	//대출 반납페이지
 	@RequestMapping("/loanreManagemant.do")
 	public String RoanreturnManagemant() {
-		
 		return "admins/roanreturnManagement";
 	}
 

@@ -30,6 +30,10 @@ public class HistoryServiceImpl implements HistoryService{
 		return sqlSession.update("adminUserUpdate",vo);
 	}
 	
+	public int adminUserDelete(UsersVO vo) {
+		
+		return sqlSession.delete("adminUserDelete",vo);
+	}
 	
 	@Override
 	public List<HistoryVO> historySelectList() {
