@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yd.lib.history.serviceImpl.history-mapper">
-	<select id="adminUsersSelect" resultType="com.yd.lib.users.vo.UsersVO">
-		select * from users where user_id=#{user_id}
+	<select id="adminHistorySelect" resultType="com.yd.lib.history.vo.HistoryVO" parameterType="com.yd.lib.history.vo.HistoryVO">
+		select *
+		from (select * from users u join history h using (USER_ID))
+		where user_name = #{user_Name}
 	</select>
 
+	<select id="adminUserSelect" resultType="com.yd.lib.history.vo.HistoryVO" parameterType="com.yd.lib.history.vo.HistoryVO">
+		select * from users where user_name=#{user_Name}
+	</select>
+	
+	<insert id="historyInsert" parameterType="com.yd.lib.history.vo.HistoryVO">
+		insert into history(loan_id,user_id,book_num,loan_date,return_duedate,loan_status)
+		values(loan_id.nextval, #{user_Id}, #{book_Num}, sysdate, sysdate+15, '대출')
+	</insert>
 </mapper>
