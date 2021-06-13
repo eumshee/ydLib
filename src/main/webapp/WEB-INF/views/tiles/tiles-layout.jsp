@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="resources/css/owl.carousel.min.css">
     <link rel="stylesheet" href="resources/css/animate.min.css">
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="resources/vendor/datatables/dataTables.bootstrap4.css">
+
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="resources/css/style.css">    
 </head>
@@ -63,5 +66,10 @@
     <script src="resources/js/bootstrap-select.min.js"></script>
     
     <script src="resources/js/custom.js"></script>
+
+	<!-- DATATABLES PLUGINS -->
+	<script src="resources/vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="resources/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+	<script src="resources/vendor/datatables/datatables-demo.js"></script>
 </body>
 </html>

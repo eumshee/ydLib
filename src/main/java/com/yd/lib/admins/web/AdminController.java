@@ -6,20 +6,33 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yd.lib.admins.serviceImpl.BookManageImpl;
+import com.yd.lib.admins.serviceImpl.WishManageImpl;
 import com.yd.lib.book.vo.BookVO;
+import com.yd.lib.wish.vo.WishVO;
 
 
 @Controller
 public class AdminController {
+	@Autowired
+	WishManageImpl wmi;
+
 	@Autowired
 	BookManageImpl bmi;
 	
 	// 희망도서관리
 	@RequestMapping("/wishManagement.do")
 	public String wish(Model model) {
+		model.addAttribute("wishMgList",wmi.wishManageList());
 		return "admins/wish";
 	}
-	
+
+	// 희망도서신청변경
+	@RequestMapping("/wishProcessUpdate.do")
+	public String wishProcessUpdate(Model model, WishVO vo) {
+		wmi.wishProcessUpdate(vo);
+		return "redirect:wishManagement.do";
+	}
+
 	// 장서관리
 	@RequestMapping("/bookManagement.do")
 	public String bookManagement(Model model) {
@@ -63,6 +76,12 @@ public class AdminController {
 	public String bookOneInsert(Model model, BookVO vo) {
 		bmi.bookOneInsert(vo);
 		return "redirect:bookDetailManage.do?book_Num="+vo.getBook_Num()+"&book_Isbn="+vo.getBook_Isbn();
+	}
+	
+	// 도서상세검색
+	@RequestMapping("/bookDetailSearch.do")
+	public String bookDetailSearch(Model model) {
+		return "admins/bookDetailSearch";
 	}
 	
 }

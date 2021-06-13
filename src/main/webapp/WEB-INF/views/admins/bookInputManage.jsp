@@ -56,6 +56,26 @@ th, td {
 		}
 		frm.submit();
 	}
+
+	// 상세검색창
+	function popupOpen(){
+		//var url= "bookDetailSearch.do"; //팝업창 페이지 URL
+		var url= "https://www.nl.go.kr/";   
+		var winWidth = 700;
+	    var winHeight = 600;
+	    var popupOption= "width="+winWidth+", height="+winHeight; //팝업창 옵션(optoin)
+		window.open(url,"",popupOption);
+	}
+	
+	// 도서목록창
+	function bookMgPopup(){
+		var url= "bookManagement.do";  
+		var winWidth = 700;
+	    var winHeight = 600;
+	    var popupOption= "width="+winWidth+", height="+winHeight;
+		window.open(url,"",popupOption);
+	}
+	
 </script>
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
@@ -76,15 +96,24 @@ th, td {
 
 <!-- 도서입력폼 -->
 <section class="site-section">
-	<div class="container">
+ 	<div class="container">
 		<div align="right">
 			<div class="col-lg-3">
+				<div class="col-6">
+					<button type="button" class="btn btn-primary text-white btn-search"
+					onclick="bookMgPopup()">
+						<span class="icon-th-list mx-auto"></span>&nbsp;도서목록창
+					</button>
+				</div>	
+				<br>			
 				<span class="col-3">
 					<button type="button" class="btn btn-primary text-white btn-search"
-						onclick="location.href='bookDetailManage.do'">
+					id="bookDetailSearch"
+					onclick="popupOpen()">
 						<span class="icon-search-plus mx-auto"></span>&nbsp;상세
 					</button>
-				</span> <span class="col-3">
+				</span>				
+				<span class="col-3">
 					<button type="button" class="btn btn-primary text-white btn-search"
 						onclick="frmCheck()">
 						<span class="icon-plus mx-auto"></span>&nbsp;등록
@@ -193,6 +222,16 @@ th, td {
 						</tr>
 					</table>
 				</form>
+			</div>
+		</div>
+	</div>
+	<div align="center">
+		<div class="col-lg-3">
+			<div class="col-5">
+				<button type="button" class="btn btn-primary text-white btn-search"
+					onclick="location.href='bookManagement.do'">
+					<span class="icon-reply-all mx-auto"></span>&nbsp;목록보기
+				</button>
 			</div>
 		</div>
 	</div>
