@@ -19,11 +19,11 @@
             </ul>
           </li>
           <li class="has-children">
-            <a href="time.do">이용안내</a>
+            <a href="map.do">이용안내</a>
             <ul class="dropdown">
               <li><a href="map.do">찾아오시는 길</a></li>
-              <li><a href="hoursday.do">이용시간/휴관일</a></li>
-              <li><a href="loanReturn.do">도서대출/반납</a></li>
+              <li><a href="opening.do">이용시간/휴관일</a></li>
+              <li><a href="policy.do">도서대출/반납</a></li>
               <li><a href="material.do">자료현황</a></li>
             </ul>
           </li>

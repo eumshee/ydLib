@@ -10,6 +10,15 @@ function formSubmit(id) {
 }
 </script>
 
+ <style>
+@font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff') !important;
+     font-weight: normal;
+     font-style: normal;
+}
+</style>
+
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
 	style="background-image: url('resources/images/main.jpg');" id="home-section">
@@ -18,7 +27,7 @@ function formSubmit(id) {
 			<div class="col-md-12" align="center">
 				<h1 class="text-white font-weight-bold">공지사항</h1>
 				<div class="custom-breadcrumbs">
-					<a href="#">Home</a> <span class="mx-2 slash">/</span> <span
+					<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
 						class="text-white"><strong>열린공간</strong></span>
 				</div>
 			</div>
@@ -33,7 +42,7 @@ function formSubmit(id) {
 				<div class="rounded">
 					<div class="sidenav">
 						<ul class="list-unstyled">
-							<li class="sideactive"><a href="#">공지사항</a></li>
+							<li class="sideactive"><a href="noticeList.do">공지사항</a></li>
 							<li><a href="#">묻고답하기</a></li>
 						</ul>
 					</div>

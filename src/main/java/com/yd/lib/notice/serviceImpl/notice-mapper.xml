@@ -19,5 +19,9 @@
 	<update id="noticeHitUpdate" parameterType="com.yd.lib.notice.vo.NoticeVO">
 		update notice set notice_hit = notice_hit + 1 where notice_id = #{notice_Id}	
 	</update>
+
+	<delete id="noticeDelete" parameterType="com.yd.lib.notice.vo.NoticeVO">
+		delete from notice where notice_id = #{notice_Id}	
+	</delete>	
 	
 </mapper>

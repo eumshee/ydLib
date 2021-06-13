@@ -2,6 +2,8 @@ package com.yd.lib.notice.vo;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class NoticeVO {
 	/*
 	NOTICE_ID      NOT NULL NUMBER        
@@ -17,6 +19,14 @@ public class NoticeVO {
 	private Date notice_Date;
 	private int notice_Hit;
 	private String notice_File;
+	private MultipartFile uploadFile;
+	
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
 	
 	
 	public String getNotice_File() {

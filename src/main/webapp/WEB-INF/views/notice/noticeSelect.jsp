@@ -2,6 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<script>
+function noticeDelete(num) {
+	let delChk = confirm("삭제하시겠습니까?");
+	if (delChk) {
+		location.href='noticeDelete.do?notice_Id='+num;
+	}
+}
+</script>
+
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
 	style="background-image: url('resources/images/main.jpg');"
@@ -53,7 +62,7 @@
 				</table>
 
 				<div align="center">
-					<button type="submit" class="btn btn-light">삭제</button>
+					<button type="button" onclick="noticeDelete(${vo.notice_Id})" class="btn btn-light">삭제</button>
 					<button type="reset" class="btn btn-light">수정</button>
 					<br>
 				</div>

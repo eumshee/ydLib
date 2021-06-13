@@ -12,6 +12,7 @@ $(function() {CKEDITOR.replace('notice_Content',
 			width : '100%'
 			});
 	});
+	
 </script>
 
 <!-- 상단배너 -->
@@ -22,8 +23,8 @@ $(function() {CKEDITOR.replace('notice_Content',
 			<div class="col-md-12" align="center">
 				<h1 class="text-white font-weight-bold">공지사항</h1>
 				<div class="custom-breadcrumbs">
-					<a href="#">Home</a> <span class="mx-2 slash">/</span> <span
-						class="text-white"><strong>열린공간</strong></span>
+					<a href="home.do">Home</a> <span class="mx-2 slash">/</span>
+					<span class="text-white"><strong>열린공간</strong></span>
 				</div>
 			</div>
 		</div>
@@ -37,7 +38,7 @@ $(function() {CKEDITOR.replace('notice_Content',
 				<div class="rounded">
 					<div class="sidenav">
 						<ul class="list-unstyled">
-							<li class="sideactive"><a href="#">공지사항</a></li>
+							<li class="sideactive"><a href="noticeList.do">공지사항</a></li>
 							<li><a href="#">묻고답하기</a></li>
 						</ul>
 					</div>
@@ -45,7 +46,7 @@ $(function() {CKEDITOR.replace('notice_Content',
 			</div>
 			<!--컨텐츠 영역-->
 			<div class="col-lg-8">
-				<form class="p-4 p-md-5 border rounded" action="noticeInsert.do" method="post">
+				<form class="p-4 p-md-5 border rounded" action="noticeInsert.do" method="post" enctype="multipart/form-data">
 					<h3 class="text-black mb-5 border-bottom pb-2">공지사항 작성</h3>
 					<div class="form-group">
 						<label for="title">글 제목</label> <input type="text"
@@ -57,7 +58,7 @@ $(function() {CKEDITOR.replace('notice_Content',
 					</div>
 					<div class="form-group">
 						<label for="company-website-tw d-block">파일 첨부</label>
-						<input type="file" id="notice_File" name="notice_File">
+						<input type="file" id="uploadFile" name="uploadFile">
 					</div>
 					
 					<div align="center">
