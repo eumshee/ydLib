@@ -50,7 +50,7 @@
 	border-radius: 0;
 	background: #7b8294;
 	border: 0;
-	color: #fff
+	color: #fff;
 }
 
 #footer .bottom .section .site_link a.btn:hover, #footer .bottom .section .site_link a.btn:focus
@@ -210,6 +210,13 @@
 	border-width: 0 4px 5px 4px
 }
 
+.footer .site_link>div>div>ul>li>a.disabled, #footer .site_link>div>div>ul>li.disabled
+	{
+		list-style: none;
+	    padding: 0;
+	    margin: 0; 
+}
+
 .footer .site_link>div>div>ul>li>a.disabled, #footer .site_link>div>div>ul>li>a.disabled
 	{
 	color: #999
@@ -219,6 +226,7 @@
 	{
 	background: #5897fb;
 	color: #fff;
+	text-decoration: none;
 }
 
 .main1 .section .txt .t2 {
@@ -230,6 +238,8 @@
 	display: block
 }
 
+
+
 </Style>
 
 
@@ -238,17 +248,17 @@
 		class="icon-keyboard_arrow_up"></span>
 	</a>
 
-	<div class="container">
-
+	<div class="container-fluid" style="width:70%">
+		<br><br><br>
 		<div id="footer">
 			<div class="bottom">
-				<div class="section" style="position: relative;">
+				<div class="section" style="position: relative; ">
 					<div class="site_link">
 						<div>
 							<div class="dropdown bootstrap-select">
 								<a class="fsite type1"> <span class="f1">대구광역시 공공도서관</span>
 									<span class="f2"><i></i></span></a>
-								<ul style="display: none; z-index:1;">
+								<ul style="display: none; height: 120px; z-index:1;">
 									<li class="disabled"><a title="대구광역시통합도서관"
 										href="http://library.daegu.go.kr/dgportal/index.do">대구광역시통합도서관</a></li>
 									<li class="disabled"><a title="대구2ㆍ28기념학생도서관"
@@ -315,7 +325,7 @@
 							<div>
 								<a class="fsite type1"> <span class="f1">교육 및 지역관련기관</span>
 									<span class="f2"><i></i></span></a>
-								<ul style="display: none; z-index:1;">
+								<ul style="display: none; height: 120px; z-index:1;">
 									<li class="disabled"><a href="#">교육 및 지역관련기관</a></li>
 									<li class="disabled"><a title="대구광역시교육청"
 										href="http://www.dge.go.kr">대구광역시교육청</a></li>
@@ -357,17 +367,17 @@
 					</div>
 					<div class="foot-info">
 						<div class="info">
-							<a href="/dmsl/html.do?menu_idx=75"><b>개인정보처리방침</b></a> <span
+							<a href="menu_idx75.do"><b>개인정보처리방침</b></a> <span
 								class="bar">|</span>
 							<!-- <a href="/dmsl/html.do?menu_idx=95">이메일무단수집거부</a>
 						<span class="bar">|</span> -->
-							<a href="/dmsl/html.do?menu_idx=77">이용약관</a>
+							<a href="menu_idx77.do">이용약관</a>
 						</div>
 					</div>
 					<address>
 						<p>
-							<em>(41912) 대구 중구 공평로 83 (동문동)</em><br class="mobileBr" /> <em>전화
-								: <b>053-803-6060, 6061</b>
+							<em>(41919) 대구광역시 중구 국채보상로 537 (수동, 5층)</em><br class="mobileBr" /> <em>전화
+								: <b>053-421-2460</b>
 							</em>
 							<!--<em>/</em>
 						<em>팩스 <b></b></em> -->

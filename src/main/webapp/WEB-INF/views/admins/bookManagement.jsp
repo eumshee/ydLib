@@ -6,6 +6,12 @@
 	th, td {
 		vertical-align: middle !important;
 	}
+	 .col-md-12 a {
+ 	font-size: 1em;
+ 	color: white;
+ 	text-decoration: none;
+ 	}
+	 .col-md-12 a:hover { color: #89ba16; }
 </style>
 <script>
 		function formSubmit(num,isbn) {
@@ -39,10 +45,14 @@
 		<div class="row">
 			<div class="col-md-12" align="center">
 				<h1 class="text-white font-weight-bold">장서관리</h1>
-				<div class="custom-breadcrumbs">
-					<a href="adminPage.do">Admin</a> <span class="mx-2 slash">/</span>
-					<span class="text-white"><strong>BookManagement</strong></span>
-				</div>
+			</div>
+			<div class="col-md-12" align="center">
+				<span><a href="memberManagemant.do">회원목록관리</a></span>&nbsp;&nbsp;
+				<span><a href="loanreManagemant.do">대출/반납관리</a></span>&nbsp;&nbsp;
+				<span><a href="yeyakmanagemant.do">예약도서관리</a></span>&nbsp;&nbsp;
+				<span><a href="wishManagement.do">희망도서관리</a></span>&nbsp;&nbsp;
+				<span><a href="bookManagement.do" style="color:#89ba16;">장서관리</a></span>&nbsp;&nbsp;
+				<span><a href="home.do">홈</a></span>
 			</div>
 		</div>
 	</div>

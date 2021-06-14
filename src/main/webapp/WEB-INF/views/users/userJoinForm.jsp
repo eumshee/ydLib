@@ -2,11 +2,17 @@
 	pageEncoding="UTF-8"%>
 <title>로그인페이지</title>
 <head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
-rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"></head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"> //주소입력 스크립트
-</script>
+
+<style>
+td {
+  width: 150px;
+}
+input {
+  width: 150px;
+}
+</style>
 
 
 <script>
@@ -20,8 +26,8 @@ $(function() {
 			}
 			//email 중복확인 ajax
 			$.ajax({
-				url : 'emailCheck.do',
-				data : email : $('#user_Email').val(),
+				url : 'sameEmailCheck.do',
+				data : {email : $('#user_Email').val() },
 				type : 'post',
 				success : function(data) {
 					if (data > 0) {
@@ -34,9 +40,9 @@ $(function() {
 						$('#emailCode').focus();
 						//중복확인 통과후 인증코드 메일보내는 ajax
 						$.ajax({
-							url : 'ajaxSendEmail',
+							url : 'sendEmail.do',
 							data : {
-								email : $('#email').val()
+								email : $('#user_Email').val()
 							},
 							type : 'post',
 							success : function(code) {
@@ -99,6 +105,10 @@ $(function() {
 			});
 		});
 	});
+</script>
+
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"> //주소입력 스크립트
 </script>
 
 <script>
@@ -277,38 +287,89 @@ function findAddr(){
 					<tr>
 						<th width="150">아이디</th>
 						<td width="300">
-							<input type="text" id="user_Id" name="user_Id">
-							<button type="button" id="idCheck" value="unChecked">중복체크</button>
+							<input class="form-control" type="text" id="user_Id" name="user_Id">
+						</td>
+						<td width="300">
+							<button class="btn btn-light" type="button" id="idCheck" value="unChecked">중복체크</button>
 						</td>
 					</tr>
 					<tr>
 						<th width="150">비밀번호</th>
-						<td width="300"><input type="password" id="user_Pw"
+						<td width="300" colspan="2">
+						<input class="form-control" type="password" id="user_Pw"
 							name="user_Pw"></td>
 					</tr>
 					<tr>
 						<th width="150">비밀번호 재확인</th>
-						<td width="300"><input type="password" id="user_Pw2"
+						<td width="300" colspan="2">
+						<input class="form-control" type="password" id="user_Pw2"
 							name="user_Pw2"></td>
 					</tr>
 					<tr>
 						<th width="150">이름</th>
-						<td width="300"><input type="text" id="user_Name"
+						<td width="300" colspan="2">
+						<input class="form-control" type="text" id="user_Name"
 							name="user_Name"></td>
 					</tr>
+
+					<tr>
+						<th width="150">성별</th>
+						<td width="300" colspan="2">
+						<select class="form-select"
+								aria-label="Default select example" name="user_Gender">
+								<option selected>성별을 선택해주세요</option>
+								<option value="M">남</option>
+								<option value="W">여</option>
+						</select>
+						</td>
+					</tr>
 					
-					<tr><td colspan="2">&nbsp;</td></tr>
+					<tr>
+						<th width="150">생년월일</th>
+							<td width="200">
+							<select  class="form-select"
+								name="user_BirthYear">
+										<option selected>Year</option>
+										<% for (int i=2021; i>1900; i--) { %>
+											<option value= "<%=i%>"><%=i%></option>
+											<% } %>
+							</select></td>
+							
+							<td width="200">
+						<select class="form-select" name="user_BirthMonth">
+								<option selected>Month</option>
+										<% for (int i=1; i<=12; i++) { %>
+											<option value= "<%=i%>"><%=i%></option>
+											<% } %>
+						</select>
+						
+						<td width="200">
+						<select class="form-select" name="user_BirthDay">
+								<option selected>Day</option>
+								<% for (int i=1; i<=31; i++) { %>
+											<option value= "<%=i%>"><%=i%></option>
+											<% } %>
+						</select>
+						</td>
+					</tr>
+
 					<tr>
 						<th>이메일</th>
-						<td width="350">
- 						<input type="text" placeholder="ex) kim1@naver.com" id="user_Email" name="user_Email" value="">
- 						<button type="button" id="sendEmail" value="unChecked">인증코드 전송</button>
+						<td width="350" colspan="2">
+ 						<input class="form-control" type="text" placeholder="ex) kim1@naver.com" id="user_Email" name="user_Email" value="">
+ 						</td>
+ 						<td>
+ 						<button class="btn btn-light" type="button" id="sendEmail" value="unChecked">인증코드 전송</button>
+ 						</td>
  						</tr>
+ 						
  						<tr>
  						<th></th>
- 						<td width="350">
- 						<input type="text" placeholder="인증코드를 입력하세요" id="emailCode" value="">
- 						<button type="button" id="checkEmail" value="unChecked">인증코드 확인</button>
+ 						<td width="350" colspan="2">
+ 						<input class="form-control" type="text" placeholder="인증코드를 입력하세요" id="emailCode" value="">
+ 						</td>
+ 						<td>
+ 						<button class="btn btn-light" type="button" id="checkEmail" value="unChecked">인증코드 확인</button>
 						</td>
 					</tr>
 					
@@ -316,16 +377,20 @@ function findAddr(){
 					
 					<tr>
 						<th width="150">전화번호</th>
-						<td width="350"><input type="text" id="user_Phone"
+						<td width="350" colspan="2"><input class="form-control" type="text" id="user_Phone"
 							name="user_Phone" placeholder ="ex) 01029532154" >
-							<button type="button" id="sendSMS" value="unChecked">인증번호 전송</button>
+						</td>
+						<td>
+							<button class="btn btn-light" type="button" id="sendSMS" value="unChecked">인증번호 전송</button>
 						</td>
 					</tr>
 					<tr>
 						<th>인증 번호</th>
-						<td width="350">
- 						<input type="text" placeholder="인증번호를 입력하세요" id="smsKey" value="">
- 						<button type="button" id="checkSMS" value="unChecked">인증번호 확인</button>
+						<td width="350" colspan="2">
+ 						<input class="form-control" type="text" placeholder="인증번호를 입력하세요" id="smsKey" value="">
+ 						</td>
+ 						<td>
+ 						<button class="btn btn-light" type="button" id="checkSMS" value="unChecked">인증번호 확인</button>
 						</td>
 					</tr>
 					<tr><td colspan="2">&nbsp;</td></tr>
@@ -333,23 +398,24 @@ function findAddr(){
 						<th width="150">주소
 						</th>
 						<td width="300">
-						<input id="member_post" type="text" name="memberAddressZip" placeholder="Zip Code" readonly onclick="findAddr()">
+						<input class="form-control" id="member_post" type="text" name="memberAddressZip" placeholder="Zip Code" readonly onclick="findAddr()">
 						</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td>
-  						<input id="member_addr" type="text" name="memberAddress" placeholder="Address" readonly> <br>
- 						<input type="text" placeholder="Detailed Address" name="memberAddressDetail">
+  						<input class="form-control" id="member_addr" type="text" name="memberAddress" placeholder="Address" readonly>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+ 						<input class="form-control" type="text" placeholder="Detailed Address" name="memberAddressDetail">
 						</td>
 					</tr>
 			</table>
 			</form>
-			</div>
-			
-			<br>
- 			<br>
-			<div>
+			<br><br>
 				<button class="btn btn-light" type="button" onclick="formCheck()">회원가입</button>
 			</div>
 			

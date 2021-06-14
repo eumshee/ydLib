@@ -1,5 +1,6 @@
 package com.yd.lib.users.serviceImpl;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,7 +14,6 @@ public class UsersServiceImpl {
 	private SqlSession sqlSession;
 	
 	
-	
 	public int UserInsert(UsersVO vo) {
 		
 		return sqlSession.insert("userJoin",vo);
@@ -24,9 +24,9 @@ public class UsersServiceImpl {
 		return sqlSession.selectOne("loginCheck",vo);
 	}
 	
-	public UsersVO emailCheck(UsersVO vo) {
+	public UsersVO emailCheck(@Param("p") String email) {
 		
-		return sqlSession.selectOne("emailCheck",vo);
+		return sqlSession.selectOne("emailCheck",email);
 	}
 
 }
