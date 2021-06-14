@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yd.lib.board.serviceImpl.board-mapper">
+
+	<select id="boardListSelect"
+		resultType="com.yd.lib.board.vo.BoardVO">
+		select * from board order by 1 desc
+	</select>
+
+	<select id="boardSelect"
+		parameterType="com.yd.lib.board.vo.BoardVO"
+		resultType="com.yd.lib.board.vo.BoardVO">
+		select * from board where board_id = #{board_Id}
+	</select>
+	
+	<update id="boardHitUpdate"
+		parameterType="com.yd.lib.board.vo.BoardVO">
+		update board set board_hit = board_hit + 1 
+		where board_id = #{board_Id}
+	</update>
+
+
+	<insert id="boardInsert"
+		parameterType="com.yd.lib.board.vo.BoardVO">
+		insert into board
+		values(board_seq.nextval, #{board_Title}, '작성자', #{board_Content}, sysdate, 0, 0, #{board_Open,jdbcType=VARCHAR})
+	</insert>
+	
+	
+
+</mapper>
