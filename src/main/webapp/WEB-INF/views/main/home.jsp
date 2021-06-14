@@ -90,12 +90,6 @@
           <span class="caption">Jobs Filled</span>
         </div>
 
-        <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
-          <div class="d-flex align-items-center justify-content-center mb-2">
-            <strong class="number" data-number="550">0</strong>
-          </div>
-          <span class="caption">Companies</span>
-        </div>
 
           
       </div>
