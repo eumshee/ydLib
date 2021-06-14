@@ -61,20 +61,20 @@ public class UsersController {
 		return "users/userJoinForm";
 	}
 	
-	/*
-	@RequestMapping("/emailCheck.do")
-	@ResponseBody
 	
-	public String emailCheck(HttpServletRequest request) {
+	@RequestMapping("/sameEmailCheck.do")
+	@ResponseBody
+	public int emailCheck(HttpServletRequest request) {
 			
-		request.getParameter("email");
+		String email = request.getParameter("email");
 		
 		int cnt = 0;
-		if(service.emailCheck(request.getParameter("email"))) {
+		if(UsersDAO.emailCheck(email) != null) {
 			cnt = 1;
 		}
-		resp.getWriter().print(cnt);
-		 /*
+		
+		return cnt;
+		 
 	}
 	
 	/*

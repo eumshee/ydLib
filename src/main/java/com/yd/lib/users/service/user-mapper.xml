@@ -15,8 +15,8 @@
 	</insert>
 	
 	
-	<select id="emailCheck" parameterType="com.yd.lib.users.vo.UsersVO" resultType="com.yd.lib.users.vo.UsersVO" >
-		select * from users where email = #{user_Email}
+	<select id="emailCheck" parameterType="string" resultType="com.yd.lib.users.vo.UsersVO" >
+		select * from users where user_email = #{p}
 	</select>
 	
 	
