@@ -78,11 +78,11 @@ $(function() {CKEDITOR.replace('board_Content',
 						<h2><input type="text" class="form-control" id="board_Title" name="board_Title" value="${vo.board_Title }"></h2></td>
 					</tr>
 					<tr align="left">
-						<td>작성일</td>
+						<th width="10%">작성일</th>
 						<td>${vo.board_Date}</td>
-						<td>작성자</td>
+						<th width="10%">작성자</th>
 						<td>${vo.board_Writer}</td>
-						<td>조회수</td>
+						<th width="10%">조회수</th>
 						<td>${vo.board_Hit}</td>
 					</tr>
 					<tr>
