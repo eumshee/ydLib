@@ -6,4 +6,5 @@ import com.yd.lib.book.vo.BookVO;
 
 public interface BookService {
 	public List<BookVO> searchBookList(BookVO vo);
+	public BookVO searchBook(BookVO vo);
 }

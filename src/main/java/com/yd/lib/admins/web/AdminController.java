@@ -84,10 +84,4 @@ public class AdminController {
 		return "admins/bookDetailSearch";
 	}
 	
-	// 예약관리
-	@RequestMapping("yeyakmanagemant.do")
-	public String yeyakManagemant(Model model) {
-		return "admins/yeyakManagemant";
-	}
-	
 }
