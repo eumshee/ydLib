@@ -30,7 +30,7 @@
 
 <section class="site-section services-section bg-light block__62849"
 	id="next-section">
-	<div class="container">
+	<div class="container-fluid" style="width:80%;">
 		<div class="row">
 
 			<div class="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5">

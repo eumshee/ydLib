@@ -40,7 +40,7 @@
 	<!-- 도서등록 -->
 	<insert id="bookOneInsert" parameterType="com.yd.lib.book.vo.BookVO">
 		insert into book values(book_num_seq.nextval,#{book_Gubun},#{book_Title}, #{book_Aut},
-		#{book_Location, jdbcType=VARCHAR}, 'N', #{book_Pub}, #{book_Pubdate}, #{book_Indate},
+		#{book_Location, jdbcType=VARCHAR}, 'Y', #{book_Pub}, #{book_Pubdate}, #{book_Indate},
 		#{book_Img, jdbcType=VARCHAR}, #{book_Desc, jdbcType=VARCHAR}, #{book_Subject},
 		#{book_Isbn},#{book_Bigo, jdbcType=VARCHAR})
 	</insert>
