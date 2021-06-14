@@ -31,5 +31,10 @@
     	</choose>
 	</select>
 	
+	<select id="bookSerch" parameterType="com.yd.lib.book.vo.BookVO" resultType="com.yd.lib.book.vo.BookVO">
+		select * from book
+		where book_num = #{book_Num}
+	</select>
+	
 	
 </mapper>

@@ -11,6 +11,10 @@
 		serchFrm.book_Order.value = order;
 		serchFrm.submit();
 	}
+	function bookInfo(num) {
+		ifrm.book_Num.value=num;
+		ifrm.submit();
+	}
 </script>
 </head>
 <body>
@@ -46,11 +50,11 @@
 				<div class="col-lg-8">
 					<form action="bookSerch.do" method="get" id="serchFrm">
 						<input type="hidden" id="book_Order" name="book_Order">
-						<input type="text" id="book_Title" name="book_Title" placeholder="도서 제목을 입력하세요">
+						<input type="text" id="book_Title" name="book_Title" placeholder="도서 제목을 입력하세요" value="${reqVO.book_Title }">
 						<br> 
-						저자 : <input type="text" id="book_Aut" name="book_Aut">
+						저자 : <input type="text" id="book_Aut" name="book_Aut" value="${reqVO.book_Aut }">
 						<br> 
-						출판사 : <input type="text" id="book_Pub" name="book_Pub">
+						출판사 : <input type="text" id="book_Pub" name="book_Pub" value="${reqVO.book_Pub }">
 						<br>
 						<input type="submit" value="검색">
 					</form>
@@ -67,10 +71,12 @@
   							<option value="book_subject">주제</option>
 						</select>
 						<button onclick="order()">정렬</button>
+						<form action="bookInfo.do" id="ifrm">
+						<input type="hidden" id="book_Num" name="book_Num">
 						<ul class="job-listings mb-5">
 							<c:forEach items="${bookSerchList }" var="book">
 								<li	class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-									<a href="bookInfo.do?$book_Id=${book.book_Num }"></a>
+									<a onclick="bookInfo(${book.book_Num})"></a>
 									<div class="job-listing-logo">
 										<img src="${book.book_Img }" alt="Image" class="img-fluid" width="100%">
 									</div>
@@ -88,6 +94,9 @@
 										<div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
 											수량 : ${book.all_Book_Cnt }권
 										</div>
+										<div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
+											주제 : ${book.book_Subject }권
+										</div>
 										<div class="job-listing-meta">
 											
 											<c:if test="${book.can_Book_Cnt <= 0 }">
@@ -100,7 +109,9 @@
 									</div>
 								</li>
 							</c:forEach>
+						
 						</ul>
+						</form>
 						<div class="col-lg-12 text-center">
 							<jsp:include page="../common/paging.jsp" flush="true">
 								<jsp:param name="firstPageNo" value="${paging.firstPageNo}" />
