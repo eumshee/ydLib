@@ -241,7 +241,6 @@
 	<div class="container">
 
 		<div id="footer">
-
 			<div class="bottom">
 				<div class="section" style="position: relative;">
 					<div class="site_link">
@@ -249,7 +248,7 @@
 							<div class="dropdown bootstrap-select">
 								<a class="fsite type1"> <span class="f1">대구광역시 공공도서관</span>
 									<span class="f2"><i></i></span></a>
-								<ul style="display: none">
+								<ul style="display: none; z-index:1;">
 									<li class="disabled"><a title="대구광역시통합도서관"
 										href="http://library.daegu.go.kr/dgportal/index.do">대구광역시통합도서관</a></li>
 									<li class="disabled"><a title="대구2ㆍ28기념학생도서관"
@@ -316,7 +315,7 @@
 							<div>
 								<a class="fsite type1"> <span class="f1">교육 및 지역관련기관</span>
 									<span class="f2"><i></i></span></a>
-								<ul style="display: none">
+								<ul style="display: none; z-index:1;">
 									<li class="disabled"><a href="#">교육 및 지역관련기관</a></li>
 									<li class="disabled"><a title="대구광역시교육청"
 										href="http://www.dge.go.kr">대구광역시교육청</a></li>

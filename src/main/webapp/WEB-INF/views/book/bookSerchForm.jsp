@@ -4,7 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<script type="text/javascript">
+	function order() {
+		var order = $('#orderSelect').val();
+		console.log(order);
+		serchFrm.book_Order.value = order;
+		serchFrm.submit();
+	}
+</script>
 </head>
 <body>
 	<!-- 상단배너 -->
@@ -37,7 +44,8 @@
 				</div>
 				<!--컨텐츠 영역-->
 				<div class="col-lg-8">
-					<form action="bookSerch.do" method="get">
+					<form action="bookSerch.do" method="get" id="serchFrm">
+						<input type="hidden" id="book_Order" name="book_Order">
 						<input type="text" id="book_Title" name="book_Title" placeholder="도서 제목을 입력하세요">
 						<br> 
 						저자 : <input type="text" id="book_Aut" name="book_Aut">
@@ -51,6 +59,14 @@
 							원하는 자료를 검색하세요
 					</c:if>
 					<c:if test="${!empty bookSerchList}">
+						<select id="orderSelect" name="orderSelect">
+							<option value="정렬종류">정렬종류</option>
+  							<option value="book_title">제목</option>
+  							<option value="book_aut">저자</option>
+  							<option value="book_location">배가위치</option>
+  							<option value="book_subject">주제</option>
+						</select>
+						<button onclick="order()">정렬</button>
 						<ul class="job-listings mb-5">
 							<c:forEach items="${bookSerchList }" var="book">
 								<li	class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">

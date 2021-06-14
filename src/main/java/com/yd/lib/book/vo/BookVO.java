@@ -17,6 +17,7 @@ public class BookVO {
 	private String book_Bigo;
 	private int all_Book_Cnt; //중복 책 수
 	private int can_Book_Cnt; //중복 책 중 대출가능한 책의 수
+	private String book_Order;//정렬을 위한 값
 	
 	
 	public String getBook_Bigo() {
@@ -114,6 +115,12 @@ public class BookVO {
 	}
 	public void setCan_Book_Cnt(int can_Book_Cnt) {
 		this.can_Book_Cnt = can_Book_Cnt;
+	}
+	public String getBook_Order() {
+		return book_Order;
+	}
+	public void setBook_Order(String book_Order) {
+		this.book_Order = book_Order;
 	}
 	
 	

@@ -25,7 +25,7 @@ public class BookController {
 	
 	@RequestMapping("/bookSerch.do")
 	public String bookSerch(Model model , BookVO vo , HttpServletRequest req) {
-		req.setAttribute("bookSerchList", dao.searchBookList(vo));
+		model.addAttribute("bookSerchList", dao.searchBookList(vo));
 		return "book/bookSerchForm";
 	}
 }

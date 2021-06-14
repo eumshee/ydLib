@@ -21,6 +21,14 @@
 			where book_title like '%' || #{ book_Title } || '%' and book_aut like '%' || #{ book_Aut } || '%' and book_pub like '%' || #{ book_Pub } || '%'
 			)bk
 		where RNUM = 1
+		order by
+		<choose>
+        	<when test="book_Order == 'book_title'">book_title asc</when>
+        	<when test="book_Order == 'book_aut'">book_aut asc</when>
+        	<when test="book_Order == 'book_location'">book_location asc</when>
+        	<when test="book_Order == 'book_subject'">book_subject asc</when>
+        <otherwise>book_num asc</otherwise>
+    	</choose>
 	</select>
 	
 	
