@@ -34,7 +34,7 @@ public class SendEmail extends HttpServlet {
 		String to = request.getParameter("email");
 		String subject = "예담도서관 회원가입을 위한 코드 확인 메일입니다.";
 		String code = new SHA256().getSHA256(to);
-		String content = "다음 코드를 회원가입창에 입력해주세요.\r\n Code: " + code;
+		String content = "입력하실 코드는 " + code + " 입니다.";
 
 // SMTP에 접속하기 위한 정보를 기입합니다.
 

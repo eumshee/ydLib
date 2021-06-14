@@ -46,7 +46,6 @@ $(function() {
 							},
 							type : 'post',
 							success : function(code) {
-								console.log(code);
 								alert('메일이 전송되었습니다.');
 								$('#checkEmail').click(function() { // 성공해서 이메일에서 값을 건네받은 경우에, 인증번호 버튼을 클릭 시 값을 검사
 									if ($('#emailCode').val() == code) { // 사용자의 입력값과 sendSMS에서 받은 값이 일치하는 경우
@@ -58,7 +57,7 @@ $(function() {
 								})
 							},
 							error : function(err) {
-								console.log(err);
+								alert('에러가 발생했습니다. 관리자에게 문의해주세요.');
 							}
 						});
 					}
@@ -78,29 +77,28 @@ $(function() {
 	//아이디 중복체크
 	$(function() {
 		$('#idCheck').click(function() {
-			if($('#memberId').val()=="") {
+			if($('#user_Id').val()=="") {
 				alert('아이디를 입력하세요.');
-				$('#memberId').focus();
+				$('#user_Id').focus();
 				return;
 			}
 			$.ajax({
-				url:'ajaxMemberIdCheck',
-				data: {id: $('#memberId').val()},
+				url:'userIdCheck.do',
+				data: {id: $('#user_Id').val()},
 				type: 'post',
 				success: function(data){
-					console.log(data);
 					if(data>0) {
 						alert('등록된 아이디가 존재합니다. 새로운 아이디를 입력하세요');
-						$('#memberId').val('');
-						$('#memberId').focus();
+						$('#user_Id').val('');
+						$('#user_Id').focus();
 					} else{
 						alert('사용가능한 아이디입니다!');
-						$('#idCheck').val('checked');
-						$('#memberPwd').focus();
+						$('#idCheck').val("checked");
+						$('#user_Pw').focus();
 					}
 				},
 				error: function(err){
-					console.log(err);
+					alert('에러가 발생했습니다. 관리자에게 문의해주세요.');
 				}
 			});
 		});
@@ -125,12 +123,12 @@ function findAddr(){
             var roadAddr = data.roadAddress; // 도로명 주소 변수
             var jibunAddr = data.jibunAddress; // 지번 주소 변수
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('member_post').value = data.zonecode;
+            document.getElementById('user_post').value = data.zonecode;
             if(roadAddr !== ''){
-                document.getElementById("member_addr").value = roadAddr;
+                document.getElementById("user_addr").value = roadAddr;
             } 
             else if(jibunAddr !== ''){
-                document.getElementById("member_addr").value = jibunAddr;
+                document.getElementById("user_addr").value = jibunAddr;
             }
         }
     }).open();
@@ -141,36 +139,35 @@ function findAddr(){
 	//휴대폰 번호입력 ajax
 	$(function() {
 		$('#sendSMS').click(function() { // 클릭하면 인증 번호 보내기
-			var tel = $('#tel').val(); // 인증번호를 보낼 사용자가 입력한 tel
+			var tel = $('#user_Phone').val(); // 인증번호를 보낼 사용자가 입력한 tel
 
 			if (tel == "") {
 				alert('휴대폰번호를 입력하세요.');
-				$('#tel').focus();
+				$('#user_Phone').focus();
 				return false;
 			}
 			
 			//휴대폰번호 중복확인 ajax
 			$.ajax({
-				url : 'ajaxTelCheck',
+				url : 'samePhoneCheck.do',
 				data : {
 					tel : tel
 				},
 				type : 'post',
 				success : function(data) {
-					console.log(data);
 					if (data > 0) {
 						alert('등록된 휴대폰번호가 존재합니다. 새로운 휴대폰번호를 입력하세요');
-						$('#tel').val('');
-						$('#tel').focus();
+						$('#user_Phone').val('');
+						$('#user_Phone').focus();
 					} else {
 						alert('사용가능한 휴대폰번호입니다!');
 						$('#sendSMS').val('checked');
 						$('#smsKey').focus();
 						
 						//사용가능한 휴대폰일때 인증번호 전송 ajax
-						if (tel != null) {
+						if (tel != "") {
 							$.ajax({
-								url : 'sendSMS',
+								url : 'sendSMS.do',
 								data : {
 									tel : tel
 								},
@@ -191,50 +188,55 @@ function findAddr(){
 					}
 				},
 				error : function(err) {
-					console.log(err);
+					alert('에러가 발생했습니다. 관리자에게 문의해주세요.');
 				}
 			});
 		});
 	});
 	function formCheck() {
-		if (frm.memberId.value == "") {
+		if (frm.user_Id.value == "") {
 			alert("아이디를 입력하세요.");
-			frm.memberId.focus();
+			frm.user_Id.focus();
 			return false;
 		}
 		if (frm.idCheck.value == 'UnChecked') {
 			alert("ID 중복체크를 하세요.");
 			return false;
 		}
-		if (frm.memberPwd1.value == "") {
+		if (frm.user_Pw.value == "") {
 			alert("비밀번호를 입력하세요.");
-			frm.memberPwd.focus();
+			frm.user_Pw.focus();
 			return false;
 		}
 
-		if (frm.memberPwd1.value != frm.memberPwd2.value) {
+		if (frm.user_Pw.value != frm.user_Pw2.value) {
 			alert("비밀번호를 재확인하세요.");
-			frm.memberPwd.focus();
+			frm.user_Pw2.focus();
 			return false;
 		}
-		if (frm.memberName.value == "") {
+		if (frm.user_Name.value == "") {
 			alert("이름을 입력하세요.");
 			return false;
 		}
-		if (frm.email.value == "") {
+		if (frm.user_Email.value == "") {
 			alert("이메일을 입력하세요.");
 			return false;
 		}
-		if (frm.tel.value == "") {
+		if (frm.user_Phone.value == "") {
 			alert("휴대폰번호를 입력하세요.");
 			return false;
 		}
-		if (frm.member_post.value == "") {
+		if (frm.user_post.value == "") {
 			alert("주소를 입력하세요");
 			frm.smsKey.focus();
 			return false;
 		}
-		if (frm.checkEmail.value == "unChecked") {
+		if (frm.user_detailedAddr.value == "") {
+			alert("주소를 입력하세요");
+			frm.smsKey.focus();
+			return false;
+		}
+		/* if (frm.checkEmail.value == "unChecked") {
 			alert("이메일을 인증 하세요");
 			frm.emailCode.focus();
 			return false;
@@ -243,9 +245,9 @@ function findAddr(){
 			alert("문자 인증을 하세요");
 			frm.smsKey.focus();
 			return false;
-		}  
-		alert("정상적으로 회원가입 되었습니다");
+		}   */
 		frm.submit();
+		alert("정상적으로 회원가입 되었습니다");
 	}
 </script>
 
@@ -282,7 +284,7 @@ function findAddr(){
 			<div align="center">
 					<h4>회원가입</h4>
 			<br>
-			<form id="frm" >
+			<form id="frm" action="userJoin.do" method="post">
 			<table style="border:1; border-collapse:collapse;">
 					<tr>
 						<th width="150">아이디</th>
@@ -316,7 +318,7 @@ function findAddr(){
 						<th width="150">성별</th>
 						<td width="300" colspan="2">
 						<select class="form-select"
-								aria-label="Default select example" name="user_Gender">
+								aria-label="Default select example" id="user_Gender" name="user_Gender">
 								<option selected>성별을 선택해주세요</option>
 								<option value="M">남</option>
 								<option value="W">여</option>
@@ -328,7 +330,7 @@ function findAddr(){
 						<th width="150">생년월일</th>
 							<td width="200">
 							<select  class="form-select"
-								name="user_BirthYear">
+								name="user_BirthYear" id="user_BirthYear" >
 										<option selected>Year</option>
 										<% for (int i=2021; i>1900; i--) { %>
 											<option value= "<%=i%>"><%=i%></option>
@@ -336,7 +338,7 @@ function findAddr(){
 							</select></td>
 							
 							<td width="200">
-						<select class="form-select" name="user_BirthMonth">
+						<select class="form-select" name="user_BirthMonth" id= "user_BirthMonth">
 								<option selected>Month</option>
 										<% for (int i=1; i<=12; i++) { %>
 											<option value= "<%=i%>"><%=i%></option>
@@ -344,7 +346,7 @@ function findAddr(){
 						</select>
 						
 						<td width="200">
-						<select class="form-select" name="user_BirthDay">
+						<select class="form-select" name="user_BirthDay" id="user_BirthDay">
 								<option selected>Day</option>
 								<% for (int i=1; i<=31; i++) { %>
 											<option value= "<%=i%>"><%=i%></option>
@@ -352,17 +354,17 @@ function findAddr(){
 						</select>
 						</td>
 					</tr>
+					
 
 					<tr>
 						<th>이메일</th>
 						<td width="350" colspan="2">
- 						<input class="form-control" type="text" placeholder="ex) kim1@naver.com" id="user_Email" name="user_Email" value="">
+ 						<input class="form-control" type="text" id="user_Email" name="user_Email" value="">
  						</td>
  						<td>
  						<button class="btn btn-light" type="button" id="sendEmail" value="unChecked">인증코드 전송</button>
  						</td>
  						</tr>
- 						
  						<tr>
  						<th></th>
  						<td width="350" colspan="2">
@@ -378,7 +380,7 @@ function findAddr(){
 					<tr>
 						<th width="150">전화번호</th>
 						<td width="350" colspan="2"><input class="form-control" type="text" id="user_Phone"
-							name="user_Phone" placeholder ="ex) 01029532154" >
+							name="user_Phone" placeholder ="'-'없이 숫자만 입력" >
 						</td>
 						<td>
 							<button class="btn btn-light" type="button" id="sendSMS" value="unChecked">인증번호 전송</button>
@@ -398,19 +400,19 @@ function findAddr(){
 						<th width="150">주소
 						</th>
 						<td width="300">
-						<input class="form-control" id="member_post" type="text" name="memberAddressZip" placeholder="Zip Code" readonly onclick="findAddr()">
+						<input class="form-control" id="user_zip" type="text" name="userAddressZip" placeholder="Zip Code" readonly onclick="findAddr()">
 						</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td>
-  						<input class="form-control" id="member_addr" type="text" name="memberAddress" placeholder="Address" readonly>
+  						<input class="form-control" id="user_addr" type="text" name="userAddress" placeholder="Address" readonly>
 						</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td>
- 						<input class="form-control" type="text" placeholder="Detailed Address" name="memberAddressDetail">
+ 						<input class="form-control" id="user_detailedAddr" type="text" placeholder="Detailed Address" name="userAddressDetail">
 						</td>
 					</tr>
 			</table>

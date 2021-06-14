@@ -1,5 +1,7 @@
 package com.yd.lib.users.serviceImpl;
 
+import java.util.HashMap;
+
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +16,9 @@ public class UsersServiceImpl {
 	private SqlSession sqlSession;
 	
 	
-	public int UserInsert(UsersVO vo) {
+	public void userInsert(HashMap<String, Object> param) {
 		
-		return sqlSession.insert("userJoin",vo);
+		sqlSession.insert("userJoin", param);
 	}
 
 	public UsersVO userLoginCheck(UsersVO vo) {
@@ -28,5 +30,16 @@ public class UsersServiceImpl {
 		
 		return sqlSession.selectOne("emailCheck",email);
 	}
+
+	public UsersVO phoneCheck(@Param("p") String tel) {
+		
+		return sqlSession.selectOne("telCheck",tel);
+	}
+
+	public UsersVO idCheck(@Param("p") String id) {
+		
+		return sqlSession.selectOne("idCheck",id);
+}
+
 
 }

@@ -1,5 +1,10 @@
 package com.yd.lib.users.web;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -74,7 +79,56 @@ public class UsersController {
 		}
 		
 		return cnt;
+	}
+	
+	@RequestMapping("/userIdCheck.do")
+	@ResponseBody
+	public int userIdCheck(HttpServletRequest request) {
+			
+		String id = request.getParameter("id");
+		
+		int cnt = 0;
+		if(UsersDAO.idCheck(id) != null) {
+			cnt = 1;
+		}
+		
+		return cnt;
+	}
+	
+	@RequestMapping("/userJoin.do")
+	public String userJoin(UsersVO vo, HttpServletRequest request) throws ParseException {
+		
+	
+		String birthYear = request.getParameter("user_BirthYear");
+		String birthMonth = request.getParameter("user_BirthMonth");
+		String birthDay = request.getParameter("user_BirthDay");
+		
+		
+		String user_Birth = birthDay + "/" + birthMonth + "/" +birthYear;
 		 
+	    Date user_Birth1 =new SimpleDateFormat("dd/MM/yyyy").parse(user_Birth);  
+		
+	    
+		String user_post = request.getParameter("userAddressZip");
+		String user_addr = request.getParameter("userAddress");
+		String user_detailedAddr = request.getParameter("userAddressDetail");
+		
+		String user_Addr = user_addr + " " + user_detailedAddr + " " + user_post ;
+		
+		
+		HashMap<String, Object> param = new HashMap<>(); 
+		param.put("user_Id", vo.getUser_Id()); 
+		param.put("user_Name", vo.getUser_Name()); 
+		param.put("user_Pw", vo.getUser_Pw()); 
+		param.put("user_Gender", vo.getUser_Gender()); 
+		param.put("user_Email", vo.getUser_Email());
+		param.put("user_Phone", vo.getUser_Phone());
+		param.put("user_Addr", user_Addr); 
+		param.put("user_Birth", user_Birth1);
+		
+		UsersDAO.userInsert(param);
+		
+		return "redirect:home.do";
 	}
 	
 	/*
