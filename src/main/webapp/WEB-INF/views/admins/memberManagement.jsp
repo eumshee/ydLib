@@ -13,9 +13,16 @@ text-align: center;
 	border-radius: 10px;
 }
 </style>
+<script>
+	function nameUpdate(id) {
+		frm.user_Name.value = $('#Name'+id).val();
+		frm.user_Id.value = id;
+		frm.submit();
+	}
+</script>
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
-	style="background-image: url('images/hero_1.jpg');" id="home-section">
+	style="background-image: url('resources/images/main.jpg');" id="home-section">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" align="center">
@@ -38,6 +45,9 @@ text-align: center;
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
+					<form id="frm" action="adminMemberUpdate.do" method="post">
+						<input type="hidden" name="user_Name">
+						<input type="hidden" name="user_Id">
 						<table class="table table-bordered" id="dataTable" style="width: 100%; cellspacing: 0;">
 							<thead>
 								<tr>
@@ -67,10 +77,9 @@ text-align: center;
 							</tfoot>
 							<tbody>
 								<c:forEach items="${users }" var="vo">
-									<form action="adminMemberUpdate.do" method="post">
 										<tr>
-											<td>${vo.user_Id }<input type="hidden" id="user_Id" name="user_Id" value="${vo.user_Id }"></td>
-											<td><input type="text" id="user_Name" name="user_Name" value="${vo.user_Name }"></td>
+											<td>${vo.user_Id }</td>
+											<td><input type="text" id="Name${vo.user_Id }" value="${vo.user_Name }"></td>
 											<td>
 												<c:if test="${vo.user_Gender eq 'M'}">남자</c:if>
 												<c:if test="${vo.user_Gender eq 'W'}">여자</c:if>
@@ -80,14 +89,14 @@ text-align: center;
 											<td width="20%">${vo.user_Addr }</td>
 											<td>${vo.user_Email }</td>
 											<td>${vo.user_Gubun }</td>
-											<td><button class="btn" type="submit">수정</button><br>
+											<td><button class="btn" type="button" onclick="nameUpdate('${vo.user_Id }')">수정</button><br>
 											<button class="btn" type="button" onclick="location.href='adminMemberDelete.do?user_Id=${vo.user_Id}'">삭제</button>
 											</td>
 										</tr>
-									</form>
 								</c:forEach>
 							</tbody>
 						</table>
+						</form>
 					</div>
 				</div>
 			</div>
