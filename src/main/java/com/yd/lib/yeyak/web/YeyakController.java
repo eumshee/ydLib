@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yd.lib.yeyak.serviceImpl.YeyakServiceImpl;
+import com.yd.lib.yeyak.vo.YeyakVO;
 
 @Controller
 public class YeyakController {
@@ -17,6 +18,13 @@ public class YeyakController {
 	public String yeyakManagemant(Model model) {
 		model.addAttribute("yeyakList", ysi.yeyakManageList());
 		return "admins/yeyakManagemant";
+	}
+
+	// 예약상태수정
+	@RequestMapping("/yeyakProcessUpdate.do")
+	public String yeyakProcessingUpdate(Model model, YeyakVO vo) {
+		ysi.yeyakProcessUpdate(vo);
+		return "redirect:yeyakmanagemant.do";
 	}
 
 }

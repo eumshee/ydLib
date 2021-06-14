@@ -20,12 +20,22 @@
 	    var winHeight = 600;
 	    var popupOption= "width="+winWidth+", height="+winHeight;
 		window.open(url,"",popupOption);
-}
+	}
 
+	function yeyakProcessUpdate(yeyakNum) {
+		frm.yeyak_Processing.value = $('#yeyakProcessing'+yeyakNum+' option:selected').val();
+		frm.yeyak_Num.value = yeyakNum;
+		frm.submit();
+	}
+	
 </script>
+<form id="frm" action="yeyakProcessUpdate.do" method="post">
+	<input type="text" name="yeyak_Processing" hidden="">
+	<input type="text" name="yeyak_Num" hidden="">
+</form>
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
-	style="background-image: url('resources/images/hero_1.jpg');"
+	style="background-image: url('resources/images/main.jpg');"
 	id="home-section">
 	<div class="container">
 		<div class="row">
@@ -71,21 +81,12 @@
 										<th>책번호</th>
 										<th>신청자</th>
 										<th>예약신청일</th>
-										<th>예약시작일</th>
-										<th>예약만료일</th>
+										<th>대출시작일</th>
+										<th>대출만료일</th>
 										<th>예약상태</th>
 									</tr>
 								</thead>
 								<tfoot>
-									<tr>
-										<th>예약순서</th>
-										<th>책번호</th>
-										<th>신청자</th>
-										<th>예약신청일</th>
-										<th>예약시작일</th>
-										<th>예약만료일</th>
-										<th>예약상태</th>
-									</tr>
 								</tfoot>
 								<tbody>
 									<c:forEach items="${yeyakList }" var="vo">
@@ -98,14 +99,14 @@
 											<td>${fn:substring(vo.yeyak_End,0,10) }</td>
 											<td>
 												<select id="yeyakProcessing${vo.yeyak_Num }">
-													<option value="예약중"
-														<c:if test="${vo.yeyak_Processing eq '예약중' }">selected</c:if>>예약중</option>
+													<option value="예약신청"
+														<c:if test="${vo.yeyak_Processing eq '예약신청' }">selected</c:if>>예약신청</option>
 													<option value="예약취소"
 														<c:if test="${vo.yeyak_Processing eq '예약취소' }">selected</c:if>>예약취소</option>
-													<option value="예약완료"
-														<c:if test="${vo.yeyak_Processing eq '예약완료' }">selected</c:if>>예약완료</option>
+													<option value="대출예약"
+														<c:if test="${vo.yeyak_Processing eq '대출예약' }">selected</c:if>>대출예약</option>
 												</select>
-												<button type="button" id="" onclick="#">처리</button>
+												<button type="button" onclick="yeyakProcessUpdate(${vo.yeyak_Num})">처리</button>
 											</td>
 										</tr>
 									</c:forEach>

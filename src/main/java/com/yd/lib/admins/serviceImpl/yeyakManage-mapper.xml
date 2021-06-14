@@ -5,4 +5,8 @@
 		select * from yeyak order by yeyak_num
 	</select>
 
+	<update id="yeyakProcessUpdate" parameterType="com.yd.lib.yeyak.vo.YeyakVO">
+		update yeyak set yeyak_processing=#{yeyak_Processing}
+		where yeyak_num = #{yeyak_Num}
+	</update>
 </mapper>

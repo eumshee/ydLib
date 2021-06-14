@@ -17,6 +17,11 @@ public class YeyakServiceImpl implements YeyakService {
 	@Override
 	public List<YeyakVO> yeyakManageList() {
 		return sqlSession.selectList("yeyakManageList");
+	}
+
+	@Override
+	public int yeyakProcessUpdate(YeyakVO vo) {
+		return sqlSession.update("yeyakProcessUpdate",vo);
 	} 
 	
 	
