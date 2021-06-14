@@ -22,8 +22,8 @@ public class BookServiceImpl implements BookService{
 	}
 
 	@Override
-	public BookVO searchBook(BookVO vo) {
-		return sqlSession.selectOne("bookSerch", vo);
+	public List<BookVO> bookDetail(BookVO vo) {
+		return sqlSession.selectList("bookSerch", vo);
 	}
 	
 

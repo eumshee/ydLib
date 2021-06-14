@@ -11,8 +11,8 @@
 		serchFrm.book_Order.value = order;
 		serchFrm.submit();
 	}
-	function bookInfo(num) {
-		ifrm.book_Num.value=num;
+	function bookInfo(Isbn) {
+		ifrm.book_Isbn.value=Isbn;
 		ifrm.submit();
 	}
 </script>
@@ -72,11 +72,11 @@
 						</select>
 						<button onclick="order()">정렬</button>
 						<form action="bookInfo.do" id="ifrm">
-						<input type="hidden" id="book_Num" name="book_Num">
+						<input type="hidden" id="book_Isbn" name="book_Isbn">
 						<ul class="job-listings mb-5">
 							<c:forEach items="${bookSerchList }" var="book">
 								<li	class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-									<a onclick="bookInfo(${book.book_Num})"></a>
+									<a onclick="bookInfo(${book.book_Isbn})"></a>
 									<div class="job-listing-logo">
 										<img src="${book.book_Img }" alt="Image" class="img-fluid" width="100%">
 									</div>

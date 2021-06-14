@@ -36,7 +36,7 @@ public class BookController {
 	//책한권 정보 보기
 	@RequestMapping("/bookInfo.do")
 	public String bookInfo(Model model , BookVO vo , HttpServletRequest req) {
-		model.addAttribute("bookInfo", dao.searchBook(vo));
+		model.addAttribute("bookDetail", dao.bookDetail(vo));
 		return "book/bookInfo";
 	}
 	

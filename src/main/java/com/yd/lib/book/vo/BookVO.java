@@ -18,6 +18,8 @@ public class BookVO {
 	private int all_Book_Cnt; //중복 책 수
 	private int can_Book_Cnt; //중복 책 중 대출가능한 책의 수
 	private String book_Order;//정렬을 위한 값
+	private String return_Duedate;//반남예정일
+	private String yeyak_Processing;//예약유무 파악
 	
 	
 	public String getBook_Bigo() {
@@ -121,6 +123,18 @@ public class BookVO {
 	}
 	public void setBook_Order(String book_Order) {
 		this.book_Order = book_Order;
+	}
+	public String getReturn_Duedate() {
+		return return_Duedate;
+	}
+	public void setReturn_Duedate(String return_Duedate) {
+		this.return_Duedate = return_Duedate;
+	}
+	public String getYeyak_Processing() {
+		return yeyak_Processing;
+	}
+	public void setYeyak_Processing(String yeyak_Processing) {
+		this.yeyak_Processing = yeyak_Processing;
 	}
 	
 	
