@@ -8,10 +8,10 @@
 	}
 	 .col-md-12 a {
  	font-size: 1em;
- 	color: white;
+ 	color: lightgray;
  	text-decoration: none;
  	}
-	 .col-md-12 a:hover { color: #89ba16; }
+	 .col-md-12 a:hover { color: white; }
 </style>
 <script>
 
@@ -95,7 +95,7 @@
 				<span><a href="loanreManagemant.do">대출/반납관리</a></span>&nbsp;&nbsp;
 				<span><a href="yeyakmanagemant.do">예약도서관리</a></span>&nbsp;&nbsp;
 				<span><a href="wishManagement.do">희망도서관리</a></span>&nbsp;&nbsp;
-				<span><a href="bookManagement.do" style="color:#89ba16;">장서관리</a></span>&nbsp;&nbsp;
+				<span><a href="bookManagement.do" style="color:white;">장서관리</a></span>&nbsp;&nbsp;
 				<span><a href="home.do">홈</a></span>
 			</div>
 		</div>
