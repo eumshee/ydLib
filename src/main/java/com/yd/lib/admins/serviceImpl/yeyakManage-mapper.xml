@@ -7,6 +7,20 @@
 
 	<update id="yeyakProcessUpdate" parameterType="com.yd.lib.yeyak.vo.YeyakVO">
 		update yeyak set yeyak_processing=#{yeyak_Processing}
+		, yeyak_start = sysdate, yeyak_end = sysdate+(INTERVAL '3' day) 		
 		where yeyak_num = #{yeyak_Num}
 	</update>
+
+	<update id="yeyakProcessReset" parameterType="com.yd.lib.yeyak.vo.YeyakVO">
+		update yeyak set yeyak_processing=#{yeyak_Processing}
+		, yeyak_start = null, yeyak_end = null		
+		where yeyak_num = #{yeyak_Num}
+	</update>
+
+	<update id="yeyakProcessEnd" parameterType="com.yd.lib.yeyak.vo.YeyakVO">
+		update yeyak set yeyak_processing=#{yeyak_Processing}
+		, yeyak_end = sysdate		
+		where yeyak_num = #{yeyak_Num}
+	</update>
+
 </mapper>

@@ -23,7 +23,7 @@ public class YeyakController {
 	// 예약상태수정
 	@RequestMapping("/yeyakProcessUpdate.do")
 	public String yeyakProcessingUpdate(Model model, YeyakVO vo) {
-		ysi.yeyakProcessUpdate(vo);
+			ysi.yeyakProcessUpdate(vo);
 		return "redirect:yeyakmanagemant.do";
 	}
 
