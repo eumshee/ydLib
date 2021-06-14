@@ -48,6 +48,13 @@ public class HistoryServiceImpl implements HistoryService{
 
 		return sqlSession.selectList("historyListSelect");
 	}
+	
+	//user 대출 전체 목록
+	public List<HistoryVO> userHistorySelectList(HistoryVO vo){
+		
+		return sqlSession.selectList("userHistorySelectList",vo);
+	}
+	
 	//user 한명 검색(대출반납관리)
 	@Override
 	public HistoryVO historySelect(HistoryVO vo) {

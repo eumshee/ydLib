@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jstl/fmt_rt" %>
-<jsp:useBean id="sysdate" class="java.util.Date" />
+<jsp:useBean id="toDay" class="java.util.Date" />
+<x:formatDate value='${toDay}' pattern='yyyy-MM-dd' var="nowDate"/>
 <style>
 .member{
 float: left;
@@ -17,6 +18,7 @@ text-align: center;
 .prosessbox{
 	margin: 30px auto;
 	width: 80%;
+	text-align: center;
 }
 h2{
 	display: inline-block;
@@ -107,17 +109,33 @@ h2{
 			</div>
 			<div class="prosessbox">
 				<h2>처리된 내용</h2>
+					<form action ="userHistory.do" method="post" style=" display: inline-block;">
+						<input type="text" id="user_Id" name="user_Id" placeholder="아이디를 입력하세요." size="20">
+						<button type="submit" class="btn btn-primary text-white btn-search"><span class="icon-search icon mr-2"></span>조회</button>
+					</form>
+				
 				<table class="table">
 					<tr>
 						<th>대출번호</th><th>사용자</th><th>책번호</th><th>대출일자</th><th>반납예정일</th><th>반납일</th><th>연체일</th><th>대출상태</th>
 					</tr>
-						<c:forEach items="${historyList }" var="list">
-							<tr>
-								<td>${list.loan_Id }</td><td>${list.user_Id }</td><td>${list.book_Num }</td>
-								<td>${list.loan_Date }</td><td>${list.return_Duedate }</td><td>${list.return_Date }</td>
-								<td>${list.return_Delaydays }</td><td>${list.loan_Status }</td>
-							</tr>
-						</c:forEach>
+						<c:if test="${empty userHistory }">
+							<c:forEach items="${historyList }" var="list">
+									<tr>
+										<td>${list.loan_Id }</td><td>${list.user_Id }</td><td>${list.book_Num }</td>
+										<td>${list.loan_Date }</td><td>${list.return_Duedate }</td><td>${list.return_Date }</td>
+										<td>${list.return_Delaydays }</td><td>${list.loan_Status }</td>
+									</tr>
+							</c:forEach>
+						</c:if>
+						<c:if test="${!empty userHistory }">
+							<c:forEach items="${userHistory }" var="list">
+									<tr>
+										<td>${list.loan_Id }</td><td>${list.user_Id }</td><td>${list.book_Num }</td>
+										<td>${list.loan_Date }</td><td>${list.return_Duedate }</td><td>${list.return_Date }</td>
+										<td>${list.return_Delaydays }</td><td>${list.loan_Status }</td>
+									</tr>
+							</c:forEach>
+						</c:if>
 				</table>				
 			</div>
 		</div>

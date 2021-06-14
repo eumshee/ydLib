@@ -1,27 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="co.jen.ex02.member.service.member-map">
+<mapper namespace="com.yd.lib.notice.serviceImpl.notice-mapper">
 
-	<select id="noticeListSelect" resultType="com.yd.lib.notice.vo.NoticeVO">
+	<select id="noticeListSelect"
+		resultType="com.yd.lib.notice.vo.NoticeVO">
 		select * from notice order by 1 desc
 	</select>
-	
-	<select id="noticeSelect" parameterType="com.yd.lib.notice.vo.NoticeVO"
+
+	<select id="noticeSelect"
+		parameterType="com.yd.lib.notice.vo.NoticeVO"
 		resultType="com.yd.lib.notice.vo.NoticeVO">
-		select * from notice where notice_id = #{notice_Id}	
+		select * from notice where notice_id = #{notice_Id}
 	</select>
-	
-	<insert id="noticeInsert" parameterType="com.yd.lib.notice.vo.NoticeVO">
+
+	<insert id="noticeInsert"
+		parameterType="com.yd.lib.notice.vo.NoticeVO">
 		insert into notice
-		values(notice_seq.nextval, #{notice_Title}, #{notice_Content}, sysdate, 0, #{notice_File,jdbcType=VARCHAR})
+		values(notice_seq.nextval,
+		#{notice_Title}, #{notice_Content}, sysdate, 0,
+		#{notice_File,jdbcType=VARCHAR})
 	</insert>
-	
-	<update id="noticeHitUpdate" parameterType="com.yd.lib.notice.vo.NoticeVO">
-		update notice set notice_hit = notice_hit + 1 where notice_id = #{notice_Id}	
+
+	<update id="noticeHitUpdate"
+		parameterType="com.yd.lib.notice.vo.NoticeVO">
+		update notice set notice_hit = notice_hit + 1 where
+		notice_id = #{notice_Id}
 	</update>
 
-	<delete id="noticeDelete" parameterType="com.yd.lib.notice.vo.NoticeVO">
-		delete from notice where notice_id = #{notice_Id}	
-	</delete>	
-	
+	<delete id="noticeDelete"
+		parameterType="com.yd.lib.notice.vo.NoticeVO">
+		delete from notice where notice_id = #{notice_Id}
+	</delete>
+
+	<update id="noticeUpdate" parameterType="com.yd.lib.notice.vo.NoticeVO">
+		update notice set 
+		notice_Title = #{notice_Title},
+		notice_Content = #{notice_Content}
+		where notice_Id = #{notice_Id}
+	</update>
+
 </mapper>
