@@ -21,6 +21,7 @@
 			where book_title like '%' || #{ book_Title } || '%' and book_aut like '%' || #{ book_Aut } || '%' and book_pub like '%' || #{ book_Pub } || '%'
 			)bk
 		where RNUM = 1
+		order by #{book_order}
 	</select>
 	
 	
