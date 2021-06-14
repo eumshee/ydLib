@@ -9,7 +9,7 @@ public class HistoryVO {
 	private Date loan_Date;
 	private Date return_Duedate;
 	private Date return_Date;
-	private Date return_Delaydats;
+	private int return_Delaydays;
 	private String loan_Status;
 	private String user_Name;
 	private String user_Gubun;
@@ -66,12 +66,13 @@ public class HistoryVO {
 		this.return_Date = return_Date;
 	}
 
-	public Date getReturn_Delaydats() {
-		return return_Delaydats;
+
+	public int getReturn_Delaydays() {
+		return return_Delaydays;
 	}
 
-	public void setReturn_Delaydats(Date return_Delaydats) {
-		this.return_Delaydats = return_Delaydats;
+	public void setReturn_Delaydays(int return_Delaydays) {
+		this.return_Delaydays = return_Delaydays;
 	}
 
 	public String getLoan_Status() {
