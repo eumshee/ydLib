@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.yd.lib.book.vo.BookVO;
 import com.yd.lib.notice.vo.NoticeVO;
 
 @Repository("noticeDAO")
@@ -41,11 +42,7 @@ public class NoticeServiceImpl {
 		return sqlSession.delete("noticeDelete", vo);
 	}
 
-//
-//	@Override
-//	public int memberUpdate(MemberVO vo) {
-//		// TODO Auto-generated method stub
-//		return 0;
-//	}
-
+	public int noticeUpdate(NoticeVO vo) {
+		return sqlSession.update("noticeUpdate",vo);
+	}
 }
