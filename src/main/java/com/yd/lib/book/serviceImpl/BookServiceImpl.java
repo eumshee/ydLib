@@ -23,8 +23,6 @@ public class BookServiceImpl implements BookService{
 
 	@Override
 	public BookVO searchBook(BookVO vo) {
-		System.out.println(2);
-		System.out.println(vo.getBook_Num()); 
 		return sqlSession.selectOne("bookSerch", vo);
 	}
 	
