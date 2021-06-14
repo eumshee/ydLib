@@ -68,13 +68,19 @@
 						</tr>
 						<c:forEach items="${bookDetail }" var="bookInfo">
 							<tr>
-								<td>${bookInfo.book_Gubun  }</td><td>${bookInfo.book_Num }</td><td>${bookInfo.book_Location }</td><td>${bookInfo.return_Duedate }</td>
+								<td>${bookInfo.book_Gubun  }</td><td>${bookInfo.book_Num }</td><td>${bookInfo.book_Location }</td>
+								<c:if test="${bookInfo.book_Byn eq 'Y' }">
+									<td></td>
+								</c:if>
+								<c:if test="${bookInfo.book_Byn eq 'N' }">
+									<td>${bookInfo.return_Duedate }</td>
+								</c:if>
 								<td>
 									<div class="job-listing-meta">
-										<c:if test="${bookInfo.book_Byn eq 'N' }">
+										<c:if test="${bookInfo.book_Byn eq 'N' or bookInfo.yeyak_Processing eq '예약중' or bookInfo.yeyak_Processing eq '예약신청'}">
 											<span class="badge badge-danger">대출불가</span>
 										</c:if>
-										<c:if test="${bookInfo.book_Byn eq 'Y' }">
+										<c:if test="${bookInfo.book_Byn eq 'Y' and (bookInfo.yeyak_Processing eq '예약만료' or empty bookInfo.yeyak_Processing)}">
 											<span class="badge badge-success">대출가능</span>
 										</c:if>
 									</div>
@@ -84,7 +90,7 @@
 										<c:when test="${bookInfo.book_Byn eq 'Y' or bookInfo.yeyak_Processing eq '예약신청' or bookInfo.yeyak_Processing eq '예약중'}">
 											<button>예약불가</button> 
 										</c:when>
-										<c:when test="${bookInfo.yeyak_Processing eq '예약만료'}">
+										<c:when test="${bookInfo.book_Byn eq 'N'}">
 											<button>예약신청</button> 
 										</c:when>
 										<c:otherwise>

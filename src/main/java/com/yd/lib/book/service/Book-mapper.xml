@@ -32,12 +32,33 @@
 	</select>
 	
 	<select id="bookSerch" parameterType="com.yd.lib.book.vo.BookVO" resultType="com.yd.lib.book.vo.BookVO">
-		select b.* , y.yeyak_processing , h.RETURN_DUEDATE  from book b
-		full join yeyak y
-		on b.book_num = y.book_num
-		full join history h
+		select b.* ,return_duedate , yeyak_processing  from book b
+		full join (
+				   select * from history
+				   where history.RETURN_DUEDATE in (
+													select max(return_duedate) from HISTORY
+													where book_num in (
+																	   select book_num from book
+																	   where book_isbn = #{book_Isbn}
+																	   )
+													group by book_num
+													)
+		                                          
+				   ) h
 		on b.book_num = h.book_num
-		where b.book_isbn = #{book_Isbn}
+		full join (
+				   select * from yeyak
+				   where yeyak.YEYAK_SUBMIT in(
+											   select max(YEYAK_SUBMIT) from yeyak
+											   where book_num in (
+																  select book_num from book
+																  where book_isbn = #{book_Isbn}
+																  )
+											   group by book_num
+											   )
+				   )y
+		on b.book_num = y.book_num
+		where book_isbn = #{book_Isbn}
 	</select>
 	
 	
