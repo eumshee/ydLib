@@ -106,7 +106,7 @@
 
 <!-- 도서입력폼 -->
 <section class="site-section">
- 	<div class="container">
+ 	<div class="container-fluid" style="width:80%;">
 		<div align="right">
 			<div class="col-lg-3">
 				<div class="col-6">

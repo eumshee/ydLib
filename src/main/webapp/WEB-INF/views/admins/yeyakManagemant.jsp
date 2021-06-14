@@ -13,7 +13,16 @@
  	}
 	 .col-md-12 a:hover { color: #89ba16; }
 </style>
+<script>
+	function bkDetail(num) {
+		var url= 'bookDetailManage.do?book_Num='+num;
+		var winWidth = 700;
+	    var winHeight = 600;
+	    var popupOption= "width="+winWidth+", height="+winHeight;
+		window.open(url,"",popupOption);
+}
 
+</script>
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
 	style="background-image: url('resources/images/hero_1.jpg');"
@@ -64,6 +73,7 @@
 										<th>예약신청일</th>
 										<th>예약시작일</th>
 										<th>예약만료일</th>
+										<th>예약상태</th>
 									</tr>
 								</thead>
 								<tfoot>
@@ -74,17 +84,29 @@
 										<th>예약신청일</th>
 										<th>예약시작일</th>
 										<th>예약만료일</th>
+										<th>예약상태</th>
 									</tr>
 								</tfoot>
 								<tbody>
 									<c:forEach items="${yeyakList }" var="vo">
 										<tr>
 											<td>${vo.yeyak_Num }</td>
-											<td>${vo.book_Num }</td>
+											<td onclick="bkDetail(${vo.book_Num })">${vo.book_Num }</td>
 											<td>${vo.user_Id }</td>
 											<td>${fn:substring(vo.yeyak_Submit,0,10) }</td>
 											<td>${fn:substring(vo.yeyak_Start,0,10) }</td>
 											<td>${fn:substring(vo.yeyak_End,0,10) }</td>
+											<td>
+												<select id="yeyakProcessing${vo.yeyak_Num }">
+													<option value="예약중"
+														<c:if test="${vo.yeyak_Processing eq '예약중' }">selected</c:if>>예약중</option>
+													<option value="예약취소"
+														<c:if test="${vo.yeyak_Processing eq '예약취소' }">selected</c:if>>예약취소</option>
+													<option value="예약완료"
+														<c:if test="${vo.yeyak_Processing eq '예약완료' }">selected</c:if>>예약완료</option>
+												</select>
+												<button type="button" id="" onclick="#">처리</button>
+											</td>
 										</tr>
 									</c:forEach>
 								</tbody>

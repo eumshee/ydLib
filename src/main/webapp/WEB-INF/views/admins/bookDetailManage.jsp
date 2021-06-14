@@ -104,7 +104,7 @@
 
 <!-- 도서조회폼 -->
 <section class="site-section">
-	<div class="container">
+	<div class="container-fluid" style="width:80%">
 		<div align="right">
 			<div class="col-lg-3">
 				<span class="col-3">
