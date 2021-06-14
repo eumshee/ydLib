@@ -25,7 +25,17 @@ public class BookController {
 	
 	@RequestMapping("/bookSerch.do")
 	public String bookSerch(Model model , BookVO vo , HttpServletRequest req) {
+		
 		model.addAttribute("bookSerchList", dao.searchBookList(vo));
+		model.addAttribute("reqVO", vo);
 		return "book/bookSerchForm";
 	}
+	@RequestMapping("/bookInfo.do")
+	public String bookInfo(Model model , BookVO vo , HttpServletRequest req) {
+		System.out.println(1);
+		System.out.println(vo.getBook_Num());
+		model.addAttribute("bookInfo", dao.searchBook(vo));
+		return "book/bookInfo";
+	}
+	
 }
