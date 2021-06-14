@@ -32,8 +32,12 @@
 	</select>
 	
 	<select id="bookSerch" parameterType="com.yd.lib.book.vo.BookVO" resultType="com.yd.lib.book.vo.BookVO">
-		select * from book
-		where book_num = #{book_Num}
+		select b.* , y.yeyak_processing , h.RETURN_DUEDATE  from book b
+		full join yeyak y
+		on b.book_num = y.book_num
+		full join history h
+		on b.book_num = h.book_num
+		where b.book_isbn = #{book_Isbn}
 	</select>
 	
 	

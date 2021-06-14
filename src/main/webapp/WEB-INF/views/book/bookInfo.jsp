@@ -37,28 +37,65 @@
 				</div>
 				<!--컨텐츠 영역-->
 				<div class="col-lg-8">
+					<c:forEach items="${bookDetail }" var="bookInfo" begin="1" end="1">
+						<table>
+							<tr>
+								<td rowspan="6">
+									<img src="${bookInfo.book_Img }" alt="Image" width="175px" height="255px">
+								</td>
+							</tr>
+							<tr>
+								<td><h2>${bookInfo.book_Title }</h2></td>
+							</tr>
+							<tr>
+								<td>저자 : ${bookInfo.book_Aut }</td>
+							</tr>
+							<tr>
+								<td>발행처/발행날 : ${bookInfo.book_Pub } / ${bookInfo.book_Pubdate }</td>
+							</tr>
+							<tr>
+								<td>ISBN : ${bookInfo.book_Isbn }</td>
+							</tr>
+							<tr>
+								<td>분류기호 : ${bookInfo.book_Gubun }</td>
+							</tr>
+						</table>
+					</c:forEach>
+					<br><br>
 					<table>
 						<tr>
-							<td rowspan="6">
-								<img src="${bookInfo.book_Img }" alt="Image" width="175px" height="255px">
-							</td>
+							<td>청구기호</td><td>등록번호</td><td>배가위치</td><td>반납예정일</td><td>대출상태</td>
 						</tr>
-						<tr>
-							<td><h2>${bookInfo.book_Title }</h2></td>
-						</tr>
-						<tr>
-							<td>저자 : ${bookInfo.book_Aut }</td>
-						</tr>
-						<tr>
-							<td>발행처/발행날 : ${bookInfo.book_Pub } / ${bookInfo.book_Pubdate }</td>
-						</tr>
-						<tr>
-							<td>ISBN : ${bookInfo.book_Isbn }</td>
-						</tr>
-						<tr>
-							<td>분류기호 : ${bookInfo.book_Gubun }</td>
-						</tr>
+						<c:forEach items="${bookDetail }" var="bookInfo">
+							<tr>
+								<td>${bookInfo.book_Gubun  }</td><td>${bookInfo.book_Num }</td><td>${bookInfo.book_Location }</td><td>${bookInfo.return_Duedate }</td>
+								<td>
+									<div class="job-listing-meta">
+										<c:if test="${bookInfo.book_Byn eq 'N' }">
+											<span class="badge badge-danger">대출불가</span>
+										</c:if>
+										<c:if test="${bookInfo.book_Byn eq 'Y' }">
+											<span class="badge badge-success">대출가능</span>
+										</c:if>
+									</div>
+								</td>
+								<td>
+									<c:choose>
+										<c:when test="${bookInfo.book_Byn eq 'Y' or bookInfo.yeyak_Processing eq '예약신청' or bookInfo.yeyak_Processing eq '예약중'}">
+											<button>예약불가</button> 
+										</c:when>
+										<c:when test="${bookInfo.yeyak_Processing eq '예약만료'}">
+											<button>예약신청</button> 
+										</c:when>
+										<c:otherwise>
+											<button>예약신청</button>
+										</c:otherwise>
+									</c:choose>								
+								</td>
+							</tr>
+						</c:forEach>
 					</table>
+					<p>!도서관에 비치된 도서는 예약이 불가능합니다!</p>
 				</div>
 			</div>
 		</div>
