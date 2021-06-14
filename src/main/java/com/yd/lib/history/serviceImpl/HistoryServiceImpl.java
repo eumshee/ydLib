@@ -15,21 +15,23 @@ public class HistoryServiceImpl implements HistoryService{
 @Autowired
 	private SqlSession sqlSession; 
 	
-
+	//user 전체 검색(회원관리)
 	public List<UsersVO> adminSelectList(){
 		
 		return sqlSession.selectList("adminSelectList");
 	}
-
+	//user 이름 으로 검색(회원관리)
 	public UsersVO adminUsersSelect(UsersVO vo) {
 		return sqlSession.selectOne("adminSelect",vo);
 	}
 	
+	//user 이름 수정(회원관리)
 	public int adminUserUpdate(UsersVO vo) {
 		
 		return sqlSession.update("adminUserUpdate",vo);
 	}
 	
+	//user 삭제(회원관리)
 	public int adminUserDelete(UsersVO vo) {
 		
 		return sqlSession.delete("adminUserDelete",vo);
@@ -40,12 +42,13 @@ public class HistoryServiceImpl implements HistoryService{
 		return sqlSession.selectList("adminHistorySelect", vo);
 	}
 	
+	//대출, 반납내역(하루기준) 전체조회
 	@Override
 	public List<HistoryVO> historySelectList() {
 
-		return null;
+		return sqlSession.selectList("historyListSelect");
 	}
-
+	//user 한명 검색(대출반납관리)
 	@Override
 	public HistoryVO historySelect(HistoryVO vo) {
 		return sqlSession.selectOne("adminUserSelect",vo);
@@ -59,7 +62,7 @@ public class HistoryServiceImpl implements HistoryService{
 
 	@Override
 	public int historyUpdate(HistoryVO vo) {
-		return 0;
+		return sqlSession.update("historyUpdate", vo);
 	}
 
 	@Override

@@ -49,12 +49,5 @@ public class AdminController2 {
 		his.adminUserDelete(vo);
 		return ("redirect:memberManagemant.do");
 	}
-	
-	//대출 반납페이지
-	@RequestMapping("/loanreManagemant.do")
-	public String RoanreturnManagemant() {
-		return "admins/roanreturnManagement";
-	}
 
-	
 }

@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="x" uri="http://java.sun.com/jstl/fmt_rt" %>
+<jsp:useBean id="sysdate" class="java.util.Date" />
 <style>
 .member{
 float: left;
@@ -82,15 +82,21 @@ h2{
 				</form>
 				<table class="table">
 					<tr>
-						<th>대출번호</th><th>책번호</th><th>대출일자</th><th>반납예정일</th><th>연체일</th><th>대출상태</th><th>처리된 업무</th>
+						<th>대출번호</th><th>책번호</th><th>대출일자</th><th>반납예정일</th><th>연체일</th><th>대출상태</th><th>처리</th>
 					</tr>
-<!--  -->					<c:choose>
+<!--  -->			<c:choose>
 						<c:when test="${!empty historty}">
 							<c:forEach items="${historty }" var="vo" >
-								<tr>
-									<td>${vo.loan_Id }</td><td>${vo.book_Num }</td><td>${vo.loan_Date }</td>
-									<td>${vo.return_Duedate }</td><td>${vo.return_Delaydats }</td><td>${vo.loan_Status }</td><td><input type="button" value="반납"></td>
-								</tr>
+								<c:if test="${vo.loan_Status ne '반납'}">
+									<form action="returnBook.do" method="post">
+										<input type="hidden" id= "book_Num" name="book_Num" value="${vo.book_Num }">
+										<input type="hidden" id= "user_Name" name="user_Name" value="${vo.user_Name }">
+										<tr>
+											<td>${vo.loan_Id }</td><td>${vo.book_Num }</td><td>${vo.loan_Date }</td>
+											<td>${vo.return_Duedate }</td><td>${vo.return_Delaydays }</td><td>${vo.loan_Status }</td><td><input type="submit" value="반납"></td>
+										</tr>
+									</form>
+								</c:if>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
@@ -103,23 +109,15 @@ h2{
 				<h2>처리된 내용</h2>
 				<table class="table">
 					<tr>
-						<th>대출번호</th><th>사용자</th><th>책번호</th><th>대출일자</th><th>반납예정일</th><th>반납일</th><th>연체일</th><th>대출상태</th><th>반납</th>
+						<th>대출번호</th><th>사용자</th><th>책번호</th><th>대출일자</th><th>반납예정일</th><th>반납일</th><th>연체일</th><th>대출상태</th>
 					</tr>
-					<tr>
-						<td>1</td><td>user1</td><td>465789</td><td>2021/06/11</td><td>2021/06/24</td><td> </td><td>0</td><td>대출</td><td>반납</td>
-					</tr>
-					<tr>
-						<td>2</td><td>user1</td><td>465789</td><td>2021/06/11</td><td>2021/06/24</td><td> </td><td>0</td><td>대출</td><td>반납</td>
-					</tr>
-					<tr>
-						<td>3</td><td>user1</td><td>465789</td><td>2021/06/11</td><td>2021/06/24</td><td>2021/06/12</td><td>0</td><td>대출</td><td>반납</td>
-					</tr>
-					<tr>
-						<td>4</td><td>user1</td><td>465789</td><td>2021/06/11</td><td>2021/06/24</td><td> </td><td>0</td><td>대출</td><td>대출</td>
-					</tr>
-					<tr>
-						<td>5</td><td>user1</td><td>465789</td><td>2021/06/11</td><td>2021/06/24</td><td> </td><td>0</td><td>대출</td><td>반납</td>
-					</tr>
+						<c:forEach items="${historyList }" var="list">
+							<tr>
+								<td>${list.loan_Id }</td><td>${list.user_Id }</td><td>${list.book_Num }</td>
+								<td>${list.loan_Date }</td><td>${list.return_Duedate }</td><td>${list.return_Date }</td>
+								<td>${list.return_Delaydays }</td><td>${list.loan_Status }</td>
+							</tr>
+						</c:forEach>
 				</table>				
 			</div>
 		</div>
