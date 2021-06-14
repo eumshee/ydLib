@@ -4,31 +4,31 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="//cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
 <script>
-function noticeDelete(num) {
+function boardDelete(num) {
 	let delChk = confirm("삭제하시겠습니까?");
 	if (delChk) {
-		location.href='noticeDelete.do?notice_Id='+num;
+		location.href='boardDelete.do?board_Id='+num;
 	}
 }
 
-function noticeUpdate() {
-	if ($('#notice_Title').val() == "") {
-		frmUpdate.notice_Title.focus();
+function boardUpdate() {
+	if ($('#board_Title').val() == "") {
+		frmUpdate.board_Title.focus();
 		alert('제목을 입력하세요.');
 		return;
 	}
-	if ($('#notice_Content').val() == "") {
-		frmUpdate.notice_Content.focus();
+	if ($('#board_Content').val() == "") {
+		frmUpdate.board_Content.focus();
 		alert('내용을 입력하세요.');
 		return;
 	}
-	console.log($('#notice_Title').val());
-	console.log($('#notice_Content').val());
-	console.log($('#notice_Id').val());
+	console.log($('#board_Title').val());
+	console.log($('#board_Content').val());
+	console.log($('#board_Id').val());
 	frmUpdate.submit();
 }
 
-$(function() {CKEDITOR.replace('notice_Content',
+$(function() {CKEDITOR.replace('board_Content',
 		{
 			filebrowserUploadUrl : '${pageContext.request.contextPath}/ckupload',
 			height : '400px',
@@ -70,34 +70,33 @@ $(function() {CKEDITOR.replace('notice_Content',
 			</div>
 			<!--컨텐츠 영역-->
 			<div class="col-lg-8">
-				<form id="frmUpdate" action="noticeUpdate.do" method="post">
-					<input type="hidden" id="notice_Id" name="notice_Id" value="${vo.notice_Id }">
+				<form id="frmUpdate" action="boardUpdate.do" method="post">
+					<input type="hidden" id="board_Id" name="board_Id" value="${vo.board_Id }">
 				<table class="table">
 					<tr>
-						<td colspan="4" align="left">
-						<h2><input type="text" class="form-control" id="notice_Title" name="notice_Title" value="${vo.notice_Title }"></h2></td>
+						<td colspan="6" align="left">
+						<h2><input type="text" class="form-control" id="board_Title" name="board_Title" value="${vo.board_Title }"></h2></td>
+					</tr>
+					<tr align="left">
+						<th width="10%">작성일</th>
+						<td>${vo.board_Date}</td>
+						<th width="10%">작성자</th>
+						<td>${vo.board_Writer}</td>
+						<th width="10%">조회수</th>
+						<td>${vo.board_Hit}</td>
 					</tr>
 					<tr>
-						<td>작성일</td>
-						<td width="70%" align="left">${vo.notice_Date}</td>
-						<td>조회수</td>
-						<td>${vo.notice_Hit}</td>
-					</tr>
-					<tr>
-						<td colspan="4" align="left"><textarea id="notice_Content" name="notice_Content" >${vo.notice_Content}</textarea></td>
-					</tr>
-					<tr>
-					<td colspan="5" align="left">첨부파일 : <a href="fileDownload.do?notice_File=${vo.notice_File}">${vo.notice_File }</a></td>
+						<td colspan="6" align="left"><textarea id="board_Content" name="board_Content" >${vo.board_Content}</textarea></td>
 					</tr>
 				</table>
 				</form>
 				<div align="center">
-					<button type="button" onclick="noticeDelete(${vo.notice_Id})" class="btn btn-light">삭제</button>
-					<button type="button" onclick="noticeUpdate()" class="btn btn-light">수정</button>
+					<button type="button" onclick="boardDelete(${vo.board_Id})" class="btn btn-light">삭제</button>
+					<button type="button" onclick="boardUpdate()" class="btn btn-light">수정</button>
 					<br>
 				</div>
 				<div align="right">
-					<button type="button" onclick="location.href='noticeList.do'"
+					<button type="button" onclick="location.href='boardList.do'"
 						class="btn btn-light">목록으로</button>
 				</div>
 			</div>

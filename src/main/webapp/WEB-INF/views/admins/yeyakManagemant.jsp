@@ -8,10 +8,10 @@
 	}
 	 .col-md-12 a {
  	font-size: 1em;
- 	color: white;
+ 	color: lightgray;
  	text-decoration: none;
  	}
-	 .col-md-12 a:hover { color: #89ba16; }
+	 .col-md-12 a:hover { color: white; }
 </style>
 <script>
 	function bkDetail(num) {
@@ -45,7 +45,7 @@
 			<div class="col-md-12" align="center">
 				<span><a href="memberManagemant.do">회원목록관리</a></span>&nbsp;&nbsp;
 				<span><a href="loanreManagemant.do">대출/반납관리</a></span>&nbsp;&nbsp;
-				<span><a href="yeyakmanagemant.do" style="color:#89ba16;">예약도서관리</a></span>&nbsp;&nbsp;
+				<span><a href="yeyakmanagemant.do" style="color:white;">예약도서관리</a></span>&nbsp;&nbsp;
 				<span><a href="wishManagement.do">희망도서관리</a></span>&nbsp;&nbsp;
 				<span><a href="bookManagement.do">장서관리</a></span>&nbsp;&nbsp;
 				<span><a href="home.do">홈</a></span>
@@ -59,18 +59,8 @@
 	<div class="container-fluid" style="width:80%">
 		<div class="row">
 			<div class="col-lg-12">
-				<div align="right">
-					<button type="submit" class="btn btn-primary text-white btn-search"
-						onclick="location.href='#'">
-						<span class="icon-plus mx-auto"></span>&nbsp;등록
-					</button>
-					<br> <br>
-				</div>
 				<!-- DataTales Example -->
 				<div class="card shadow mb-4">
-					<div class="card-header py-3">
-						<h6 class="m-0 font-weight-bold text-primary">예약도서목록</h6>
-					</div>
 					<div class="card-body">
 						<div class="table-responsive">
 							<table class="table table-bordered" id="dataTable"
@@ -81,8 +71,8 @@
 										<th>책번호</th>
 										<th>신청자</th>
 										<th>예약신청일</th>
-										<th>대출시작일</th>
-										<th>대출만료일</th>
+										<th>예약시작일</th>
+										<th>예약만료일</th>
 										<th>예약상태</th>
 									</tr>
 								</thead>
@@ -101,10 +91,10 @@
 												<select id="yeyakProcessing${vo.yeyak_Num }">
 													<option value="예약신청"
 														<c:if test="${vo.yeyak_Processing eq '예약신청' }">selected</c:if>>예약신청</option>
-													<option value="예약취소"
-														<c:if test="${vo.yeyak_Processing eq '예약취소' }">selected</c:if>>예약취소</option>
-													<option value="대출예약"
-														<c:if test="${vo.yeyak_Processing eq '대출예약' }">selected</c:if>>대출예약</option>
+													<option value="예약중"
+														<c:if test="${vo.yeyak_Processing eq '예약중' }">selected</c:if>>예약중</option>
+													<option value="예약만료"
+														<c:if test="${vo.yeyak_Processing eq '예약만료' }">selected</c:if>>예약만료</option>
 												</select>
 												<button type="button" onclick="yeyakProcessUpdate(${vo.yeyak_Num})">처리</button>
 											</td>

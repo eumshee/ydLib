@@ -11,8 +11,8 @@
 		serchFrm.book_Order.value = order;
 		serchFrm.submit();
 	}
-	function bookInfo(num) {
-		ifrm.book_Num.value=num;
+	function bookInfo(Isbn) {
+		ifrm.book_Isbn.value=Isbn;
 		ifrm.submit();
 	}
 </script>
@@ -72,11 +72,11 @@
 						</select>
 						<button onclick="order()">정렬</button>
 						<form action="bookInfo.do" id="ifrm">
-						<input type="hidden" id="book_Num" name="book_Num">
+						<input type="hidden" id="book_Isbn" name="book_Isbn">
 						<ul class="job-listings mb-5">
 							<c:forEach items="${bookSerchList }" var="book">
 								<li	class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-									<a onclick="bookInfo(${book.book_Num})"></a>
+									<a onclick="bookInfo(${book.book_Isbn})"></a>
 									<div class="job-listing-logo">
 										<img src="${book.book_Img }" alt="Image" class="img-fluid" width="100%">
 									</div>
@@ -95,7 +95,20 @@
 											수량 : ${book.all_Book_Cnt }권
 										</div>
 										<div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-											주제 : ${book.book_Subject }권
+										주제 : 
+											<c:choose>
+												<c:when test="${book.book_Subject eq '0'}">총류</c:when>
+												<c:when test="${book.book_Subject eq '1'}">철학</c:when>
+												<c:when test="${book.book_Subject eq '2'}">종교</c:when>
+												<c:when test="${book.book_Subject eq '3'}">사회과학</c:when>
+												<c:when test="${book.book_Subject eq '4'}">자연과학</c:when>
+												<c:when test="${book.book_Subject eq '5'}">기술과학</c:when>
+												<c:when test="${book.book_Subject eq '6'}">예술</c:when>
+												<c:when test="${book.book_Subject eq '7'}">언어</c:when>
+												<c:when test="${book.book_Subject eq '8'}">문학</c:when>
+												<c:otherwise>역사</c:otherwise>
+											</c:choose>
+											
 										</div>
 										<div class="job-listing-meta">
 											

@@ -213,8 +213,6 @@
 .footer .site_link>div>div>ul>li>a.disabled, #footer .site_link>div>div>ul>li.disabled
 	{
 		list-style: none;
-	    padding: 0;
-	    margin: 0; 
 }
 
 .footer .site_link>div>div>ul>li>a.disabled, #footer .site_link>div>div>ul>li>a.disabled
@@ -273,7 +271,7 @@
 							<div class="dropdown bootstrap-select">
 								<a class="fsite type1"> <span class="f1">대구광역시 공공도서관</span>
 									<span class="f2"><i></i></span></a>
-								<ul style="display: none; height: 120px; z-index:1;">
+								<ul style="display: none; height: 120px; z-index:1; padding-left: 0;">
 									<li class="disabled"><a title="대구광역시통합도서관"
 										href="http://library.daegu.go.kr/dgportal/index.do">대구광역시통합도서관</a></li>
 									<li class="disabled"><a title="대구2ㆍ28기념학생도서관"
@@ -334,13 +332,14 @@
 										href="http://library.daegu.go.kr/junggu/index.do">중구통합도서관</a></li>
 								</ul>
 							</div>
+							&nbsp;
 							<a href="#" class="btn">이동</a>
 						</div>
 						<div>
 							<div>
 								<a class="fsite type1"> <span class="f1">교육 및 지역관련기관</span>
 									<span class="f2"><i></i></span></a>
-								<ul style="display: none; height: 120px; z-index:1;">
+								<ul style="display: none; height: 120px; z-index:1; padding-left: 0;">
 									<li class="disabled"><a href="#">교육 및 지역관련기관</a></li>
 									<li class="disabled"><a title="대구광역시교육청"
 										href="http://www.dge.go.kr">대구광역시교육청</a></li>
@@ -376,17 +375,18 @@
 										href="https://tong.daegu.go.kr/">대구평생학습포털</a></li>
 								</ul>
 							</div>
+							&nbsp;
 							<a href="#" class="btn">이동</a>
 							
 						</div>
 					</div>
 					<div class="foot-info">
 						<div class="info">
-							<a onclick="menu_idx75()"><b>개인정보처리방침</b></a> <span
+							<a onclick="menu_idx75()"><b style="color: lightgray;">개인정보처리방침</b></a> <span
 								class="bar">|</span>
 							<!-- <a href="/dmsl/html.do?menu_idx=95">이메일무단수집거부</a>
 						<span class="bar">|</span> -->
-							<a onclick="menu_idx77()">이용약관</a>
+							<a onclick="menu_idx77()" style="color: lightgray;">이용약관</a>
 						</div>
 					</div>
 					<address>

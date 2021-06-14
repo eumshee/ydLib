@@ -3,14 +3,14 @@
 <style>
  .col-md-12 a {
  	font-size: 1em;
- 	color: white;
+ 	color: lightgray;
  	text-decoration: none;
  }
- .col-md-12 a:hover { color: #89ba16; }
+ .col-md-12 a:hover { color: white; }
 </style>
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
-	style="background-image: url('resources/images/hero_1.jpg');" id="home-section">
+	style="background-image: url('resources/images/main.jpg');" id="home-section">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" align="center">
