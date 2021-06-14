@@ -31,6 +31,7 @@ private HistoryServiceImpl his;
 	public String adminMemberSearch2(Model model, HistoryVO vo) {
 		model.addAttribute("user",his.historySelect(vo));
 		model.addAttribute("historty",his.userHistorySelect(vo));
+		model.addAttribute("historyList",his.historySelectList());
 		return "admins/roanreturnManagement";
 	}
 	
@@ -38,7 +39,7 @@ private HistoryServiceImpl his;
 	public String insertHistory(HistoryVO vo) throws UnsupportedEncodingException {
 		String page = vo.getUser_Name();
 		String encodedParam = URLEncoder.encode(page, "UTF-8");
-		//his.historyInsert(vo);
+		his.historyInsert(vo);
 		return "redirect:adminMemberSearch2.do?user_Name="+encodedParam;
 	}
 	
@@ -49,5 +50,12 @@ private HistoryServiceImpl his;
 		String encodedParam = URLEncoder.encode(page, "UTF-8");
 		his.historyUpdate(vo);
 		return "redirect:adminMemberSearch2.do?user_Name="+encodedParam;
+	}
+	
+	//검색유저 history목록
+	@RequestMapping("/userHistory.do")
+	public String userHistory(HistoryVO vo, Model model) {
+		model.addAttribute("userHistory", his.userHistorySelectList(vo));
+		return "admins/roanreturnManagement";
 	}
 }

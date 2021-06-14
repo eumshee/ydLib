@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="//cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
 <script>
 function noticeDelete(num) {
 	let delChk = confirm("삭제하시겠습니까?");
@@ -9,7 +10,35 @@ function noticeDelete(num) {
 		location.href='noticeDelete.do?notice_Id='+num;
 	}
 }
+
+function noticeUpdate() {
+	if ($('#notice_Title').val() == "") {
+		frmUpdate.notice_Title.focus();
+		alert('제목을 입력하세요.');
+		return;
+	}
+	if ($('#notice_Content').val() == "") {
+		frmUpdate.notice_Content.focus();
+		alert('내용을 입력하세요.');
+		return;
+	}
+	console.log($('#notice_Title').val());
+	console.log($('#notice_Content').val());
+	console.log($('#notice_Id').val());
+	frmUpdate.submit();
+}
+
+$(function() {CKEDITOR.replace('notice_Content',
+		{
+			filebrowserUploadUrl : '${pageContext.request.contextPath}/ckupload',
+			height : '400px',
+			width : '100%'
+			});
+	});
+	
 </script>
+
+
 
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
@@ -43,9 +72,12 @@ function noticeDelete(num) {
 			</div>
 			<!--컨텐츠 영역-->
 			<div class="col-lg-8">
+				<form id="frmUpdate" action="noticeUpdate.do" method="post">
+					<input type="hidden" id="notice_Id" name="notice_Id" value="${vo.notice_Id }">
 				<table class="table">
 					<tr>
-						<td colspan="4" align="left"><h2>${vo.notice_Title}</h2></td>
+						<td colspan="4" align="left">
+						<h2><input type="text" class="form-control" id="notice_Title" name="notice_Title" value="${vo.notice_Title }"></h2></td>
 					</tr>
 					<tr>
 						<td>작성일</td>
@@ -54,16 +86,18 @@ function noticeDelete(num) {
 						<td>${vo.notice_Hit}</td>
 					</tr>
 					<tr>
-						<td colspan="4" align="left">${vo.notice_Content}</td>
+						<td colspan="4" align="left"><textarea id="notice_Content" name="notice_Content" >${vo.notice_Content}</textarea></td>
 					</tr>
+					<c:if test="${vo.notice_File ne null }">
 					<tr>
-					<td colspan="5" align="left">첨부파일 : ${vo.notice_File }</td>
+					<td colspan="5" align="left">첨부파일 : <a href="fileDownload.do?notice_File=${vo.notice_File}">${vo.notice_File }</a></td>
 					</tr>
+					</c:if>
 				</table>
-
+				</form>
 				<div align="center">
 					<button type="button" onclick="noticeDelete(${vo.notice_Id})" class="btn btn-light">삭제</button>
-					<button type="reset" class="btn btn-light">수정</button>
+					<button type="button" onclick="noticeUpdate()" class="btn btn-light">수정</button>
 					<br>
 				</div>
 				<div align="right">

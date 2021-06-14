@@ -8,6 +8,10 @@
 		or to_char(loan_date, 'yy/mm/dd') = to_char(sysdate, 'yy/mm/dd')
 	</select>
 	
+	<select id="userHistorySelectList" parameterType="com.yd.lib.history.vo.HistoryVO" resultType="com.yd.lib.history.vo.HistoryVO">
+	select * from history where user_Id =#{user_Id}
+	</select>
+	
 	<select id="adminHistorySelect" resultType="com.yd.lib.history.vo.HistoryVO" parameterType="com.yd.lib.history.vo.HistoryVO">
 		select loan_id, user_id, book_num, loan_date, return_duedate,return_date,GREATEST(TRUNC(sysdate - RETURN_DUEDATE),0) as return_Delaydays ,loan_status
 		from (select * from users u join history h using (USER_ID))

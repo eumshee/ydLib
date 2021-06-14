@@ -241,7 +241,22 @@
 
 
 </Style>
-
+<script>
+	function menu_idx75() {
+		var url= 'menu_idx75.do';
+		var winWidth = 700;
+	    var winHeight = 600;
+	    var popupOption= "width="+winWidth+", height="+winHeight;
+		window.open(url,"",popupOption);
+	}
+	function menu_idx77() {
+		var url= 'menu_idx77.do';
+		var winWidth = 700;
+	    var winHeight = 600;
+	    var popupOption= "width="+winWidth+", height="+winHeight;
+		window.open(url,"",popupOption);
+	}
+</script>
 
 <footer class="site-footer">
 	<a href="#top" class="smoothscroll scroll-top"> <span
@@ -367,11 +382,11 @@
 					</div>
 					<div class="foot-info">
 						<div class="info">
-							<a href="menu_idx75.do"><b>개인정보처리방침</b></a> <span
+							<a onclick="menu_idx75()"><b>개인정보처리방침</b></a> <span
 								class="bar">|</span>
 							<!-- <a href="/dmsl/html.do?menu_idx=95">이메일무단수집거부</a>
 						<span class="bar">|</span> -->
-							<a href="menu_idx77.do">이용약관</a>
+							<a onclick="menu_idx77()">이용약관</a>
 						</div>
 					</div>
 					<address>

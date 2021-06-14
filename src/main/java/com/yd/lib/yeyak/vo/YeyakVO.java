@@ -7,6 +7,15 @@ public class YeyakVO {
 	private String yeyak_Submit;
 	private String yeyak_Start;
 	private String yeyak_End;
+	private String yeyak_Processing;
+	
+	public String getYeyak_Processing() {
+		return yeyak_Processing;
+	}
+
+	public void setYeyak_Processing(String yeyak_Processing) {
+		this.yeyak_Processing = yeyak_Processing;
+	}
 
 	public int getYeyak_Num() {
 		return yeyak_Num;

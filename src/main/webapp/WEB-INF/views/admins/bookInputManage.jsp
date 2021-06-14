@@ -85,7 +85,7 @@
 </script>
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
-	style="background-image: url('resources/images/hero_1.jpg');"
+	style="background-image: url('resources/images/main.jpg');"
 	id="home-section">
 	<div class="container">
 		<div class="row">
@@ -106,7 +106,7 @@
 
 <!-- 도서입력폼 -->
 <section class="site-section">
- 	<div class="container">
+ 	<div class="container-fluid" style="width:80%;">
 		<div align="right">
 			<div class="col-lg-3">
 				<div class="col-6">
