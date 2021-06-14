@@ -2,8 +2,12 @@ package com.yd.lib.history.web;
 
 
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yd.lib.history.serviceImpl.HistoryServiceImpl;
 import com.yd.lib.history.vo.HistoryVO;
+import com.yd.lib.users.vo.UsersVO;
 
 @Controller
 public class HistoryController {
@@ -36,11 +41,19 @@ private HistoryServiceImpl his;
 	}
 	
 	@RequestMapping("/insertHistory.do")
-	public String insertHistory(HistoryVO vo) throws UnsupportedEncodingException {
+	public String insertHistory(HistoryVO vo, UsersVO uvo, HttpServletResponse resp) throws UnsupportedEncodingException {
+		resp.setContentType("text/html; charset=utf-8");
 		String page = vo.getUser_Name();
 		String encodedParam = URLEncoder.encode(page, "UTF-8");
-		his.historyInsert(vo);
-		return "redirect:adminMemberSearch2.do?user_Name="+encodedParam;
+		UsersVO rvo = his.adminUsersSelect(uvo);
+		String path = "";
+		if(rvo.getUser_Gubun().equals("삭제 회원")) {
+			path = "redirect:home.do";
+		}else {
+			his.historyInsert(vo);
+			path = "redirect:adminMemberSearch2.do?user_Name="+encodedParam;
+		}
+		return path;
 	}
 	
 	//반납처리

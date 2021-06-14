@@ -53,7 +53,7 @@ public class NoticeController {
 			//String ext = FilenameUtils.getExtension(originalFileName);	//확장자 구하기
 			//UUID uuid = UUID.randomUUID();	//UUID 구하기
 			fileName=originalFileName;
-			uploadFile.transferTo(new File("D:\\git\\ydLib\\src\\main\\webapp\\resources\\upload" + fileName));
+			uploadFile.transferTo(new File("D:\\git\\ydLib\\src\\main\\webapp\\resources\\upload\\" + fileName));
 			System.out.println(fileName);
 		} else {
 			System.out.println("첨부파일이 없습니다.");

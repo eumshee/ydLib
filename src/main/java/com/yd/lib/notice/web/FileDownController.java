@@ -36,7 +36,7 @@ public class FileDownController {
         } catch (UnsupportedEncodingException ex) {
             System.out.println("UnsupportedEncodingException");
         }
-        realFilename = "D:\\git\\ydLib\\src\\main\\webapp\\resources\\upload" + filename;
+        realFilename = "D:\\git\\ydLib\\src\\main\\webapp\\resources\\upload\\" + filename;
         System.out.println(realFilename);
         File file1 = new File(realFilename);
         if (!file1.exists()) {
