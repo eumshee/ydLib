@@ -116,6 +116,12 @@ public class BookVO {
 	public void setCan_Book_Cnt(int can_Book_Cnt) {
 		this.can_Book_Cnt = can_Book_Cnt;
 	}
+	public String getBook_Order() {
+		return book_Order;
+	}
+	public void setBook_Order(String book_Order) {
+		this.book_Order = book_Order;
+	}
 	
 	
 }
