@@ -51,4 +51,11 @@ private HistoryServiceImpl his;
 		his.historyUpdate(vo);
 		return "redirect:adminMemberSearch2.do?user_Name="+encodedParam;
 	}
+	
+	//검색유저 history목록
+	@RequestMapping("/userHistory.do")
+	public String userHistory(HistoryVO vo, Model model) {
+		model.addAttribute("userHistory", his.userHistorySelectList(vo));
+		return "admins/roanreturnManagement";
+	}
 }
