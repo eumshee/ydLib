@@ -30,7 +30,7 @@
 			error : function(err) {
 				alert("해당하는 회원정보가 없습니다. 다시 시도해주세요.");
 			}
-		});
+		});;
 		
 	}
 </script>
