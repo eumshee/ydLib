@@ -400,7 +400,7 @@ function findAddr(){
 						<th width="150">주소
 						</th>
 						<td width="300">
-						<input class="form-control" id="user_zip" type="text" name="userAddressZip" placeholder="Zip Code" readonly onclick="findAddr()">
+						<input class="form-control" id="user_post" type="text" name="userAddressZip" placeholder="Zip Code" readonly onclick="findAddr()">
 						</td>
 					</tr>
 					<tr>
