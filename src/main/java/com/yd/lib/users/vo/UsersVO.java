@@ -14,10 +14,16 @@ public class UsersVO {
 	private String user_Addr;
 	private String user_Email;
 	private Date user_Loansus;
+	private int return_Delaydays;
 	
 	
 	
-	
+	public int getReturn_Delaydays() {
+		return return_Delaydays;
+	}
+	public void setReturn_Delaydays(int return_Delaydays) {
+		this.return_Delaydays = return_Delaydays;
+	}
 	public Date getUser_Loansus() {
 		return user_Loansus;
 	}

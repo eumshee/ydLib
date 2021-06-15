@@ -15,6 +15,13 @@ public class HistoryServiceImpl implements HistoryService{
 @Autowired
 	private SqlSession sqlSession; 
 	
+	
+	//연체일 업데이트
+	public int loansusUpdate(UsersVO vo) {
+		
+		return sqlSession.update("loansusUpdate",vo);
+	}
+
 	//user 전체 검색(회원관리)
 	public List<UsersVO> adminSelectList(){
 		
@@ -50,9 +57,14 @@ public class HistoryServiceImpl implements HistoryService{
 		return sqlSession.selectList("userHistorySelectList",vo);
 	}
 	
+	//한명 대출목록
+	public HistoryVO historyOneSelect(HistoryVO vo) {
+		return sqlSession.selectOne("historyOneSelect",vo);
+	}
+	
 	//user 한명 검색(대출반납관리)
 	@Override
-	public HistoryVO historySelect(HistoryVO vo) {
+	public UsersVO historySelect(HistoryVO vo) {
 		return sqlSession.selectOne("adminUserSelect",vo);
 	}
 
@@ -64,6 +76,7 @@ public class HistoryServiceImpl implements HistoryService{
 
 	@Override
 	public int historyUpdate(HistoryVO vo) {
+		
 		return sqlSession.update("historyUpdate", vo);
 	}
 

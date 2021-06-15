@@ -3,6 +3,7 @@
 <%@ taglib prefix="x" uri="http://java.sun.com/jstl/fmt_rt" %>
 <jsp:useBean id="toDay" class="java.util.Date" />
 <x:formatDate value='${toDay}' pattern='yyyy-MM-dd' var="nowDate"/>
+<x:formatDate value='${user.user_Loansus }' pattern='yyyy-MM-dd' var="user_Loansus"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
 .member{
@@ -90,7 +91,7 @@ function seachcheck(){
 						<td>생년월일</td><td><b>${user.user_Birth }</b></td><td>전화번호</td><td><b>${user.user_Phone }</b></td>
 					</tr>
 					<tr>
-						<td colspan="2"> 이메일 </td><td colspan="2"><b>${user.user_Email }</b></td>
+						<td > 이메일 </td><td><b>${user.user_Email }</b></td><td>연체일</td><td><b style="color: red;">${user_Loansus }</b></td>
 					</tr>
 				</table>
 			</div>
@@ -107,8 +108,9 @@ function seachcheck(){
 							<c:forEach items="${historty }" var="vo" >
 								<c:if test="${vo.loan_Status ne '반납'}">
 									<form action="returnBook.do" method="post">
+										<input type="hidden" name="user_Id" value="${user.user_Id }">
 										<input type="hidden" id= "book_Num" name="book_Num" value="${vo.book_Num }">
-										<input type="hidden" id= "user_Name" name="user_Name" value="${vo.user_Name }">
+										<input type="hidden" id= "user_Name" name="user_Name" value="${user.user_Name }">
 										<tr>
 											<td>${vo.loan_Id }</td><td>${vo.book_Num }</td><td>${vo.loan_Date }</td>
 											<td>${vo.return_Duedate }</td><td>${vo.return_Delaydays }</td><td>${vo.loan_Status }</td><td><input type="submit" value="반납"></td>

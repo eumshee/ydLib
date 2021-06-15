@@ -131,4 +131,15 @@ public class HistoryVO {
 		this.user_Email = user_Email;
 	}
 
+	@Override
+	public String toString() {
+		return "HistoryVO [loan_Id=" + loan_Id + ", user_Id=" + user_Id + ", book_Num=" + book_Num + ", loan_Date="
+				+ loan_Date + ", return_Duedate=" + return_Duedate + ", return_Date=" + return_Date
+				+ ", return_Delaydays=" + return_Delaydays + ", loan_Status=" + loan_Status + ", user_Name=" + user_Name
+				+ ", user_Gubun=" + user_Gubun + ", user_Gender=" + user_Gender + ", user_Birth=" + user_Birth
+				+ ", user_Phone=" + user_Phone + ", user_Email=" + user_Email + "]";
+	}
+	
+	
+
 }
