@@ -23,7 +23,21 @@
 			alert('아이디를 입력하세요.');
 			return;
 		}
-		frm.submit();
+		let yeyakChk = confirm("예약상태를 확인하셨습니까?");
+		if (yeyakChk) {
+			frm.submit();
+		}
+	}
+	
+	// 유저체크창
+	function yeyakUserCheck() {
+		var userid = frm.user_Id.value;
+		console.log(userid);
+		var url= 'yeyakManageCheck.do?user_Id='+userid;  
+		var winWidth = 700;
+	    var winHeight = 600;
+	    var popupOption= "width="+winWidth+", height="+winHeight;
+		window.open(url,"",popupOption);
 	}
 
 	// 도서목록창
@@ -37,8 +51,7 @@
 
 	// 유저검색창
 	function userSearchPopup(){
-		var id = frm.user_Id.value;
-		var url= "yeyakUserSearch.do?user_Id="+id;
+		var url= "yeyakUserSearch.do";
 		var winWidth = 700;
 	    var winHeight = 600;
 	    var popupOption= "width="+winWidth+", height="+winHeight;
@@ -53,7 +66,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" align="center">
-				<h1 class="text-white font-weight-bold">도서목록</h1>
+				<h1 class="text-white font-weight-bold">예약도서관리</h1>
 			</div>
 			<div class="col-md-12" align="center">
 				<span><a href="memberManagemant.do">회원목록관리</a></span>&nbsp;&nbsp;
@@ -67,7 +80,7 @@
 	</div>
 </section>
 
-<!-- 도서입력폼 -->
+<!-- 예약도서 입력폼 -->
 <section class="site-section">
  	<div class="container-fluid" style="width:50%;">
 		<div align="right">
@@ -78,8 +91,12 @@
 					</button>
 				</div>	
 				<br>			
-			<div class="col-lg-3">			
+			<div class="col-lg-7">			
 				<span class="col-3">
+					<button type="button" class="btn btn-primary text-white btn-search"
+						onclick="userSearchPopup()">
+						<span class="icon-search-plus mx-auto"></span>&nbsp;회원검색
+					</button>
 					<button type="button" class="btn btn-primary text-white btn-search"
 						onclick="frmCheck()">
 						<span class="icon-plus mx-auto"></span>&nbsp;등록
@@ -104,7 +121,7 @@
 								class="icon-asterisk mx-auto" style="color: red;"></span></th>
 							<td><input type="text" placeholder="아이디" class="form-control"
 								id="user_Id" name="user_Id"></td>
-							<td><button type="button" onclick="userSearchPopup()">검색</button></td>
+							<td><button type="button" onclick="yeyakUserCheck()">체크</button></td>
 						</tr>
 					</table>
 				</form>
@@ -112,7 +129,7 @@
 		</div>
 	</div>
 	<div align="center">
-		<div class="col-lg-3">
+		<div class="col-lg-5">
 			<div class="col-5">
 				<button type="button" class="btn btn-primary text-white btn-search"
 					onclick="location.href='yeyakmanagemant.do'">

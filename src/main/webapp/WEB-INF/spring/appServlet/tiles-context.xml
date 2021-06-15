@@ -14,4 +14,13 @@
 		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"/>
 	</definition>
 
+	<!-- no tiles -->
+	<definition name="empty" template="/WEB-INF/views/tiles/empty.jsp">
+        <put-attribute name="content" value=""/>  
+    </definition>
+
+	<definition name="*/empty/*.jsp" extends="empty">
+          <put-attribute name="content" value="/WEB-INF/views/{1}/empty/{2}.jsp"></put-attribute>
+    </definition>
+
 </tiles-definitions>

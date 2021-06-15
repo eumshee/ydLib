@@ -2,7 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yd.lib.admins.serviceImpl.yeyakManage-mapper">
 	<select id="yeyakManageList" resultType="com.yd.lib.yeyak.vo.YeyakVO">
-		select * from yeyak order by yeyak_num
+		select y.*, b.book_isbn from yeyak y
+	    join book b on y.book_num=b.book_num 
+	    order by y.yeyak_num
 	</select>
 
 	<update id="yeyakProcessUpdate" parameterType="com.yd.lib.yeyak.vo.YeyakVO">
@@ -36,5 +38,11 @@
 
 	<select id="yeyakUserSearch" parameterType="com.yd.lib.users.vo.UsersVO" resultType="com.yd.lib.users.vo.UsersVO">
 		select * from users
+	</select>
+	
+	<select id="yeyakCheck" parameterType="com.yd.lib.yeyak.vo.YeyakVO" resultType="com.yd.lib.yeyak.vo.YeyakVO">
+	    select y.*,b.book_isbn from yeyak y
+	 	join book b on y.book_num=b.book_num 
+		where y.user_id = #{user_Id} and y.yeyak_processing in('예약신청','예약중')
 	</select>
 </mapper>

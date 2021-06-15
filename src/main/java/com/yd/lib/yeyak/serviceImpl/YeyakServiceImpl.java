@@ -34,5 +34,10 @@ public class YeyakServiceImpl implements YeyakService {
 	public List<UsersVO> yeyakUserSearch() {
 		return sqlSession.selectList("yeyakUserSearch");
 	}
+
+	@Override
+	public YeyakVO yeyakCheck(YeyakVO vo) {
+		return sqlSession.selectOne("yeyakCheck", vo);
+	}
 	
 }
