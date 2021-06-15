@@ -34,9 +34,28 @@ function seachcheck(){
 		return;
 	}else if( $('#user_Gubun').val()=="준회원" ){
 		alert('준회원입니다. 대출/반납/예약 이 불가능 합니다.')
+		return;
 	}else{
 		frm.book_Num.value=$('#bookSeach').val();
-		frm.submit();
+		$.ajax({
+			url:'checkBook.do',
+			type: 'post',
+			data: {book_Num: $('#bookSeach').val()},
+			success: function(result){
+				if(result>0){
+					alert('이미 대출중인 책입니다.');
+					$('#bookSeach').val("");
+					$('#bookSeach').focus();
+				}else{
+					alert('대출이 완료되었습니다.');
+					frm.submit();
+				}
+			},
+			error: function(err){
+				console.error(err);
+			}
+		})
+
 	}
 }
 

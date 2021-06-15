@@ -15,6 +15,12 @@ public class HistoryServiceImpl implements HistoryService{
 @Autowired
 	private SqlSession sqlSession; 
 	
+
+	//중복체크
+	public int bookCheck(HistoryVO vo) {
+		
+		return sqlSession.selectOne("checkBook",vo);
+	}
 	
 	//연체일 업데이트
 	public int loansusUpdate(UsersVO vo) {

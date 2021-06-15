@@ -1,11 +1,15 @@
 package com.yd.lib.history.web;
 
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.annotations.Param;
@@ -32,29 +36,30 @@ private HistoryServiceImpl his;
 		return "admins/roanreturnManagement";
 	}
 
-
+	
 	@RequestMapping("/adminMemberSearch2.do")
 	public String adminMemberSearch2(Model model, HistoryVO vo) {
-		model.addAttribute("user",his.historySelect(vo));
-		model.addAttribute("historty",his.userHistorySelect(vo));
-		model.addAttribute("historyList",his.historySelectList());
+		model.addAttribute("user",his.historySelect(vo)); //회원 1명 검색
+		model.addAttribute("historty",his.userHistorySelect(vo)); //회원에 대한 대출목록
+		model.addAttribute("historyList",his.historySelectList()); //대출 후 처리내역 확인
 		return "admins/roanreturnManagement";
 	}
 	
+	//대출처리
 	@RequestMapping("/insertHistory.do")
 	public String insertHistory(HistoryVO vo, UsersVO uvo, HttpServletResponse resp) throws UnsupportedEncodingException {
 		resp.setContentType("text/html; charset=utf-8");
 		String page = vo.getUser_Name();
 		String encodedParam = URLEncoder.encode(page, "UTF-8");
-		UsersVO rvo = his.adminUsersSelect(uvo);
-		String path = "";
-		if(rvo.getUser_Gubun().equals("삭제 회원")) {
-			path = "redirect:home.do";
-		}else {
-			his.historyInsert(vo);
-			path = "redirect:adminMemberSearch2.do?user_Name="+encodedParam;
-		}
-		return path;
+		his.historyInsert(vo);
+		return "redirect:adminMemberSearch2.do?user_Name="+encodedParam;
+	}
+	
+	//대출시 중복체크
+	@RequestMapping("/checkBook.do")
+	public void dopost(HttpServletRequest req, HttpServletResponse resp, HistoryVO vo) throws IOException {
+		int n = his.bookCheck(vo);
+		resp.getWriter().print(n);
 	}
 	
 	//반납처리

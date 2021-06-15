@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yd.lib.history.serviceImpl.history-mapper">
+	<!-- 대출시 중복체크 -->
+	<select id="checkBook" parameterType="com.yd.lib.history.vo.HistoryVO" resultType="int">
+		select 
+		count(case when book_num = #{book_Num} and loan_status = '대출' THEN 1 end) as count
+		from history
+	</select>
+	
+	<!-- 반납 대출(하루기준) 조회 -->
 	<select id="historyListSelect" resultType="com.yd.lib.history.vo.HistoryVO">
 		select *
 		from history
@@ -8,36 +16,43 @@
 		or to_char(loan_date, 'yy/mm/dd') = to_char(sysdate, 'yy/mm/dd')
 	</select>
 	
+	<!-- user1명 대출 전체목록 -->
 	<select id="userHistorySelectList" parameterType="com.yd.lib.history.vo.HistoryVO" resultType="com.yd.lib.history.vo.HistoryVO">
 	select * from history where user_Id =#{user_Id}
 	</select>
 	
+	<!-- user 한명에 대한 대출리스트 -->
 	<select id="adminHistorySelect" resultType="com.yd.lib.history.vo.HistoryVO" parameterType="com.yd.lib.history.vo.HistoryVO">
 		select loan_id, user_id, book_num, loan_date, return_duedate,return_date,GREATEST(TRUNC(sysdate - RETURN_DUEDATE),0) as return_Delaydays ,loan_status
 		from (select * from users u join history h using (USER_ID))
 		where user_name = #{user_Name}
 	</select>
 
+	<!-- user 조회 -->
 	<select id="adminUserSelect" resultType="com.yd.lib.users.vo.UsersVO" parameterType="com.yd.lib.history.vo.HistoryVO">
 		select * from users where user_name=#{user_Name}
 	</select>
 	
+	<!-- 연체일 계산 유저조회 -->
 	<select id="historyOneSelect" resultType="com.yd.lib.history.vo.HistoryVO" parameterType="com.yd.lib.history.vo.HistoryVO">
 		select GREATEST(max(return_delaydays)-1,0) as return_Delaydays from history
 		where to_char(return_date,'yyyy/mm/dd') = to_char(sysdate,'yyyy/mm/dd')
         and user_id = #{user_Id}
 	</select>
 	
+	<!-- 대출 insert -->
 	<insert id="historyInsert" parameterType="com.yd.lib.history.vo.HistoryVO">
 		insert into history(loan_id,user_id,book_num,loan_date,return_duedate,loan_status)
 		values(loan_id.nextval, #{user_Id}, #{book_Num}, sysdate, sysdate+15, '대출')
 	</insert>
 	
+	<!-- 반납처리 -->
 	<update id="historyUpdate" parameterType="com.yd.lib.history.vo.HistoryVO">
 	update history set loan_status = '반납' , RETURN_DATE = sysdate , RETURN_DELAYDAYS = GREATEST(TRUNC(sysdate - RETURN_DUEDATE),0)
 	where BOOK_NUM=#{book_Num}
 	</update>
 	
+	<!-- userTable 연체일처리 -->
 	<update id="loansusUpdate" parameterType="com.yd.lib.users.vo.UsersVO">
 		update users set USER_LOANSUS = sysdate + #{return_Delaydays} where user_id = #{user_Id}
 	</update>
