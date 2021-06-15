@@ -38,6 +38,12 @@ $(function() {CKEDITOR.replace('notice_Content',
 	
 </script>
 
+<style>
+h4 {
+	font-weight: bold;
+}
+</style>
+
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
 	style="background-image: url('resources/images/main.jpg');"
@@ -75,30 +81,48 @@ $(function() {CKEDITOR.replace('notice_Content',
 				<table class="table">
 					<tr>
 						<td colspan="4" align="left">
-						<h2><input type="text" class="form-control" id="notice_Title" name="notice_Title" value="${vo.notice_Title }"></h2></td>
+						<c:choose>
+							<c:when test="${loginUserVO.user_Id eq 'admin'}">
+								<input type="text" class="form-control" id="notice_Title" name="notice_Title" value="${vo.notice_Title}">
+							</c:when>
+							<c:otherwise>
+								<h4>${vo.notice_Title}</h4>
+							</c:otherwise>
+						</c:choose>
 					</tr>
 					<tr>
-						<td>작성일</td>
+						<th>작성일</th>
 						<td width="70%" align="left">${vo.notice_Date}</td>
-						<td>조회수</td>
+						<th>조회수</th>
 						<td>${vo.notice_Hit}</td>
 					</tr>
 					<tr>
-						<td colspan="4" align="left"><textarea id="notice_Content" name="notice_Content" >${vo.notice_Content}</textarea></td>
+						<td colspan="4" align="left">
+						<c:choose>
+							<c:when test="${loginUserVO.user_Id eq 'admin'}">
+								<textarea id="notice_Content" name="notice_Content">${vo.notice_Content}</textarea>
+							</c:when>
+							<c:otherwise>
+								${vo.notice_Content}
+							</c:otherwise>
+						</c:choose>
+						</td>
 					</tr>
 					<tr>
-					<td colspan="5" align="left">첨부파일 : <a href="fileDownload.do?notice_File=${vo.notice_File}">${vo.notice_File }</a></td>
+					<th>첨부파일</th>
+					<td colspan="4" align="left"><a href="fileDownload.do?notice_File=${vo.notice_File}">${vo.notice_File }</a></td>
 					</tr>
 				</table>
 				</form>
-				<div align="center">
-					<button type="button" onclick="noticeDelete(${vo.notice_Id})" class="btn btn-light">삭제</button>
-					<button type="button" onclick="noticeUpdate()" class="btn btn-light">수정</button>
-					<br>
-				</div>
+				<c:if test="${loginUserVO.user_Id eq 'admin'}">
+					<div align="center">
+						<button type="button" onclick="noticeDelete(${vo.notice_Id})" class="btn btn-light">삭제</button>
+						<button type="button" onclick="noticeUpdate()" class="btn btn-light">수정</button>
+						<br>
+					</div>
+				</c:if>
 				<div align="right">
-					<button type="button" onclick="location.href='noticeList.do'"
-						class="btn btn-light">목록으로</button>
+					<button type="button" onclick="location.href='noticeList.do'" class="btn btn-light">목록으로</button>
 				</div>
 			</div>
 		</div>

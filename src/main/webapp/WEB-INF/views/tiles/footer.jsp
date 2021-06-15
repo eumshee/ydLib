@@ -17,7 +17,7 @@
 
 #footer .top {
 	position: relative;
-	height: 50px;
+	height: 20px;
 	border-top: 1px solid #e4e4e4;
 	border-bottom: 1px solid #e4e4e4
 }
@@ -259,7 +259,6 @@
 	</a>
 
 	<div class="container-fluid" style="width:70%">
-		<br><br><br>
 		<div id="footer">
 			<div class="bottom">
 				<div class="section" style="position: relative; ">

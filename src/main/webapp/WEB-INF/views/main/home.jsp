@@ -1,5 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<style>
+.site-footer .scroll-top {
+	position: absolute;
+	z-index: 5;
+	top: 0;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: #fff;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	-webkit-box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+</style>
  <!-- HOME -->
 <section class="home-section section-hero overlay bg-image" style="background-image: url('resources/images/main.jpg');" id="home-section">
 

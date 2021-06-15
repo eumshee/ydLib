@@ -123,11 +123,12 @@ div.dataTables_wrapper div.dataTables_paginate {
 						</c:forEach>
 					</tbody>
 				</table>
-								<div align="right">
-					<a href="noticeInsertForm.do"><button type="submit"
-							class="btn btn-primary text-white btn-search">글쓰기</button></a><br>
+					<c:if test="${loginUserVO.user_Id eq 'admin'}">
+						<div align="right">
+						<a href="noticeInsertForm.do"><button type="submit"class="btn btn-primary text-white btn-search">글쓰기</button></a>
+						</div>
+					</c:if>
 				</div>
 			</div>
 		</div>
-	</div>
 </section>

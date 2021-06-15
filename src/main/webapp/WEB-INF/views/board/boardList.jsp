@@ -136,10 +136,12 @@ $(document).ready(function() {
 						</c:forEach>
 					</tbody>
 				</table>
-				<div align="right">
-					<a href="boardInsertForm.do"><button type="submit"
-							class="btn btn-primary text-white btn-search">글쓰기</button></a><br>
-				</div>
+				<c:if test="${loginUserVO.user_Id ne null}">
+					<div align="right">
+						<a href="boardInsertForm.do"><button type="submit"
+								class="btn btn-primary text-white btn-search">글쓰기</button></a><br>
+					</div>
+				</c:if>
 			</div>
 		</div>
 	</div>
