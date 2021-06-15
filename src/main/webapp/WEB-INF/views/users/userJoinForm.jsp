@@ -230,7 +230,7 @@ function findAddr(){
 			return false;
 		}
 		if (frm.user_detailedAddr.value == "") {
-			alert("주소를 입력하세요");
+			alert("상세주소를 입력하세요");
 			frm.smsKey.focus();
 			return false;
 		}
@@ -365,7 +365,7 @@ function findAddr(){
  						<tr>
  						<th></th>
  						<td width="350" colspan="2">
- 						<input class="form-control" type="text" placeholder="인증코드를 입력하세요" id="emailCode" value="">
+ 						<input class="form-control" type="text" placeholder="이메일 인증코드" id="emailCode" value="">
  						</td>
  						<td>
  						<button class="btn btn-light" type="button" id="checkEmail" value="unChecked">인증코드 확인</button>
@@ -384,9 +384,9 @@ function findAddr(){
 						</td>
 					</tr>
 					<tr>
-						<th>인증 번호</th>
+						<th></th>
 						<td width="350" colspan="2">
- 						<input class="form-control" type="text" placeholder="인증번호를 입력하세요" id="smsKey" value="">
+ 						<input class="form-control" type="text" placeholder="문자 인증번호" id="smsKey" value="">
  						</td>
  						<td>
  						<button class="btn btn-light" type="button" id="checkSMS" value="unChecked">인증번호 확인</button>

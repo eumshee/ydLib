@@ -24,9 +24,22 @@
 	</select>
 
 
-	<update id="userUpdate">
-		
+	<update id="userPwUpdate" parameterType="hashmap">
+		update users set user_pw=#{user_Pw} where user_id=#{user_Id}
 	</update>
+	
+	<update id="userEmailUpdate" parameterType="hashmap">
+		update users set user_Email=#{user_Email} where user_Id=#{user_Id}
+	</update>
+	
+	<update id="userPhoneUpdate" parameterType="hashmap">
+		update users set user_Phone=#{user_Phone} where user_Id=#{user_Id}
+	</update>
+	
+	<update id="userAddrUpdate" parameterType="hashmap">
+		update users set user_Addr=#{user_Addr} where user_Id=#{user_Id}
+	</update>
+	
 	
 	
 	

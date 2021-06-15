@@ -72,38 +72,6 @@ $(function() {
 	});
 </script>
 
-<script>
-	//아이디 중복체크
-	$(function() {
-		$('#idCheck').click(function() {
-			if($('#user_Id').val()=="") {
-				alert('아이디를 입력하세요.');
-				$('#user_Id').focus();
-				return;
-			}
-			$.ajax({
-				url:'userIdCheck.do',
-				data: {id: $('#user_Id').val()},
-				type: 'post',
-				success: function(data){
-					if(data>0) {
-						alert('등록된 아이디가 존재합니다. 새로운 아이디를 입력하세요');
-						$('#user_Id').val('');
-						$('#user_Id').focus();
-					} else{
-						alert('사용가능한 아이디입니다!');
-						$('#idCheck').val("checked");
-						$('#user_Pw').focus();
-					}
-				},
-				error: function(err){
-					alert('에러가 발생했습니다. 관리자에게 문의해주세요.');
-				}
-			});
-		});
-	});
-</script>
-
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"> //주소입력 스크립트
 </script>
@@ -193,60 +161,49 @@ function findAddr(){
 		});
 	});
 	function formCheck() {
-		if (frm.user_Id.value == "") {
-			alert("아이디를 입력하세요.");
-			frm.user_Id.focus();
+		
+		/* if (frm.user_Pw.value == "" && frm.user_Email.value == "" && frm.user_Phone.value == "" && frm.user_post.value == "") {
+			var delConfirm = confirm("수정할 내용이 없습니다. 홈으로 돌아가시겠습니까?");
+			   if (delConfirm) {
+			      alert('수정을 취소하고 홈화면으로 이동합니다.');
+			      window.location="home.do";
+			   }
+			   else {
+			   }
 			return false;
-		}
-		if (frm.idCheck.value == 'UnChecked') {
-			alert("ID 중복체크를 하세요.");
-			return false;
-		}
-		if (frm.user_Pw.value == "") {
-			alert("비밀번호를 입력하세요.");
-			frm.user_Pw.focus();
-			return false;
-		}
+		} */
 
 		if (frm.user_Pw.value != frm.user_Pw2.value) {
 			alert("비밀번호를 재확인하세요.");
 			frm.user_Pw2.focus();
 			return false;
 		}
-		if (frm.user_Name.value == "") {
-			alert("이름을 입력하세요.");
-			return false;
-		}
-		if (frm.user_Email.value == "") {
-			alert("이메일을 입력하세요.");
-			return false;
-		}
-		if (frm.user_Phone.value == "") {
-			alert("휴대폰번호를 입력하세요.");
-			return false;
-		}
-		if (frm.user_post.value == "") {
-			alert("주소를 입력하세요");
-			frm.smsKey.focus();
-			return false;
-		}
+		
+		if (frm.user_post.value != "") {
 		if (frm.user_detailedAddr.value == "") {
-			alert("주소를 입력하세요");
-			frm.smsKey.focus();
+			alert("상세주소를 입력하세요");
+			frm.user_detailedAddr.focus();
 			return false;
+			}
 		}
+		
+		/* if (frm.user_Email.value != "") {
 		if (frm.checkEmail.value == "unChecked") {
 			alert("이메일을 인증 하세요");
 			frm.emailCode.focus();
 			return false;
-		}  
+			}
+		}
+		if (frm.user_Phone.value != "") {
 		if (frm.checkSMS.value == "unChecked") {
 			alert("문자 인증을 하세요");
 			frm.smsKey.focus();
 			return false;
-		}   
+			}
+		} */
+		
 		frm.submit();
-		alert("정상적으로 회원가입 되었습니다");
+		alert("회원정보가 정상적으로 수정되었습니다");
 	}
 </script>
 
@@ -285,29 +242,31 @@ function findAddr(){
 			<div align="center">
 					<h4>내정보 수정</h4>
 			<br>
-			<form id="frm" action="userJoin.do" method="post">
+			<form id="frm" action="userUpdate.do" method="post">
 			<table style="border:1; border-collapse:collapse;">
 					<tr>
 						<th width="150">아이디</th>
 						<td width="300">
 							  <div> <span class="input-group-text" id="inputGroup-sizing-sm"> ${loginUserVO.user_Id}</span> </div>
+							  <input type="hidden" id="user_Id" name="user_Id" value="${loginUserVO.user_Id}">
 						</td>
 					</tr>
 					<tr>
-						<th width="150">새로운 비밀번호</th>
-						<td width="300" colspan="2">
+						<th width="150">변경할 비밀번호</th>
+						<td width="300" >
 						<input class="form-control" type="password" id="user_Pw"
-							name="user_Pw"></td>
+							name="user_Pw">	
+						</td>
 					</tr>
 					<tr>
 						<th width="150">비밀번호 재확인</th>
-						<td width="300" colspan="2">
+						<td width="300" >
 						<input class="form-control" type="password" id="user_Pw2"
 							name="user_Pw2"></td>
 					</tr>
 					<tr>
 						<th width="150">이름</th>
-						<td width="300" colspan="2">
+						<td width="300" >
 						<span class="input-group-text" id="inputGroup-sizing-sm"> ${loginUserVO.user_Name}</span>
 						</td>
 					</tr>
@@ -315,12 +274,12 @@ function findAddr(){
 					<tr>
 						<th width="150">성별</th>
 						<c:if test="${loginUserVO.user_Gender eq 'W'}">
-						<td width="300" colspan="2">
+						<td width="300">
 						<span class="input-group-text" id="inputGroup-sizing-sm">여</span>
 						</td>
 						</c:if>
 						<c:if test="${loginUserVO.user_Gender eq 'M'}">
-						<td width="300" colspan="2">
+						<td width="300">
 						<span class="input-group-text" id="inputGroup-sizing-sm">남</span>
 						</td>
 						</c:if>
@@ -328,18 +287,17 @@ function findAddr(){
 					
 					<tr>
 						<th width="150">생년월일</th>
-						<td width="300" colspan="2">
+						<td width="300">
 						<span class="input-group-text" id="inputGroup-sizing-sm">
-						<%  %>
-						
+						${loginUserVOBirth }
 						</span>
 						</td>
 					</tr>
 					
 
 					<tr>
-						<th>이메일</th>
-						<td width="350" colspan="2">
+						<th>변경할 이메일</th>
+						<td width="150" colspan="2" >
  						<input class="form-control" type="text" id="user_Email" name="user_Email" value="">
  						</td>
  						<td>
@@ -348,19 +306,19 @@ function findAddr(){
  						</tr>
  						<tr>
  						<th></th>
- 						<td width="350" colspan="2">
- 						<input class="form-control" type="text" placeholder="인증코드를 입력하세요" id="emailCode" value="">
+ 						<td width="300" >
+ 						<input class="form-control" type="text" placeholder="이메일 인증코드" id="emailCode" value="">
  						</td>
  						<td>
  						<button class="btn btn-light" type="button" id="checkEmail" value="unChecked">인증코드 확인</button>
 						</td>
 					</tr>
 					
-					<tr><td colspan="2">&nbsp;</td></tr>
+					<tr><td colspan="3">&nbsp;</td></tr>
 					
 					<tr>
-						<th width="150">전화번호</th>
-						<td width="350" colspan="2"><input class="form-control" type="text" id="user_Phone"
+						<th width="150">변경할 전화번호</th>
+						<td width="150" colspan="2"><input class="form-control" type="text" id="user_Phone"
 							name="user_Phone" placeholder ="'-'없이 숫자만 입력" >
 						</td>
 						<td>
@@ -368,9 +326,9 @@ function findAddr(){
 						</td>
 					</tr>
 					<tr>
-						<th>인증 번호</th>
-						<td width="350" colspan="2">
- 						<input class="form-control" type="text" placeholder="인증번호를 입력하세요" id="smsKey" value="">
+						<th></th>
+						<td width="350" >
+ 						<input class="form-control" type="text" placeholder="문자 인증번호" id="smsKey" value="">
  						</td>
  						<td>
  						<button class="btn btn-light" type="button" id="checkSMS" value="unChecked">인증번호 확인</button>
@@ -378,10 +336,10 @@ function findAddr(){
 					</tr>
 					<tr><td colspan="2">&nbsp;</td></tr>
 					<tr>
-						<th width="150">주소
+						<th width="150">변경할 주소
 						</th>
 						<td width="300">
-						<input class="form-control" id="user_post" type="text" name="userAddressZip" placeholder="Zip Code" readonly onclick="findAddr()">
+						<input class="form-control" id="user_post" type="text" name="userAddressZip" placeholder="Zip Code" readonly onclick="findAddr()">	
 						</td>
 					</tr>
 					<tr>
@@ -399,7 +357,7 @@ function findAddr(){
 			</table>
 			</form>
 			<br><br>
-				<button class="btn btn-light" type="button" onclick="formCheck()">회원가입</button>
+				<button class="btn btn-light" type="button" onclick="formCheck()">정보수정</button>
 			</div>
 			
 			</div>

@@ -47,17 +47,16 @@ public class UsersController {
 			UsersVO rvo = UsersDAO.userLoginCheck(vo);
 			String id = rvo.getUser_Id();
 			String userBirth = rvo.getUser_Birth();
-			String userBirthYear = userBirth.substring(0, 0);
-			String userBirthMonth = rvo.getUser_Birth();
-			String userBirthDay = rvo.getUser_Birth();
+			String userBirthYear = userBirth.substring(0, 4);
+			String userBirthMonth = userBirth.substring(5,7);
+			String userBirthDay = userBirth.substring(8,10);
 			
 	        
 			HttpSession session = request.getSession();
 	        if(rvo != null) {
 	        session.setAttribute("loginUserVO", rvo);
-	        session.setAttribute("loginUserBirth", userBirthYear);
-	        session.setAttribute("loginUserBirth", userBirthMonth);
-	        session.setAttribute("loginUserBirth", userBirthDay);
+	        //my page 표시용
+	        session.setAttribute("loginUserVOBirth", userBirthYear+"년 " + userBirthMonth+"월 " + userBirthDay +"일 ");
 	        } 
 	        
 	        return id;
@@ -103,17 +102,15 @@ public class UsersController {
 	@RequestMapping("/userJoin.do")
 	public String userJoin(UsersVO vo, HttpServletRequest request) throws ParseException {
 		
-	
+		//테이블양식에 맞게 birth 수정 
 		String birthYear = request.getParameter("user_BirthYear");
 		String birthMonth = request.getParameter("user_BirthMonth");
 		String birthDay = request.getParameter("user_BirthDay");
 		
-		
 		String user_Birth = birthDay + "/" + birthMonth + "/" +birthYear;
-		 
 	    Date user_Birth1 =new SimpleDateFormat("dd/MM/yyyy").parse(user_Birth);  
 		
-	    
+	    //테이블양식에 맞게 address 수정 
 		String user_post = request.getParameter("userAddressZip");
 		String user_addr = request.getParameter("userAddress");
 		String user_detailedAddr = request.getParameter("userAddressDetail");
@@ -144,10 +141,52 @@ public class UsersController {
 	}
 	
 	
-	//------------------------------- 유저 정보수정 ------------------------------ //
+	// ------------------------------- 유저 정보수정 ------------------------------ //
+	
 	@RequestMapping("/userPage.do")
 	public String userPage() {
 		return "users/userPage";
+	}
+	
+	@RequestMapping("/userUpdate.do")
+	public String userUpdate(UsersVO vo, HttpServletRequest request) {
 		
+		String id = request.getParameter("user_Id");
+		
+		
+		// 테이블양식에 맞게 address 수정
+		String user_post = request.getParameter("userAddressZip");
+		String user_addr = request.getParameter("userAddress");
+		String user_detailedAddr = request.getParameter("userAddressDetail");
+
+		String user_Addr = user_addr + " " + user_detailedAddr + " " + user_post;
+
+		HashMap<String, Object> param = new HashMap<>(); 
+		param.put("user_Id", id);
+		
+		
+		if(!vo.getUser_Pw().equals("")) {
+			param.put("user_Pw", vo.getUser_Pw());
+			UsersDAO.userPwUpdate(param);
+		} 
+		if (!vo.getUser_Email().equals("")) {
+			param.put("user_Email", vo.getUser_Email());
+			UsersDAO.userEmailUpdate(param);
+		} 
+		
+		if(!vo.getUser_Phone().equals("")) { 
+			param.put("user_Phone", vo.getUser_Phone());
+		  	UsersDAO.userPhoneUpdate(param); 
+		} 
+		
+		if (!user_post.equals("")) {
+			param.put("user_Addr", user_Addr); 
+			UsersDAO.userAddrUpdate(param); 
+		} 
+		 
+		
+		return "redirect:home.do";
+		
+
 	}
 }

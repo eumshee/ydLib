@@ -26,6 +26,8 @@ public class UsersServiceImpl {
 		return sqlSession.selectOne("loginCheck",vo);
 	}
 	
+	
+	//회원가입시 확인사항
 	public UsersVO emailCheck(@Param("p") String email) {
 		
 		return sqlSession.selectOne("emailCheck",email);
@@ -39,7 +41,28 @@ public class UsersServiceImpl {
 	public UsersVO idCheck(@Param("p") String id) {
 		
 		return sqlSession.selectOne("idCheck",id);
-}
+	}
 
+	
+	//회원정보 업데이트
+	public void userPwUpdate(HashMap<String, Object> param) {
+		
+		sqlSession.update("userPwUpdate", param);
+	}
+	
+	public void userEmailUpdate(HashMap<String, Object> param) {
+	
+		sqlSession.update("userEmailUpdate", param);
+	}
 
+	public void userPhoneUpdate(HashMap<String, Object> param) {
+	
+	sqlSession.update("userPhoneUpdate", param);
+	}
+	public void userAddrUpdate(HashMap<String, Object> param) {
+	
+	sqlSession.update("userAddrUpdate", param);
+	}
+
+	
 }
