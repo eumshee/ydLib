@@ -4,6 +4,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+}
+
+.pagination a.active {
+  background-color: #89ba16;
+  color: white;
+  border: 1px solid #89ba16;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+</style>
 <script type="text/javascript">
 	function order() {
 		var order = $('#orderSelect').val();
@@ -14,6 +36,11 @@
 	function bookInfo(Isbn) {
 		ifrm.book_Isbn.value=Isbn;
 		ifrm.submit();
+	}
+</script>
+<script type="text/javascript">
+	function goPage(page , bookOrder , bookTitle , bookAut , bookPub) {
+		location.href="bookSerch.do?page="+page+"&book_Order="+bookOrder+"&book_Title="+bookTitle+"&book_Aut="+bookAut+"&book_Pub="+bookPub;
 	}
 </script>
 </head>
