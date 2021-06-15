@@ -12,5 +12,7 @@ public interface BookService {
 	public int userYeyakCheck(UsersVO vo);
 	public void userYeyakInsert(YeyakVO vo);
 	public List<BookVO> bookSerchListPaging(BookVO vo);
+	public List<BookVO> newBook(BookVO vo);
+	public List<BookVO> newBookPaging(BookVO vo);
 	
 }

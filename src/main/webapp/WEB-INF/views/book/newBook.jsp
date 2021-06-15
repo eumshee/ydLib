@@ -38,8 +38,8 @@
 	}
 </script>
 <script type="text/javascript">
-	function goPage(page , bookOrder , bookTitle , bookAut , bookPub) {
-		location.href="bookSerch.do?page="+page+"&book_Order="+bookOrder+"&book_Title="+bookTitle+"&book_Aut="+bookAut+"&book_Pub="+bookPub;
+	function goPage(page) {
+		location.href="newBook.do?page="+page;
 	}
 </script>
 </head>
@@ -51,7 +51,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12" align="center">
-					<h1 class="text-white font-weight-bold">통합검색${loginUserVO.user_Id}</h1>
+					<h1 class="text-white font-weight-bold">신착 도서</h1>
 				</div>
 			</div>
 		</div>
@@ -74,33 +74,11 @@
 				</div>
 				<!--컨텐츠 영역-->
 				<div class="col-lg-8">
-					<form action="bookSerch.do" method="get" id="serchFrm">
-						<input type="hidden" id="book_Order" name="book_Order">
-						<input type="text" id="book_Title" name="book_Title" placeholder="도서 제목을 입력하세요" value="${reqVO.book_Title }">
-						<br> 
-						저자 : <input type="text" id="book_Aut" name="book_Aut" value="${reqVO.book_Aut }">
-						<br> 
-						출판사 : <input type="text" id="book_Pub" name="book_Pub" value="${reqVO.book_Pub }">
-						<br>
-						<input type="submit" value="검색">
-					</form>
-					<hr>
-					<c:if test="${empty bookSerchList}">
-							원하는 자료를 검색하세요
-					</c:if>
-					<c:if test="${!empty bookSerchList}">
-						<select id="orderSelect" name="orderSelect">
-							<option value="정렬종류">정렬종류</option>
-  							<option value="book_title">제목</option>
-  							<option value="book_aut">저자</option>
-  							<option value="book_location">배가위치</option>
-  							<option value="book_subject">주제</option>
-						</select>
-						<button onclick="order()">정렬</button>
-						<form action="bookInfo.do" id="ifrm">
+					<h2>신착 도서는 한달 이내에 입고된 도서들 입니다.</h2>
+					<form action="bookInfo.do" id="ifrm">
 						<input type="hidden" id="book_Isbn" name="book_Isbn">
 						<ul class="job-listings mb-5">
-							<c:forEach items="${bookSerchList }" var="book">
+							<c:forEach items="${newBookList }" var="book">
 								<li	class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
 									<a onclick="bookInfo(${book.book_Isbn})"></a>
 									<div class="job-listing-logo">
@@ -148,7 +126,6 @@
 									</div>
 								</li>
 							</c:forEach>
-						
 						</ul>
 						</form>
 						<div class="col-lg-12 text-center">
@@ -162,7 +139,6 @@
 								<jsp:param name="finalPageNo" value="${paging.finalPageNo}" />
 							</jsp:include>
 						</div>
-					</c:if>
 				</div>
 			</div>
 		</div>
