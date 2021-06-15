@@ -37,6 +37,22 @@ public class BookServiceImpl implements BookService{
 	public void userYeyakInsert(YeyakVO vo) {
 		sqlSession.insert("yeyakOneInsert", vo);
 	}
+
+	@Override
+	public List<BookVO> bookSerchListPaging(BookVO vo) {
+		return sqlSession.selectList("bookSerchListPaging" , vo);
+	}
+
+	@Override
+	public List<BookVO> newBook(BookVO vo) {
+		return sqlSession.selectList("newBook" , vo);
+	}
+
+	@Override
+	public List<BookVO> newBookPaging(BookVO vo) {
+		return sqlSession.selectList("newBookPaging" , vo);
+	}
+	
 	
 	
 	

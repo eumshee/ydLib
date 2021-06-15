@@ -20,7 +20,8 @@ public class BookVO {
 	private String book_Order;//정렬을 위한 값
 	private String return_Duedate;//반남예정일
 	private String yeyak_Processing;//예약유무 파악
-	
+	private int firstCnt;
+	private int lastCnt;
 	
 	public String getBook_Bigo() {
 		return book_Bigo;
@@ -135,6 +136,18 @@ public class BookVO {
 	}
 	public void setYeyak_Processing(String yeyak_Processing) {
 		this.yeyak_Processing = yeyak_Processing;
+	}
+	public int getFirstCnt() {
+		return firstCnt;
+	}
+	public void setFirstCnt(int firstCnt) {
+		this.firstCnt = firstCnt;
+	}
+	public int getLastCnt() {
+		return lastCnt;
+	}
+	public void setLastCnt(int lastCnt) {
+		this.lastCnt = lastCnt;
 	}
 	
 	

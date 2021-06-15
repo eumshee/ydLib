@@ -18,12 +18,12 @@ public class HomeController {
 	
 	@RequestMapping("/menu_idx75.do")
 	public String menu_idx75(Model model) {
-		return "main/menu_idx75";
+		return "main/empty/menu_idx75";
 	}
 
 	@RequestMapping("/menu_idx77.do")
 	public String menu_idx77(Model model) {
-		return "main/menu_idx77";
+		return "main/empty/menu_idx77";
 	}
 	
 }

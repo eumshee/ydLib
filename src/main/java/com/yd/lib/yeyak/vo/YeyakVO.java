@@ -8,7 +8,16 @@ public class YeyakVO {
 	private String yeyak_Start;
 	private String yeyak_End;
 	private String yeyak_Processing;
-	
+	private String book_Isbn; // book_num 상세조회
+
+	public String getBook_Isbn() {
+		return book_Isbn;
+	}
+
+	public void setBook_Isbn(String book_Isbn) {
+		this.book_Isbn = book_Isbn;
+	}
+
 	public String getYeyak_Processing() {
 		return yeyak_Processing;
 	}

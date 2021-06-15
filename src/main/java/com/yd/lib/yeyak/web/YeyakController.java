@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.yd.lib.users.vo.UsersVO;
 import com.yd.lib.yeyak.serviceImpl.YeyakServiceImpl;
 import com.yd.lib.yeyak.vo.YeyakVO;
 
@@ -45,7 +44,15 @@ public class YeyakController {
 	@RequestMapping("/yeyakUserSearch.do")
 	public String yeyakUserSearch(Model model) {
 		model.addAttribute("userList",ysi.yeyakUserSearch());
-		return "admins/yeyakUserSearch";
+		return "yeyak/empty/yeyakUserSearch";
+	}
+	
+	// 예약상태확인
+	@RequestMapping("/yeyakManageCheck.do")
+	public String yeyakCheck(Model model, YeyakVO vo) {
+		model.addAttribute("yeyakUser",ysi.yeyakCheck(vo));
+		return "yeyak/empty/yeyakManageCheck";
 	}
 
 }
+

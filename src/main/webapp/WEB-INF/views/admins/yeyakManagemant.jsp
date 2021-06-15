@@ -2,6 +2,21 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<head>
+    <link rel="stylesheet" href="resources/css/custom-bs.css">
+    <link rel="stylesheet" href="resources/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="resources/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="resources/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="resources/fonts/line-icons/style.css">
+    <link rel="stylesheet" href="resources/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="resources/css/animate.min.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="resources/vendor/datatables/dataTables.bootstrap4.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="resources/css/style.css">    
+</head>
 <style>
 	th, td {
 		vertical-align: middle !important;
@@ -14,8 +29,8 @@
 	 .col-md-12 a:hover { color: white; }
 </style>
 <script>
-	function bkDetail(num) {
-		var url= 'bookDetailManage.do?book_Num='+num;
+	function bkDetail(num,isbn) {
+		var url= 'bookDetailManage.do?book_Num='+num+"&book_Isbn="+isbn;
 		var winWidth = 700;
 	    var winHeight = 600;
 	    var popupOption= "width="+winWidth+", height="+winHeight;
@@ -91,7 +106,7 @@
 									<c:forEach items="${yeyakList }" var="vo">
 										<tr>
 											<td>${vo.yeyak_Num }</td>
-											<td onclick="bkDetail(${vo.book_Num })">${vo.book_Num }</td>
+											<td onclick="bkDetail(${vo.book_Num },'${vo.book_Isbn }')">${vo.book_Num }</td>
 											<td>${vo.user_Id }</td>
 											<td>${fn:substring(vo.yeyak_Submit,0,10) }</td>
 											<td>${fn:substring(vo.yeyak_Start,0,10) }</td>

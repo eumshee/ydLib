@@ -10,4 +10,5 @@ public interface YeyakService {
 	int yeyakProcessUpdate(YeyakVO vo);
 	int yeyakOneInsert(YeyakVO vo);
 	List<UsersVO> yeyakUserSearch();
+	YeyakVO yeyakCheck(YeyakVO vo);
 }
