@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 <title>로그인페이지</title>
 <head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
 
 <style>
 td {
@@ -236,7 +234,7 @@ function findAddr(){
 			frm.smsKey.focus();
 			return false;
 		}
-		/* if (frm.checkEmail.value == "unChecked") {
+		if (frm.checkEmail.value == "unChecked") {
 			alert("이메일을 인증 하세요");
 			frm.emailCode.focus();
 			return false;
@@ -245,7 +243,7 @@ function findAddr(){
 			alert("문자 인증을 하세요");
 			frm.smsKey.focus();
 			return false;
-		}   */
+		}   
 		frm.submit();
 		alert("정상적으로 회원가입 되었습니다");
 	}
@@ -257,7 +255,7 @@ function findAddr(){
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" align="center">
-				<h1 class="text-white font-weight-bold">회원가입</h1>
+				<h1 class="text-white font-weight-bold">회원정보</h1>
 				<div class="custom-breadcrumbs">
 					<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
 						class="text-white"><strong>회원가입</strong></span>
@@ -274,7 +272,7 @@ function findAddr(){
 				<div class="rounded">
 					<div class="sidenav">
 						<ul class="list-unstyled">
-							<li class="sideactive"><a href="#">로그인</a></li>
+							<li class="sideactive"><a href="userLoginForm.do">로그인</a></li>
 							<li><a href="userJoinForm.do">회원가입</a></li>
 						</ul>
 					</div>
@@ -317,8 +315,7 @@ function findAddr(){
 					<tr>
 						<th width="150">성별</th>
 						<td width="300" colspan="2">
-						<select class="form-select"
-								aria-label="Default select example" id="user_Gender" name="user_Gender">
+						<select class="custom-select" id="user_Gender" name="user_Gender">
 								<option selected>성별을 선택해주세요</option>
 								<option value="M">남</option>
 								<option value="W">여</option>
@@ -329,7 +326,7 @@ function findAddr(){
 					<tr>
 						<th width="150">생년월일</th>
 							<td width="200">
-							<select  class="form-select"
+							<select  class="custom-select"
 								name="user_BirthYear" id="user_BirthYear" >
 										<option selected>Year</option>
 										<% for (int i=2021; i>1900; i--) { %>
@@ -338,7 +335,7 @@ function findAddr(){
 							</select></td>
 							
 							<td width="200">
-						<select class="form-select" name="user_BirthMonth" id= "user_BirthMonth">
+						<select class="custom-select" name="user_BirthMonth" id= "user_BirthMonth">
 								<option selected>Month</option>
 										<% for (int i=1; i<=12; i++) { %>
 											<option value= "<%=i%>"><%=i%></option>
@@ -346,7 +343,7 @@ function findAddr(){
 						</select>
 						
 						<td width="200">
-						<select class="form-select" name="user_BirthDay" id="user_BirthDay">
+						<select class="custom-select" name="user_BirthDay" id="user_BirthDay">
 								<option selected>Day</option>
 								<% for (int i=1; i<=31; i++) { %>
 											<option value= "<%=i%>"><%=i%></option>

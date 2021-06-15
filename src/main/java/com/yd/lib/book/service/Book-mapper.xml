@@ -61,5 +61,9 @@
 		where book_isbn = #{book_Isbn}
 	</select>
 	
+	<select id="userYeyakCheck" parameterType="com.yd.lib.users.vo.UsersVO" resultType="com.yd.lib.yeyak.vo.YeyakVO">
+		select * from yeyak
+		where user_id = #{user_Id} and (YEYAK_PROCESSING='예약중' or YEYAK_PROCESSING='예약신청')
+	</select>
 	
 </mapper>

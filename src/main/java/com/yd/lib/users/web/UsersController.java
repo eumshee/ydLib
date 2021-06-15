@@ -39,26 +39,23 @@ public class UsersController {
 	}
 	
 	
-	@RequestMapping("/userLogin.do")
+	@RequestMapping("/userLoginIdCheck.do")
 	@ResponseBody
-	public String userLogin(UsersVO vo, HttpServletRequest request) {
+	public String userLoginIdCheck(UsersVO vo, HttpServletRequest request, Model model) {
 			
-		/*
-		 * String id = request.getParameter("user_Id"); String pw =
-		 * request.getParameter("user_Pw");
-		 */
 		
 			UsersVO rvo = UsersDAO.userLoginCheck(vo);
 			String id = rvo.getUser_Id();
 	        
 			HttpSession session = request.getSession();
 	        if(rvo != null) {
-	        session.setAttribute("userId", id);
+	        session.setAttribute("loginUserVO", rvo);
 	        } 
+	        
 	        return id;
 		 
 	}
-	
+
 	
 	//------------------------------- 회원가입 ------------------------------ //
 	@RequestMapping("/userJoinForm.do")
@@ -128,6 +125,13 @@ public class UsersController {
 		
 		UsersDAO.userInsert(param);
 		
+		return "redirect:home.do";
+	}
+	
+	@RequestMapping("/userLogOut.do")
+	public String userLogOut(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
 		return "redirect:home.do";
 	}
 	
