@@ -16,6 +16,7 @@ text-align: center;
 <script>
 	function nameUpdate(id) {
 		frm.user_Name.value = $('#Name'+id).val();
+		frm.user_Gubun.value = $('#Gubun'+id+' option:selected').val();
 		frm.user_Id.value = id;
 		frm.submit();
 	}
@@ -48,6 +49,7 @@ text-align: center;
 					<form id="frm" action="adminMemberUpdate.do" method="post">
 						<input type="hidden" name="user_Name">
 						<input type="hidden" name="user_Id">
+						<input type="hidden" id="user_Gubun" name="user_Gubun">
 						<table class="table table-bordered" id="dataTable" style="width: 100%; cellspacing: 0;">
 							<thead>
 								<tr>
@@ -88,9 +90,13 @@ text-align: center;
 											<td>${vo.user_Phone }</td>
 											<td width="20%">${vo.user_Addr }</td>
 											<td>${vo.user_Email }</td>
-											<td>${vo.user_Gubun }</td>
+											<td><select id="Gubun${vo.user_Id }">
+												<option value="준회원" <c:if test="${vo.user_Gubun eq '준회원'}"> selected</c:if>>준회원</option>
+												<option value="정회원" <c:if test="${vo.user_Gubun eq '정회원'}"> selected</c:if>>정회원</option>
+												<option value="삭제 회원" <c:if test="${vo.user_Gubun eq '삭제 회원'}"> selected</c:if>>삭제 회원</option>
+												<option value="관리자" <c:if test="${vo.user_Gubun eq '관리자'}"> selected</c:if>>관리자</option>
+											</select></td>
 											<td><button class="btn" type="button" onclick="nameUpdate('${vo.user_Id }')">수정</button><br>
-											<button class="btn" type="button" onclick="location.href='adminMemberDelete.do?user_Id=${vo.user_Id}'">삭제</button>
 											</td>
 										</tr>
 								</c:forEach>

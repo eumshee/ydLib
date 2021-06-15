@@ -31,11 +31,6 @@ public class HistoryServiceImpl implements HistoryService{
 		return sqlSession.update("adminUserUpdate",vo);
 	}
 	
-	//user 삭제(회원관리)
-	public int adminUserDelete(UsersVO vo) {
-		
-		return sqlSession.update("userdelete",vo);
-	}
 	
 	public List<HistoryVO> userHistorySelect(HistoryVO vo){
 		

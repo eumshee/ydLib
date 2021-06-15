@@ -3,6 +3,7 @@
 <%@ taglib prefix="x" uri="http://java.sun.com/jstl/fmt_rt" %>
 <jsp:useBean id="toDay" class="java.util.Date" />
 <x:formatDate value='${toDay}' pattern='yyyy-MM-dd' var="nowDate"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
 .member{
 float: left;
@@ -25,7 +26,20 @@ h2{
 	padding-right: 20px; 
 }
 </style>
+<script>
+function seachcheck(){
+	if($('#user_Gubun').val()=="삭제 회원"){
+		alert('삭제 회원입니다. 대출/반납이 불가능 합니다.');
+		return;
+	}else if( $('#user_Gubun').val()=="준회원" ){
+		alert('준회원입니다. 대출/반납/예약 이 불가능 합니다.')
+	}else{
+		frm.book_Num.value=$('#bookSeach').val();
+		frm.submit();
+	}
+}
 
+</script>
 
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
@@ -45,16 +59,22 @@ h2{
 <!-- 상단배너 end -->
 
 <section class="site-section block__18514" id="next-section">
-			<!--컨텐츠 영역-->
+	<form id ="frm" action="insertHistory.do" method="post">
+		<input type="hidden" id="user_Id" name="user_Id" value="${user.user_Id }">
+		<input type="hidden" id="user_Id" name="user_Name" value="${user.user_Name }">
+		<input type="hidden" id="user_Gubun" name="user_Gubun" value="${user.user_Gubun }">
+		<input type="hidden" id="book_Num" name="book_Num" >
+	</form>
+	<!--컨텐츠 영역-->
 		<div class="row">
 			<div class="member">
 				<h2>회원 정보</h2>
-				<form action ="adminMemberSearch2.do" method="post" style=" display: inline;">
-					<input type="text" id="user_Name" name="user_Name" placeholder="이름을 입력하세요" size="20">
-					<button type="submit" class="btn btn-primary text-white btn-search">
-						<span class="icon-search icon mr-2"></span>검색
-					</button>
-				</form>
+					<form action = "adminMemberSearch2.do" method="post">
+						<input type="text" id="seachName" name="user_Name" placeholder="이름을 입력하세요" size="20">
+						<button type="submit" id="userSeach" class="btn btn-primary text-white btn-search">
+							<span class="icon-search icon mr-2"></span>검색
+						</button>
+					</form>
 				<table class="table">
 					<tr>
 						<td>id</td><td><b>${user.user_Id }</b></td><td>이름</td><td><b>${user.user_Name }</b></td>
@@ -76,12 +96,8 @@ h2{
 			</div>
 			<div class="returnbook">
 				<h2>대출 목록</h2>
-				<form action ="insertHistory.do?user_Name=${user.user_Name }" method="post" style=" display: inline-block;">
-					<input type="hidden" id="user_Id" name="user_Id" value="${user.user_Id }">
-					<input type="text" id="book_Num" name="book_Num" placeholder="책번호를 입력하세요" size="20">
-					<button type="submit" class="btn btn-primary text-white btn-search"><span class="icon-search icon mr-2"></span>대출
-					</button>
-				</form>
+					<input type="text" id="bookSeach" name="bookSeach" placeholder="책번호를 입력하세요" size="20">
+					<button type="button" class="btn btn-primary text-white btn-search" onclick="seachcheck()"><span class="icon-search icon mr-2"></span>대출</button>
 				<table class="table">
 					<tr>
 						<th>대출번호</th><th>책번호</th><th>대출일자</th><th>반납예정일</th><th>연체일</th><th>대출상태</th><th>처리</th>

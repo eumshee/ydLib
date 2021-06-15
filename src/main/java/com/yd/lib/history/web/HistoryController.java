@@ -2,8 +2,6 @@ package com.yd.lib.history.web;
 
 
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
@@ -62,6 +60,8 @@ private HistoryServiceImpl his;
 		String page = vo.getUser_Name();
 		String encodedParam = URLEncoder.encode(page, "UTF-8");
 		his.historyUpdate(vo);
+		UsersVO uvo;
+		
 		return "redirect:adminMemberSearch2.do?user_Name="+encodedParam;
 	}
 	

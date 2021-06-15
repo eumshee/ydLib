@@ -67,5 +67,12 @@ public class UsersVO {
 	public void setUser_Email(String user_Email) {
 		this.user_Email = user_Email;
 	}
-
+	@Override
+	public String toString() {
+		return "UsersVO [user_Id=" + user_Id + ", user_Name=" + user_Name + ", user_Pw=" + user_Pw + ", user_Gubun="
+				+ user_Gubun + ", user_Gender=" + user_Gender + ", user_Birth=" + user_Birth + ", user_Phone="
+				+ user_Phone + ", user_Addr=" + user_Addr + ", user_Email=" + user_Email + "]";
+	}
+	
+	
 }

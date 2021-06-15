@@ -11,10 +11,6 @@
 	</select>
 	
 	<update id="adminUserUpdate" parameterType="com.yd.lib.users.vo.UsersVO">
-		update users set user_name = #{user_Name} where user_id = #{user_Id}
-	</update>
-	
-	<update id="userdelete" parameterType="com.yd.lib.users.vo.UsersVO">
-		update users set user_Gubun = '삭제 회원' where user_id = #{user_Id}
+		update users set user_name = #{user_Name}, user_Gubun = #{user_Gubun} where user_id = #{user_Id}
 	</update>
 </mapper>
