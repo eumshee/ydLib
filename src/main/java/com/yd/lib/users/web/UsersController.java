@@ -128,6 +128,13 @@ public class UsersController {
 		return "redirect:home.do";
 	}
 	
+	@RequestMapping("/userLogOut.do")
+	public String userLogOut(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return "redirect:home.do";
+	}
+	
 	/*
 	@RequestMapping("/userList.do")
 	public String userList(Model model) {
