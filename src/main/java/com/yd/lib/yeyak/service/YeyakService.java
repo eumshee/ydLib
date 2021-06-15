@@ -7,4 +7,5 @@ import com.yd.lib.yeyak.vo.YeyakVO;
 public interface YeyakService {
 	List<YeyakVO> yeyakManageList();
 	int yeyakProcessUpdate(YeyakVO vo);
+	int yeyakOneInsert(YeyakVO vo);
 }

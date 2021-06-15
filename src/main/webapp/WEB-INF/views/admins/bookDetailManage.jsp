@@ -216,6 +216,14 @@
 								name="book_Byn" readonly="readonly"
 								value="${bookMgOne.book_Byn }"></td>
 						</tr>
+						<c:if test="${!empty bookMgOne.return_Duedate }">
+							<tr>
+								<th class="form-group">반납예정일
+								<td><input type="text" class="form-control"
+									readonly="readonly"
+									value="${bookMgOne.return_Duedate }"></td>
+							</tr>
+						</c:if>
 						<tr>
 							<th class="form-group"><label for="book_Img">책사진</label>
 							<td><input type="text" class="form-control" id="book_Img"
@@ -239,6 +247,23 @@
 							<td><input type="text" class="form-control" id="book_Bigo"
 								name="book_Bigo" placeholder="비어있습니다."
 								value="${bookMgOne.book_Bigo }"></td>
+						</tr>
+						<tr>
+							<th class="form-group">예약상태
+							<c:choose>
+								<c:when test="${!empty bookMgOne.yeyak_Processing }">
+									<td>
+										<input type="text" class="form-control" readonly="readonly"
+										value="${bookMgOne.yeyak_Processing }">
+									</td>
+								</c:when>
+								<c:otherwise>
+									<td>
+										<input type="text" class="form-control" readonly="readonly"
+										value="-">
+									</td>
+								</c:otherwise>
+							</c:choose>
 						</tr>
 					</table>
 				</form>

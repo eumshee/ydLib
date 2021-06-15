@@ -9,7 +9,7 @@
 		<choose>
 			<when test="yeyak_Processing == '예약중'">
 				update yeyak set yeyak_processing=#{yeyak_Processing}
-				, yeyak_start = sysdate, yeyak_end = sysdate+(INTERVAL '3' day) 		
+				, yeyak_start = sysdate, yeyak_end = sysdate+(INTERVAL '2' day) 		
 				where yeyak_num = #{yeyak_Num}			
 			</when>
 			<when test="yeyak_Processing == '예약신청'">
@@ -22,7 +22,16 @@
 				, yeyak_end = sysdate		
 				where yeyak_num = #{yeyak_Num}
 			</when>
+			<when test="yeyak_Processing == '예약취소'">
+				update yeyak set yeyak_processing=#{yeyak_Processing}
+				, yeyak_end = sysdate		
+				where yeyak_num = #{yeyak_Num}
+			</when>
 		</choose>
 	</update>
 	
+	<insert id="yeyakOneInsert" parameterType="com.yd.lib.yeyak.vo.YeyakVO">
+		insert into yeyak values(yeyak_seq.nextval,#{book_Num},#{user_Id},sysdate,null,null,'예약신청')
+	</insert>
+
 </mapper>

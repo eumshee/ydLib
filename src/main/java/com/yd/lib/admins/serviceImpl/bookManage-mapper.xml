@@ -7,14 +7,65 @@
 
 	<!-- 단일책정보 -->
 	<select id="bookManageSelectOne" parameterType="com.yd.lib.book.vo.BookVO" resultType="com.yd.lib.book.vo.BookVO">
+			select b.* ,return_duedate , yeyak_processing  from book b
+			full join (
+					   select * from history
+					   where history.RETURN_DUEDATE in (
+														select max(return_duedate) from HISTORY
+														where book_num in (
+																		   select book_num from book
+																		   where book_isbn = #{book_Isbn}
+																		   )
+														group by book_num
+														)
+			                                          
+					   ) h
+			on b.book_num = h.book_num
+			full join (
+					   select * from yeyak
+					   where yeyak.YEYAK_SUBMIT in(
+												   select max(YEYAK_SUBMIT) from yeyak
+												   where book_num in (
+																	  select book_num from book
+																	  where book_isbn = #{book_Isbn}
+																	  )
+												   group by book_num
+												   )
+					   )y
+			on b.book_num = y.book_num
+			where book_isbn = 9791190474016 and b.BOOK_NUM = #{book_Num, jdbcType=NUMERIC}
 		select * from book where book_Num = #{book_Num, jdbcType=NUMERIC}	
 	</select>
 
 	<!-- 중복도서목록 -->
 	<select id="bookManageSelectList" parameterType="com.yd.lib.book.vo.BookVO" resultType="com.yd.lib.book.vo.BookVO">
-		select * from book where book_Isbn = #{book_Isbn, jdbcType=NUMERIC}
-		and book_Num <![CDATA[<>]]> #{book_Num, jdbcType=NUMERIC}
-		order by book_Num
+		select b.* ,return_duedate , yeyak_processing  from book b
+			full join (
+					   select * from history
+					   where history.RETURN_DUEDATE in (
+														select max(return_duedate) from HISTORY
+														where book_num in (
+																		   select book_num from book
+																		   where book_isbn = #{book_Isbn}
+																		   )
+														group by book_num
+														)
+			                                          
+					   ) h
+			on b.book_num = h.book_num
+			full join (
+					   select * from yeyak
+					   where yeyak.YEYAK_SUBMIT in(
+												   select max(YEYAK_SUBMIT) from yeyak
+												   where book_num in (
+																	  select book_num from book
+																	  where book_isbn = #{book_Isbn}
+																	  )
+												   group by book_num
+												   )
+					   )y
+			on b.book_num = y.book_num
+			where book_isbn = 9791190474016 and b.BOOK_NUM<![CDATA[<>]]>#{book_Num, jdbcType=NUMERIC}
 	</select>
 	
 	<!-- 책비고 수정 -->

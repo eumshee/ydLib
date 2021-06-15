@@ -26,5 +26,18 @@ public class YeyakController {
 			ysi.yeyakProcessUpdate(vo);
 		return "redirect:yeyakmanagemant.do";
 	}
+	
+	// 예약등록폼
+	@RequestMapping("/yeyakInputManage.do")
+	public String yeyakInput(Model model) {
+		return "admins/yeyakInputManage";
+	}
+
+	// 예약등록
+	@RequestMapping("/yeyakOneInsert.do")
+	public String yeyakOneInsert(Model model, YeyakVO vo) {
+		ysi.yeyakOneInsert(vo);
+		return "redirect:yeyakmanagemant.do";
+	}
 
 }

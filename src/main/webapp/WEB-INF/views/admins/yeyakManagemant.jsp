@@ -58,6 +58,15 @@
 <section class="site-section block__18514" id="next-section">
 	<div class="container-fluid" style="width:80%">
 		<div class="row">
+				<div class="col-lg-12">
+				<div align="right">
+					<button type="submit" class="btn btn-primary text-white btn-search"
+						onclick="location.href='yeyakInputManage.do'">
+						<span class="icon-plus mx-auto"></span>&nbsp;등록
+					</button>
+					<br> <br>
+				</div>
+				</div>
 			<div class="col-lg-12">
 				<!-- DataTales Example -->
 				<div class="card shadow mb-4">
@@ -95,6 +104,8 @@
 														<c:if test="${vo.yeyak_Processing eq '예약중' }">selected</c:if>>예약중</option>
 													<option value="예약만료"
 														<c:if test="${vo.yeyak_Processing eq '예약만료' }">selected</c:if>>예약만료</option>
+													<option value="예약취소"
+														<c:if test="${vo.yeyak_Processing eq '예약취소' }">selected</c:if>>예약취소</option>
 												</select>
 												<button type="button" onclick="yeyakProcessUpdate(${vo.yeyak_Num})">처리</button>
 											</td>

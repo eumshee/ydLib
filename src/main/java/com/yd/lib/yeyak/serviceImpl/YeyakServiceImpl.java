@@ -24,4 +24,9 @@ public class YeyakServiceImpl implements YeyakService {
 		return sqlSession.update("yeyakProcessUpdate",vo);
 	}
 	
+	@Override
+	public int yeyakOneInsert(YeyakVO vo) {
+		return sqlSession.insert("yeyakOneInsert",vo);
+	}
+	
 }
