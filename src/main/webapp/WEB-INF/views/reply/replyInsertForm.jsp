@@ -5,7 +5,7 @@
 <script src="//cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
 <script>
 
-$(function() {CKEDITOR.replace('board_Content',
+$(function() {CKEDITOR.replace('re_Content',
 		{
 			filebrowserUploadUrl : '${pageContext.request.contextPath}/ckupload',
 			height : '500px',
@@ -46,20 +46,17 @@ $(function() {CKEDITOR.replace('board_Content',
 			</div>
 			<!--컨텐츠 영역-->
 			<div class="col-lg-8">
-				<form class="p-4 p-md-5 border rounded" action="boardInsert.do" method="post">
-					<input type="hidden" id="board_Writer" name="board_Writer" value="${loginUserVO.user_Id}">
-					<input type="hidden" id="board_Name" name="board_Name" value="${loginUserVO.user_Name}">
-					<h3 class="text-black mb-5 border-bottom pb-2">질문글 작성</h3>
+				<form class="p-4 p-md-5 border rounded" action="replyInsert.do" method="post">
+					<input type="hidden" id="re_Bnum" name="re_Bnum" value="${vo.board_Id }">
+					<h3 class="text-black mb-5 border-bottom pb-2">답변 작성 ${vo.board_Id }</h3>
 					<div class="form-group">
-						<label for="board_Title">글 제목</label> <input type="text"
-							class="form-control" id="board_Title" name="board_Title" placeholder="글 제목">
+						<label for="re_Title">글 제목</label> <input type="text"
+							class="form-control" id="re_Title" name="re_Title" value="RE: ${vo.board_Title }">
 					</div>
 					<div class="form-group">
-						<label for="board_Content">글 내용</label> <textarea 	class="form-control" id="board_Content" name="board_Content"></textarea>
-
-					</div>
-					<div class="form-group">
-						<input type="checkbox" id="board_Open" name="board_Open" value="N"><label for="board_Open">&nbsp; 비밀글 체크 시 작성자와 관리자만 열람할 수 있습니다. </label> 
+						<label for="re_Content">글 내용</label> <textarea class="form-control" id="re_Content" name="re_Content">
+						--------------원문 내용--------------
+						${vo.board_Content }</textarea>
 					</div>
 					
 					<div align="center">

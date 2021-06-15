@@ -19,13 +19,22 @@
 		where board_id = #{board_Id}
 	</update>
 
-
 	<insert id="boardInsert"
 		parameterType="com.yd.lib.board.vo.BoardVO">
 		insert into board
-		values(board_seq.nextval, #{board_Title}, '작성자', #{board_Content}, sysdate, 0, 0, #{board_Open,jdbcType=VARCHAR})
+		values(board_seq.nextval, #{board_Title}, #{board_Writer}, #{board_Content}, sysdate, 0, 0, #{board_Open,jdbcType=VARCHAR}, #{board_Name})
 	</insert>
 	
-	
+	<delete id="boardDelete"
+		parameterType="com.yd.lib.board.vo.BoardVO">
+		delete from board where board_id = #{board_Id}
+	</delete>
 
+	<update id="boardUpdate" parameterType="com.yd.lib.board.vo.BoardVO">
+		update board set 
+		board_Title = #{board_Title},
+		board_Content = #{board_Content}
+		where board_Id = #{board_Id}
+	</update>
+	
 </mapper>

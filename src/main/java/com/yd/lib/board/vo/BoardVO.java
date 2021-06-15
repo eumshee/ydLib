@@ -23,9 +23,15 @@ public class BoardVO {
 	private int board_Hit;
 	private int board_Reply;
 	private String board_Open;
+	private String board_Name;
 	
 	
-	
+	public String getBoard_Name() {
+		return board_Name;
+	}
+	public void setBoard_Name(String board_Name) {
+		this.board_Name = board_Name;
+	}
 	public String getBoard_Open() {
 		return board_Open;
 	}

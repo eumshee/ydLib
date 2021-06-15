@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
+
 <style>
 .pagination {
 	display: inline-block;
@@ -25,10 +27,6 @@
 	background-color: #ddd;
 }
 
-tr:hover {
-	background-color: #F8F8F8;
-}
-
 div.dataTables_wrapper div.dataTables_paginate {
 	margin-left: -10%;
 	white-space: nowrap;
@@ -36,11 +34,22 @@ div.dataTables_wrapper div.dataTables_paginate {
 }
 </style>
 <script>
-function formSubmit(id) {
-	frm.board_Id.value = id;
-	console.log(id);
-	frm.submit();
-}
+function formSubmit(id, open, writer) {
+	var loginId = '${loginUserVO.user_Id}'
+	if (open == 'N') {
+		if (loginId == writer || loginId == 'admin') {
+			frm.board_Id.value = id;
+			console.log(id);
+			frm.submit();
+		} else {
+		alert("비밀글은 작성자만 조회할 수 있습니다.");
+		}
+	} else {
+		frm.board_Id.value = id;
+		console.log(id+"3");
+		frm.submit();
+		}
+	}
 
 $(document).ready(function() {
 	var table = $('#dataTable1').DataTable({
@@ -101,7 +110,8 @@ $(document).ready(function() {
 					</thead>
 					<tbody>
 						<c:forEach var="vo" items="${board }">
-							<tr onclick="formSubmit(${vo.board_Id})">
+						<input type="hidden" id="${vo.board_Id}" name="${vo.board_Id}" value="${vo.board_Open }">
+							<tr onclick="formSubmit(${vo.board_Id}, '${vo.board_Open }', '${vo.board_Writer }')">
 								<td>${vo.board_Id }</td>
 								<td align="left">
 									<c:if test="${vo.board_Open eq 'N'}">
@@ -119,7 +129,7 @@ $(document).ready(function() {
 									대기
 									</c:if>
 								</td>
-								<td>${vo.board_Writer }</td>
+								<td>${fn:substring(vo.board_Name,0,fn:length(vo.board_Name)-2)}**</td>
 								<td>${vo.board_Date }</td>
 								<td>${vo.board_Hit }</td>
 							</tr>

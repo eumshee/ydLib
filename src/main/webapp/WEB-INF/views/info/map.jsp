@@ -89,7 +89,7 @@
 						<li>2·28기념중앙공원 건너1 : 518, 가창2, 급행1, 급행3, 급행5, 급행6</li>
 						<li>2·28기념중앙공원 건너2 : 650, 909</li>
 					</ul>
-					<a href="https://businfo.daegu.go.kr/" target="_blank" class="newWin" title="새창으로 열립니다.">버스노선 검색&npsp;<i class="icon-external-link"></i></a>
+					<a href="https://businfo.daegu.go.kr/" target="_blank" class="newWin" title="새창으로 열립니다.">버스노선 검색&nbsp;<i class="icon-external-link"></i></a>
 				</div>
 			</div>
 		</div>

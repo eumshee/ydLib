@@ -2,15 +2,12 @@ package com.yd.lib.board.serviceImpl;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.yd.lib.board.vo.BoardVO;
-import com.yd.lib.book.vo.BookVO;
-import com.yd.lib.notice.vo.NoticeVO;
+
 
 @Repository("boardDAO")
 public class BoardServiceImpl {
@@ -39,11 +36,12 @@ public class BoardServiceImpl {
 	}
 	
 	// 글 삭제
-	public int noticeDelete(NoticeVO vo) {
-		return sqlSession.delete("noticeDelete", vo);
+	public int boardDelete(BoardVO vo) {
+		return sqlSession.delete("boardDelete", vo);
 	}
-
-	public int noticeUpdate(NoticeVO vo) {
-		return sqlSession.update("noticeUpdate",vo);
+	
+	// 글 수정
+	public int boardUpdate(BoardVO vo) {
+		return sqlSession.update("boardUpdate",vo);
 	}
 }
