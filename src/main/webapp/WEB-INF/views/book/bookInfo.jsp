@@ -68,7 +68,7 @@
 						</tr>
 						<c:forEach items="${bookDetail }" var="bookInfo">
 							<tr>
-								<td>${bookInfo.book_Gubun  }</td><td>${bookInfo.book_Num }</td><td>${bookInfo.book_Location }</td>
+								<td>${bookInfo.book_Gubun  }</td><td>${bookInfo.book_Num }</td><td>${bookInfo.book_Location }번 서가</td>
 								<c:if test="${bookInfo.book_Byn eq 'Y' }">
 									<td></td>
 								</c:if>
