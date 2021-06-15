@@ -103,4 +103,62 @@
 		where user_id = #{user_Id} and (YEYAK_PROCESSING='예약중' or YEYAK_PROCESSING='예약신청')
 	</select>
 	
+	<select id="newBook" parameterType="com.yd.lib.book.vo.BookVO" resultType="com.yd.lib.book.vo.BookVO">
+		select * from (
+					   SELECT ROW_NUMBER() OVER(PARTITION BY b1.book_isbn ORDER BY b1.book_num DESC ) AS RNUM, b1.* , b2.all_book_cnt , NVL(b3.can_book_cnt,0) as can_book_cnt
+					   FROM book b1 
+					   join (
+							 select book_isbn , COUNT(book_isbn) as all_book_cnt
+							 from book
+							 GROUP BY book_isbn
+					   ) b2
+					   on b1.book_isbn = b2.book_isbn
+					   full join (
+								  select  book_isbn , count(book_isbn) as can_book_cnt
+								  from book
+								  where book_byn = 'Y'
+								  group by book_isbn
+					   ) b3
+					   on b1.book_isbn = b3.book_isbn
+					   where book_indate > sysdate - 30
+					   )bk
+		where RNUM = 1
+		order by
+		<choose>
+			<otherwise>book_indate asc</otherwise>
+		</choose>
+	</select>
+	
+	<select id="newBookPaging" parameterType="com.yd.lib.book.vo.BookVO" resultType="com.yd.lib.book.vo.BookVO">
+		select b.*
+		from(
+			 select rownum rn , a.*
+			 from (
+				   select * from (
+                                  SELECT ROW_NUMBER() OVER(PARTITION BY b1.book_isbn ORDER BY b1.book_num DESC ) AS RNUM, b1.* , b2.all_book_cnt , NVL(b3.can_book_cnt,0) as can_book_cnt
+                                  FROM book b1 
+                                  join (
+                                  		select book_isbn , COUNT(book_isbn) as all_book_cnt
+										from book
+										GROUP BY book_isbn
+										) b2
+                                  on b1.book_isbn = b2.book_isbn
+                                  full join (
+											 select  book_isbn , count(book_isbn) as can_book_cnt
+											 from book
+											 where book_byn = 'Y'
+											 group by book_isbn
+                                  ) b3
+                                  on b1.book_isbn = b3.book_isbn
+                                  where book_indate > sysdate - 30
+                                  )bk
+                where RNUM = 1
+                order by
+                <choose>
+        			<otherwise>book_indate asc</otherwise>
+    			</choose>
+                ) a
+			 )b
+		where rn between #{firstCnt} and #{lastCnt}
+	</select>
 </mapper>
