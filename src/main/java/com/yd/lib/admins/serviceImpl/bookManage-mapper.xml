@@ -33,8 +33,7 @@
 												   )
 					   )y
 			on b.book_num = y.book_num
-			where book_isbn = 9791190474016 and b.BOOK_NUM = #{book_Num, jdbcType=NUMERIC}
-		select * from book where book_Num = #{book_Num, jdbcType=NUMERIC}	
+			where book_isbn = #{book_Isbn} and b.book_num = #{book_Num, jdbcType=NUMERIC}
 	</select>
 
 	<!-- 중복도서목록 -->
@@ -65,7 +64,7 @@
 												   )
 					   )y
 			on b.book_num = y.book_num
-			where book_isbn = 9791190474016 and b.BOOK_NUM<![CDATA[<>]]>#{book_Num, jdbcType=NUMERIC}
+			where book_isbn = #{book_Isbn} and b.book_num<![CDATA[<>]]>#{book_Num, jdbcType=NUMERIC}
 	</select>
 	
 	<!-- 책비고 수정 -->
