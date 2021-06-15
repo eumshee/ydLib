@@ -218,10 +218,10 @@
 						</tr>
 						<c:if test="${!empty bookMgOne.return_Duedate }">
 							<tr>
-								<th class="form-group">반납예정일
+								<th class="form-group"><label for="">반납예정일</label>
 								<td><input type="text" class="form-control"
 									readonly="readonly"
-									value="${bookMgOne.return_Duedate }"></td>
+									value="${fn:substring(bookMgOne.return_Duedate,0,10) }"></td>
 							</tr>
 						</c:if>
 						<tr>
@@ -249,7 +249,7 @@
 								value="${bookMgOne.book_Bigo }"></td>
 						</tr>
 						<tr>
-							<th class="form-group">예약상태
+							<th class="form-group"><label for="">예약상태</label>
 							<c:choose>
 								<c:when test="${!empty bookMgOne.yeyak_Processing }">
 									<td>
