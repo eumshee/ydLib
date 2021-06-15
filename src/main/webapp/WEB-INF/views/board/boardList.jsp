@@ -105,7 +105,7 @@ $(document).ready(function() {
 								<td>${vo.board_Id }</td>
 								<td align="left">
 									<c:if test="${vo.board_Open eq 'N'}">
-									${vo.board_Title } <img src="resources/images/lock.png" width="10">
+									${vo.board_Title } <span class="icon-lock"></span>
 									</c:if>
 									<c:if test="${empty vo.board_Open}">
 									${vo.board_Title }

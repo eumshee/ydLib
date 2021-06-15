@@ -31,7 +31,7 @@
             <a href="noticeList.do">열린공간</a>
             <ul class="dropdown">
               <li><a href="noticeList.do">공지사항</a></li>
-              <li><a href="qna.do">묻고답하기</a></li>
+              <li><a href="boardList.do">묻고답하기</a></li>
             </ul>
           </li>
           <li class="has-children">

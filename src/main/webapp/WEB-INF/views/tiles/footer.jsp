@@ -138,17 +138,14 @@
 	width: 100%;
 	text-align: left;
 	border-top: 1px solid #ccc;
-	background: #fff
+	border-left: 1px solid #ccc;
+	background: #fff;
+	font-size: small;
 }
 
 .footer .site_link>div>div>ul, #footer .site_link>div>div>ul {
 	overflow-y: auto;
 	border-right: 1px solid #ccc
-}
-
-.footer .site_link>div>div>ul>li, #footer .site_link>div>div>ul>li {
-	line-height: 25px;
-	border-left: 1px solid #ccc
 }
 
 .footer .site_link>div>div>ul>li>a, #footer .site_link>div>div>ul>li>a {
@@ -271,7 +268,7 @@
 							<div class="dropdown bootstrap-select">
 								<a class="fsite type1"> <span class="f1">대구광역시 공공도서관</span>
 									<span class="f2"><i></i></span></a>
-								<ul style="display: none; height: 120px; z-index:1; padding-left: 0;">
+								<ul style="display: none; height: 250px; z-index:2; padding-left: 0;">
 									<li class="disabled"><a title="대구광역시통합도서관"
 										href="http://library.daegu.go.kr/dgportal/index.do">대구광역시통합도서관</a></li>
 									<li class="disabled"><a title="대구2ㆍ28기념학생도서관"
@@ -339,7 +336,7 @@
 							<div>
 								<a class="fsite type1"> <span class="f1">교육 및 지역관련기관</span>
 									<span class="f2"><i></i></span></a>
-								<ul style="display: none; height: 120px; z-index:1; padding-left: 0;">
+								<ul style="display: none; height: 250px; z-index:2; padding-left: 0;">
 									<li class="disabled"><a href="#">교육 및 지역관련기관</a></li>
 									<li class="disabled"><a title="대구광역시교육청"
 										href="http://www.dge.go.kr">대구광역시교육청</a></li>
