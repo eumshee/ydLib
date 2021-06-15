@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <title>로그인페이지</title>
 <head>
 
@@ -255,10 +256,10 @@ function findAddr(){
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" align="center">
-				<h1 class="text-white font-weight-bold">회원정보</h1>
+				<h1 class="text-white font-weight-bold">나의 도서관</h1>
 				<div class="custom-breadcrumbs">
 					<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
-						class="text-white"><strong>회원가입</strong></span>
+						class="text-white"><strong>내정보 수정</strong></span>
 				</div>
 			</div>
 		</div>
@@ -272,29 +273,28 @@ function findAddr(){
 				<div class="rounded">
 					<div class="sidenav">
 						<ul class="list-unstyled">
-							<li class="sideactive"><a href="userLoginForm.do">로그인</a></li>
-							<li><a href="userJoinForm.do">회원가입</a></li>
+							<li class="sideactive"><a href="userLoginForm.do">대출내역조회</a></li>
+							<li><a href="userJoinForm.do">예약현황</a></li>
+							<li><a href="userJoinForm.do">희망도서 신청현황</a></li>
+							<li><a href="userJoinForm.do">내정보 수정</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<!--회원가입 화면-->
 			<div align="center">
-					<h4>회원가입</h4>
+					<h4>내정보 수정</h4>
 			<br>
 			<form id="frm" action="userJoin.do" method="post">
 			<table style="border:1; border-collapse:collapse;">
 					<tr>
 						<th width="150">아이디</th>
 						<td width="300">
-							<input class="form-control" type="text" id="user_Id" name="user_Id">
-						</td>
-						<td width="300">
-							<button class="btn btn-light" type="button" id="idCheck" value="unChecked">중복체크</button>
+							  <div> <span class="input-group-text" id="inputGroup-sizing-sm"> ${loginUserVO.user_Id}</span> </div>
 						</td>
 					</tr>
 					<tr>
-						<th width="150">비밀번호</th>
+						<th width="150">새로운 비밀번호</th>
 						<td width="300" colspan="2">
 						<input class="form-control" type="password" id="user_Pw"
 							name="user_Pw"></td>
@@ -308,47 +308,31 @@ function findAddr(){
 					<tr>
 						<th width="150">이름</th>
 						<td width="300" colspan="2">
-						<input class="form-control" type="text" id="user_Name"
-							name="user_Name"></td>
+						<span class="input-group-text" id="inputGroup-sizing-sm"> ${loginUserVO.user_Name}</span>
+						</td>
 					</tr>
 
 					<tr>
 						<th width="150">성별</th>
+						<c:if test="${loginUserVO.user_Gender eq 'W'}">
 						<td width="300" colspan="2">
-						<select class="custom-select" id="user_Gender" name="user_Gender">
-								<option selected>성별을 선택해주세요</option>
-								<option value="M">남</option>
-								<option value="W">여</option>
-						</select>
+						<span class="input-group-text" id="inputGroup-sizing-sm">여</span>
 						</td>
+						</c:if>
+						<c:if test="${loginUserVO.user_Gender eq 'M'}">
+						<td width="300" colspan="2">
+						<span class="input-group-text" id="inputGroup-sizing-sm">남</span>
+						</td>
+						</c:if>
 					</tr>
 					
 					<tr>
 						<th width="150">생년월일</th>
-							<td width="200">
-							<select  class="custom-select"
-								name="user_BirthYear" id="user_BirthYear" >
-										<option selected>Year</option>
-										<% for (int i=2021; i>1900; i--) { %>
-											<option value= "<%=i%>"><%=i%></option>
-											<% } %>
-							</select></td>
-							
-							<td width="200">
-						<select class="custom-select" name="user_BirthMonth" id= "user_BirthMonth">
-								<option selected>Month</option>
-										<% for (int i=1; i<=12; i++) { %>
-											<option value= "<%=i%>"><%=i%></option>
-											<% } %>
-						</select>
+						<td width="300" colspan="2">
+						<span class="input-group-text" id="inputGroup-sizing-sm">
+						<%  %>
 						
-						<td width="200">
-						<select class="custom-select" name="user_BirthDay" id="user_BirthDay">
-								<option selected>Day</option>
-								<% for (int i=1; i<=31; i++) { %>
-											<option value= "<%=i%>"><%=i%></option>
-											<% } %>
-						</select>
+						</span>
 						</td>
 					</tr>
 					

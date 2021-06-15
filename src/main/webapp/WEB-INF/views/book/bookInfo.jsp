@@ -4,6 +4,52 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript">
+	function yeyak(userId , bookNum) {
+		userGubun = '${loginUserVO.user_Gubun}';
+		if(userId == ''){
+			let login = confirm("로그인한 회원만 예약이 가능합니다.\n로그인 하시겠습니까?")
+			if(login){
+				location.href="userLoginForm.do";
+			}
+		}else if (userGubun!= '정회원'){
+			alert("정회원만 예약이 가능합니다. \n정회원 전환은 데스크에 문의해주세요");
+		}
+		else{
+			$.ajax({
+				url : 'userYeyakCheck.do',
+				data : {
+					user_Id : userId
+				},
+				type : 'post',
+				success : function(r) {
+					if(r > 0){
+						alert("예약 권수 초과입니다. \n최대 1권의 책만 예약 할 수 있습니다.");
+					}else{
+						$.ajax({
+							url : 'userYeyakInsert.do',
+							data : {
+								user_Id : userId,
+								book_Num : bookNum
+							},
+							type : 'post',
+							success : function(suc) {
+								alert("예약됐습니다.");
+								location.reload(true);
+							},
+							error : function(err) {
+								console.log(err)
+							}
+						})
+					}
+				},
+				error : function(err) {
+					console.log(err)
+				}
+			});
+		}
+	}
+</script>
 <meta charset="UTF-8">
 <title>상세페이지</title>
 </head>
@@ -14,7 +60,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12" align="center">
-					<h1 class="text-white font-weight-bold">상세정보</h1>
+					<h1 class="text-white font-weight-bold">상세정보${loginUserVO.user_Id}</h1>
 				</div>
 			</div>
 		</div>
@@ -27,7 +73,7 @@
 					<div class="rounded">
 						<div class="sidenav">
 							<ul class="list-unstyled">
-								<li class="sideactive"><a href="#">통합자료검색</a></li>
+								<li class="sideactive"><a href="#">통합자료검색 </a></li>
 								<li><a href="#">신착자료</a></li>
 								<li><a href="#">대출 베스트</a></li>
 								<li><a href="#">희망도서 신청</a></li>
@@ -37,7 +83,7 @@
 				</div>
 				<!--컨텐츠 영역-->
 				<div class="col-lg-8">
-					<c:forEach items="${bookDetail }" var="bookInfo" begin="1" end="1">
+					<c:forEach items="${bookDetail }" var="bookInfo" end="0">
 						<table>
 							<tr>
 								<td rowspan="6">
@@ -80,7 +126,7 @@
 										<c:if test="${bookInfo.book_Byn eq 'N' or bookInfo.yeyak_Processing eq '예약중' or bookInfo.yeyak_Processing eq '예약신청'}">
 											<span class="badge badge-danger">대출불가</span>
 										</c:if>
-										<c:if test="${bookInfo.book_Byn eq 'Y' and (bookInfo.yeyak_Processing eq '예약만료' or empty bookInfo.yeyak_Processing)}">
+										<c:if test="${bookInfo.book_Byn eq 'Y' and (bookInfo.yeyak_Processing eq '예약만료' or bookInfo.yeyak_Processing eq '예약취소' or empty bookInfo.yeyak_Processing )}">
 											<span class="badge badge-success">대출가능</span>
 										</c:if>
 									</div>
@@ -91,10 +137,10 @@
 											<button>예약불가</button> 
 										</c:when>
 										<c:when test="${bookInfo.book_Byn eq 'N'}">
-											<button>예약신청</button> 
+											<button onclick="yeyak('${loginUserVO.user_Id}' , '${bookInfo.book_Num }')">예약신청</button> 
 										</c:when>
 										<c:otherwise>
-											<button>예약신청</button>
+											<button onclick="yeyak('${loginUserVO.user_Id}' , '${bookInfo.book_Num }')">예약신청</button>
 										</c:otherwise>
 									</c:choose>								
 								</td>

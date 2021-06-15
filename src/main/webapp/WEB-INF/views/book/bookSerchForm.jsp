@@ -25,7 +25,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12" align="center">
-					<h1 class="text-white font-weight-bold">통합검색</h1>
+					<h1 class="text-white font-weight-bold">통합검색${loginUserVO.user_Id}</h1>
 				</div>
 			</div>
 		</div>

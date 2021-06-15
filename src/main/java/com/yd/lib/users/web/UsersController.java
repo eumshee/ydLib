@@ -39,26 +39,31 @@ public class UsersController {
 	}
 	
 	
-	@RequestMapping("/userLogin.do")
+	@RequestMapping("/userLoginIdCheck.do")
 	@ResponseBody
-	public String userLogin(UsersVO vo, HttpServletRequest request) {
+	public String userLoginIdCheck(UsersVO vo, HttpServletRequest request, Model model) {
 			
-		/*
-		 * String id = request.getParameter("user_Id"); String pw =
-		 * request.getParameter("user_Pw");
-		 */
 		
 			UsersVO rvo = UsersDAO.userLoginCheck(vo);
 			String id = rvo.getUser_Id();
+			String userBirth = rvo.getUser_Birth();
+			String userBirthYear = userBirth.substring(0, 0);
+			String userBirthMonth = rvo.getUser_Birth();
+			String userBirthDay = rvo.getUser_Birth();
+			
 	        
 			HttpSession session = request.getSession();
 	        if(rvo != null) {
-	        session.setAttribute("userId", id);
+	        session.setAttribute("loginUserVO", rvo);
+	        session.setAttribute("loginUserBirth", userBirthYear);
+	        session.setAttribute("loginUserBirth", userBirthMonth);
+	        session.setAttribute("loginUserBirth", userBirthDay);
 	        } 
+	        
 	        return id;
 		 
 	}
-	
+
 	
 	//------------------------------- 회원가입 ------------------------------ //
 	@RequestMapping("/userJoinForm.do")
@@ -131,10 +136,18 @@ public class UsersController {
 		return "redirect:home.do";
 	}
 	
-	/*
-	@RequestMapping("/userList.do")
-	public String userList(Model model) {
-		return "users/userList";
+	@RequestMapping("/userLogOut.do")
+	public String userLogOut(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return "redirect:home.do";
 	}
-	*/
+	
+	
+	//------------------------------- 유저 정보수정 ------------------------------ //
+	@RequestMapping("/userPage.do")
+	public String userPage() {
+		return "users/userPage";
+		
+	}
 }

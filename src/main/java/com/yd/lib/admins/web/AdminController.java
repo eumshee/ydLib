@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yd.lib.admins.serviceImpl.BookManageImpl;
 import com.yd.lib.admins.serviceImpl.WishManageImpl;
+import com.yd.lib.book.serviceImpl.BookServiceImpl;
 import com.yd.lib.book.vo.BookVO;
 import com.yd.lib.wish.vo.WishVO;
 
@@ -18,6 +19,9 @@ public class AdminController {
 
 	@Autowired
 	BookManageImpl bmi;
+	
+	@Autowired
+	BookServiceImpl bsi;
 	
 	// 희망도서관리
 	@RequestMapping("/wishManagement.do")

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <title>로그인페이지</title>
 <head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
-rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"></head>
+
 <script>
 	function loginCheck() {
 		if (frm.user_Id.value == "") {
@@ -18,13 +18,13 @@ rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbi
 		}
 	
 		$.ajax({
-			url : 'userLogin.do',
+			url : 'userLoginIdCheck.do',
 			data : $('#frm').serialize(),
 			type : 'post',
-			success : function(user_Id) {
+			success : function(user) {
 				if(user_Id != null) {
-					alert( user_Id + "님이 정상적으로 로그인 되었습니다.");
-					window.location = 'home.do';
+					alert( user + "님이 정상적으로 로그인 되었습니다.");
+					window.location="home.do";
 				} 
 			},
 			error : function(err) {
@@ -41,10 +41,10 @@ rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbi
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" align="center">
-				<h1 class="text-white font-weight-bold">로그인</h1>
+				<h1 class="text-white font-weight-bold">회원정보</h1>
 				<div class="custom-breadcrumbs">
 					<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
-						class="text-white"><strong>로그인</strong></span>
+						class="text-white"><strong>회원가입</strong></span>
 				</div>
 			</div>
 		</div>
@@ -58,7 +58,7 @@ rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbi
 				<div class="rounded">
 					<div class="sidenav">
 						<ul class="list-unstyled">
-							<li class="sideactive"><a href="#">로그인</a></li>
+							<li class="sideactive"><a href="userLoginForm.do">로그인</a></li>
 							<li><a href="userJoinForm.do">회원가입</a></li>
 						</ul>
 					</div>
@@ -67,9 +67,7 @@ rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbi
 			<!--로그인 화면-->
 				<div align="center">
 					<h3>로그인</h3>
-					<form class="row g-3" id="frm" action="userLogin.do" method="post">
-
-
+					<form id="frm" action="userLogin.do" method="post">
 						<div>
 							<table style="border: '1'; border-collapse: collapse;">
 								<tr>
@@ -86,11 +84,18 @@ rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbi
 								</tr>
 							</table>
 						</div>
-						<div>
-							<button class="btn btn-light" type="button" onclick="loginCheck()">로그인</button>
-							<button class="btn btn-light" type="button" onclick="location.href='userJoinForm.do'">회원가입</button>
-						</div>
-					</form></div>
+						<br>
+						
+						
+					</form>
+					
+					<div align="center">
+					<button class="btn btn-light" type="button" onclick="loginCheck()">로그인</button>
+					<button class="btn btn-light" type="button" onclick="location.href='userJoinForm.do'">회원가입</button>
+				</div>
+				</div>
+				
+				
 			</div>
 		</div>
 </section>

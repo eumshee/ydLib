@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.yd.lib.users.vo.UsersVO;
 import com.yd.lib.yeyak.service.YeyakService;
 import com.yd.lib.yeyak.vo.YeyakVO;
 
@@ -22,6 +23,16 @@ public class YeyakServiceImpl implements YeyakService {
 	@Override
 	public int yeyakProcessUpdate(YeyakVO vo) {
 		return sqlSession.update("yeyakProcessUpdate",vo);
+	}
+	
+	@Override
+	public int yeyakOneInsert(YeyakVO vo) {
+		return sqlSession.insert("yeyakOneInsert",vo);
+	}
+
+	@Override
+	public List<UsersVO> yeyakUserSearch() {
+		return sqlSession.selectList("yeyakUserSearch");
 	}
 	
 }
