@@ -138,14 +138,14 @@
 										<td>${vo.wish_Price }</td>
 										<td>${fn:substring(vo.wish_Date,0,10) }</td>
 										<td><select id="WishId${vo.wish_Id}">
-												<option value="신청"
-													<c:if test="${vo.wish_Processing eq '신청'}">selected</c:if>>신청</option>
-												<option value="처리"
-													<c:if test="${vo.wish_Processing eq '처리'}">selected</c:if>>처리</option>
-												<option value="소장"
-													<c:if test="${vo.wish_Processing eq '소장'}">selected</c:if>>소장</option>
-												<option value="취소"
-													<c:if test="${vo.wish_Processing eq '취소'}">selected</c:if>>취소</option>
+												<option value="신청중"
+													<c:if test="${vo.wish_Processing eq '신청중'}">selected</c:if>>신청중</option>
+												<option value="처리중"
+													<c:if test="${vo.wish_Processing eq '처리중'}">selected</c:if>>처리중</option>
+												<option value="소장중"
+													<c:if test="${vo.wish_Processing eq '소장중'}">selected</c:if>>소장중</option>
+												<option value="취소됨"
+													<c:if test="${vo.wish_Processing eq '취소됨'}">selected</c:if>>취소됨</option>
 										</select>
 											<button type="button"
 												onclick="bigoSubmit('${vo.user_Id}',${vo.wish_Id})">수정</button>

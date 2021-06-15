@@ -1,5 +1,7 @@
 package com.yd.lib.users.vo;
 
+import java.util.Date;
+
 public class UsersVO {
 	
 	private String user_Id;
@@ -11,8 +13,17 @@ public class UsersVO {
 	private String user_Phone;
 	private String user_Addr;
 	private String user_Email;
+	private Date user_Loansus;
 	
 	
+	
+	
+	public Date getUser_Loansus() {
+		return user_Loansus;
+	}
+	public void setUser_Loansus(Date user_Loansus) {
+		this.user_Loansus = user_Loansus;
+	}
 	public String getUser_Id() {
 		return user_Id;
 	}

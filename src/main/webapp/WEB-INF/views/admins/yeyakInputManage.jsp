@@ -35,6 +35,16 @@
 		window.open(url,"",popupOption);
 	}
 
+	// 유저검색창
+	function userSearchPopup(){
+		var id = frm.user_Id.value;
+		var url= "yeyakUserSearch.do?user_Id="+id;
+		var winWidth = 700;
+	    var winHeight = 600;
+	    var popupOption= "width="+winWidth+", height="+winHeight;
+		window.open(url,"",popupOption);
+	}
+
 </script>
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
@@ -94,6 +104,7 @@
 								class="icon-asterisk mx-auto" style="color: red;"></span></th>
 							<td><input type="text" placeholder="아이디" class="form-control"
 								id="user_Id" name="user_Id"></td>
+							<td><button type="button" onclick="userSearchPopup()">검색</button></td>
 						</tr>
 					</table>
 				</form>

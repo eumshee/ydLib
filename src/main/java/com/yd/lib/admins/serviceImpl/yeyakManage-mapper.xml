@@ -34,4 +34,7 @@
 		insert into yeyak values(yeyak_seq.nextval,#{book_Num},#{user_Id},sysdate,null,null,'예약신청')
 	</insert>
 
+	<select id="yeyakUserSearch" parameterType="com.yd.lib.users.vo.UsersVO" resultType="com.yd.lib.users.vo.UsersVO">
+		select * from users
+	</select>
 </mapper>

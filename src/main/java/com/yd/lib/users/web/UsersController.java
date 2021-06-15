@@ -46,10 +46,18 @@ public class UsersController {
 		
 			UsersVO rvo = UsersDAO.userLoginCheck(vo);
 			String id = rvo.getUser_Id();
+			String userBirth = rvo.getUser_Birth();
+			String userBirthYear = userBirth.substring(0, 0);
+			String userBirthMonth = rvo.getUser_Birth();
+			String userBirthDay = rvo.getUser_Birth();
+			
 	        
 			HttpSession session = request.getSession();
 	        if(rvo != null) {
 	        session.setAttribute("loginUserVO", rvo);
+	        session.setAttribute("loginUserBirth", userBirthYear);
+	        session.setAttribute("loginUserBirth", userBirthMonth);
+	        session.setAttribute("loginUserBirth", userBirthDay);
 	        } 
 	        
 	        return id;
@@ -135,10 +143,11 @@ public class UsersController {
 		return "redirect:home.do";
 	}
 	
-	/*
-	@RequestMapping("/userList.do")
-	public String userList(Model model) {
-		return "users/userList";
+	
+	//------------------------------- 유저 정보수정 ------------------------------ //
+	@RequestMapping("/userPage.do")
+	public String userPage() {
+		return "users/userPage";
+		
 	}
-	*/
 }
