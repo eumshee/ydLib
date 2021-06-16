@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <style>
 .site-footer .scroll-top {
@@ -18,7 +19,7 @@
 	box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
-.main1 .search-box {width:650px;margin-top:38px;}
+.main1 .search-box {width:750px;margin-top:38px;}
 .main1 .search-box fieldset{position:relative;overflow:hidden;}
 .main1 .search-box legend {background:#89BA16;color:#fff;}
 .main1 .search-box input {border:0;background:#fff;width:100%;padding-left:18px;font-size:17px;color:#000;}
@@ -32,6 +33,31 @@
 .main1 .search-box .box1{float:left;width:100%;margin-left:140px;}
 .main1 .search-box .box2{margin-right:80px}
 
+.container {  max-width: 1300px; }
+
+.section-hero, .section-hero>.container>.row {
+	align-content: center;
+}
+
+.cont { 
+	margin-left: 15px; 
+	margin-right: 15px; 
+	background-color: ghostwhite; 
+	height: 45%; 
+	padding: 20px; 
+	box-shadow: 0px 0px 13px 8px rgb(0 0 0 / 20%); 
+	    border-radius: 1.5em;
+	    }
+.left  { width: 40%; float: left;}
+.right { width: 65%; float: right;} 		
+.bottom { width: 100%; height: 20%; float: left; } 		
+.left>ul { list-style: none; -webkit-padding-start: 0px; }
+
+h3 {
+	font-weight: bold;
+}
+	
+
 </style>
 <!-- HOME -->
 <section class="home-section section-hero overlay bg-image"
@@ -40,13 +66,9 @@
 
 	<div class="container">
 		<div class="row align-items-center justify-content-center">
+			<!-- 검색박스 영역 -->
 			<div class="col-md-12">
 				<div class="mb-5 text-center">
-					<p>
-						<img
-							src="https://library.daegu.go.kr/resources/homepage/donggu/img/main_txt_sm.png">
-					</p>
-					<h1 class="text-white font-weight-bold">예담작은도서관</h1>
 				</div>
 					<div class="mb-5">
 						<div class="main1" align="center">
@@ -60,9 +82,7 @@
 											<div class="title-box">통합자료검색</div>
 											<div class="box1">
 												<div class="box2">
-													<input name="title" id="search_text_1" type="text"
-														class="text" placeholder="책 제목을 입력하세요"
-														style="ime-mode: active;" />
+													<input name="title" id="search_text_1" type="text"	class="text" placeholder="책 제목을 입력하세요" style="ime-mode: active;" />
 												</div>
 											</div>
 											<button>
@@ -74,21 +94,39 @@
 								</div>
 							</div>
 						</div>
-
-					</div>
-					<div class="row">
-						<div class="col-md-12 popular-keywords">
-							<h3>Trending Keywords:</h3>
-							<ul class="keywords list-unstyled m-0 p-0">
-								<li><a href="#" class="">UI Designer</a></li>
-								<li><a href="#" class="">Python</a></li>
-								<li><a href="#" class="">Developer</a></li>
-							</ul>
-						</div>
 					</div>
 			</div>
+			<div class="cont col-md-12">
+				<div class="left col-md-5 col-lg-5 mb-12 mb-lg-12">
+						<ul>
+						<li>
+							<table width="100%">
+							<tr>
+							<td><h3>공지사항</h3></td><td><h3><span class="icon-th-list"></span></h3></td>
+							</tr>
+							<c:forEach var="vo" items="${notice }">
+							<tr onclick="formSubmit(${vo.notice_Id})">
+								<td width="75%">${vo.notice_Title }</td>
+								<td>${vo.notice_Date }</td>
+							</tr>
+							</c:forEach>
+							</table>
+							</li><br>
+						<li><h3>휴관일</h3></li>
+						</ul>
+				</div>
+				<div class="right col-md-7 col-lg-7 mb-12 mb-lg-12">
+					<c:if test="${loginUserVO.user_Id eq null}">
+					<h3>비회원님을 위한 추천도서</h3>
+					</c:if>
+				</div>
+			</div>
+				<div class="bottom col-md-12 col-lg-12 mb-12 mb-lg-12">
+				아이콘영역
+				</div>
+			</div>
 		</div>
-	</div>
+	
 
 	<a href="#next" class="scroll-button smoothscroll"> <span
 		class=" icon-keyboard_arrow_down"></span>
@@ -96,7 +134,7 @@
 
 </section>
 
-<section class="py-5 bg-image overlay-primary fixed overlay" id="next"
+<section class="py-5 bg-image overlay-primary fixed overlay mb-5" id="next"
 	style="background-image: url('resources/images/main.jpg');">
 	<div class="container">
 		<div class="row mb-5 justify-content-center">
@@ -106,32 +144,6 @@
 				<p class="lead text-white">537, Gukchaebosang-ro, Jung-gu,
 					Daegu, Republic of Korea</p>
 			</div>
-		</div>
-		<div class="row pb-0 block__19738 section-counter">
-
-			<div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
-				<div class="d-flex align-items-center justify-content-center mb-2">
-					<strong class="number" data-number="1930">0</strong>
-				</div>
-				<span class="caption">Candidates</span>
-			</div>
-
-			<div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
-				<div class="d-flex align-items-center justify-content-center mb-2">
-					<strong class="number" data-number="54">0</strong>
-				</div>
-				<span class="caption">Jobs Posted</span>
-			</div>
-
-			<div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
-				<div class="d-flex align-items-center justify-content-center mb-2">
-					<strong class="number" data-number="120">0</strong>
-				</div>
-				<span class="caption">Jobs Filled</span>
-			</div>
-
-
-
 		</div>
 	</div>
 </section>

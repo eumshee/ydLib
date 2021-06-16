@@ -87,8 +87,8 @@
 					<h4 class="h4 d-flex align-items-center mb-4 text-primary box">
 						<span class="icon-institution">&nbsp;</span><span class="half-highlight">작은도서관 안내</span>
 					</h4>
-					<span class="icon-keyboard_arrow_right">주소 : 대구광역시 중구 공평로 83(동문동 9-2)</span><br>
-					<span class="icon-keyboard_arrow_right">주차 : 대구시청 건너편 주차장 이용(대구시청 로비에서 주차 할인권 발급)</span><br>
+					<span class="icon-keyboard_arrow_right"></span>주소 : 대구광역시 중구 공평로 83(동문동 9-2)<br>
+					<span class="icon-keyboard_arrow_right"></span>주차 : 대구시청 건너편 주차장 이용(대구시청 로비에서 주차 할인권 발급)<br>
 				</div>
 				<div class="mb-5">
 					<h4 class="h4 d-flex align-items-center mb-4 text-primary box">

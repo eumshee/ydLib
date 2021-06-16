@@ -2,6 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yd.lib.notice.serviceImpl.notice-mapper">
 
+	<select id="noticeNewListSelect"
+		resultType="com.yd.lib.notice.vo.NoticeVO">
+		
+		SELECT * 
+        FROM (SELECT *
+              FROM NOTICE
+              ORDER BY NOTICE_DATE DESC)
+        WHERE ROWNUM <![CDATA[<]]>= 5
+        
+	</select>
+	
 	<select id="noticeListSelect"
 		resultType="com.yd.lib.notice.vo.NoticeVO">
 		select * from notice order by 1 desc

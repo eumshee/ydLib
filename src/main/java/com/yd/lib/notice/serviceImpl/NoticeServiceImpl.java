@@ -21,6 +21,11 @@ public class NoticeServiceImpl {
 	public List<NoticeVO> noticeSelectList() {
 		return sqlSession.selectList("noticeListSelect");
 	}
+	
+	// 공지 리스트
+	public List<NoticeVO> noticeSelectNewList() {
+		return sqlSession.selectList("noticeNewListSelect");
+	}
 
 	// 공지 1건 조회
 	public NoticeVO noticeSelect(NoticeVO vo) {

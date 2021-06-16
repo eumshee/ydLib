@@ -10,7 +10,6 @@
 
       <nav class="mx-auto site-navigation">
         <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
-        	<li><a href="test.do">테스트용</a></li>
           <li class="has-children">
             <a href="bookSerchForm.do">자료이용</a>
             <ul class="dropdown">
@@ -36,6 +35,7 @@
               <li><a href="boardList.do">묻고답하기</a></li>
             </ul>
           </li>
+          <li><a href="seatroom.do">열람실 예약</a></li>
           <li class="has-children">
             <a href="userLoginForm.do">나의도서관</a>
             <ul class="dropdown">
@@ -45,9 +45,11 @@
               <li><a href="userPage.do">내정보 수정</a></li>
             </ul>
           </li>
-          <li>
-            <a href="adminPage.do">관리자</a>
-          </li>
+			 <c:if test="${loginUserVO.user_Id eq 'admin'}">
+        	  <li>
+            	<a href="adminPage.do">관리자</a>
+       	   	  </li>
+			</c:if>
           <li class="d-lg-none"><a href="userLoginForm.do">로그인</a></li>
         </ul>
       </nav>

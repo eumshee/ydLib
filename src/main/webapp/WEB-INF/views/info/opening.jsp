@@ -55,18 +55,18 @@
 					<h5 class="h5 d-flex align-items-center mb-4 text-primary box">
 						<span class="icon-calendar">&nbsp;</span><span class="half-highlight">정기휴관일</span>
 					</h5>
-					<span class="icon-keyboard_arrow_right">&nbsp;매주 토, 일요일 및 법정공휴일</span><br><br>
+					<span class="icon-keyboard_arrow_right"></span>&nbsp;매주 토, 일요일 및 법정공휴일<br><br>
 					<h5 class="h5 d-flex align-items-center mb-4 text-primary box">
 						<span class="icon-calendar">&nbsp;</span><span class="half-highlight">임시휴관일</span>
 					</h5>
-					<span class="icon-keyboard_arrow_right">&nbsp;자료정리∙점검 및 시설물 보수∙정비 등을 위한 날</span><br>
-					<span class="icon-keyboard_arrow_right">&nbsp;도서관 및 기타 사정으로 도서관장이 지정한 날</span><br><br>
+					<span class="icon-keyboard_arrow_right"></span>&nbsp;자료정리∙점검 및 시설물 보수∙정비 등을 위한 날<br>
+					<span class="icon-keyboard_arrow_right"></span>&nbsp;도서관 및 기타 사정으로 도서관장이 지정한 날<br><br>
 				<div class="mb-5">
 					<h4 class="h4 d-flex align-items-center mb-4 text-primary box">
 						<span class="icon-inbox">&nbsp;</span><span class="half-highlight">도서반납함 운영시간</span>
 					</h4>
-						<span class="icon-keyboard_arrow_right">&nbsp;평일 : 오후 7시 ~ 익일 오전 9시</span><br>
-						<span class="icon-keyboard_arrow_right">&nbsp;휴관일 : 익일 오전 9시까지</span>&nbsp;&nbsp;<u><b>※ 도서관 운영시간 중에는 반납함 이용이 불가합니다.</b></u><br><br>
+						<span class="icon-keyboard_arrow_right"></span>&nbsp;평일 : 오후 7시 ~ 익일 오전 9시<br>
+						<span class="icon-keyboard_arrow_right"></span>&nbsp;휴관일 : 익일 오전 9시까지&nbsp;&nbsp;<u><b>※ 도서관 운영시간 중에는 반납함 이용이 불가합니다.</b></u><br><br>
 				</div>
 			</div>
 		</div>
