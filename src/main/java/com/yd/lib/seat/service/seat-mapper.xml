@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yd.lib.seat.service.seat-mapper">
+	<!-- 좌석정보 확인 -->
+	<select id="seatList" resultType="com.yd.lib.seat.vo.SeatroomVO">
+		select s.*, r.* from seat s
+		left join seatroom r on s.seat_num = r.seat_num
+		order by s.seat_num
+	</select>
+	
+	<!-- 좌석정보 업데이트(비었으면 0) -->
+	<update id="seatUpdate" parameterType="com.yd.lib.seat.vo.SeatroomVO">
+		update seat
+			<set>
+		       <if test="seat_Status == 0">seat_status=1,</if>
+		       <if test="seat_Status == 1">seat_status=0,</if>
+	   		</set>
+		where seat_num = #{seat_Num}
+	</update>
+	
+	<insert id="seatOneInsert" parameterType="com.yd.lib.seat.vo.SeatroomVO">
+		insert into seatroom values(#{seat_Num},#{user_Id},#{seat_Num},sysdate,
+		#{seat_start_Time},null) 
+	</insert>
+</mapper>
