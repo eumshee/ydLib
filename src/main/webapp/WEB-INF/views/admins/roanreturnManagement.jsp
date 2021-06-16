@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jstl/fmt_rt" %>
+<%@ taglib prefix="z" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:useBean id="toDay" class="java.util.Date" />
 <x:formatDate value='${toDay}' pattern='yyyy-MM-dd' var="nowDate"/>
 <x:formatDate value='${user.user_Loansus }' pattern='yyyy-MM-dd' var="user_Loansus"/>
@@ -28,64 +29,72 @@ h2{
 }
 </style>
 <script>
-function seachcheck(){
-	if($('#user_Gubun').val()=="삭제 회원"){
-		alert('삭제 회원입니다. 대출/반납이 불가능 합니다.');
-		return;
-	}else if( $('#user_Gubun').val()=="준회원" ){
-		alert('준회원입니다. 대출/반납/예약 이 불가능 합니다.')
-		return;
-	}else{
-		frm.book_Num.value=$('#bookSeach').val();
-		$.ajax({
-			url:'checkBook.do',
-			type: 'post',
-			data: {book_Num: $('#bookSeach').val()},
-			success: function(result){
-				if(result>0){
-					alert('이미 대출중인 책입니다.');
-					$('#bookSeach').val("");
-					$('#bookSeach').focus();
-				}else{
-					alert('대출이 완료되었습니다.');
-					
-					frm.submit();
-				}
-			},
-			error: function(err){
-				console.error(err);
-			}
-		})
 
-	}
-}
-
-function returncheck(){
-	let book_Num = $('#returnBookNum').val();
-	let user_Id = $('#returnUserId').val();
-	let user_Name =$('#returnUserName').val();
-	$.ajax({
-		url: 'returncheck.do',
-		type: 'post',
-		data: {book_Num: book_Num, user_Id: user_Id, user_Name: user_Name},
-		success: function(result){
-			//1이면 예약신청 목록이 있으므로 예약신청 페이지 전환
-			if(result>0){
-				if(confirm(book_Num + "번 책에 대한 예약이 있습니다. 예약 페이지로 이동하시겠습니까?")){
-					location.href="yeyakmanagemant.do";
-				}else{
-					location.href="adminMemberSearch2.do?user_Name="+user_Name;
-				}
-			}else{//0이면 홈페이지 재요청
-				alert('반납이 완료되었습니다.');
-				location.href="adminMemberSearch2.do?user_Name="+user_Name;
+		function seachcheck(){
+			let count = $('#count'+5).val();
+			console.log(count);
+			if(count == 5){
+				alert('총대여 권수는 5권 입니다. 대출이 불가능합니다.')
+				return;
 			}
-		},
-		error: function(err){
-			console.error(err)
+			
+			if($('#user_Gubun').val()=="삭제 회원"){
+				alert('삭제 회원입니다. 대출/반납이 불가능 합니다.');
+				return;
+			}else if( $('#user_Gubun').val()=="준회원" ){
+				alert('준회원입니다. 대출/반납/예약 이 불가능 합니다.')
+				return;
+			}else{
+				frm.book_Num.value=$('#bookSeach').val();
+				$.ajax({
+					url:'checkBook.do',
+					type: 'post',
+					data: {book_Num: $('#bookSeach').val()},
+					success: function(result){
+						if(result>0){
+							alert('이미 대출중인 책입니다.');
+							$('#bookSeach').val("");
+							$('#bookSeach').focus();
+						}else{
+							alert('대출이 완료되었습니다.');
+							
+							frm.submit();
+						}
+					},
+					error: function(err){
+						console.error(err);
+					}
+				})
+		
+			}
 		}
-	})
-}
+
+		function returncheck(){
+			let book_Num = $('#returnBookNum').val();
+			let user_Id = $('#returnUserId').val();
+			let user_Name =$('#returnUserName').val();
+			$.ajax({
+				url: 'returncheck.do',
+				type: 'post',
+				data: {book_Num: book_Num, user_Id: user_Id, user_Name: user_Name},
+				success: function(result){
+					//1이면 예약신청 목록이 있으므로 예약신청 페이지 전환
+					if(result>0){
+						if(confirm(book_Num + "번 책에 대한 예약이 있습니다. 예약 페이지로 이동하시겠습니까?")){
+							location.href="yeyakmanagemant.do";
+						}else{
+							location.href="adminMemberSearch2.do?user_Name="+user_Name;
+						}
+					}else{//0이면 홈페이지 재요청
+						alert('반납이 완료되었습니다.');
+						location.href="adminMemberSearch2.do?user_Name="+user_Name;
+					}
+				},
+				error: function(err){
+					console.error(err)
+				}
+			})
+		}
 </script>
 
 <!-- 상단배너 -->
@@ -149,19 +158,18 @@ function returncheck(){
 					<tr>
 						<th>대출번호</th><th>책번호</th><th>대출일자</th><th>반납예정일</th><th>연체일</th><th>대출상태</th><th>처리</th>
 					</tr>
-<!--  -->			<c:choose>
+					<c:choose>
 						<c:when test="${!empty historty}">
-							<c:forEach items="${historty }" var="vo" >
-								<c:if test="${vo.loan_Status ne '반납'}">
-										<input type="hidden" id= "returnUserId" name="user_Id" value="${user.user_Id }">
-										<input type="hidden" id= "returnBookNum" name="book_Num" value="${vo.book_Num }">
-										<input type="hidden" id= "returnUserName" name="user_Name" value="${user.user_Name }">
-										<tr>
-											<td>${vo.loan_Id }</td><td>${vo.book_Num }</td><td>${vo.loan_Date }</td>
-											<td>${vo.return_Duedate }</td><td>${vo.return_Delaydays }</td><td>${vo.loan_Status }</td>
-											<td><input type="button" value="반납" onclick="returncheck()"></td>
-										</tr>
-								</c:if>
+							<c:forEach items="${historty }" var="vo" varStatus="status">
+								<input type="hidden" id= "count${status.count }" value="${status.count }">
+								<input type="hidden" id= "returnUserId" name="user_Id" value="${user.user_Id }">
+								<input type="hidden" id= "returnBookNum" name="book_Num" value="${vo.book_Num }">
+								<input type="hidden" id= "returnUserName" name="user_Name" value="${user.user_Name }">
+								<tr>
+									<td>${vo.loan_Id } </td><td>${vo.book_Num }</td><td>${vo.loan_Date }</td>
+									<td>${vo.return_Duedate }</td><td>${vo.return_Delaydays }</td><td>${vo.loan_Status }</td>
+									<td><input type="button" value="반납" onclick="returncheck()"></td>
+								</tr>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>

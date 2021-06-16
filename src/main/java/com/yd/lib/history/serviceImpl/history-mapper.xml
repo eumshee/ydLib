@@ -33,6 +33,7 @@
 		select loan_id, user_id, book_num, loan_date, return_duedate,return_date,GREATEST(TRUNC(sysdate - RETURN_DUEDATE),0) as return_Delaydays ,loan_status
 		from (select * from users u join history h using (USER_ID))
 		where user_name = #{user_Name}
+		and loan_status = '대출'
 	</select>
 
 	<!-- user 조회 -->
