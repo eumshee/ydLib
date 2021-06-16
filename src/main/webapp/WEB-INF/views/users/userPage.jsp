@@ -241,10 +241,10 @@ function findAddr(){
 				<div class="rounded">
 					<div class="sidenav">
 						<ul class="list-unstyled">
-							<li><a href="userLoginForm.do">대출내역조회</a></li>
-							<li><a href="userJoinForm.do">예약현황</a></li>
-							<li><a href="userJoinForm.do">희망도서 신청현황</a></li>
-							<li class="sideactive"><a href="userJoinForm.do">내정보 수정</a></li>
+							<li><a href="userLoan.do">대출내역조회</a></li>
+							<li><a href="userYeyak.do">예약현황</a></li>
+							<li><a href="userWish.do">희망도서 신청현황</a></li>
+							<li class="sideactive"><a href="userPage.do">내정보 수정</a></li>
 						</ul>
 					</div>
 				</div>
