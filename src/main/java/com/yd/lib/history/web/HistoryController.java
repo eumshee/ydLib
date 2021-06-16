@@ -35,7 +35,6 @@ private HistoryServiceImpl his;
 		model.addAttribute("historyList",his.historySelectList());
 		return "admins/roanreturnManagement";
 	}
-
 	
 	@RequestMapping("/adminMemberSearch2.do")
 	public String adminMemberSearch2(Model model, HistoryVO vo) {
@@ -57,31 +56,42 @@ private HistoryServiceImpl his;
 	
 	//대출시 중복체크
 	@RequestMapping("/checkBook.do")
-	public void dopost(HttpServletRequest req, HttpServletResponse resp, HistoryVO vo) throws IOException {
+	public void dopost(HttpServletResponse resp, HistoryVO vo) throws IOException {
 		int n = his.bookCheck(vo);
 		resp.getWriter().print(n);
 	}
 	
-	//반납처리
-	@RequestMapping("/returnBook.do")
-	public String updateHistory(HistoryVO vo) throws UnsupportedEncodingException {
-		String page = vo.getUser_Name();
-		System.out.println(page);
-		String encodedParam = URLEncoder.encode(page, "UTF-8");
-		his.historyUpdate(vo);
-		
-		HistoryVO hvo = his.historyOneSelect(vo);
-		
-		System.out.println(hvo.getReturn_Delaydays());
-		System.out.println(vo.getUser_Id());
-		if(hvo.getReturn_Delaydays() > 0) {
-			UsersVO uvo = new UsersVO();
-			uvo.setReturn_Delaydays(hvo.getReturn_Delaydays());
-			uvo.setUser_Id(vo.getUser_Id());
-			his.loansusUpdate(uvo);
+	//반납시 예약확인 후 반납처리
+	@RequestMapping("/returncheck.do")
+	public void returncheck(HistoryVO vo, HttpServletResponse resp) throws IOException {
+		int n = his.returnCheck(vo);
+		int m = 0;
+		if(n>0) { //예약정보 있을경우
+			his.historyUpdate(vo); // 반납처리
+			
+			HistoryVO hvo = his.historyOneSelect(vo); //회원 조회 다시조회
+			
+			if(hvo.getReturn_Delaydays() > 0) { //회원테이블 연체일 부여
+				UsersVO uvo = new UsersVO();
+				uvo.setReturn_Delaydays(hvo.getReturn_Delaydays());
+				uvo.setUser_Id(vo.getUser_Id());
+				his.loansusUpdate(uvo);
+			}
+			m = 1; 
+		}else { //예약이 없을경우
+			his.historyUpdate(vo); // 반납처리
+			
+			HistoryVO hvo = his.historyOneSelect(vo); //회원 조회 다시조회
+			
+			if(hvo.getReturn_Delaydays() > 0) { //회원테이블 연체일 부여
+				UsersVO uvo = new UsersVO();
+				uvo.setReturn_Delaydays(hvo.getReturn_Delaydays());
+				uvo.setUser_Id(vo.getUser_Id());
+				his.loansusUpdate(uvo);
+			} 
 		}
-		return "redirect:adminMemberSearch2.do?user_Name="+encodedParam;
-	}
+		resp.getWriter().print(m);
+		}
 	
 	//검색유저 history목록
 	@RequestMapping("/userHistory.do")

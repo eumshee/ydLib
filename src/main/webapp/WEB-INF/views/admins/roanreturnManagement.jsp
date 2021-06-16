@@ -48,6 +48,7 @@ function seachcheck(){
 					$('#bookSeach').focus();
 				}else{
 					alert('대출이 완료되었습니다.');
+					
 					frm.submit();
 				}
 			},
@@ -59,6 +60,32 @@ function seachcheck(){
 	}
 }
 
+function returncheck(){
+	let book_Num = $('#returnBookNum').val();
+	let user_Id = $('#returnUserId').val();
+	let user_Name =$('#returnUserName').val();
+	$.ajax({
+		url: 'returncheck.do',
+		type: 'post',
+		data: {book_Num: book_Num, user_Id: user_Id, user_Name: user_Name},
+		success: function(result){
+			//1이면 예약신청 목록이 있으므로 예약신청 페이지 전환
+			if(result>0){
+				if(confirm(book_Num + "번 책에 대한 예약이 있습니다. 예약 페이지로 이동하시겠습니까?")){
+					location.href="yeyakmanagemant.do";
+				}else{
+					location.href="adminMemberSearch2.do?user_Name="+user_Name;
+				}
+			}else{//0이면 홈페이지 재요청
+				alert('반납이 완료되었습니다.');
+				location.href="adminMemberSearch2.do?user_Name="+user_Name;
+			}
+		},
+		error: function(err){
+			console.error(err)
+		}
+	})
+}
 </script>
 
 <!-- 상단배너 -->
@@ -126,15 +153,14 @@ function seachcheck(){
 						<c:when test="${!empty historty}">
 							<c:forEach items="${historty }" var="vo" >
 								<c:if test="${vo.loan_Status ne '반납'}">
-									<form action="returnBook.do" method="post">
-										<input type="hidden" name="user_Id" value="${user.user_Id }">
-										<input type="hidden" id= "book_Num" name="book_Num" value="${vo.book_Num }">
-										<input type="hidden" id= "user_Name" name="user_Name" value="${user.user_Name }">
+										<input type="hidden" id= "returnUserId" name="user_Id" value="${user.user_Id }">
+										<input type="hidden" id= "returnBookNum" name="book_Num" value="${vo.book_Num }">
+										<input type="hidden" id= "returnUserName" name="user_Name" value="${user.user_Name }">
 										<tr>
 											<td>${vo.loan_Id }</td><td>${vo.book_Num }</td><td>${vo.loan_Date }</td>
-											<td>${vo.return_Duedate }</td><td>${vo.return_Delaydays }</td><td>${vo.loan_Status }</td><td><input type="submit" value="반납"></td>
+											<td>${vo.return_Duedate }</td><td>${vo.return_Delaydays }</td><td>${vo.loan_Status }</td>
+											<td><input type="button" value="반납" onclick="returncheck()"></td>
 										</tr>
-									</form>
 								</c:if>
 							</c:forEach>
 						</c:when>
