@@ -7,7 +7,7 @@
 	</select>
 	
 	<insert id="userJoin" parameterType="hashmap" >
-		insert into users values(#{user_Id},#{user_Name},#{user_Pw},'준회원',#{user_Gender},#{user_Birth},#{user_Phone},#{user_Addr},#{user_Email})
+		insert into users values(#{user_Id},#{user_Name},#{user_Pw},'준회원',#{user_Gender},#{user_Birth},#{user_Phone},#{user_Addr},#{user_Email},null)
 	</insert>
 	
 	
@@ -43,43 +43,29 @@
 	
 	
 	
-	<select id="newBook" parameterType="com.yd.lib.book.vo.BookVO" resultType="com.yd.lib.book.vo.BookVO">
-		SELECT b.book_title, b.book_aut, b.book_location, h.loan_date, h.return_date, h.loan_status  
+	<select id="userLoanList" parameterType="string" resultType="com.yd.lib.users.vo.UserLoanInfoVO">
+		SELECT 	h.user_Id, u.user_Name, b.book_Isbn, 
+				b.book_title, b.book_aut, b.book_location, b.book_Img,b.book_Pub, b.book_subject, 
+				TO_CHAR(h.loan_date,'YYYY/MM/DD') loan_Date, 
+        		TO_CHAR(h.return_duedate,'YYYY/MM/DD') return_Duedate, h.loan_Status 
 				from users u join history h on (u.user_id = h.user_id)
-				join book b on (b.book_num = h.book_num);
+				join book b on (b.book_num = h.book_num) 
+				where u.user_id = #{user_Id}
+				order by h.loan_date
 	</select>
 	
-	<select id="newBookPaging" parameterType="com.yd.lib.book.vo.BookVO" resultType="com.yd.lib.book.vo.BookVO">
-		select b.*
-		from(
-			 select rownum rn , a.*
-			 from (
-				   select * from (
-                                  SELECT ROW_NUMBER() OVER(PARTITION BY b1.book_isbn ORDER BY b1.book_num DESC ) AS RNUM, b1.* , b2.all_book_cnt , NVL(b3.can_book_cnt,0) as can_book_cnt
-                                  FROM book b1 
-                                  join (
-                                  		select book_isbn , COUNT(book_isbn) as all_book_cnt
-										from book
-										GROUP BY book_isbn
-										) b2
-                                  on b1.book_isbn = b2.book_isbn
-                                  full join (
-											 select  book_isbn , count(book_isbn) as can_book_cnt
-											 from book
-											 where book_byn = 'Y'
-											 group by book_isbn
-                                  ) b3
-                                  on b1.book_isbn = b3.book_isbn
-                                  where book_indate > sysdate - 30
-                                  )bk
-                where RNUM = 1
-                order by
-                <choose>
-        			<otherwise>book_indate asc</otherwise>
-    			</choose>
-                ) a
-			 )b
-		where rn between #{firstCnt} and #{lastCnt}
+	<select id="userYeyakList" parameterType="string" resultType="com.yd.lib.users.vo.UserYeyakInfoVO">
+		SELECT 	y.user_Id, u.user_Name, b.book_title, b.book_aut, b.book_location, b.book_Img,b.book_Pub, b.book_subject,
+       			TO_CHAR(y.yeyak_submit,'YYYY/MM/DD') yeyak_Submit, 
+       			TO_CHAR(y.yeyak_start,'YYYY/MM/DD') yeyak_Start, 
+      			TO_CHAR(y.yeyak_end,'YYYY/MM/DD') yeyak_End, 
+      			y.yeyak_Processing
+        		FROM yeyak y JOIN book b
+				ON (y.book_num = b.book_num)
+				JOIN users u
+				ON (y.user_id = u.user_id)
+       			where y.user_id = #{user_Id}
+				order by y.yeyak_submit
 	</select>
 	
 	

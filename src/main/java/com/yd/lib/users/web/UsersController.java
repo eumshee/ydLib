@@ -56,6 +56,7 @@ public class UsersController {
 			HttpSession session = request.getSession();
 	        if(rvo != null) {
 	        session.setAttribute("loginUserVO", rvo);
+	        session.setAttribute("loginUserId", id);
 	        //my page 표시용
 	        session.setAttribute("loginUserVOBirth", userBirthYear+"년 " + userBirthMonth+"월 " + userBirthDay +"일 ");
 	        } 

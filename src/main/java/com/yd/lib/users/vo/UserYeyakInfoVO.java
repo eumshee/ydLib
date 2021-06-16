@@ -1,7 +1,6 @@
 package com.yd.lib.users.vo;
 
-
-public class UserLoanInfoVO {
+public class UserYeyakInfoVO {
 	
 	private String user_Id;
 	private String user_Name;
@@ -12,32 +11,11 @@ public class UserLoanInfoVO {
 	private String book_Pub;
 	private String book_Location;
 	private String book_Subject;
-	private String loan_Date;
-	private String return_Duedate;
-	private int return_Delaydays;
-	private String loan_Status;
+	private String yeyak_Submit;
+	private String yeyak_Start;
+	private String yeyak_End;
+	private String yeyak_Processing;
 	
-	
-	
-	public String getLoan_Status() {
-		return loan_Status;
-	}
-	public void setLoan_Status(String loan_Status) {
-		this.loan_Status = loan_Status;
-	}
-	public String getBook_Isbn() {
-		return book_Isbn;
-	}
-	public void setBook_Isbn(String book_Isbn) {
-		this.book_Isbn = book_Isbn;
-	}
-	
-	public String getBook_Img() {
-		return book_Img;
-	}
-	public void setBook_Img(String book_Img) {
-		this.book_Img = book_Img;
-	}
 	
 	public String getUser_Id() {
 		return user_Id;
@@ -51,11 +29,23 @@ public class UserLoanInfoVO {
 	public void setUser_Name(String user_Name) {
 		this.user_Name = user_Name;
 	}
+	public String getBook_Isbn() {
+		return book_Isbn;
+	}
+	public void setBook_Isbn(String book_Isbn) {
+		this.book_Isbn = book_Isbn;
+	}
 	public String getBook_Title() {
 		return book_Title;
 	}
 	public void setBook_Title(String book_Title) {
 		this.book_Title = book_Title;
+	}
+	public String getBook_Img() {
+		return book_Img;
+	}
+	public void setBook_Img(String book_Img) {
+		this.book_Img = book_Img;
 	}
 	public String getBook_Aut() {
 		return book_Aut;
@@ -81,26 +71,29 @@ public class UserLoanInfoVO {
 	public void setBook_Subject(String book_Subject) {
 		this.book_Subject = book_Subject;
 	}
-	
-	
-	public String getLoan_Date() {
-		return loan_Date;
+	public String getYeyak_Submit() {
+		return yeyak_Submit;
 	}
-	public void setLoan_Date(String loan_Date) {
-		this.loan_Date = loan_Date;
+	public void setYeyak_Submit(String yeyak_Submit) {
+		this.yeyak_Submit = yeyak_Submit;
 	}
-	public String getReturn_Duedate() {
-		return return_Duedate;
+	public String getYeyak_Start() {
+		return yeyak_Start;
 	}
-	public void setReturn_Duedate(String return_Duedate) {
-		this.return_Duedate = return_Duedate;
+	public void setYeyak_Start(String yeyak_Start) {
+		this.yeyak_Start = yeyak_Start;
 	}
-	public int getReturn_Delaydays() {
-		return return_Delaydays;
+	public String getYeyak_End() {
+		return yeyak_End;
 	}
-	public void setReturn_Delaydays(int return_Delaydays) {
-		this.return_Delaydays = return_Delaydays;
+	public void setYeyak_End(String yeyak_End) {
+		this.yeyak_End = yeyak_End;
 	}
-	
+	public String getYeyak_Processing() {
+		return yeyak_Processing;
+	}
+	public void setYeyak_Processing(String yeyak_Processing) {
+		this.yeyak_Processing = yeyak_Processing;
+	}
 	
 }

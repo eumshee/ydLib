@@ -1,3 +1,4 @@
+<%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -81,56 +82,56 @@
 					<form action="bookInfo.do" id="ifrm">
 						<input type="hidden" id="book_Isbn" name="book_Isbn">
 						<ul class="job-listings mb-5">
-							<c:forEach items="${newBookList }" var="book">
+							<c:forEach items="${userLoanList }" var="loan">
+								<br>
+								<div>
+								<p>대출일: ${loan.loan_Date }  &nbsp;&nbsp;&nbsp;&nbsp; 반납기한: ${loan.return_Duedate }
+								&nbsp;&nbsp;&nbsp;&nbsp; 상태: ${loan.loan_Status } 
+								<c:choose>
+								<c:when test="${loan.return_Duedate } > <%=LocalDate.now()%>">
+								&nbsp;&nbsp;&nbsp;&nbsp; 연체일수:  ${loan.return_Delaydays }일
+								</c:when>
+								</c:choose>
+								</p>
+								</div>
 								<li	class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-									<a onclick="bookInfo(${book.book_Isbn})"></a>
+									<a onclick="bookInfo(${loan.book_Isbn})"></a>
 									<div class="job-listing-logo">
-										<img src="${book.book_Img }" alt="Image" class="img-fluid" width="100%">
+										<img src="${loan.book_Img }" alt="Image" class="img-fluid" width="100%">
 									</div>
 									<div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
 										<div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-											<h2>제목 : ${book.book_Title }</h2>
+											<h2>제목 : ${loan.book_Title }</h2>
 											<br>
-											<h2>저자 : ${book.book_Aut }</h2>
+											<h2>저자 : ${loan.book_Aut }</h2>
 											<br>
-											<h2>출판사 : ${book.book_Pub }</h2>  
+											<h2>출판사 : ${loan.book_Pub }</h2>  
 										</div>
 										<div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-											${book.book_Location }번서가
-										</div>
-										<div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-											수량 : ${book.all_Book_Cnt }권
+											${loan.book_Location }번서가
 										</div>
 										<div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
 										주제 : 
 											<c:choose>
-												<c:when test="${book.book_Subject eq '0'}">총류</c:when>
-												<c:when test="${book.book_Subject eq '1'}">철학</c:when>
-												<c:when test="${book.book_Subject eq '2'}">종교</c:when>
-												<c:when test="${book.book_Subject eq '3'}">사회과학</c:when>
-												<c:when test="${book.book_Subject eq '4'}">자연과학</c:when>
-												<c:when test="${book.book_Subject eq '5'}">기술과학</c:when>
-												<c:when test="${book.book_Subject eq '6'}">예술</c:when>
-												<c:when test="${book.book_Subject eq '7'}">언어</c:when>
-												<c:when test="${book.book_Subject eq '8'}">문학</c:when>
+												<c:when test="${loan.book_Subject eq '0'}">총류</c:when>
+												<c:when test="${loan.book_Subject eq '1'}">철학</c:when>
+												<c:when test="${loan.book_Subject eq '2'}">종교</c:when>
+												<c:when test="${loan.book_Subject eq '3'}">사회과학</c:when>
+												<c:when test="${loan.book_Subject eq '4'}">자연과학</c:when>
+												<c:when test="${loan.book_Subject eq '5'}">기술과학</c:when>
+												<c:when test="${loan.book_Subject eq '6'}">예술</c:when>
+												<c:when test="${loan.book_Subject eq '7'}">언어</c:when>
+												<c:when test="${loan.book_Subject eq '8'}">문학</c:when>
 												<c:otherwise>역사</c:otherwise>
 											</c:choose>
 											
 										</div>
-										<div class="job-listing-meta">
-											
-											<c:if test="${book.can_Book_Cnt <= 0 }">
-												<span class="badge badge-danger">대출불가</span>
-											</c:if>
-											<c:if test="${book.can_Book_Cnt > 0 }">
-												<span class="badge badge-success">대출가능</span>
-											</c:if>
-										</div>
 									</div>
 								</li>
+								<br>
 							</c:forEach>
 						</ul>
-						</form>
+					</form>
 				</div>
 			</div>
 		</div>
