@@ -20,7 +20,8 @@ public class UsersServiceImpl {
 		
 		sqlSession.insert("userJoin", param);
 	}
-
+	//로그인시 확인사항
+	
 	public UsersVO userLoginCheck(UsersVO vo) {
 		
 		return sqlSession.selectOne("loginCheck",vo);

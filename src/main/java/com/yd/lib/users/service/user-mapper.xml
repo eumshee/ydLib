@@ -3,7 +3,7 @@
 <mapper namespace="com.yd.lib.users.serviceImpl.user-mapper">
 	
 	<select id="loginCheck" parameterType="com.yd.lib.users.vo.UsersVO" resultType="com.yd.lib.users.vo.UsersVO" >
-		select * from users where user_id = #{user_Id} and user_pw = #{user_Pw}
+		select * from users where user_id = #{user_Id} and user_pw = #{user_Pw} and not user_Gubun = '삭제 회원'
 	</select>
 	
 	<insert id="userJoin" parameterType="hashmap" >

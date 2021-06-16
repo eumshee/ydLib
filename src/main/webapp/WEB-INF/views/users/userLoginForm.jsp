@@ -22,8 +22,9 @@
 			data : $('#frm').serialize(),
 			type : 'post',
 			success : function(user) {
+				
 				if(user_Id != null) {
-					alert( user + "님이 정상적으로 로그인 되었습니다.");
+					alert("안녕하세요 " + user + "님. 정상적으로 로그인 되었습니다.");
 					window.location="home.do";
 				} 
 			},
@@ -44,7 +45,7 @@
 				<h1 class="text-white font-weight-bold">회원정보</h1>
 				<div class="custom-breadcrumbs">
 					<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
-						class="text-white"><strong>회원가입</strong></span>
+						class="text-white"><strong>로그인</strong></span>
 				</div>
 			</div>
 		</div>
