@@ -34,8 +34,8 @@ td {
 				let stChk = confirm("예약하시겠습니까?");
 				if (stChk) {
 					//location.href = "seatUpdate.do?seat_Status="+status+"&seat_Num="+num;	
-					// 팝업으로 예약창
-						var url= "seatOneInsert.do";  
+						// 예약창 팝업
+						var url= "seatInsertForm.do";  
 						var winWidth = 700;
 					    var winHeight = 600;
 					    var popupOption= "width="+winWidth+", height="+winHeight;

@@ -26,10 +26,9 @@ public class SeatController {
 		return "redirect:seatroom.do";
 	}
 	
-	@RequestMapping("/seatOneInsert.do")
-	public String seatOneInsert(Model model, SeatroomVO vo) {
-		ssi.seatOneInsert(vo);
-		return "seat/empty/seatOneInsert";
+	@RequestMapping("/seatInsertForm.do")
+	public String seatInsertForm(Model model, SeatroomVO vo) {
+		return "seat/empty/seatInsertForm";
 	}
 	
 	
