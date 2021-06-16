@@ -162,7 +162,7 @@ function findAddr(){
 	});
 	function formCheck() {
 		
-		/* if (frm.user_Pw.value == "" && frm.user_Email.value == "" && frm.user_Phone.value == "" && frm.user_post.value == "") {
+		if (frm.user_Pw.value == "" && frm.user_Email.value == "" && frm.user_Phone.value == "" && frm.user_post.value == "") {
 			var delConfirm = confirm("수정할 내용이 없습니다. 홈으로 돌아가시겠습니까?");
 			   if (delConfirm) {
 			      alert('수정을 취소하고 홈화면으로 이동합니다.');
@@ -171,8 +171,8 @@ function findAddr(){
 			   else {
 			   }
 			return false;
-		} */
-
+		} 
+		
 		if (frm.user_Pw.value != frm.user_Pw2.value) {
 			alert("비밀번호를 재확인하세요.");
 			frm.user_Pw2.focus();
@@ -200,7 +200,18 @@ function findAddr(){
 			frm.smsKey.focus();
 			return false;
 			}
-		} */
+		}  */
+		
+		if (frm.user_Pw.value == "" || frm.user_Email.value == "" || frm.user_Phone.value == "" || frm.user_post.value == "") {
+			var delConfirm = confirm("작성하지 않은 부분이 있습니다. 입력한 정보만 수정하시겠습니까?");
+			   if (delConfirm) {
+				   alert("회원정보가 정상적으로 수정되었습니다");
+				   frm.submit();
+			   }
+			   else {
+			   }
+			return false;
+		} 
 		
 		frm.submit();
 		alert("회원정보가 정상적으로 수정되었습니다");
@@ -230,10 +241,10 @@ function findAddr(){
 				<div class="rounded">
 					<div class="sidenav">
 						<ul class="list-unstyled">
-							<li class="sideactive"><a href="userLoginForm.do">대출내역조회</a></li>
+							<li><a href="userLoginForm.do">대출내역조회</a></li>
 							<li><a href="userJoinForm.do">예약현황</a></li>
 							<li><a href="userJoinForm.do">희망도서 신청현황</a></li>
-							<li><a href="userJoinForm.do">내정보 수정</a></li>
+							<li class="sideactive"><a href="userJoinForm.do">내정보 수정</a></li>
 						</ul>
 					</div>
 				</div>
