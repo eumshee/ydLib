@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yd.lib.info.web.info-mapper">
+	<!-- 주제별 책 수량 -->
+	<select id="infoMaterial" resultType="com.yd.lib.book.vo.BookVO">
+		select count(book_num) as book_num, book_subject from book
+		group by book_subject
+		order by book_subject
+	</select>
+</mapper>

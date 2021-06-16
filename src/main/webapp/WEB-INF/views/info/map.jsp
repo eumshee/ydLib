@@ -54,14 +54,34 @@
 					<h3 class="h4 d-flex align-items-center mb-4 text-primary box">
 						<span class="icon-map">&nbsp;</span><span class="half-highlight">찾아오시는 길</span>
 					</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-						Debitis illum fuga eveniet. Deleniti asperiores, commodi quae
-						ipsum quas est itaque, ipsa, dolore beatae voluptates nemo
-						blanditiis iste eius officia minus.</p>
-					<p>Velit unde aliquam et voluptas reiciendis non sapiente
-						labore, deleniti asperiores blanditiis nihil quia officiis dolor
-						vero iste dolore vel molestiae saepe. Id nisi, consequuntur sunt
-						impedit quidem, vitae mollitia!</p>
+					<div id="map" style="width:100%;height:400px;"></div>
+					<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a8e4a673b96c7394ea9e0155a0f11fed"></script>
+					<script>
+						var mapContainer = document.getElementById('map'), 
+						    mapOption = { 
+						        center: new kakao.maps.LatLng(35.8700334, 128.5991697), // 지도 중심좌표
+						        level: 4 // 지도의 확대 레벨
+						    };
+		
+						var map = new kakao.maps.Map(mapContainer, mapOption); // 지도생성
+		
+						var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png', // 마커이미지의 주소    
+						    imageSize = new kakao.maps.Size(24, 35), // 마커이미지 크기
+						    imageOption = {offset: new kakao.maps.Point(24, 35)}; // 이미지 안에서의 좌표
+						      
+						// 마커이미지 생성
+						var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+						    markerPosition = new kakao.maps.LatLng(35.8700334, 128.5991697); // 마커표시위치
+		
+						// 마커생성
+						var marker = new kakao.maps.Marker({
+						    position: markerPosition, 
+						    image: markerImage // 마커이미지 설정 
+						});
+		
+						marker.setMap(map);  
+					</script>
+
 				</div>
 				<div class="mb-5">
 					<h4 class="h4 d-flex align-items-center mb-4 text-primary box">
