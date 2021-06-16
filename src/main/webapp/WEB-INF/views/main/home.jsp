@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <style>
 .site-footer .scroll-top {
@@ -35,19 +36,26 @@
 .container {  max-width: 1300px; }
 
 .section-hero, .section-hero>.container>.row {
-align-content: center;
+	align-content: center;
 }
 
 .cont { 
-margin-left: 15px; 
-margin-right: 15px; 
-background-color: ghostwhite; 
-height: 55%; 
-}
-.left  { width: 35%; float: left;}
+	margin-left: 15px; 
+	margin-right: 15px; 
+	background-color: ghostwhite; 
+	height: 45%; 
+	padding: 20px; 
+	box-shadow: 0px 0px 13px 8px rgb(0 0 0 / 20%); 
+	    border-radius: 1.5em;
+	    }
+.left  { width: 40%; float: left;}
 .right { width: 65%; float: right;} 		
-.bottom { width: 100%; float: left;} 		
-.left>ul { list-style: none;}
+.bottom { width: 100%; height: 20%; float: left; } 		
+.left>ul { list-style: none; -webkit-padding-start: 0px; }
+
+h3 {
+	font-weight: bold;
+}
 	
 
 </style>
@@ -91,17 +99,31 @@ height: 55%;
 			<div class="cont col-md-12">
 				<div class="left col-md-5 col-lg-5 mb-12 mb-lg-12">
 						<ul>
-						<li>공지</li>
-						<li>휴관일</li>
+						<li>
+							<table width="100%">
+							<tr>
+							<td><h3>공지사항</h3></td><td><h3><span class="icon-th-list"></span></h3></td>
+							</tr>
+							<c:forEach var="vo" items="${notice }">
+							<tr onclick="formSubmit(${vo.notice_Id})">
+								<td width="75%">${vo.notice_Title }</td>
+								<td>${vo.notice_Date }</td>
+							</tr>
+							</c:forEach>
+							</table>
+							</li><br>
+						<li><h3>휴관일</h3></li>
 						</ul>
 				</div>
 				<div class="right col-md-7 col-lg-7 mb-12 mb-lg-12">
-					추천도서
+					<c:if test="${loginUserVO.user_Id eq null}">
+					<h3>비회원님을 위한 추천도서</h3>
+					</c:if>
 				</div>
+			</div>
 				<div class="bottom col-md-12 col-lg-12 mb-12 mb-lg-12">
 				아이콘영역
 				</div>
-			</div>
 			</div>
 		</div>
 	
@@ -122,32 +144,6 @@ height: 55%;
 				<p class="lead text-white">537, Gukchaebosang-ro, Jung-gu,
 					Daegu, Republic of Korea</p>
 			</div>
-		</div>
-		<div class="row pb-0 block__19738 section-counter">
-
-			<div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
-				<div class="d-flex align-items-center justify-content-center mb-2">
-					<strong class="number" data-number="1930">0</strong>
-				</div>
-				<span class="caption">Candidates</span>
-			</div>
-
-			<div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
-				<div class="d-flex align-items-center justify-content-center mb-2">
-					<strong class="number" data-number="54">0</strong>
-				</div>
-				<span class="caption">Jobs Posted</span>
-			</div>
-
-			<div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
-				<div class="d-flex align-items-center justify-content-center mb-2">
-					<strong class="number" data-number="120">0</strong>
-				</div>
-				<span class="caption">Jobs Filled</span>
-			</div>
-
-
-
 		</div>
 	</div>
 </section>

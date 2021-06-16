@@ -1,8 +1,11 @@
 package com.yd.lib;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.yd.lib.notice.serviceImpl.NoticeServiceImpl;
 
 /**
  * Handles requests for the application home page.
@@ -11,8 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
 	
+	@Autowired
+	private NoticeServiceImpl dao;
+	
 	@RequestMapping("/home.do")
-	public String home(Model model) {
+	public String noticeNewListSelect(Model model) {
+		model.addAttribute("notice", dao.noticeSelectNewList());
 		return "main/home";
 	}
 	
