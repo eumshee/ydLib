@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import com.yd.lib.book.service.BookService;
 import com.yd.lib.book.vo.BookVO;
 import com.yd.lib.common.Paging;
 import com.yd.lib.users.vo.UsersVO;
+import com.yd.lib.wish.vo.WishVO;
 import com.yd.lib.yeyak.vo.YeyakVO;
 
 
@@ -109,6 +111,36 @@ public class BookController {
 		model.addAttribute("paging", paging);//페이징에 필요한 값
 		model.addAttribute("newBookList", dao.newBookPaging(vo));//검색 결과중 페이지에 요청된 페이지에 띄울 결과들
 		return "book/newBook";
+	}
+	
+	
+	@RequestMapping("/bestBook.do")
+	public String bestBook(Model model) {
+		model.addAttribute("bestBookTop10", dao.bestBookTop10());
+		return "book/bestBook";
+	}
+	@RequestMapping("/subjectBestBook.do")
+	public String subjectBestBook(Model model ,BookVO vo) {
+		model.addAttribute("bestBookTop10", dao.subJectBestBookTop10(vo));
+		return "book/bestBook";
+	}
+	
+	@RequestMapping("/wishBook.do")
+	public String wishBook(Model model ,BookVO vo, HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		
+		if(session.getAttribute("loginUserVO") != null) {
+			return "book/wishBook";	
+		} else {
+			model.addAttribute("msg", "로그인이 필요한 서비스입니다.");
+
+			return "users/loginAlert";
+		}
+	}
+	@RequestMapping("/wishBookInsert.do")
+	public String wishBookInsert(Model model ,WishVO vo) {
+		dao.wishBookInsert(vo);
+		return "book/wishBook";
 	}
 	
 }

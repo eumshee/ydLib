@@ -12,6 +12,7 @@ public class WishVO {
 	private String wish_Date;
 	private String wish_Processing;
 	private int wish_Id;
+	private String wish_Coment;
 
 	public String getUser_Id() {
 		return user_Id;
@@ -99,6 +100,14 @@ public class WishVO {
 
 	public void setWish_Id(int wish_Id) {
 		this.wish_Id = wish_Id;
+	}
+
+	public String getWish_Coment() {
+		return wish_Coment;
+	}
+
+	public void setWish_Coment(String wish_Coment) {
+		this.wish_Coment = wish_Coment;
 	}
 
 }

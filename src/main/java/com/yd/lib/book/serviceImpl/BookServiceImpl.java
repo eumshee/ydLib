@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.yd.lib.book.service.BookService;
 import com.yd.lib.book.vo.BookVO;
 import com.yd.lib.users.vo.UsersVO;
+import com.yd.lib.wish.vo.WishVO;
 import com.yd.lib.yeyak.vo.YeyakVO;
 
 @Repository("BookDAO")
@@ -51,6 +52,21 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public List<BookVO> newBookPaging(BookVO vo) {
 		return sqlSession.selectList("newBookPaging" , vo);
+	}
+
+	@Override
+	public List<BookVO> bestBookTop10() {
+		return sqlSession.selectList("bookBestTop10");
+	}
+
+	@Override
+	public List<BookVO> subJectBestBookTop10(BookVO vo) {
+		return sqlSession.selectList("subjectBookBestTop10" , vo);
+	}
+
+	@Override
+	public void wishBookInsert(WishVO vo) {
+		sqlSession.insert("wishBookInsert", vo);
 	}
 	
 	

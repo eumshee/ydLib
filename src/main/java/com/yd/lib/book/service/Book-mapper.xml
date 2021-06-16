@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yd.lib.book.service.Book-mapper">
 	
+	<!-- 전체 책 정보 보기 -->
 	<select id="bookSerchList" parameterType="com.yd.lib.book.vo.BookVO" resultType="com.yd.lib.book.vo.BookVO" >
 		select *
 		from 
@@ -161,4 +162,49 @@
 			 )b
 		where rn between #{firstCnt} and #{lastCnt}
 	</select>
+	
+	<select id="bookBestTop10" resultType="com.yd.lib.book.vo.BookVO">
+		<![CDATA[
+		select * from(
+					  select book.* , ROW_NUMBER() OVER(PARTITION BY book_isbn ORDER BY book_num asc ) AS RNUM
+					  from book
+					  where book_num in (
+										 select book_num from(
+															  select book_num , count(*) as cnt
+															  from HISTORY
+															  group by book_num
+															  order by cnt desc
+															  )
+										 where ROWNUM < 11
+										 )
+					  )
+		where rnum = 1
+		order by book_num asc
+		]]>
+	</select>
+	
+	<select id="subjectBookBestTop10" parameterType="com.yd.lib.book.vo.BookVO" resultType="com.yd.lib.book.vo.BookVO">
+		select * from(
+					  select book.* , ROW_NUMBER() OVER(PARTITION BY book_isbn ORDER BY book_num asc ) AS RNUM
+					  from book
+					  where book_num in (
+										 select book_num from(
+															  select h.book_num , count(*) as cnt
+															  from HISTORY h join BOOK b
+															  on h.book_num = b.book_num
+															  where b.book_subject = #{book_Subject}
+															  group by h.book_num
+															  order by cnt desc
+															  )
+										 <![CDATA[
+										 where ROWNUM < 11
+										 ]]>
+										 )
+					  )
+		where rnum = 1
+		order by book_num asc
+	</select>
+	<insert id="wishBookInsert" parameterType="com.yd.lib.wish.vo.WishVO">
+		insert into wish values(#{user_Id} , #{wish_Title} , #{wish_Aut} , #{wish_pub} , null , null , #{wish_Bigo} , #{wish_Price} , sysdate ,'신청중' , wish_seq.nextval,null)
+	</insert>
 </mapper>
