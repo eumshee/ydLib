@@ -30,7 +30,7 @@ public class SendEmail extends HttpServlet {
 
 //사용자에게 보낼 메시지를 기입합니다.
 		String host = "database-1.cujgaabefr8x.ap-northeast-2.rds.amazonaws.com/lib/";
-		String from = "예담도서관";
+		String from = "wjsgudals6@gmail.com";
 		String to = request.getParameter("email");
 		String subject = "예담도서관 회원가입을 위한 코드 확인 메일입니다.";
 		String code = new SHA256().getSHA256(to);

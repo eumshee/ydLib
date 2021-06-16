@@ -272,8 +272,8 @@ function findAddr(){
 				<div class="rounded">
 					<div class="sidenav">
 						<ul class="list-unstyled">
-							<li class="sideactive"><a href="userLoginForm.do">로그인</a></li>
-							<li><a href="userJoinForm.do">회원가입</a></li>
+							<li ><a href="userLoginForm.do">로그인</a></li>
+							<li class="sideactive"><a href="userJoinForm.do">회원가입</a></li>
 						</ul>
 					</div>
 				</div>

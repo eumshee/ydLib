@@ -10,14 +10,18 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="author" content="Free-Template.co" />
-    
-    <link rel="stylesheet" href="resources/css/custom-bs.css">
+	
+	<!-- FONT -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+	
     <link rel="stylesheet" href="resources/css/jquery.fancybox.min.css">
     <link rel="stylesheet" href="resources/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="resources/fonts/icomoon/style.css">
     <link rel="stylesheet" href="resources/fonts/line-icons/style.css">
     <link rel="stylesheet" href="resources/css/owl.carousel.min.css">
     <link rel="stylesheet" href="resources/css/animate.min.css">
+    <link rel="stylesheet" href="resources/css/custom-bs.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="resources/vendor/datatables/dataTables.bootstrap4.css">

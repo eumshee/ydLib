@@ -1,5 +1,6 @@
 package com.yd.lib.users.web;
 
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -144,8 +145,16 @@ public class UsersController {
 	// ------------------------------- 유저 정보수정 ------------------------------ //
 	
 	@RequestMapping("/userPage.do")
-	public String userPage() {
-		return "users/userPage";
+	public String userPage(HttpServletRequest request, Model model) throws Exception {
+		HttpSession session = request.getSession();
+		
+		if(session.getAttribute("loginUserVO") != null) {
+			return "users/userPage";	
+		} else {
+			model.addAttribute("msg", "로그인이 필요한 서비스입니다.");
+
+			return "users/loginAlert";
+		}
 	}
 	
 	@RequestMapping("/userUpdate.do")
