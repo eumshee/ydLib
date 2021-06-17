@@ -36,6 +36,10 @@
 			<div class="row">
 				<div class="col-md-12" align="center">
 					<h1 class="text-white font-weight-bold">희망도서 신청</h1>
+					<div class="custom-breadcrumbs">
+						<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
+						class="text-white"><strong>자료이용</strong></span>
+					</div>					
 				</div>
 			</div>
 		</div>
@@ -59,13 +63,17 @@
 				<!--컨텐츠 영역-->
 				<div class="col-lg-8">
 				<form class="p-4 p-md-5 border rounded" action="wishBookInsert.do" id="frm">
-					<h3 class="text-black mb-5 border-bottom pb-2">희망도서 신청하기</h3>
+					<h3 class="text-black mb-3 border-bottom pb-2">희망도서 신청하기</h3>
+					<span>* 신청하고자 하는 책에 대한 정보가 더 필요하시다면</span>
+					<a href ="https://www.aladin.co.kr/search/wsearchresult.aspx?SearchTarget=Book&SearchWord=&x=7&y=11" target="_blank">
+						<b>&nbsp;<i class="icon-external-link"></i>&nbsp;인터넷 서점 바로가기</b>
+					</a><br><br>
 					<div class="form-group">
 						<label for="board_Title">이용자 Id</label> 
 						<input type="text" class="form-control" id="user_Id" name="user_Id" value=${loginUserVO.user_Id } readOnly>
 					</div>
 					<div class="form-group">
-						<label for="board_Title">서명</label> 
+						<label for="board_Title">제목</label> 
 						<input type="text" class="form-control" id="wish_Title" name="wish_Title" required>
 					</div>
 					<div class="form-group">
@@ -84,9 +92,9 @@
 						<label for="board_Content">신청 사유</label>
 						<textarea class="form-control" rows="10" cols="50" id="wish_Bigo" name="wish_Bigo"></textarea>
 					</div>
-					<p>
-						<a class="btn btn-primary btn-md mt-4"  onclick="wishCnt('${loginUserVO.user_Id}')">희망도서 신청하기</a>
-					</p>
+					<div align="center">
+						<button class="btn btn-primary btn-md mt-4" onclick="wishCnt('${loginUserVO.user_Id}')">희망도서 신청하기</button>
+					</div>
 				</form>
 				</div>
 			</div>

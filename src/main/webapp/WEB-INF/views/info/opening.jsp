@@ -66,7 +66,11 @@
 						<span class="icon-inbox">&nbsp;</span><span class="half-highlight">도서반납함 운영시간</span>
 					</h4>
 						<span class="icon-keyboard_arrow_right"></span>&nbsp;평일 : 오후 7시 ~ 익일 오전 9시<br>
-						<span class="icon-keyboard_arrow_right"></span>&nbsp;휴관일 : 익일 오전 9시까지&nbsp;&nbsp;<u><b>※ 도서관 운영시간 중에는 반납함 이용이 불가합니다.</b></u><br><br>
+						<span class="icon-keyboard_arrow_right"></span>&nbsp;휴관일 : 익일 오전 9시까지&nbsp;&nbsp;<br>
+						<p>
+						<u><b>※ 도서관 운영시간 중에는 반납함 이용이 불가합니다.</b></u><br>
+						<b>연체 도서의 경우 반납함으로 반납되지 않습니다.<b>
+						</p>
 				</div>
 			</div>
 		</div>

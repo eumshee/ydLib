@@ -79,6 +79,10 @@
 			<div class="row">
 				<div class="col-md-12" align="center">
 					<h1 class="text-white font-weight-bold">통합자료검색</h1>
+				<div class="custom-breadcrumbs">
+					<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
+						class="text-white"><strong>자료이용</strong></span>
+				</div>
 				</div>
 			</div>
 		</div>
@@ -186,7 +190,7 @@
 											</div>
 											<div class="job-listing-meta">
 												<c:if test="${book.can_Book_Cnt <= 0 }">
-													<span class="badge badge-danger" style="font-size: 15px;">대출불가</span>
+													<span class="badge badge-danger" style="font-size: 15px;">대출중</span>
 												</c:if>
 												<c:if test="${book.can_Book_Cnt > 0 }">
 													<span class="badge badge-success" style="font-size: 15px;">대출가능</span>

@@ -73,6 +73,10 @@
 			<div class="row">
 				<div class="col-md-12" align="center">
 					<h1 class="text-white font-weight-bold">신착 도서</h1>
+					<div class="custom-breadcrumbs">
+					<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
+						class="text-white"><strong>자료이용</strong></span>
+					</div>
 				</div>
 			</div>
 		</div>

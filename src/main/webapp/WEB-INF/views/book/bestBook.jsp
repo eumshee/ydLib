@@ -41,6 +41,10 @@
 			<div class="row">
 				<div class="col-md-12" align="center">
 					<h1 class="text-white font-weight-bold">대출 베스트</h1>
+						<div class="custom-breadcrumbs">
+							<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
+						class="text-white"><strong>자료이용</strong></span>
+						</div>					
 				</div>
 			</div>
 		</div>
@@ -67,7 +71,7 @@
 						<input type="hidden" name="book_Subject" id="book_Subject">
 					</form>
 					<div class="sorting">
-						<div class="left"><b></b>도서관 대출 상위 10개입니다.</div>
+						<div class="left"><b>도서관 대출 상위 10개입니다.</b></div>
 						<div class="right">
 							주제별 : 
 							<select id="subjectSelect" name="subjectSelect" >
