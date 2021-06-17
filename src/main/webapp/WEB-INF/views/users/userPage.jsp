@@ -388,19 +388,19 @@ function findAddr(){
 						<th width="150">변경할 주소
 						</th>
 						<td width="300">
-						<input class="form-control" id="user_post" type="text" name="userAddressZip" placeholder="Zip Code" readonly onclick="findAddr()">	
+						<input class="form-control" id="user_post" type="text" name="userAddressZip" placeholder="우편번호" readonly onclick="findAddr()">	
 						</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td>
-  						<input class="form-control" id="user_addr" type="text" name="userAddress" placeholder="Address" readonly>
+  						<input class="form-control" id="user_addr" type="text" name="userAddress" placeholder="주소" readonly>
 						</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td>
- 						<input class="form-control" id="user_detailedAddr" type="text" placeholder="Detailed Address" name="userAddressDetail">
+ 						<input class="form-control" id="user_detailedAddr" type="text" placeholder="상세주소" name="userAddressDetail">
 						</td>
 					</tr>
 			</table>
