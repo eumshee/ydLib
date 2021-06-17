@@ -22,4 +22,11 @@ public class WishManageImpl {
 	public int wishProcessUpdate(WishVO vo) {
 		return sqlsession.update("wishProcessUpdate",vo);
 	}
+
+	// 희망도서처리결과
+	public int wishComentUpdate(WishVO vo) {
+		return sqlsession.update("wishComentUpdate",vo);
+	}
+	
+	
 }

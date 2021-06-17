@@ -10,4 +10,9 @@
 		where user_id = #{user_Id} and wish_id = #{wish_Id}
 	</update>
 	
+	<update id="wishComentUpdate" parameterType="com.yd.lib.wish.vo.WishVO">
+		update wish set wish_coment = #{wish_Coment, jdbcType=VARCHAR}
+		where wish_id = #{wish_Id}
+	</update>
+	
 </mapper>

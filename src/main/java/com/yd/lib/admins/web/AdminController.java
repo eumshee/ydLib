@@ -36,6 +36,13 @@ public class AdminController {
 		wmi.wishProcessUpdate(vo);
 		return "redirect:wishManagement.do";
 	}
+	
+	// 희망도서처리결과 기록
+	@RequestMapping("/wishComentUpdate.do")
+	public String wishComentUpdate(Model model, WishVO vo) {
+		wmi.wishComentUpdate(vo);
+		return "redirect:wishManagement.do";
+	}
 
 	// 장서관리
 	@RequestMapping("/bookManagement.do")
@@ -52,30 +59,34 @@ public class AdminController {
 		return "admins/bookDetailManage";
 	}
 
+	// 도서상세페이지 수정
 	@RequestMapping("/bookOneUpdate.do")
 	public String bookOneUpdate(Model model, BookVO vo) {
 		bmi.bookOneUpdate(vo);
 		return "redirect:bookDetailManage.do?book_Num="+vo.getBook_Num()+"&book_Isbn="+vo.getBook_Isbn();
 	}
 
+	// 비고만 수정
 	@RequestMapping("/bookManageBigoUpdate.do")
 	public String bookManageBigoUpdate(Model model, BookVO vo) {
 		bmi.bookManageBigoUpdate(vo);
 		return "redirect:bookDetailManage.do?book_Num="+vo.getBook_Num()+"&book_Isbn="+vo.getBook_Isbn();
 	}
 	
+	// 도서삭제
 	@RequestMapping("/bookOneDelete.do")
 	public String bookOneDelete(Model model, BookVO vo) {
 		bmi.bookOneDelete(vo);
 		return "redirect:bookManagement.do";
 	}
 
-	// 도서등록
+	// 도서등록폼
 	@RequestMapping("/bookInputManage.do")
 	public String bookInputManage(Model model) {
 		return "admins/bookInputManage";
 	}
 	
+	// 도서등록
 	@RequestMapping("/bookOneInsert.do")
 	public String bookOneInsert(Model model, BookVO vo) {
 		bmi.bookOneInsert(vo);

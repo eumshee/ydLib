@@ -20,10 +20,19 @@
 			Process.wish_Id.value = wishId;
 			Process.submit();
 		}
+		function wishCmtSubmit(wishId) {
+			cmt.wish_Coment.value = $('#WishCmt' + wishId).val();
+			cmt.wish_Id.value = wishId;
+			cmt.submit();
+		}
 </script>
 <form id="Process" action="wishProcessUpdate.do" method="post">
 	<input type="text" id="wish_Processing" name="wish_Processing" hidden="">
 	<input type="text" id="user_Id" name="user_Id" hidden="">
+	<input type="text" id="wish_Id" name="wish_Id" hidden="">
+</form>
+<form id="cmt" action="wishComentUpdate.do" method="post">
+	<input type="text" id="wish_Coment" name="wish_Processing" hidden="">
 	<input type="text" id="wish_Id" name="wish_Id" hidden="">
 </form>
 <!-- 상단배너 -->
@@ -100,6 +109,7 @@
 									<th>가격</th>
 									<th>신청일</th>
 									<th>처리과정</th>
+									<th>처리결과</th>
 								</tr>
 							</thead>
 							<tfoot>
@@ -115,6 +125,7 @@
 									<th>가격</th>
 									<th>신청일</th>
 									<th>처리과정</th>
+									<th>처리결과</th>
 								</tr>
 							</tfoot>
 							<tbody>
@@ -149,6 +160,11 @@
 										</select>
 											<button type="button"
 												onclick="bigoSubmit('${vo.user_Id}',${vo.wish_Id})">수정</button>
+										</td>
+										<td>
+											<input type="text" id="WishCmt${vo.wish_Id}" value=${vo.wish_Coment }>
+											<button type="button"
+												onclick="wishCmtSubmit(${vo.wish_Id})">수정</button>											
 										</td>
 									</tr>
 								</c:forEach>
