@@ -4,6 +4,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+.label {
+	display: inline-block;
+	width: 300px;
+	height: 40px;
+	font-weight: bold;
+	margin-right: 30px;
+}
+
+.sorting { height: 30px; padding: 3px;}
+.sorting .left { width: 75%; float: left; }
+.sorting .right { width: 25%; float: right; }
+
+</style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
@@ -49,24 +63,30 @@
 				</div>
 				<!--컨텐츠 영역-->
 				<div class="col-lg-8">
-					<h2>도서관 대출 상위 10개입니다.</h2>
-					주제별 : 
 					<form action="subjectBestBook.do" id="subjectFrm">
 						<input type="hidden" name="book_Subject" id="book_Subject">
 					</form>
-					<select id="subjectSelect" name="subjectSelect" >
-  							<option value="0">총류</option>
-  							<option value="1">철학</option>
-  							<option value="2">종교</option>
-  							<option value="3">사회과학</option>
-  							<option value="4">자연과학</option>
-  							<option value="5">기술과학</option>
-  							<option value="6">예술</option>
-  							<option value="7">언어</option>
-  							<option value="8">문학</option>
-  							<option value="9">역사</option>
-					</select>
-					<button onclick="subject()">검색</button>
+					<div class="sorting">
+						<div class="left"><b></b>도서관 대출 상위 10개입니다.</div>
+						<div class="right">
+							주제별 : 
+							<select id="subjectSelect" name="subjectSelect" >
+	  							<option value="0">총류</option>
+	  							<option value="1">철학</option>
+	  							<option value="2">종교</option>
+	  							<option value="3">사회과학</option>
+	  							<option value="4">자연과학</option>
+	  							<option value="5">기술과학</option>
+	  							<option value="6">예술</option>
+	  							<option value="7">언어</option>
+	  							<option value="8">문학</option>
+	  							<option value="9">역사</option>
+							</select>
+							<button class="btn btn-light" onclick="subject()">검색</button>
+						</div>
+					</div>
+					<hr>
+					<div>
 					<form action="bookInfo.do" id="ifrm">
 						<input type="hidden" id="book_Isbn" name="book_Isbn">
 						<ul class="job-listings mb-5">
@@ -77,41 +97,35 @@
 										<img src="${book.book_Img }" alt="Image" class="img-fluid" width="100%">
 									</div>
 									<div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
-										<div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-											<h2>제목 : ${book.book_Title }</h2>
-											<br>
-											<h2>저자 : ${book.book_Aut }</h2>
-											<br>
-											<h2>출판사 : ${book.book_Pub }</h2>  
-										</div>
-										<div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-											${book.book_Location }번서가
-										</div>
-										<div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-										주제 : 
-											<c:choose>
-												<c:when test="${book.book_Subject eq '0'}">총류</c:when>
-												<c:when test="${book.book_Subject eq '1'}">철학</c:when>
-												<c:when test="${book.book_Subject eq '2'}">종교</c:when>
-												<c:when test="${book.book_Subject eq '3'}">사회과학</c:when>
-												<c:when test="${book.book_Subject eq '4'}">자연과학</c:when>
-												<c:when test="${book.book_Subject eq '5'}">기술과학</c:when>
-												<c:when test="${book.book_Subject eq '6'}">예술</c:when>
-												<c:when test="${book.book_Subject eq '7'}">언어</c:when>
-												<c:when test="${book.book_Subject eq '8'}">문학</c:when>
-												<c:otherwise>역사</c:otherwise>
-											</c:choose>
-											
-										</div>
-										<div class="job-listing-meta">
-											
-											<c:if test="${book.can_Book_Cnt <= 0 }">
-												<span class="badge badge-danger">대출불가</span>
-											</c:if>
-											<c:if test="${book.can_Book_Cnt > 0 }">
-												<span class="badge badge-success">대출가능</span>
-											</c:if>
-										</div>
+										<div class="job-listing-position custom-width w-60 mb-3 mb-sm-0" style="max-width:80%;">
+												<h5><b>${book.book_Title }</b></h5>
+												<h6>저자 : ${book.book_Aut }</h6>
+												<h6>출판사 : ${book.book_Pub }</h6>
+												<h6>주제 :
+												<c:choose>
+													<c:when test="${book.book_Subject eq '0'}">총류</c:when>
+													<c:when test="${book.book_Subject eq '1'}">철학</c:when>
+													<c:when test="${book.book_Subject eq '2'}">종교</c:when>
+													<c:when test="${book.book_Subject eq '3'}">사회과학</c:when>
+													<c:when test="${book.book_Subject eq '4'}">자연과학</c:when>
+													<c:when test="${book.book_Subject eq '5'}">기술과학</c:when>
+													<c:when test="${book.book_Subject eq '6'}">예술</c:when>
+													<c:when test="${book.book_Subject eq '7'}">언어</c:when>
+													<c:when test="${book.book_Subject eq '8'}">문학</c:when>
+													<c:otherwise>역사</c:otherwise>
+												</c:choose>
+												</h6>
+												<h6>위치 : ${book.book_Location }번서가</h6>
+												<h6>수량 : ${book.all_Book_Cnt }권</h6>
+											</div>
+											<div class="job-listing-meta">
+												<c:if test="${book.can_Book_Cnt <= 0 }">
+													<span class="badge badge-danger" style="font-size: 15px;">대출불가</span>
+												</c:if>
+												<c:if test="${book.can_Book_Cnt > 0 }">
+													<span class="badge badge-success" style="font-size: 15px;">대출가능</span>
+												</c:if>
+											</div>
 									</div>
 								</li>
 							</c:forEach>
@@ -119,6 +133,7 @@
 					</form>
 				</div>
 			</div>
+		</div>
 		</div>
 	</section>
 </body>

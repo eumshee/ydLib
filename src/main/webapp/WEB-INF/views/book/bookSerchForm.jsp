@@ -100,7 +100,6 @@
 				</div>
 				<!--컨텐츠 영역-->
 				<div class="col-lg-8">
-				
 					<!-- 검색 영역 -->
 					<form action="bookSerch.do" method="get" id="serchFrm">
 						<input type="hidden" id="book_Order" name="book_Order">
@@ -130,14 +129,13 @@
 						</div>
 					</form>
 					<hr>
-					
 					<!-- 결과 출력 -->
 					<c:if test="${!empty reqVO.book_Title and empty bookSerchList}">
 						<div align="center">찾으시는 자료가 없습니다.</div>
 					</c:if>
 					<c:if test="${!empty bookSerchList}">
 						<div class="sorting">
-							<div class="left">총 ${paging.totalCount }<b></b>건이 검색되었습니다. </div>
+							<div class="left"><b>총 ${paging.totalCount }</b>건이 검색되었습니다. </div>
 							<div class="right">
 							<select id="orderSelect" name="orderSelect">
 								<option value="정렬종류">정렬종류</option>
