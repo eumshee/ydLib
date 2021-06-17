@@ -9,20 +9,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yd.lib.seat.serviceImpl.SeatServiceImpl;
-import com.yd.lib.seat.vo.SeatVO;
 import com.yd.lib.seat.vo.SeatroomVO;
-import com.yd.lib.users.vo.UsersVO;
 
 @Controller
 public class SeatController {
 	@Autowired
 	SeatServiceImpl ssi;
 	
-	@RequestMapping("/seatroom.do")
-	public String seatroom(Model model, HttpServletRequest request) {
-		model.addAttribute("seatList",ssi.seatList());
-		return "seat/seatroom";
-	}
+   @RequestMapping("/seatroom.do")
+   public String seatroom(Model model, HttpServletRequest req, SeatroomVO vo) {
+      model.addAttribute("seatList", ssi.seatList());
+
+      HttpSession session = req.getSession();
+      String name = (String) session.getAttribute("loginUserId");
+      vo.setUser_Id(name);
+      model.addAttribute("user",ssi.seatSearch(vo));
+      return "seat/seatroom";
+   }
 	
 	//전체 좌석출력
 	@RequestMapping("/seatInsertForm.do")
@@ -38,7 +41,7 @@ public class SeatController {
 		return "redirect:seatroom.do";
 	}
 
-	//좌석예약
+	//먼저퇴실
 	@RequestMapping("/seatEndUpdate.do")
 	public String seatOneUpdate(Model model, SeatroomVO vo) {
 		ssi.seatEnd(vo);

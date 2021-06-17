@@ -28,16 +28,16 @@ public class SeatServiceImpl implements SeatService {
 		return sqlsession.insert("seatOneInsert",vo);
 	}
 
-	// 개인좌석
-	@Override
-	public SeatroomVO userSeatSelect(UsersVO vo) {
-		return sqlsession.selectOne("userSeatSelect", vo);
-	}
 
 	// 자리반납시간
 	@Override
 	public int seatEnd(SeatroomVO vo) {
 		return sqlsession.update("seatEnd",vo);
+	}
+
+	@Override
+	public SeatroomVO seatSearch(SeatroomVO vo) {
+		return sqlsession.selectOne("seatSearch", vo);
 	}
 
 

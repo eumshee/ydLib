@@ -15,12 +15,12 @@
 	</select>
 	
 	<insert id="seatOneInsert" parameterType="com.yd.lib.seat.vo.SeatroomVO">
-		insert into SEATROOM
+		insert into SEATROOM(SEAT_PICK_NUM,USER_ID,SEAT_NUM,SEAT_START_TIME,SEAT_END_TIME,SEAT_END_EARLY)
 		values(seat_pick_seq.nextval,
 		#{user_Id},
 		#{seat_Num},
 		SYSDATE,
-		SYSDATE + (interval '3' hour),
+		SYSDATE + (interval '3' hour),		
 		null) 
 	</insert>
 	
@@ -29,4 +29,9 @@
 		set seat_end_early = SYSDATE
 		where seat_num = #{seat_Num}
 	</update>
+	
+	<select id="seatSearch" parameterType="com.yd.lib.seat.vo.SeatroomVO" resultType="com.yd.lib.seat.vo.SeatroomVO">
+		select * from SEATROOM
+		where user_id = #{user_Id}
+	</select>
 </mapper>
