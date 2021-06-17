@@ -4,22 +4,34 @@
 	<!-- 좌석정보 확인 -->
 	<select id="seatList" resultType="com.yd.lib.seat.vo.SeatroomVO">
 		select s.*, r.* from seat s
-		left join seatroom r on s.seat_num = r.seat_num
+		left join SEATROOM r on s.seat_num = r.seat_num
 		order by s.seat_num
 	</select>
 	
-	<!-- 좌석정보 업데이트(비었으면 0) -->
-	<update id="seatUpdate" parameterType="com.yd.lib.seat.vo.SeatroomVO">
-		update seat
-			<set>
-		       <if test="seat_Status == 0">seat_status=1,</if>
-		       <if test="seat_Status == 1">seat_status=0,</if>
-	   		</set>
+	<select id="userSeatSelect" parameterType="com.yd.lib.users.vo.UsersVO" resultType="com.yd.lib.seat.vo.SeatroomVO">
+		select * from seat s
+		left join SEATROOM r on s.seat_num = r.seat_num
+		where r.user_id = #{user_Id}
+	</select>
+	
+	<insert id="seatOneInsert" parameterType="com.yd.lib.seat.vo.SeatroomVO">
+		insert into SEATROOM(SEAT_PICK_NUM,USER_ID,SEAT_NUM,SEAT_START_TIME,SEAT_END_TIME,SEAT_END_EARLY)
+		values(seat_pick_seq.nextval,
+		#{user_Id},
+		#{seat_Num},
+		SYSDATE,
+		SYSDATE + (interval '3' hour),		
+		null) 
+	</insert>
+	
+	<update id="seatEnd" parameterType="com.yd.lib.seat.vo.SeatroomVO">
+		update SEATROOM
+		set seat_end_early = SYSDATE
 		where seat_num = #{seat_Num}
 	</update>
 	
-	<insert id="seatOneInsert" parameterType="com.yd.lib.seat.vo.SeatroomVO">
-		insert into seatroom values(#{seat_Num},#{user_Id},#{seat_Num},sysdate,
-		#{seat_start_Time},null) 
-	</insert>
+	<select id="seatSearch" parameterType="com.yd.lib.seat.vo.SeatroomVO" resultType="com.yd.lib.seat.vo.SeatroomVO">
+		select * from SEATROOM
+		where user_id = #{user_Id}
+	</select>
 </mapper>

@@ -7,6 +7,7 @@ import com.yd.lib.seat.vo.SeatroomVO;
 
 public interface SeatService {
 	List<SeatVO> seatList();
-	int seatUpdate(SeatVO vo);
+	SeatroomVO seatSearch(SeatroomVO vo);
 	int seatOneInsert(SeatroomVO vo);
+	int seatEnd(SeatroomVO vo);
 }

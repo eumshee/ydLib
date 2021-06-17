@@ -29,7 +29,7 @@ public class MyLibraryController {
 		String userId = (String) session.getAttribute("loginUserId");
 		
 		
-		if(userId != null) {
+		if(session.getAttribute("loginUserVO") != null) {
 			
 			
 			 List<UserLoanInfoVO> total = UsersDAO.userLoanList(userId);//전체 검색결과
@@ -50,26 +50,37 @@ public class MyLibraryController {
 		String userId = (String) session.getAttribute("loginUserId");
 		
 		
-		if(userId != null) {
+		if(session.getAttribute("loginUserVO") != null) {
 			
 			 List<UserYeyakInfoVO> total = UsersDAO.userYeyakList(userId);//전체 검색결과
 			 
 			 model.addAttribute("userYeyakList",total);
-			return "users/userYeyakInfo2";	
+			return "users/userYeyakInfo";	
 		} else {
 			model.addAttribute("msg", "로그인이 필요한 서비스입니다.");
 
 			return "users/loginAlert";
 		}
 	}
+	//예약취소
+		@RequestMapping("/yeyakCancel.do")
+		public String yeyakCancel(HttpServletRequest request, Model model) {
+			
+			String yeyak_Num = request.getParameter("yeyak_Num");
 
+			UsersDAO.yeyakCancel(yeyak_Num);// 전체 검색결과
+
+			return "redirect:userYeyak.do";
+			
+		}
+		
 	// 희망도서 신청현황
 	@RequestMapping("/userWish.do")
 	public String userWishPage(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("loginUserId");
 
-		if (userId != null) {
+		if (session.getAttribute("loginUserVO") != null) {
 
 			List<UserWishInfoVO> total = UsersDAO.userWishList(userId);// 전체 검색결과
 

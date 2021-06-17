@@ -68,6 +68,7 @@ function formSubmit(Isbn) {
 				<form id="frm" action="bookInfo.do" method="post">
 				<input type="hidden" id="book_Isbn" name="book_Isbn">
 				<!-- DataTales Example -->
+						
 				<table class="table table-bordered"
 					style="width: 100%; cellspacing: 0">
 					
@@ -79,6 +80,20 @@ function formSubmit(Isbn) {
 							<th>반납기한</th>
 							<th width= "60px">상태</th>
 						</tr>
+						
+						<c:choose>
+						
+						<c:when test="${userLoanList.isEmpty() }">
+						<tr>
+						<td colspan="7">
+						<div style="height:'300px'; width:'100%'; align:'center'">
+						<h6>도서대출내역이 없습니다.</h6>
+						</div>
+						</td>
+						</tr>
+						</c:when>
+						
+						<c:when test="${!userLoanList.isEmpty()}">
 				
 						<c:forEach var="loan" items="${userLoanList }" varStatus="status">
 							
@@ -92,7 +107,10 @@ function formSubmit(Isbn) {
 							</tr>
 							
 						</c:forEach>
+						</c:when>
+						</c:choose>
 				</table>
+				
 				</form>
 				</div>
 			</div>
