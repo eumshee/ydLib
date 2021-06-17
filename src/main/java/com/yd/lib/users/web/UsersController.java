@@ -51,9 +51,6 @@ public class UsersController {
 			String userBirthMonth = userBirth.substring(5,7);
 			String userBirthDay = userBirth.substring(8,10);
 			
-	        System.out.println(id);
-			
-			
 			HttpSession session = request.getSession();
 	        if(rvo != null) {
 	        session.setAttribute("loginUserVO", rvo);

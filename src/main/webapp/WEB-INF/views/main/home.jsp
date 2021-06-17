@@ -48,6 +48,7 @@
 	box-shadow: 0px 0px 13px 8px rgb(0 0 0 / 20%); 
 	    border-radius: 1.5em;
 	    }
+	    
 ul { -webkit-padding-start: 0px; list-style: none;}
 	    
 .left  { width: 40%; float: left;}
@@ -69,17 +70,36 @@ tr {	height: 35px; }
     list-style: none;
 }
 
+.qmenu {padding-top: 2em;}
+
 .qmenu>li{
 	position: relative;
     display: inline-block;
     width: 170px;
-    padding: 17px 0px 17px 0px;
+    padding: 20px 0px 20px 0px;
     vertical-align: bottom;
     list-style: none;
     text-align: center;
-    color: ghostwhite;
+    color: #4d4d4d;
+    line-height: 1.7em;
 }
-	
+
+.qmenu>li>a{ color: #4d4d4d; }
+
+.qmenu>li>a:hover{
+	text-decoration: none;
+}
+   
+.items {
+	background: url(resources/images/graycircle.png) no-repeat center;
+    background-size: contain;
+}
+
+.qicon {
+	color: #4d4d4d;
+	font-size: 43px;
+}
+
 </style>
 
 
@@ -194,45 +214,45 @@ function formSubmit(id) {
 				</div>
 			</div>
 			<!-- 아이콘 -->
-			<div class="bottom col-md-12 col-lg-12 mb-12 mb-lg-12">
+			<div class="bottom col-md-12 col-lg-12 mb-12 mb-lg-12" style="text-align: center;">
 			<ul class="qmenu">
-				<li>
-				<h1><span class="icon-book"></span></h1>
-				<span>대출현황</span>
+				<li class="items">
+					<a href="userLoan.do">
+					<span class="icon-book qicon"></span><br>
+					<span><b>대출내역</b></span>
+					</a>
 				</li>
-				<li>
-					<span>희망도서신청</span>
+				<li class="items">
+					<a href="userLoan.do">
+					<span class="icon-edit qicon"></span><br>
+					<span><b>희망도서신청</b></span>
+					</a>
 				</li>
-				<li>
-					<span>신착도서</span>
+				<li class="items">
+					<a href="userLoan.do">
+					<span class=" icon-tags qicon"></span><br>
+					<span><b>신착도서</b></span>
+					</a>
 				</li>
-				<li>
-					<span>열람실현황</span>
+				<li class="items">
+					<a href="userLoan.do">
+					<span class="icon-th-large qicon"></span><br>
+					<span><b>열람실현황</b></span>
+					</a>
 				</li>
-				<li>
-					<span>찾아오시는길</span>
+				<li class="items">
+					<a href="userLoan.do">
+					<span class="icon-question-circle-o qicon"></span><br>
+					<span><b>묻고답하기</b></span>
+					</a>
+				</li>
+				<li class="items">
+					<a href="userLoan.do">
+					<span class="icon-map-signs qicon"></span><br>
+					<span><b>찾아오시는길</b></span>
+					</a>
 				</li>
 			</ul>
-			</div>
-		</div>
-	</div>
-
-
-	<a href="#next" class="scroll-button smoothscroll"> <span
-		class=" icon-keyboard_arrow_down"></span>
-	</a>
-
-</section>
-
-<section class="py-5 bg-image overlay-primary fixed overlay mb-5"
-	id="next" style="background-image: url('resources/images/main.jpg');">
-	<div class="container">
-		<div class="row mb-5 justify-content-center">
-			<div class="col-md-7 text-center">
-				<h2 class="section-title mb-2 text-white">DAEGU YEDAM SMALL
-					LIBRARY</h2>
-				<p class="lead text-white">537, Gukchaebosang-ro, Jung-gu,
-					Daegu, Republic of Korea</p>
 			</div>
 		</div>
 	</div>
