@@ -24,7 +24,6 @@
 			success : function(user) {
 				
 				if(user_Id != null) {
-					alert("안녕하세요 " + user + "님. 정상적으로 로그인 되었습니다.");
 					window.location="home.do";
 				} 
 			},
