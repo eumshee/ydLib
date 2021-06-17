@@ -61,15 +61,31 @@ function seatUpdate(num, status, id) {
 		</div>
 	</div>
 </section>
-<div class="container-fluid">
-	<div align="center">
-		<div>
-			<h1>좌석예약 정보</h1>
-			좌석번호: ${user.seat_Num }, ${user.seat_start_Time }, ${user.seat_end_Time }
+<section class="site-section block__18514" id="next-section">
+<div class="container-fluid" style="width:70%">
+<div class="row">
+		<!-- 왼쪽네비 -->
+		<c:if test="${!empty loginUserId }">
+		 <div class="col-lg-4">
+            <div class="bg-light p-3 border rounded mb-4">
+				<div class="rounded">
+					<div class="sidenav">
+							<p><b>${loginUserVO.user_Name } 님 좌석예약정보입니다.</b></p>
+							<span><b>좌석번호: ${user.seat_Num }</b></span>
+							<br>
+							<span><b>입실시간: ${fn:substring(user.seat_start_Time,2,16) }</b></span>
+							<br>
+							<span style="color:red;"><b>퇴실시간: ${fn:substring(user.seat_end_Time,2,16) }</b></span>
+					</div>
+				</div>
+              
+            </div>
 		</div>
-		
-		<h1>열람실 좌석배치도</h1>
 
+		</c:if>
+		
+	<div align="center">
+		<h1>열람실 좌석배치도</h1>
 		<table border="1">
 			<tr>
 				<c:forEach items="${seatList }" begin="0" end="10" var="vo">
@@ -101,3 +117,6 @@ function seatUpdate(num, status, id) {
 		<br> <br>
 	</div>
 </div>
+
+</div>
+</section>
