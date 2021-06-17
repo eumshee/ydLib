@@ -2,6 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
+<jsp:useBean id="toDay" class="java.util.Date" />
+<fmt:formatDate value='${toDay}' pattern="yyyy/MM/dd HH:mm:dd" var="today" />
+
 <style>
 td {
 	text-align: center;
@@ -22,14 +26,10 @@ td {
 <script>
 	function seatUpdate(num, status) {
 		console.log(num, status);
-		console.log(${uid});
+
 		if(status == 1) {
-			if(${loginUserVO.user_Id}) {
-				alert('얍..');
-			} else {
 				alert('지정된 좌석입니다.');
 				return;
-			}
 		} else {
 			if(${empty loginUserVO.user_Id}) {
 				alert('로그인 후 예약가능합니다.');
@@ -71,7 +71,9 @@ td {
 </section>
 <div class="container-fluid">
 	<div align="center">
+	<c:out value="${today}"/>
 		<h1>열람실 좌석배치도</h1>
+		<h1>${loginUserId}</h1>
 		<table border="1">
 			<tr>
 				<c:forEach items="${seatList }" begin="0" end="10" var="vo">

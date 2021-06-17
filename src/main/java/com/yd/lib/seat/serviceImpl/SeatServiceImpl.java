@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.yd.lib.seat.service.SeatService;
 import com.yd.lib.seat.vo.SeatVO;
 import com.yd.lib.seat.vo.SeatroomVO;
+import com.yd.lib.users.vo.UsersVO;
 
 @Repository
 public class SeatServiceImpl implements SeatService {
@@ -35,7 +36,7 @@ public class SeatServiceImpl implements SeatService {
 
 	// 개인좌석
 	@Override
-	public SeatroomVO userSeatSelect(SeatroomVO vo) {
+	public SeatroomVO userSeatSelect(UsersVO vo) {
 		return sqlsession.selectOne("userSeatSelect", vo);
 	}
 

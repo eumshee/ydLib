@@ -8,24 +8,19 @@
 		order by s.seat_num
 	</select>
 	
-	<select id="userSeatSelect" parameterType="com.yd.lib.seat.vo.SeatroomVO" resultType="com.yd.lib.seat.vo.SeatroomVO">
-		select s.*, r.* from seat s
+	<select id="userSeatSelect" parameterType="com.yd.lib.users.vo.UsersVO" resultType="com.yd.lib.seat.vo.SeatroomVO">
+		select * from seat s
 		left join SEATROOM r on s.seat_num = r.seat_num
-		where s.seat_num = #{seat_Num}
+		where r.user_id = #{user_Id}
 	</select>
 	
-	<!-- 좌석정보 업데이트(비었으면 0) -->
-	<update id="seatUpdate" parameterType="com.yd.lib.seat.vo.SeatroomVO">
-		update seat
-			<set>
-		       <if test="seat_Status == 0">seat_status=1,</if>
-		       <if test="seat_Status == 1">seat_status=0,</if>
-	   		</set>
-		where seat_num = #{seat_Num}
-	</update>
-	
 	<insert id="seatOneInsert" parameterType="com.yd.lib.seat.vo.SeatroomVO">
-		insert into SEATROOM values(#{seat_Num},#{user_Id},#{seat_Num},sysdate,
-		#{seat_start_Time},null) 
+		insert into SEATROOM
+		values(seat_pick_seq.nextval,
+		#{user_Id},
+		#{seat_Num},
+		to_date('#{today}','YYYY/MM/DD hh:mi:ss'),
+		to_date('#{today}','YYYY/MM/DD hh:mi:ss'),
+		to_date('#{today}','YYYY/MM/DD hh:mi:ss') + (interval '3' hour)) 
 	</insert>
 </mapper>
