@@ -128,7 +128,7 @@
 											${yeyak.book_Location }번서가
 										</div>
 										<div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-										주제 : 
+										주제: 
 											<c:choose>
 												<c:when test="${yeyak.book_Subject eq '0'}">총류</c:when>
 												<c:when test="${yeyak.book_Subject eq '1'}">철학</c:when>
