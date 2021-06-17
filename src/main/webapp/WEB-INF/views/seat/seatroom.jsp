@@ -2,10 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
-<jsp:useBean id="toDay" class="java.util.Date" />
-<fmt:formatDate value='${toDay}' pattern="yyyy/MM/dd HH:mm:dd" var="today" />
-
 <style>
 td {
 	text-align: center;
@@ -71,7 +67,6 @@ td {
 </section>
 <div class="container-fluid">
 	<div align="center">
-	<c:out value="${today}"/>
 		<h1>열람실 좌석배치도</h1>
 		<h1>${loginUserId}</h1>
 		<table border="1">

@@ -22,12 +22,6 @@ public class SeatServiceImpl implements SeatService {
 		return sqlsession.selectList("seatList");
 	}
 
-	// 좌석상태변경(0과 1. 0이면 빈자리)
-	@Override
-	public int seatUpdate(SeatVO vo) {
-		return sqlsession.update("seatUpdate",vo);
-	}
-
 	// 열람실 예약등록
 	@Override
 	public int seatOneInsert(SeatroomVO vo) {
@@ -38,6 +32,12 @@ public class SeatServiceImpl implements SeatService {
 	@Override
 	public SeatroomVO userSeatSelect(UsersVO vo) {
 		return sqlsession.selectOne("userSeatSelect", vo);
+	}
+
+	// 자리반납시간
+	@Override
+	public int seatEnd(SeatroomVO vo) {
+		return sqlsession.update("seatEnd",vo);
 	}
 
 

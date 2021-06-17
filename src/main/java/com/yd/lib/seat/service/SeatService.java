@@ -9,6 +9,6 @@ import com.yd.lib.users.vo.UsersVO;
 public interface SeatService {
 	List<SeatVO> seatList();
 	SeatroomVO userSeatSelect(UsersVO vo);
-	int seatUpdate(SeatVO vo);
 	int seatOneInsert(SeatroomVO vo);
+	int seatEnd(SeatroomVO vo);
 }

@@ -21,18 +21,7 @@ public class SeatController {
 	@RequestMapping("/seatroom.do")
 	public String seatroom(Model model, HttpServletRequest request) {
 		model.addAttribute("seatList",ssi.seatList());
-		HttpSession session = request.getSession();
-		if(session.getAttribute("loginUserVO") != null) {
-			UsersVO vo = (UsersVO) session.getAttribute("loginUserVO");
-			model.addAttribute("user",ssi.userSeatSelect(vo));
-		}
 		return "seat/seatroom";
-	}
-
-	@RequestMapping("/seatUpdate.do")
-	public String seatUpdate(Model model, SeatVO vo) {
-		ssi.seatUpdate(vo);
-		return "redirect:seatroom.do";
 	}
 	
 	//전체 좌석출력
@@ -46,6 +35,13 @@ public class SeatController {
 	@RequestMapping("/seatOneInsert.do")
 	public String seatOneInsert(Model model, SeatroomVO vo) {
 		ssi.seatOneInsert(vo);
+		return "redirect:seatroom.do";
+	}
+
+	//좌석예약
+	@RequestMapping("/seatEndUpdate.do")
+	public String seatOneUpdate(Model model, SeatroomVO vo) {
+		ssi.seatEnd(vo);
 		return "redirect:seatroom.do";
 	}
 	

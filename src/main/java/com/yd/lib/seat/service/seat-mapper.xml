@@ -19,8 +19,14 @@
 		values(seat_pick_seq.nextval,
 		#{user_Id},
 		#{seat_Num},
-		to_date('#{today}','YYYY/MM/DD hh:mi:ss'),
-		to_date('#{today}','YYYY/MM/DD hh:mi:ss'),
-		to_date('#{today}','YYYY/MM/DD hh:mi:ss') + (interval '3' hour)) 
+		SYSDATE,
+		SYSDATE + (interval '3' hour),
+		null) 
 	</insert>
+	
+	<update id="seatEnd" parameterType="com.yd.lib.seat.vo.SeatroomVO">
+		update SEATROOM
+		set seat_end_early = SYSDATE
+		where seat_num = #{seat_Num}
+	</update>
 </mapper>

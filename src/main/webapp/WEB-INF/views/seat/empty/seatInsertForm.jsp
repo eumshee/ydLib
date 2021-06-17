@@ -1,28 +1,43 @@
+<%@page import="java.util.Locale"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
-<jsp:useBean id="toDay" class="java.util.Date" />
-<fmt:formatDate value='${toDay}' pattern="yyyy/MM/dd HH:mm:dd" var="today" />
+
 <script>
-	function insert(num, day) {
+	function insert(num, day, d) {
 		var id = '${loginUserVO.user_Id}';
 		frm.seat_Num.value = num;
 		frm.user_Id.value = id;
 		
 		console.log(num);
 		console.log(id);
-		console.log(day);
-		console.log(frm.today.value);
 		
+		let inChk = confirm("입실하시겠습니까?");
+		if (inChk) {
+			frm.submit();
+		}
+	}
+	
+	function update(num) {
+		end.seat_Num.value = num;
+		
+		console.log(num);
+		let outChk = confirm("퇴실하시겠습니까?");
+		if (outChk) {
+			end.submit();
+		}
 	}
 
 </script>
 
 <form id="frm" action="seatOneInsert.do">
-	<input type="hidden" name="today" value="<c:out value="${today}"/>">
 	<input type="hidden" name="seat_Num">
 	<input type="hidden" name="user_Id">
+</form>
+<form id="end" action="seatEndUpdate.do">
+	<input type="hidden" name="seat_Num">
 </form>
 
  	<div class="container-fluid" style="width:80%;">
@@ -46,11 +61,12 @@
 						</c:if>
 						
 						<c:if test="${vo.seat_Status eq 1 }">
-							<td class="form-group"><button type="button" id="${vo.seat_Num }">퇴실</button></td>
+							<td class="form-group"><button type="button" id="${vo.seat_Num }"
+							onclick="update(${vo.seat_Num })">퇴실</button></td>
 						</c:if>
 						<c:if test="${vo.seat_Status eq 0 }">
 							<td class="form-group"><button type="button" id="${vo.seat_Num }"
-							onclick="insert(${vo.seat_Num },'<c:out value="${today}"/>')">입실</button></td>
+							onclick="insert(${vo.seat_Num })">입실</button></td>
 						</c:if>
 						</tr>
 					</c:forEach>
