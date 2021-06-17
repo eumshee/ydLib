@@ -33,5 +33,11 @@ public class SeatServiceImpl implements SeatService {
 		return sqlsession.insert("seatOneInsert",vo);
 	}
 
+	// 개인좌석
+	@Override
+	public SeatroomVO userSeatSelect(SeatroomVO vo) {
+		return sqlsession.selectOne("userSeatSelect", vo);
+	}
+
 
 }

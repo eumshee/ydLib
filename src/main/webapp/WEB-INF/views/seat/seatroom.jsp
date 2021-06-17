@@ -22,9 +22,9 @@ td {
 <script>
 	function seatUpdate(num, status) {
 		console.log(num, status);
-
+		console.log(${uid});
 		if(status == 1) {
-			if(${loginUserVO.user_Id eq user_Id}) {
+			if(${loginUserVO.user_Id}) {
 				alert('얍..');
 			} else {
 				alert('지정된 좌석입니다.');

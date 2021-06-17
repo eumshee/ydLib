@@ -4,8 +4,14 @@
 	<!-- 좌석정보 확인 -->
 	<select id="seatList" resultType="com.yd.lib.seat.vo.SeatroomVO">
 		select s.*, r.* from seat s
-		left join seatroom r on s.seat_num = r.seat_num
+		left join SEATROOM r on s.seat_num = r.seat_num
 		order by s.seat_num
+	</select>
+	
+	<select id="userSeatSelect" parameterType="com.yd.lib.seat.vo.SeatroomVO" resultType="com.yd.lib.seat.vo.SeatroomVO">
+		select s.*, r.* from seat s
+		left join SEATROOM r on s.seat_num = r.seat_num
+		where s.seat_num = #{seat_Num}
 	</select>
 	
 	<!-- 좌석정보 업데이트(비었으면 0) -->
@@ -19,7 +25,7 @@
 	</update>
 	
 	<insert id="seatOneInsert" parameterType="com.yd.lib.seat.vo.SeatroomVO">
-		insert into seatroom values(#{seat_Num},#{user_Id},#{seat_Num},sysdate,
+		insert into SEATROOM values(#{seat_Num},#{user_Id},#{seat_Num},sysdate,
 		#{seat_start_Time},null) 
 	</insert>
 </mapper>
