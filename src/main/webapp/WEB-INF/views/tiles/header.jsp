@@ -58,10 +58,9 @@
       <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
       <c:if test="${loginUserVO.user_Id eq null}">
         <div class="ml-auto">
-        <span style="color: rgb(25 24 24); font-size: 1.1rem;"><i class="icon-user"></i>&nbsp;<b>비회원</b> 님&nbsp;&nbsp;</span>
+        <span style="color: rgb(25 24 24); font-size: 1.1rem; vertical-align: middle;"><i class="icon-user"></i>&nbsp;<b>비회원</b> 님&nbsp;&nbsp;</span>
           <a href="userJoinForm.do" class="btn btn-outline-black d-none d-lg-inline-block">회원가입</a>
           <a href="userLoginForm.do" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>로그인</a>
-          <a href="userJoinForm.do" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>회원가입</a>
         </div>
         </c:if>
         <c:if test="${loginUserVO.user_Id ne null}">
