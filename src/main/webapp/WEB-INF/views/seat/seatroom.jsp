@@ -45,12 +45,13 @@ function seatUpdate(num, status, id) {
 	
 </script>
 <input type="hidden" id="sessionId" value="${loginUserId }">
+
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
 	style="background-image: url('resources/images/main.jpg');"
 	id="home-section">
 	<div class="container">
-		<div class="row">
+		<div class="row" >
 			<div class="col-md-12" align="center">
 				<h1 class="text-white font-weight-bold">좌석배치도</h1>
 				<div class="custom-breadcrumbs">
@@ -61,62 +62,63 @@ function seatUpdate(num, status, id) {
 		</div>
 	</div>
 </section>
+
 <section class="site-section block__18514" id="next-section">
-<div class="container-fluid" style="width:70%">
-<div class="row">
+<div class="container-fluid" style="width:80%">
+	<div class="row">
+
 		<!-- 왼쪽네비 -->
 		<c:if test="${!empty loginUserId }">
-		 <div class="col-lg-4">
-            <div class="bg-light p-3 border rounded mb-4">
-				<div class="rounded">
-					<div class="sidenav">
-							<p><b>${loginUserVO.user_Name } 님 좌석예약정보입니다.</b></p>
-							<span><b>좌석번호: ${user.seat_Num }</b></span>
-							<br>
-							<span><b>입실시간: ${fn:substring(user.seat_start_Time,2,16) }</b></span>
-							<br>
-							<span style="color:red;"><b>퇴실시간: ${fn:substring(user.seat_end_Time,2,16) }</b></span>
+			 <div class="col-lg-2.5" align="center" style="width: 25%; margin: 1em;">
+	            <div class="bg-light p-3 border rounded mb-4">
+					<div class="rounded">
+						<div class="sidenav">
+								<p><b>${loginUserVO.user_Name } 님 좌석예약정보입니다.</b></p>
+								<span><b>좌석번호: ${user.seat_Num }</b></span>
+								<br>
+								<span><b>입실시간: ${fn:substring(user.seat_start_Time,2,16) }</b></span>
+								<br>
+								<span style="color:red;"><b>퇴실시간: ${fn:substring(user.seat_end_Time,2,16) }</b></span>
+						</div>
 					</div>
-				</div>
-              
-            </div>
-		</div>
-
+	              
+	            </div>
+			</div>
 		</c:if>
-		
-	<div align="center">
-		<h1>열람실 좌석배치도</h1>
-		<table border="1">
-			<tr>
-				<c:forEach items="${seatList }" begin="0" end="10" var="vo">
-					<c:if test="${vo.seat_Num le 10}">
-						<td onclick="seatUpdate(${vo.seat_Num },${vo.seat_Status },'${vo.user_Id }')"
-						<c:if test="${vo.seat_Status == 1}">class="bg"</c:if>>${vo.seat_Num }</td>
-					</c:if>
-				</c:forEach>
-			</tr>
-			
-			<tr>
-				<c:forEach items="${seatList }" begin="10" end="20" var="vo">
-					<c:if test="${ vo.seat_Num le 20}">
-						<td onclick="seatUpdate(${vo.seat_Num },${vo.seat_Status },'${vo.user_Id }')"
-						<c:if test="${vo.seat_Status == 1}">class="bg"</c:if>>${vo.seat_Num }</td>
-					</c:if>
-				</c:forEach>
-			</tr>
-			
-			<tr>
-				<c:forEach items="${seatList }" begin="20" end="30" var="vo">
-					<c:if test="${vo.seat_Num le 30 }">
-						<td onclick="seatUpdate(${vo.seat_Num },${vo.seat_Status },'${vo.user_Id }')"
-						<c:if test="${vo.seat_Status == 1}">class="bg"</c:if>>${vo.seat_Num }</td>
-					</c:if>
-				</c:forEach>
-			</tr>
-		</table>
-		<br> <br>
+		<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		<div align="center">
+			<h1>열람실 좌석배치도</h1>
+			<table border="1">
+				<tr>
+					<c:forEach items="${seatList }" begin="0" end="10" var="vo">
+						<c:if test="${vo.seat_Num le 10}">
+							<td onclick="seatUpdate(${vo.seat_Num },${vo.seat_Status },'${vo.user_Id }')"
+							<c:if test="${vo.seat_Status == 1}">class="bg"</c:if>>${vo.seat_Num }</td>
+						</c:if>
+					</c:forEach>
+				</tr>
+				<tr style="border-left: 0; border-right: 0"><td colspan="10"></td></tr>
+				<tr>
+					<c:forEach items="${seatList }" begin="10" end="20" var="vo">
+						<c:if test="${ vo.seat_Num le 20}">
+							<td onclick="seatUpdate(${vo.seat_Num },${vo.seat_Status },'${vo.user_Id }')"
+							<c:if test="${vo.seat_Status == 1}">class="bg"</c:if>>${vo.seat_Num }</td>
+						</c:if>
+					</c:forEach>
+				</tr>
+				<tr style="border-left: 0; border-right: 0"><td colspan="10"></td></tr>
+				
+				<tr>
+					<c:forEach items="${seatList }" begin="20" end="30" var="vo">
+						<c:if test="${vo.seat_Num le 30 }">
+							<td onclick="seatUpdate(${vo.seat_Num },${vo.seat_Status },'${vo.user_Id }')"
+							<c:if test="${vo.seat_Status == 1}">class="bg"</c:if>>${vo.seat_Num }</td>
+						</c:if>
+					</c:forEach>
+				</tr>
+			</table>
+			<br> <br>
+		</div>
 	</div>
-</div>
-
 </div>
 </section>
