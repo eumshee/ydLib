@@ -1,5 +1,8 @@
 package com.yd.lib.seat.web;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,11 +16,11 @@ import com.yd.lib.seat.vo.SeatroomVO;
 public class SeatController {
 	@Autowired
 	SeatServiceImpl ssi;
-	
+
 	@RequestMapping("/seatroom.do")
-	public String seatroom(Model model) {
-		model.addAttribute("seatList",ssi.seatList());
-		return "seat/seatroom";
+	public String seatroom(Model model, HttpServletRequest req) {
+		model.addAttribute("seatList", ssi.seatList());
+		return "seat/seatroom2";
 	}
 
 	@RequestMapping("/seatUpdate.do")
@@ -25,13 +28,11 @@ public class SeatController {
 		ssi.seatUpdate(vo);
 		return "redirect:seatroom.do";
 	}
-	
-	//전체 좌석출력
+
+	// 전체 좌석출력
 	@RequestMapping("/seatInsertForm.do")
 	public String seatInsertForm(Model model) {
-		model.addAttribute("list",ssi.seatList());
+		model.addAttribute("list", ssi.seatList());
 		return "seat/empty/seatInsertForm";
 	}
-	
-	
 }

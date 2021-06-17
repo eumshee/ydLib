@@ -13,6 +13,13 @@ public class SeatroomVO {
 	// seat테이블
 	private int seat_Status;
 
+	@Override
+	public String toString() {
+		return "SeatroomVO [seat_pick_Num=" + seat_pick_Num + ", user_Id=" + user_Id + ", seat_Num=" + seat_Num
+				+ ", seat_pick_Date=" + seat_pick_Date + ", seat_start_Time=" + seat_start_Time + ", seat_end_Time="
+				+ seat_end_Time + ", seat_Status=" + seat_Status + "]";
+	}
+
 	public int getSeat_pick_Num() {
 		return seat_pick_Num;
 	}

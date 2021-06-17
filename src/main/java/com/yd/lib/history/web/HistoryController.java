@@ -33,6 +33,7 @@ private HistoryServiceImpl his;
 	@RequestMapping("/loanreManagemant.do")
 	public String RoanreturnManagemant(Model model) {
 		model.addAttribute("historyList",his.historySelectList());
+		
 		return "admins/roanreturnManagement";
 	}
 	
