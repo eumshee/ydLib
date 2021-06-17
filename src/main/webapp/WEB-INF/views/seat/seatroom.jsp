@@ -24,12 +24,8 @@ td {
 		console.log(num, status);
 
 		if(status == 1) {
-			if(${loginUserVO.user_Id eq user_Id}) {
-				alert('얍..');
-			} else {
 				alert('지정된 좌석입니다.');
 				return;
-			}
 		} else {
 			if(${empty loginUserVO.user_Id}) {
 				alert('로그인 후 예약가능합니다.');
@@ -72,6 +68,7 @@ td {
 <div class="container-fluid">
 	<div align="center">
 		<h1>열람실 좌석배치도</h1>
+		<h1>${loginUserId}</h1>
 		<table border="1">
 			<tr>
 				<c:forEach items="${seatList }" begin="0" end="10" var="vo">

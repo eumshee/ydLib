@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import com.yd.lib.book.vo.BookVO;
 import com.yd.lib.users.vo.UserLoanInfoVO;
+import com.yd.lib.users.vo.UserWishInfoVO;
+import com.yd.lib.users.vo.UserYeyakInfoVO;
 import com.yd.lib.users.vo.UsersVO;
 
 @Repository("UsersDAO")
@@ -67,6 +69,9 @@ public class UsersServiceImpl {
 	
 	sqlSession.update("userAddrUpdate", param);
 	}
+	
+	
+	
 
 	
 	//회원 대출내역조회
@@ -74,12 +79,21 @@ public class UsersServiceImpl {
 		return sqlSession.selectList("userLoanList" , user_Id);
 	}
 	
-	//회원 대출내역조회
-	public List<UserLoanInfoVO> userYeyakList(String user_Id) {
+	//회원 예약내역조회
+	public List<UserYeyakInfoVO> userYeyakList(String user_Id) {
 		return sqlSession.selectList("userYeyakList" , user_Id);
 	}
 	
+	//예약취소
+		public void yeyakCancel(String yeyak_Num) {
+			
+			sqlSession.delete("yeyakCancel", yeyak_Num);
+		}
 	
+	//회원 희망도서내역조회
+	public List<UserWishInfoVO> userWishList(String user_Id) {
+		return sqlSession.selectList("userWishList" , user_Id);
+	}
 	
 
 }

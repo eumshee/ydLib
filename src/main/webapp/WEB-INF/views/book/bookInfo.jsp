@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,12 +56,12 @@
 </head>
 <body>
 	<section class="section-hero overlay inner-page bg-image"
-		style="background-image: url('resources/images/hero_1.jpg');"
+		style="background-image: url('resources/images/main.jpg');"
 		id="home-section">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12" align="center">
-					<h1 class="text-white font-weight-bold">상세정보${loginUserVO.user_Id}</h1>
+					<h1 class="text-white font-weight-bold">상세정보</h1>
 				</div>
 			</div>
 		</div>
@@ -76,7 +77,7 @@
 								<li class="sideactive"><a href="bookSerchForm.do">통합자료검색</a></li>
 								<li><a href="newBook.do">신착자료</a></li>
 								<li><a href="bestBook.do">대출 베스트</a></li>
-								<li><a href="wishBook.do">희망도서 신청</a></li>
+								<li><a href="wishBookInfo.do">희망도서 신청</a></li>
 							</ul>
 						</div>
 					</div>
@@ -97,7 +98,7 @@
 								<td>저자 : ${bookInfo.book_Aut }</td>
 							</tr>
 							<tr>
-								<td>발행처/발행날 : ${bookInfo.book_Pub } / ${bookInfo.book_Pubdate }</td>
+								<td>발행처/발행날 : ${bookInfo.book_Pub } /  ${x:substring(bookInfo.book_Pubdate,0,10)  } </td>
 							</tr>
 							<tr>
 								<td>ISBN : ${bookInfo.book_Isbn }</td>
@@ -119,7 +120,7 @@
 									<td></td>
 								</c:if>
 								<c:if test="${bookInfo.book_Byn eq 'N' }">
-									<td>${bookInfo.return_Duedate }</td>
+									<td>${x:substring(bookInfo.return_Duedate,0,10)}</td>
 								</c:if>
 								<td>
 									<div class="job-listing-meta">

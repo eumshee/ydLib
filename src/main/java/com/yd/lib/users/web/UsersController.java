@@ -1,6 +1,5 @@
 package com.yd.lib.users.web;
 
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -52,11 +51,14 @@ public class UsersController {
 			String userBirthMonth = userBirth.substring(5,7);
 			String userBirthDay = userBirth.substring(8,10);
 			
-	        
+	        System.out.println(id);
+			
+			
 			HttpSession session = request.getSession();
 	        if(rvo != null) {
 	        session.setAttribute("loginUserVO", rvo);
 	        session.setAttribute("loginUserId", id);
+	        
 	        //my page 표시용
 	        session.setAttribute("loginUserVOBirth", userBirthYear+"년 " + userBirthMonth+"월 " + userBirthDay +"일 ");
 	        } 
@@ -64,7 +66,14 @@ public class UsersController {
 	        return id;
 		 
 	}
+	
 
+	@RequestMapping("/userLogOut.do")
+	public String userLogOut(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return "redirect:home.do";
+	}
 	
 	//------------------------------- 회원가입 ------------------------------ //
 	@RequestMapping("/userJoinForm.do")
@@ -132,15 +141,9 @@ public class UsersController {
 		
 		UsersDAO.userInsert(param);
 		
-		return "redirect:home.do";
+		return "redirect:userLoginForm.do";
 	}
 	
-	@RequestMapping("/userLogOut.do")
-	public String userLogOut(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		session.invalidate();
-		return "redirect:home.do";
-	}
 	
 	
 	// ------------------------------- 유저 정보수정 ------------------------------ //

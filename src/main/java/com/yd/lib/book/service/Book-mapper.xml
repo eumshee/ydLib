@@ -183,6 +183,27 @@
 		]]>
 	</select>
 	
+		<select id="bookBest2" resultType="com.yd.lib.book.vo.BookVO">
+		<![CDATA[
+		select * from(
+					  select book.* , ROW_NUMBER() OVER(PARTITION BY book_isbn ORDER BY book_num asc ) AS RNUM
+					  from book
+					  where book_num in (
+										 select book_num from(
+															  select book_num , count(*) as cnt
+															  from HISTORY
+															  group by book_num
+															  order by cnt desc
+															  )
+										 where ROWNUM < 3
+										 )
+					  )
+		where rnum = 1
+		order by book_num asc
+		]]>
+	</select>
+	
+	
 	<select id="subjectBookBestTop10" parameterType="com.yd.lib.book.vo.BookVO" resultType="com.yd.lib.book.vo.BookVO">
 		select * from(
 					  select book.* , ROW_NUMBER() OVER(PARTITION BY book_isbn ORDER BY book_num asc ) AS RNUM
@@ -205,6 +226,13 @@
 		order by book_num asc
 	</select>
 	<insert id="wishBookInsert" parameterType="com.yd.lib.wish.vo.WishVO">
-		insert into wish values(#{user_Id} , #{wish_Title} , #{wish_Aut} , #{wish_pub} , null , null , #{wish_Bigo} , #{wish_Price} , sysdate ,'신청중' , wish_seq.nextval,null)
+		insert into wish values(#{user_Id} , #{wish_Title} , #{wish_Aut} , #{wish_Pub} , null , null , #{wish_Bigo} , #{wish_Price} , sysdate ,'신청중' , wish_seq.nextval,null)
 	</insert>
+	
+	<select id="wishCnt" parameterType="com.yd.lib.wish.vo.WishVO" resultType="int">
+		select count(*) from wish
+		where wish_date >= TRUNC(sysdate,'MM')
+		and wish_date <![CDATA[<]]>= LAST_DAY(sysdate)
+		and user_id = #{user_Id}
+	</select>
 </mapper>

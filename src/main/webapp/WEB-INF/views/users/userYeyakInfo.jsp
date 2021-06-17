@@ -25,7 +25,10 @@
 }
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
+
+
 </style>
+
 <script type="text/javascript">
 	function order() {
 		var order = $('#orderSelect').val();
@@ -38,12 +41,17 @@
 		ifrm.submit();
 	}
 </script>
+
 <script type="text/javascript">
 	function goPage(page) {
 		location.href="newBook.do?page="+page;
 	}
 </script>
+
+
 </head>
+
+
 <body>
 	<!-- 상단배너 -->
 	<section class="section-hero overlay inner-page bg-image"
@@ -79,33 +87,43 @@
 				</div>
 				<!--컨텐츠 영역-->
 				<div class="col-lg-8">
-					<form action="bookInfo.do" id="ifrm">
+					<form action="yeyakCancel.do" id="frm">
 						<input type="hidden" id="book_Isbn" name="book_Isbn">
+						
+						<c:choose>
+						<c:when test="${userYeyakList.isEmpty() }">
+						<table class="table table-bordered" style="width: 100%; ">
+						<tr>
+						<td  style="width:'100%';">
+						<div  style="align:'center' ; width:'100%';">
+						<h6>현재 예약중인 도서가 없습니다.</h6>
+						</div>
+						
+						</td>
+						</tr>
+						</table>
+						</c:when>
+						
+						<c:when test="${!userYeyakList.isEmpty()}">
 						<ul class="job-listings mb-5">
-							<c:forEach items="${userYeyakList }" var="yeyak">
+						
+						
+						
+						
+						
+						<c:forEach items="${userYeyakList }" var="yeyak">
+						
 								<br>
 								<div>
-								<p>예약신청일: ${yeyak.yeyak_Submit }   
+								<p>예약신청일: &nbsp; ${yeyak.yeyak_Submit }   
 								<c:choose>
 								<c:when test="${yeyak.yeyak_Start ne null }">
-								&nbsp;&nbsp;&nbsp;&nbsp; 예약시작일: ${yeyak.yeyak_Start }
-								&nbsp;&nbsp;&nbsp;&nbsp; 예약종료일: ${yeyak.yeyak_End }
+								<p>대출가능기간: &nbsp; ${yeyak.yeyak_Start } ~ ${yeyak.yeyak_End }</p> 
+								<p>상태: 대출가능(예약하신 도서를 대출가능기간 안에 대출해주시기 바랍니다.)</p> 
 								</c:when>
 								
-								<c:when test="${yeyak.yeyak_Processing eq '예약신청' }">
-								&nbsp;&nbsp;&nbsp;&nbsp; <p>상태: 예약신청(예약한 도서가 반납될 시 안내문자가 발송됩니다.)</p> 
-								</c:when>
-								
-								<c:when test="${yeyak.yeyak_Processing eq '예약취소' }">
-								&nbsp;&nbsp;&nbsp;&nbsp; <p>상태: 예약취소</p> 
-								</c:when>
-								
-								<c:when test="${yeyak.yeyak_Processing eq '예약만료' }">
-								&nbsp;&nbsp;&nbsp;&nbsp; <p>상태: 예약만료(예약도서 대출가능기간동안 대출하지않아 예약이 만료되었습니다.)</p> 
-								</c:when>
-								
-								<c:when test="${yeyak.yeyak_Processing eq '예약중' }">
-								&nbsp;&nbsp;&nbsp;&nbsp; <p>상태: 예약승인(예약도서를 대출해주시기 바랍니다.)</p> 
+								<c:when test="${yeyak.yeyak_Start eq null }">
+								&nbsp;&nbsp;&nbsp;&nbsp; <p>상태: 예약신청(예약한 도서가 준비될 시 안내문자가 발송됩니다.)</p> 
 								</c:when>
 								
 								</c:choose>
@@ -113,6 +131,7 @@
 								</div>
 								<li	class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
 									<a onclick="bookInfo(${yeyak.book_Isbn})"></a>
+									<input type="hidden" id="yeyak_Num" name="yeyak_Num" value="${yeyak.yeyak_Num}">
 									<div class="job-listing-logo">
 										<img src="${yeyak.book_Img }" alt="Image" class="img-fluid" width="100%">
 									</div>
@@ -144,9 +163,21 @@
 											
 										</div>
 									</div>
+									
 								</li>
+								<div align="center">
+									<button type="button" class="btn btn-primary text-red btn-search"
+									onclick="submit()">에약취소</button>
+								</div>
 							</c:forEach>
+							
+						
+						
+						
 						</ul>
+						</c:when>
+						</c:choose>
+						
 					</form>
 				</div>
 			</div>

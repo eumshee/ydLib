@@ -227,7 +227,7 @@ function findAddr(){
 				<h1 class="text-white font-weight-bold">나의 도서관</h1>
 				<div class="custom-breadcrumbs">
 					<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
-						class="text-white"><strong>내정보 수정</strong></span>
+						class="text-white"><strong>내정보 보기/수정</strong></span>
 				</div>
 			</div>
 		</div>
@@ -244,14 +244,14 @@ function findAddr(){
 							<li><a href="userLoan.do">대출내역조회</a></li>
 							<li><a href="userYeyak.do">예약현황</a></li>
 							<li><a href="userWish.do">희망도서 신청현황</a></li>
-							<li class="sideactive"><a href="userPage.do">내정보 수정</a></li>
+							<li class="sideactive"><a href="userPage.do">내정보 보기/수정</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<!--회원가입 화면-->
 			<div align="center">
-					<h4>내정보 수정</h4>
+					<h4>내정보 보기/수정</h4>
 			<br>
 			<form id="frm" action="userUpdate.do" method="post">
 			<table style="border:1; border-collapse:collapse;">
@@ -305,7 +305,25 @@ function findAddr(){
 						</td>
 					</tr>
 					
-
+					<tr>
+						<th width="150">구분</th>
+						<td width="300">
+						<span class="input-group-text" id="inputGroup-sizing-sm">
+						${loginUserVO.user_Gubun }
+						</span>
+						</td>
+					</tr>
+					
+					<tr><td colspan="3">&nbsp;</td></tr>
+					
+					<tr>
+						<th width="150">기존 이메일</th>
+						<td width="150" colspan="2">
+						<span class="input-group-text" id="inputGroup-sizing-sm">
+						${loginUserVO.user_Email}
+						</span>
+						</td>
+					</tr>
 					<tr>
 						<th>변경할 이메일</th>
 						<td width="150" colspan="2" >
@@ -327,6 +345,16 @@ function findAddr(){
 					
 					<tr><td colspan="3">&nbsp;</td></tr>
 					
+					
+					<tr>
+						<th width="150">기존 전화번호</th>
+						<td width="150">
+						<span class="input-group-text" id="inputGroup-sizing-sm">
+						${loginUserVO.user_Phone}
+						</span>
+						</td>
+					</tr>
+					
 					<tr>
 						<th width="150">변경할 전화번호</th>
 						<td width="150" colspan="2"><input class="form-control" type="text" id="user_Phone"
@@ -346,23 +374,33 @@ function findAddr(){
 						</td>
 					</tr>
 					<tr><td colspan="2">&nbsp;</td></tr>
+					
+					<tr>
+						<th width="150">기존 주소</th>
+						<td width="150" colspan="3">
+						<span class="input-group-text" id="inputGroup-sizing-sm">
+						${loginUserVO.user_Addr}
+						</span>
+						</td>
+					</tr>
+					
 					<tr>
 						<th width="150">변경할 주소
 						</th>
 						<td width="300">
-						<input class="form-control" id="user_post" type="text" name="userAddressZip" placeholder="Zip Code" readonly onclick="findAddr()">	
+						<input class="form-control" id="user_post" type="text" name="userAddressZip" placeholder="우편번호" readonly onclick="findAddr()">	
 						</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td>
-  						<input class="form-control" id="user_addr" type="text" name="userAddress" placeholder="Address" readonly>
+  						<input class="form-control" id="user_addr" type="text" name="userAddress" placeholder="주소" readonly>
 						</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td>
- 						<input class="form-control" id="user_detailedAddr" type="text" placeholder="Detailed Address" name="userAddressDetail">
+ 						<input class="form-control" id="user_detailedAddr" type="text" placeholder="상세주소" name="userAddressDetail">
 						</td>
 					</tr>
 			</table>

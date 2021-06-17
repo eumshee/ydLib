@@ -36,10 +36,10 @@ function formSubmit(Isbn) {
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12" align="center">
-					<h1 class="text-white font-weight-bold">대출내역 조회</h1>
+					<h1 class="text-white font-weight-bold">희망도서 신청현황</h1>
 					<div class="custom-breadcrumbs">
 					<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
-						class="text-white"><strong>대출내역 조회</strong></span>
+						class="text-white"><strong>희망도서 신청현황</strong></span>
 				</div>
 				</div>
 			</div>
@@ -53,9 +53,9 @@ function formSubmit(Isbn) {
 					<div class="rounded">
 						<div class="sidenav">
 							<ul class="list-unstyled">
-								<li class="sideactive"><a href="userLoan.do">대출내역조회</a></li>
+								<li ><a href="userLoan.do">대출내역조회</a></li>
 								<li><a href="userYeyak.do">예약현황</a></li>
-								<li><a href="userWish.do">희망도서 신청현황</a></li>
+								<li class="sideactive"><a href="userWish.do">희망도서 신청현황</a></li>
 								<li ><a href="userPage.do">내정보 수정</a></li>
 							</ul>
 						</div>
@@ -66,51 +66,51 @@ function formSubmit(Isbn) {
 			<!--컨텐츠 영역-->
 			<div class="col-lg-8">
 				<form id="frm" action="bookInfo.do" method="post">
-				<input type="hidden" id="book_Isbn" name="book_Isbn">
 				<!-- DataTales Example -->
-						
 				<table class="table table-bordered"
 					style="width: 100%; cellspacing: 0">
 					
 						<tr>
 							<th width= "60px">순번</th>
 							<th>책제목</th>
-							<th>저자</th>
-							<th>대출일</th>
-							<th>반납기한</th>
-							<th width= "60px">상태</th>
+							<th>ISBN</th>
+							<th>저자/출판사</th>
+							<th>신청일</th>
+							<th width= "70px">상태</th>
+							<th>비고</th>
 						</tr>
 						
 						<c:choose>
 						
-						<c:when test="${userLoanList.isEmpty() }">
+						<c:when test="${userWishList.isEmpty() }">
 						<tr>
 						<td colspan="7">
 						<div style="height:'300px'; width:'100%'; align:'center'">
-						<h6>도서대출내역이 없습니다.</h6>
+						<h6>희망도서 신청내역이 없습니다.</h6>
 						</div>
 						</td>
 						</tr>
 						</c:when>
 						
-						<c:when test="${!userLoanList.isEmpty()}">
+						<c:when test="${!userWishList.isEmpty()}">
 				
-						<c:forEach var="loan" items="${userLoanList }" varStatus="status">
+						<c:forEach var="wish" items="${userWishList }" varStatus="status">
 							
-							<tr onclick="formSubmit(${loan.book_Isbn})" >
+							<tr >
 								<td>${status.count }</td>
-								<td>${loan.book_Title }</td>
-								<td>${loan.book_Aut }</td>
-								<td>${loan.loan_Date }</td>
-								<td>${loan.return_Duedate }</td>
-								<td>${loan.loan_Status }</td>
+								<td>${wish.wish_Title }</td>
+								<td>${wish.wish_Isbn }</td>
+								<td>${wish.wish_Aut } / ${wish.wish_Pub } </td>
+								<td>${wish.wish_Date }</td>
+								<td>${wish.wish_Processing }</td>
+								<!-- 관리자가 작성하는 comment를 비고로 처리  -->
+								<td>${wish.wish_Coment }</td>
 							</tr>
 							
 						</c:forEach>
 						</c:when>
 						</c:choose>
 				</table>
-				
 				</form>
 				</div>
 			</div>
