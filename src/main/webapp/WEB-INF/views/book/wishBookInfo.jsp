@@ -82,7 +82,7 @@
 						<a href="wishBook.do" class="btn btn-primary btn-md mt-4">희망도서 신청하기</a>
 					</p>
 					<h4>원하는 책의 정보를 잘 모르시겠나요?_?</h4> 
-					<a href ="https://www.aladin.co.kr/search/wsearchresult.aspx?SearchTarget=Book&SearchWord=&x=7&y=11">인터넷 서점 바로가기</a> 
+					<a href ="https://www.aladin.co.kr/search/wsearchresult.aspx?SearchTarget=Book&SearchWord=&x=7&y=11" target="_blank">인터넷 서점 바로가기</a> 
 				</div>
 			</div>
 		</div>
