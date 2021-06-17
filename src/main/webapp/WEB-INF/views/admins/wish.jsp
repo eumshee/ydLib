@@ -21,7 +21,8 @@
 			Process.submit();
 		}
 		function wishCmtSubmit(wishId) {
-			cmt.wish_Coment.value = $('#WishCmt' + wishId).val();
+			cmt.wish_Coment.value = $('#wishCmt' + wishId).val();
+			console.log(cmt.wish_Coment.value);
 			cmt.wish_Id.value = wishId;
 			cmt.submit();
 		}
@@ -32,8 +33,8 @@
 	<input type="text" id="wish_Id" name="wish_Id" hidden="">
 </form>
 <form id="cmt" action="wishComentUpdate.do" method="post">
-	<input type="text" id="wish_Coment" name="wish_Processing" hidden="">
-	<input type="text" id="wish_Id" name="wish_Id" hidden="">
+	<input type="hidden" name="wish_Coment">
+	<input type="hidden" name="wish_Id">
 </form>
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
@@ -162,7 +163,7 @@
 												onclick="bigoSubmit('${vo.user_Id}',${vo.wish_Id})">수정</button>
 										</td>
 										<td>
-											<input type="text" id="WishCmt${vo.wish_Id}" value=${vo.wish_Coment }>
+											<textarea id="wishCmt${vo.wish_Id}" rows="1" cols="25">${vo.wish_Coment }</textarea>
 											<button type="button"
 												onclick="wishCmtSubmit(${vo.wish_Id})">수정</button>											
 										</td>
