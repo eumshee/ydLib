@@ -1,35 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script>	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script>
 </script>
  	<div class="container-fluid" style="width:80%;">
-				<form id="frm" class="p-4 p-md-5 border rounded"
-					action="bookOneInsert.do" method="post">
 					<h3 class="text-black mb-5 border-bottom pb-2">열람실 예약</h3>
 					<table style="width: 100%;" border="1">
 						<tr>
-							<th class="form-group"><label for="user_Id">아이디</label></th>
-							<td><input type="text" class="form-control" id="user_Id"
-								placeholder="아이디" name="user_Id"></td>
+							<th class="form-group">좌석번호</th>
+							<th class="form-group">퇴실예정시간</th>
+							<th class="form-group">좌석상태</th>
+							<th class="form-group">비고</th>
 						</tr>
-						
-						
+					<c:forEach items="${list }" var="vo">
 						<tr>
-							<th class="form-group"><label for="seat_Num">좌석번호</label></th>
-							<td>
-							
-							<input type="text" placeholder="좌석번호" class="form-control"
-								id="seat_Num" name="seat_Num">
-								
-							</td>
+							<td class="form-group">${vo.seat_Num } </td>
+							<td class="form-group">${vo.seat_end_Time }</td>
+						<c:if test="${vo.seat_Status eq 1 }">
+							<td class="form-group">사용불가</td>
+						</c:if>
+						<c:if test="${vo.seat_Status eq 0 }">
+							<td class="form-group">사용가능</td>
+						</c:if>
+						
+						<c:if test="${vo.seat_Status eq 1 }">
+							<td class="form-group"><button type="button">퇴실</button></td>
+						</c:if>
+						<c:if test="${vo.seat_Status eq 0 }">
+							<td class="form-group"><button type="button">입실</button></td>
+						</c:if>
 						</tr>
-						<tr>
-							<th class="form-group"><label for="seat_start_Time">예약시간</label></th>
-							<td><input type="text" placeholder="예약시간" class="form-control"
-								id="seat_start_Time" name="seat_start_Time"></td>
-						</tr>
+					</c:forEach>
 					</table>
-				</form>
 			</div>
 	<div align="center">
 		<div class="col-lg-3">
