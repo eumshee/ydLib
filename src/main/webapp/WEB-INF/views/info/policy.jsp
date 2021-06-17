@@ -49,7 +49,7 @@
 					<h3 class="h4 d-flex align-items-center mb-4 text-primary box">
 						<span class="icon-book">&nbsp;</span><span class="half-highlight">회원 안내</span>
 					</h3>
-					<span class="icon-keyboard_arrow_right"></span>&nbsp;<b>정회원</b> : 홈페이지 회원가입한 이용자에 한해서 도서관 데스크에서 신분증 확인을 거쳐 정회원으로 전환 가능합니다.<br>
+					<span class="icon-keyboard_arrow_right"></span>&nbsp;<b>정회원</b> : 홈페이지 회원에 한해서 도서관 데스크에서 신분증 확인을 거쳐 정회원으로 전환 가능합니다.<br>
 					<span class="icon-keyboard_arrow_right"></span>&nbsp;<b>준회원</b> : 홈페이지 회원가입을 했으나 신분증 확인을 거치지 않은 자. 대출/예약/희망도서 신청이 불가능합니다.<br>
 				</div>
 				<div class="mb-5">
