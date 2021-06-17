@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
-    
+
 <!-- NAVBAR -->
+<div class="header1">
 <header class="site-navbar mt-3">
   <div class="container-fluid">
     <div class="row align-items-center">
@@ -57,14 +58,14 @@
       <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
       <c:if test="${loginUserVO.user_Id eq null}">
         <div class="ml-auto">
-        <span style="color: rgba(255, 255, 255, 0.7)"><i class="icon-user"></i>&nbsp;<b>비회원</b> 님&nbsp;&nbsp;</span>
+        <span style="color: rgb(25 24 24); font-size: 1.1rem; vertical-align: middle;"><i class="icon-user"></i>&nbsp;<b>비회원</b> 님&nbsp;&nbsp;</span>
+          <a href="userJoinForm.do" class="btn btn-outline-black d-none d-lg-inline-block">회원가입</a>
           <a href="userLoginForm.do" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>로그인</a>
-          <a href="userJoinForm.do" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>회원가입</a>
         </div>
         </c:if>
         <c:if test="${loginUserVO.user_Id ne null}">
         <div class="ml-auto">
-        <span style="color: rgba(255, 255, 255, 0.7)"><i class="icon-user"></i>&nbsp;<b>${loginUserVO.user_Name}</b> 님&nbsp;&nbsp;</span>
+        <span style="color: rgb(25 24 24)"><i class="icon-user"></i>&nbsp;<b>${loginUserVO.user_Name}</b> 님&nbsp;&nbsp;</span>
           <a href="userLogOut.do" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>로그아웃</a>
         </div>
         </c:if>
@@ -74,3 +75,4 @@
     </div>
   </div>
 </header>
+</div>

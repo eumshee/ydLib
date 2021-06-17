@@ -30,7 +30,7 @@
 </head>
 <body>
 	<section class="section-hero overlay inner-page bg-image"
-		style="background-image: url('resources/images/hero_1.jpg');"
+		style="background-image: url('resources/images/main.jpg');"
 		id="home-section">
 		<div class="container">
 			<div class="row">
@@ -58,19 +58,36 @@
 				</div>
 				<!--컨텐츠 영역-->
 				<div class="col-lg-8">
-					<h2>원하는 책의 정보를 잘 모르시겠나요?_?</h2> 
-					<a href ="https://www.aladin.co.kr/search/wsearchresult.aspx?SearchTarget=Book&SearchWord=&x=7&y=11">인터넷 서점 바로가기</a> 
-					<form action="wishBookInsert.do" id="frm">
-						이용자 Id : <input type="text" id="user_Id" name="user_Id" value=${loginUserVO.user_Id } readOnly><br>
-						서명 : <input type="text" id="wish_Title" name="wish_Title" required> <br>
-						저자 : <input type="text" id="wish_Aut" name="wish_Aut"> <br>
-						출판사 : <input type="text" id="wish_Pub" name="wish_Pub"> <br>
-						가격 : <input type="text" id="wish_Price" name="wish_Price"> <br>
-						신청 사유 : <p><textarea rows="10" cols="50" id="wish_Bigo" name="wish_Bigo"></textarea></p>
-						<p>
-							<a class="btn btn-primary btn-md mt-4" onclick="wishCnt('${loginUserVO.user_Id}')">희망도서 신청하기</a>
-						</p>
-					</form>
+				<form class="p-4 p-md-5 border rounded" action="wishBookInsert.do" id="frm">
+					<h3 class="text-black mb-5 border-bottom pb-2">희망도서 신청하기</h3>
+					<div class="form-group">
+						<label for="board_Title">이용자 Id</label> 
+						<input type="text" class="form-control" id="user_Id" name="user_Id" value=${loginUserVO.user_Id } readOnly>
+					</div>
+					<div class="form-group">
+						<label for="board_Title">서명</label> 
+						<input type="text" class="form-control" id="wish_Title" name="wish_Title" required>
+					</div>
+					<div class="form-group">
+						<label for="board_Title">저자</label> 
+						<input type="text" class="form-control" id="wish_Aut" name="wish_Aut" required>
+					</div>
+					<div class="form-group">
+						<label for="board_Title">출판사</label> 
+						<input type="text" class="form-control" id="wish_Pub" name="wish_Pub" required>
+					</div>
+					<div class="form-group">
+						<label for="board_Title">가격</label> 
+						<input type="text" class="form-control" id="wish_Price" name="wish_Price" required>
+					</div>
+					<div class="form-group">
+						<label for="board_Content">신청 사유</label>
+						<textarea class="form-control" rows="10" cols="50" id="wish_Bigo" name="wish_Bigo"></textarea>
+					</div>
+					<p>
+						<a class="btn btn-primary btn-md mt-4" onclick="wishCnt('${loginUserVO.user_Id}')">희망도서 신청하기</a>
+					</p>
+				</form>
 				</div>
 			</div>
 		</div>
