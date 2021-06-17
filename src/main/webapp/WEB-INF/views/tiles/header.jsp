@@ -59,6 +59,7 @@
         <div class="ml-auto">
         <span style="color: rgba(255, 255, 255, 0.7)"><i class="icon-user"></i>&nbsp;<b>비회원</b> 님&nbsp;&nbsp;</span>
           <a href="userLoginForm.do" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>로그인</a>
+          <a href="userJoinForm.do" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>회원가입</a>
         </div>
         </c:if>
         <c:if test="${loginUserVO.user_Id ne null}">

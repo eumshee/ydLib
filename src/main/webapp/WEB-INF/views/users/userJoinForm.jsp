@@ -33,7 +33,7 @@ $(function() {
 						$('#user_Email').val('');
 						$('#user_Email').focus();
 					} else {
-						alert('사용가능한 이메일입니다!');
+						alert('등록가능한 이메일입니다.');
 						$('#sendEmail').val('checked');
 						$('#emailCode').focus();
 						//중복확인 통과후 인증코드 메일보내는 ajax
@@ -90,7 +90,7 @@ $(function() {
 						$('#user_Id').val('');
 						$('#user_Id').focus();
 					} else{
-						alert('사용가능한 아이디입니다!');
+						alert('사용가능한 아이디입니다.');
 						$('#idCheck').val("checked");
 						$('#user_Pw').focus();
 					}
@@ -158,7 +158,7 @@ function findAddr(){
 						$('#user_Phone').val('');
 						$('#user_Phone').focus();
 					} else {
-						alert('사용가능한 휴대폰번호입니다!');
+						alert('등록가능한 휴대폰번호입니다.');
 						$('#sendSMS').val('checked');
 						$('#smsKey').focus();
 						
@@ -234,7 +234,7 @@ function findAddr(){
 			frm.smsKey.focus();
 			return false;
 		}
-		if (frm.checkEmail.value == "unChecked") {
+		/* if (frm.checkEmail.value == "unChecked") {
 			alert("이메일을 인증 하세요");
 			frm.emailCode.focus();
 			return false;
@@ -243,7 +243,7 @@ function findAddr(){
 			alert("문자 인증을 하세요");
 			frm.smsKey.focus();
 			return false;
-		}   
+		}    */
 		frm.submit();
 		alert("정상적으로 회원가입 되었습니다");
 	}
