@@ -26,8 +26,10 @@ public class SeatController {
 		return "redirect:seatroom.do";
 	}
 	
+	//전체 좌석출력
 	@RequestMapping("/seatInsertForm.do")
-	public String seatInsertForm(Model model, SeatroomVO vo) {
+	public String seatInsertForm(Model model) {
+		model.addAttribute("list",ssi.seatList());
 		return "seat/empty/seatInsertForm";
 	}
 	
