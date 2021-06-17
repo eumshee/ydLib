@@ -85,7 +85,7 @@
 						<textarea class="form-control" rows="10" cols="50" id="wish_Bigo" name="wish_Bigo"></textarea>
 					</div>
 					<p>
-						<a class="btn btn-primary btn-md mt-4" onclick="wishCnt('${loginUserVO.user_Id}')">희망도서 신청하기</a>
+						<a class="btn btn-primary btn-md mt-4"  onclick="wishCnt('${loginUserVO.user_Id}')">희망도서 신청하기</a>
 					</p>
 				</form>
 				</div>
