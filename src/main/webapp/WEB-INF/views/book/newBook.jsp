@@ -64,10 +64,10 @@
 					<div class="rounded">
 						<div class="sidenav">
 							<ul class="list-unstyled">
-								<li class="sideactive"><a href="bookSerchForm.do">통합자료검색</a></li>
-								<li><a href="newBook.do">신착자료</a></li>
+								<li><a href="bookSerchForm.do">통합자료검색</a></li>
+								<li class="sideactive"><a href="newBook.do">신착자료</a></li>
 								<li><a href="bestBook.do">대출 베스트</a></li>
-								<li><a href=wishBook.do>희망도서 신청</a></li>
+								<li><a href="wishBookInfo.do">희망도서 신청</a></li>
 							</ul>
 						</div>
 					</div>

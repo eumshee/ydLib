@@ -93,7 +93,7 @@
 								<li class="sideactive"><a href="bookSerchForm.do">통합자료검색</a></li>
 								<li><a href="newBook.do">신착자료</a></li>
 								<li><a href="bestBook.do">대출 베스트</a></li>
-								<li><a href="wishBook.do">희망도서 신청</a></li>
+								<li><a href="wishBookInfo.do">희망도서 신청</a></li>
 							</ul>
 						</div>
 					</div>
@@ -137,7 +137,7 @@
 					</c:if>
 					<c:if test="${!empty bookSerchList}">
 						<div class="sorting">
-							<div class="left">총 <b></b>건이 검색되었습니다. </div>
+							<div class="left">총 ${paging.totalCount }<b></b>건이 검색되었습니다. </div>
 							<div class="right">
 							<select id="orderSelect" name="orderSelect">
 								<option value="정렬종류">정렬종류</option>

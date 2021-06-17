@@ -140,7 +140,16 @@ public class BookController {
 	@RequestMapping("/wishBookInsert.do")
 	public String wishBookInsert(Model model ,WishVO vo) {
 		dao.wishBookInsert(vo);
-		return "book/wishBook";
+		return "book/wishBookInfo";
+	}
+	@RequestMapping("/wishBookInfo.do")
+	public String wishBookInfo(Model model) {
+		return "book/wishBookInfo";
+	}
+	@RequestMapping("/wishCnt.do")
+	@ResponseBody
+	public int wishCnt(Model model , WishVO vo) {
+		return dao.wishCnt(vo);
 	}
 	
 }

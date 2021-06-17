@@ -205,6 +205,13 @@
 		order by book_num asc
 	</select>
 	<insert id="wishBookInsert" parameterType="com.yd.lib.wish.vo.WishVO">
-		insert into wish values(#{user_Id} , #{wish_Title} , #{wish_Aut} , #{wish_pub} , null , null , #{wish_Bigo} , #{wish_Price} , sysdate ,'신청중' , wish_seq.nextval,null)
+		insert into wish values(#{user_Id} , #{wish_Title} , #{wish_Aut} , #{wish_Pub} , null , null , #{wish_Bigo} , #{wish_Price} , sysdate ,'신청중' , wish_seq.nextval,null)
 	</insert>
+	
+	<select id="wishCnt" parameterType="com.yd.lib.wish.vo.WishVO" resultType="int">
+		select count(*) from wish
+		where wish_date >= TRUNC(sysdate,'MM')
+		and wish_date <![CDATA[<]]>= LAST_DAY(sysdate)
+		and user_id = #{user_Id}
+	</select>
 </mapper>

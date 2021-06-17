@@ -18,5 +18,6 @@ public interface BookService {
 	public List<BookVO> bestBookTop10();
 	public List<BookVO> subJectBestBookTop10(BookVO vo);
 	public void wishBookInsert(WishVO vo);
+	public int wishCnt(WishVO vo);
 	
 }
