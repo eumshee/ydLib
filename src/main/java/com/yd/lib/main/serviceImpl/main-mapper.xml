@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yd.lib.main.serviceImpl.main-mapper">
+
+<select id="bookRecommend" parameterType="com.yd.lib.users.vo.UsersVO" 
+	resultType="com.yd.lib.book.vo.BookVO"> 
+select * from(
+select bh.* , ROW_NUMBER() OVER(PARTITION BY dept ORDER BY cnt DESC) as row_idx from
+                  (
+                   select SUBSTR(book_gubun,0,2) as dept , b.* , cnt
+                   from book b
+                   join (
+                          select book_num , count(*) as cnt
+                          from HISTORY
+                          where user_id != ${user_Id}
+                          group by book_num
+                          )hgroup
+                   on b.book_num = hgroup.book_num
+                   order by cnt desc
+                   )bh
+where dept in (
+                    select dept1 from (
+                                              select dept1 , sum(cnt) as cnt from(
+                                                                                            select SUBSTR(book_gubun,0,2) as dept1 , b.* , top.* from book b
+                                                                                            join (
+                                                                                                   select book_num , count(*) as cnt
+                                                                                                   from HISTORY
+                                                                                                   where user_id = ${user_Id}
+                                                                                                   group by BOOK_NUM
+                                                                                                   ) top
+                                                                                           on b.book_num = top.book_num
+                                                                                           )
+                                               GROUP BY dept1
+                                               order by cnt desc)
+                        where rownum <![CDATA[<]]> 3
+                        )
+)
+where row_idx = 1
+</select>
+</mapper>
