@@ -1,24 +1,34 @@
-package com.yd.lib;
+package com.yd.lib.main.web;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.yd.lib.main.serviceImpl.MainServiceImpl;
 import com.yd.lib.notice.serviceImpl.NoticeServiceImpl;
-
-/**
- * Handles requests for the application home page.
- */
+import com.yd.lib.users.vo.UsersVO;
 
 @Controller
 public class HomeController {
 	
 	@Autowired
 	private NoticeServiceImpl dao;
+
+	@Autowired
+	private MainServiceImpl mdao;
+	
 	
 	@RequestMapping("/home.do")
-	public String noticeNewListSelect(Model model) {
+	public String noticeNewListSelect(Model model, HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		if(session.getAttribute("loginUserVO") != null) {
+			UsersVO vo = (UsersVO) session.getAttribute("loginUserVO");
+			model.addAttribute("bookRecommend", mdao.bookRecommend(vo));
+		}
 		model.addAttribute("notice", dao.noticeSelectNewList());
 		return "main/home";
 	}

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+
 <style>
 .site-footer .scroll-top {
 	position: absolute;
@@ -44,21 +45,43 @@
 	margin-right: 15px; 
 	background-color: ghostwhite; 
 	height: 45%; 
-	padding: 20px; 
+	padding-top: 30px;
 	box-shadow: 0px 0px 13px 8px rgb(0 0 0 / 20%); 
 	    border-radius: 1.5em;
 	    }
+	    
 .left  { width: 40%; float: left;}
 .right { width: 65%; float: right;} 		
 .bottom { width: 100%; height: 20%; float: left; } 		
 .left>ul { list-style: none; -webkit-padding-start: 0px; }
 
-h3 {
-	font-weight: bold;
+h3 { font-weight: bold; }
+tr:hover:not(:first-of-type) {	background-color: #ebebec;	}
+tr {	height: 35px; }
+.book-img>img{ width: 150px; box-shadow: 4px 3px 17px 1px rgb(0 0 0 / 25%); }
+.recommend { -webkit-padding-start: 0px; }
+.recommend>li{
+	position: relative;
+    display: inline-block;
+    width: 180px;
+    padding: 17px 0px 17px 0px;
+    vertical-align: bottom;
+    list-style: none;
 }
 	
-
 </style>
+<script>
+function formSubmit(id) {
+	frm.notice_Id.value = id;
+	console.log(id);
+	frm.submit();
+}
+
+$(document).ready(function() {
+	
+	});
+
+</script>
 <!-- HOME -->
 <section class="home-section section-hero overlay bg-image"
 	style="background-image: url('resources/images/main.jpg');"
@@ -74,18 +97,19 @@ h3 {
 						<div class="main1" align="center">
 							<div class="section">
 								<div class="search-box">
-									<form id="mainSearchForm" action="">
-										<input type="hidden" name="menu_idx" value="13"> <input
-											type="hidden" name="booktype" value="BOOKANDNONBOOK">
+									<form action="bookSerch.do" method="get" id="serchFrm">
+									<input type="hidden" id="book_Aut" name="book_Aut">
+									<input type="hidden" id="book_Pub" name="book_Pub">
 											<fieldset>
 										<div class="main-box">
 											<div class="title-box">통합자료검색</div>
 											<div class="box1">
 												<div class="box2">
-													<input name="title" id="search_text_1" type="text"	class="text" placeholder="책 제목을 입력하세요" style="ime-mode: active;" />
+													<input name="book_Title" id="book_Title" type="text" class="text" 
+													placeholder="책 제목을 입력하세요" style="ime-mode: active;" />
 												</div>
 											</div>
-											<button>
+											<button type="submit">
 												<span class="icon-search icon mr-2"></span>
 											</button>
 										</div>
@@ -96,17 +120,21 @@ h3 {
 						</div>
 					</div>
 			</div>
+			<!-- 메인 카드 -->
 			<div class="cont col-md-12">
 				<div class="left col-md-5 col-lg-5 mb-12 mb-lg-12">
+				<form id="frm" action="noticeSelect.do" method="post">
+					<input type="hidden" id="notice_Id" name="notice_Id">
+				</form>
 						<ul>
 						<li>
 							<table width="100%">
-							<tr>
-							<td><h3>공지사항</h3></td><td><h3><span class="icon-th-list"></span></h3></td>
+							<tr class="tr">
+							<td><h3>공지사항</h3></td><td align="center"><h4><a href="noticeList.do" style="color: black;"><span class="icon-th-list"></span></a></h4></td>
 							</tr>
 							<c:forEach var="vo" items="${notice }">
 							<tr onclick="formSubmit(${vo.notice_Id})">
-								<td width="75%">${vo.notice_Title }</td>
+								<td width="75%">•&nbsp;${vo.notice_Title }</td>
 								<td>${vo.notice_Date }</td>
 							</tr>
 							</c:forEach>
@@ -115,9 +143,28 @@ h3 {
 						<li><h3>휴관일</h3></li>
 						</ul>
 				</div>
+				<!-- 추천도서 -->
 				<div class="right col-md-7 col-lg-7 mb-12 mb-lg-12">
 					<c:if test="${loginUserVO.user_Id eq null}">
 					<h3>비회원님을 위한 추천도서</h3>
+					</c:if>
+					<c:if test="${loginUserVO.user_Id ne null}">
+					<h3>${loginUserVO.user_Name }님을 위한 추천도서</h3>
+					<ul class="recommend">
+					<c:forEach var="vo" items="${bookRecommend }">
+					<li>
+					<a href="bookInfo.do?book_Isbn=${vo.book_Isbn }">
+					<span class="book-img">
+					<img src="${vo.book_Img }">
+					</span>
+					</a>
+					</li>
+					<li>
+					<h4><b>${vo.book_Title }</b></h4>
+					<span class="book-author">${vo.book_Aut }</span>
+					</li>
+					</c:forEach>
+					</ul>
 					</c:if>
 				</div>
 			</div>
