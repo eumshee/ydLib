@@ -26,11 +26,11 @@ public class SeatController {
       model.addAttribute("user",ssi.seatSearch(vo));
       return "seat/seatroom";
    }
-	
+
 	//전체 좌석출력
 	@RequestMapping("/seatInsertForm.do")
 	public String seatInsertForm(Model model) {
-		model.addAttribute("list",ssi.seatList());
+		model.addAttribute("list", ssi.seatList());
 		return "seat/empty/seatInsertForm";
 	}
 	
