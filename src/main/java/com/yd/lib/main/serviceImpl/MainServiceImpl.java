@@ -13,8 +13,14 @@ import com.yd.lib.users.vo.UsersVO;
 public class MainServiceImpl {
 	@Autowired
 	private SqlSession sqlSession;
+	
 	public List<BookVO> bookRecommend(UsersVO vo) {
 		return sqlSession.selectList("bookRecommend" , vo);
 	}
 
+	public List<BookVO> bookBest2() {
+		return sqlSession.selectList("bookBest2");
+	}
+
+	
 }

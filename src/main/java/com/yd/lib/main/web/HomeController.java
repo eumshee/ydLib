@@ -28,7 +28,10 @@ public class HomeController {
 		if(session.getAttribute("loginUserVO") != null) {
 			UsersVO vo = (UsersVO) session.getAttribute("loginUserVO");
 			model.addAttribute("bookRecommend", mdao.bookRecommend(vo));
+		} else {
+		model.addAttribute("bookRecommend", mdao.bookBest2());
 		}
+		
 		model.addAttribute("notice", dao.noticeSelectNewList());
 		return "main/home";
 	}
