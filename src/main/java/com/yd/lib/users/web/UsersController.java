@@ -1,6 +1,5 @@
 package com.yd.lib.users.web;
 
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -67,7 +66,14 @@ public class UsersController {
 	        return id;
 		 
 	}
+	
 
+	@RequestMapping("/userLogOut.do")
+	public String userLogOut(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return "redirect:home.do";
+	}
 	
 	//------------------------------- 회원가입 ------------------------------ //
 	@RequestMapping("/userJoinForm.do")
@@ -135,15 +141,9 @@ public class UsersController {
 		
 		UsersDAO.userInsert(param);
 		
-		return "redirect:home.do";
+		return "redirect:userLoginForm.do";
 	}
 	
-	@RequestMapping("/userLogOut.do")
-	public String userLogOut(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		session.invalidate();
-		return "redirect:home.do";
-	}
 	
 	
 	// ------------------------------- 유저 정보수정 ------------------------------ //
