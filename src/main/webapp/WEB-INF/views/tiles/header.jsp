@@ -38,7 +38,7 @@
           </li>
           <li><a href="seatroom.do">열람실 예약</a></li>
           <li class="has-children">
-            <a href="userLoginForm.do">나의도서관</a>
+            <a href="userLoan.do">나의도서관</a>
             <ul class="dropdown">
               <li><a href="userLoan.do">대출내역조회</a></li>
               <li><a href="userYeyak.do">예약현황</a></li>

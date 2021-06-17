@@ -40,7 +40,9 @@
 	function yeyakProcessUpdate(yeyakNum) {
 		frm.yeyak_Processing.value = $('#yeyakProcessing'+yeyakNum+' option:selected').val();
 		frm.yeyak_Num.value = yeyakNum;
+		alert("해당 신청인에게 문자가 전송되었습니다.");
 		frm.submit();
+		
 	}
 	
 </script>

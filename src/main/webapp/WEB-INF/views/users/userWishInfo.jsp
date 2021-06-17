@@ -79,6 +79,20 @@ function formSubmit(Isbn) {
 							<th width= "70px">상태</th>
 							<th>비고</th>
 						</tr>
+						
+						<c:choose>
+						
+						<c:when test="${userWishList.isEmpty() }">
+						<tr>
+						<td colspan="7">
+						<div style="height:'300px'; width:'100%'; align:'center'">
+						<h6>희망도서 신청내역이 없습니다.</h6>
+						</div>
+						</td>
+						</tr>
+						</c:when>
+						
+						<c:when test="${!userWishList.isEmpty()}">
 				
 						<c:forEach var="wish" items="${userWishList }" varStatus="status">
 							
@@ -94,6 +108,8 @@ function formSubmit(Isbn) {
 							</tr>
 							
 						</c:forEach>
+						</c:when>
+						</c:choose>
 				</table>
 				</form>
 				</div>

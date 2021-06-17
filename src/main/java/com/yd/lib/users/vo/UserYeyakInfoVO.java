@@ -11,12 +11,19 @@ public class UserYeyakInfoVO {
 	private String book_Pub;
 	private String book_Location;
 	private String book_Subject;
+	private String yeyak_Num;
 	private String yeyak_Submit;
 	private String yeyak_Start;
 	private String yeyak_End;
 	private String yeyak_Processing;
 	
 	
+	public String getYeyak_Num() {
+		return yeyak_Num;
+	}
+	public void setYeyak_Num(String yeyak_Num) {
+		this.yeyak_Num = yeyak_Num;
+	}
 	public String getUser_Id() {
 		return user_Id;
 	}
