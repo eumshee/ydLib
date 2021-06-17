@@ -51,7 +51,8 @@
 				from users u join history h on (u.user_id = h.user_id)
 				join book b on (b.book_num = h.book_num) 
 				where u.user_id = #{user_Id}
-				order by h.loan_date
+				order by h.loan_status,
+       			h.loan_date asc
 	</select>
 	
 	<select id="userYeyakList" parameterType="string" resultType="com.yd.lib.users.vo.UserYeyakInfoVO">
@@ -64,8 +65,15 @@
 				ON (y.book_num = b.book_num)
 				JOIN users u
 				ON (y.user_id = u.user_id)
-       			where y.user_id = #{user_Id}
-				order by y.yeyak_submit
+       			where y.user_id = #{user_Id} and y.yeyak_Processing = '예약중' or  y.user_id = #{user_Id} and y.yeyak_Processing = '예약신청'
+	</select>
+	
+	<select id="userWishList" parameterType="string" resultType="com.yd.lib.users.vo.UserWishInfoVO">
+		SELECT 	w.user_id ,u.user_Name, w.wish_title, w.wish_aut, w.wish_pub, w.wish_isbn, w.wish_pubdate, w.wish_date,
+        		w.wish_processing, w.wish_bigo,w.wish_coment
+       			FROM users u JOIN wish w
+				ON (u.user_id = w.user_id)
+        		where u.user_id = #{user_Id}
 	</select>
 	
 	
