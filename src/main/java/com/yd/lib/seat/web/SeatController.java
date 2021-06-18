@@ -29,13 +29,6 @@ public class SeatController {
       return "seat/seatroom";
    }
 
-	//전체 좌석출력
-	@RequestMapping("/seatInsertForm.do")
-	public String seatInsertForm(Model model) {
-		model.addAttribute("list", ssi.seatList());
-		return "seat/empty/seatInsertForm";
-	}
-	
 	//좌석예약
 	@RequestMapping("/seatOneInsert.do")
 	public String seatOneInsert(Model model, SeatroomVO vo) {
@@ -48,6 +41,12 @@ public class SeatController {
 	public String seatOneUpdate(Model model, SeatroomVO vo) {
 		ssi.seatEnd(vo);
 		return "redirect:seatroom.do";
+	}
+
+	//확인사항
+	@RequestMapping("/seatInfoChk.do")
+	public String seatInfoChk(Model model, SeatroomVO vo) {
+		return "seat/empty/seatInfo";
 	}
 	
 }

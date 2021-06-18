@@ -2,11 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
-#name{
-width: 80px;
-text-align: center;
-}
-
 .bbtn{
 	margin-top: 5px;
 	border: 1px solid black;
@@ -14,11 +9,18 @@ text-align: center;
 	padding: 0.375rem 0.75rem;
 	text-align: center;
 }
+ .col-md-12 a {
+ 	font-size: 1em;
+ 	color: lightgray;
+ 	text-decoration: none;
+ }
+ .col-md-12 a:hover { color: white; }
 </style>
 <script>
 	function nameUpdate(id) {
 		frm.user_Name.value = $('#Name'+id).val();
 		frm.user_Gubun.value = $('#Gubun'+id+' option:selected').val();
+		console.log($('#Name'+id).val(),$('#Gubun'+id+' option:selected').val())
 		frm.user_Id.value = id;
 		frm.submit();
 	}
@@ -30,10 +32,10 @@ text-align: center;
 		<div class="row">
 			<div class="col-md-12" align="center">
 				<h1 class="text-white font-weight-bold">회원 관리</h1>
-				<div class="custom-breadcrumbs">
-					<a href="adminPage.do">Home</a> <span class="mx-2 slash">/</span> <span
-						class="text-white"><strong>회원 관리</strong></span>
-				</div>
+			</div>
+			<div class="col-md-12" align="center">
+				<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
+						class="text-white"><a href="adminPage.do">관리자 홈</a></span>
 			</div>
 		</div>
 	</div>
@@ -43,9 +45,6 @@ text-align: center;
 <section class="site-section block__18514" id="next-section">
 	<div class="container">
 	<div class="card shadow mb-4">
-				<div class="card-header py-3">
-					<h6 class="m-0 font-weight-bold text-primary">회원관리</h6>
-				</div>
 				<div class="card-body">
 					<div class="table-responsive">
 					<form id="frm" action="adminMemberUpdate.do" method="post">
@@ -83,7 +82,7 @@ text-align: center;
 								<c:forEach items="${users }" var="vo">
 										<tr>
 											<td>${vo.user_Id }</td>
-											<td><input type="text" id="Name${vo.user_Id }" value="${vo.user_Name }"></td>
+											<td><input type="text" id="Name${vo.user_Id }" value="${vo.user_Name }" size="3"></td>
 											<td>
 												<c:if test="${vo.user_Gender eq 'M'}">남자</c:if>
 												<c:if test="${vo.user_Gender eq 'W'}">여자</c:if>

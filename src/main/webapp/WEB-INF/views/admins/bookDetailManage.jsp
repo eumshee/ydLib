@@ -91,12 +91,8 @@
 				<h1 class="text-white font-weight-bold">도서관리</h1>
 			</div>
 			<div class="col-md-12" align="center">
-				<span><a href="memberManagemant.do">회원목록관리</a></span>&nbsp;&nbsp;
-				<span><a href="loanreManagemant.do">대출/반납관리</a></span>&nbsp;&nbsp;
-				<span><a href="yeyakmanagemant.do">예약도서관리</a></span>&nbsp;&nbsp;
-				<span><a href="wishManagement.do">희망도서관리</a></span>&nbsp;&nbsp;
-				<span><a href="bookManagement.do" style="color:white;">장서관리</a></span>&nbsp;&nbsp;
-				<span><a href="home.do">홈</a></span>
+				<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
+						class="text-white"><a href="adminPage.do">관리자 홈</a></span>
 			</div>
 		</div>
 	</div>
@@ -124,7 +120,7 @@
 			<div class="col-lg-12">
 				<form class="p-4 p-md-5 border rounded" id="frm"
 					action="bookOneUpdate.do" method="post">
-					<h3 class="text-black mb-5 border-bottom pb-2">Book Detail</h3>
+					<h3 class="text-black mb-5 border-bottom pb-2">도서정보</h3>
 					<table style="width: 100%;">
 						<tr>
 							<td rowspan="16" style="width: 50%; text-align: center;"><img
@@ -281,7 +277,7 @@
 		</div>
 
 		<c:if test="${!empty bookMgOver }">
-			<h3 class="text-black my-5 border-bottom pb-2">Book List</h3>
+			<h3 class="text-black my-5 border-bottom pb-2">동일도서</h3>
 			<table class="table" style="width: 100%;">
 				<tr>
 					<th class="form-group">번호</th>

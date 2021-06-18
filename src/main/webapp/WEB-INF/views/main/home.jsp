@@ -4,6 +4,8 @@
 
 <style>
 
+.site-footer { height: 250px;}
+
 .main1 .search-box {width:750px;margin-top:38px;}
 .main1 .search-box fieldset{position:relative;overflow:hidden;}
 .main1 .search-box legend {background:#89BA16;color:#fff;}
@@ -76,7 +78,7 @@ tr {	height: 35px; }
 }
    
 .items {
-	background: url(resources/images/graycircle.png) no-repeat center;
+	background: url('https://probonoaustralia.com.au/wp-content/themes/devdmbootstrap3/files/graphic01/images/globe-bg.svg') no-repeat center;
     background-size: contain;
 }
 
@@ -84,9 +86,6 @@ tr {	height: 35px; }
 	color: #4d4d4d;
 	font-size: 43px;
 }
-
-
-.container-fluid { height: 180px;}
 
 </style>
 
@@ -121,8 +120,7 @@ function formSubmit(id) {
 											<div class="box1">
 												<div class="box2">
 													<input name="book_Title" id="book_Title" type="text"
-														class="text" placeholder="책 제목을 입력하세요"
-														style="ime-mode: active;" />
+														class="text" placeholder="책 제목을 입력하세요" />
 												</div>
 											</div>
 											<button type="submit">

@@ -17,8 +17,14 @@
 					if(r > 0){
 						alert("희망도서 신청 권수 초과입니다. \n한달에 1권의 책만 신청 할 수 있습니다.");
 					}else{
+						if (frm.wish_Title.value == "") {
+							alert("제목은 필수 입니다. 제목을 입력해주세요");
+							frm.user_Id.focus();
+							return false;
+						}
 						alert("희망도서가 접수됐습니다.")
 						frm.submit();
+						
 					}
 				},
 				error : function(err) {
@@ -74,28 +80,29 @@
 					</div>
 					<div class="form-group">
 						<label for="board_Title">제목</label> 
-						<input type="text" class="form-control" id="wish_Title" name="wish_Title" required>
+						<input type="text" class="form-control" id="wish_Title" name="wish_Title" required="required">
 					</div>
 					<div class="form-group">
 						<label for="board_Title">저자</label> 
-						<input type="text" class="form-control" id="wish_Aut" name="wish_Aut" required>
+						<input type="text" class="form-control" id="wish_Aut" name="wish_Aut" >
 					</div>
 					<div class="form-group">
 						<label for="board_Title">출판사</label> 
-						<input type="text" class="form-control" id="wish_Pub" name="wish_Pub" required>
+						<input type="text" class="form-control" id="wish_Pub" name="wish_Pub" >
 					</div>
 					<div class="form-group">
 						<label for="board_Title">가격</label> 
-						<input type="text" class="form-control" id="wish_Price" name="wish_Price" required>
+						<input type="text" class="form-control" id="wish_Price" name="wish_Price" >
 					</div>
 					<div class="form-group">
 						<label for="board_Content">신청 사유</label>
 						<textarea class="form-control" rows="10" cols="50" id="wish_Bigo" name="wish_Bigo"></textarea>
 					</div>
+					
+				</form>
 					<div align="center">
 						<button class="btn btn-primary btn-md mt-4" onclick="wishCnt('${loginUserVO.user_Id}')">희망도서 신청하기</button>
 					</div>
-				</form>
 				</div>
 			</div>
 		</div>

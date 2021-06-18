@@ -36,7 +36,9 @@
               <li><a href="boardList.do">묻고답하기</a></li>
             </ul>
           </li>
-          <li><a href="seatroom.do">열람실 예약</a></li>
+          <c:if test="${!empty loginUserVO.user_Id }">
+	          <li><a href="seatroom.do">열람실 예약</a></li>
+          </c:if>
           <li class="has-children">
             <a href="userLoan.do">나의도서관</a>
             <ul class="dropdown">
