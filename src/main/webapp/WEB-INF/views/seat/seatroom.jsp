@@ -24,7 +24,7 @@ function seatUpdate(num, status, id) {
     if(status == 1){//좌석이 사용중일떄
        if($('#sessionId').val()==id){ //세션정보, 사용중인 좌석이 같은 유저일때(퇴실 적용)
           console.log('같음');
-          if(confirm("퇴실하시겠습니까?")){
+          if(confirm("퇴실 하시겠습니까?")){
               location.href="seatEndUpdate.do?seat_Num="+num;
            }else{
               alert('퇴실이 취소되었습니다.')
@@ -37,7 +37,7 @@ function seatUpdate(num, status, id) {
     }else{ //좌석이 비었을때
     	if($('#sessionId').val()!='') { //회원이면
     		if($('#endEarly').val()=='') { //사용중이면
-		          alert('한 자리만 예약할 수 있습니다!')
+		          alert('이미 사용 중인 좌석이 있습니다. \n좌석 변경을 원하시면 기존의 좌석을 퇴실처리 하세요.')
 		          return;
     		} else {
 		       if(confirm(num + "번 좌석을 사용 하시겠습니까?")){
@@ -53,7 +53,14 @@ function seatUpdate(num, status, id) {
     	}
     }
  }
-
+function checkOut(num) {
+	if(confirm("퇴실 하시겠습니까?")){
+        location.href="seatEndUpdate.do?seat_Num="+num;
+     }else{
+        alert('퇴실이 취소되었습니다.')
+        return;
+     }
+}
 </script>
 <input type="hidden" id="sessionId" value="${loginUserId }">
 
@@ -93,9 +100,11 @@ function seatUpdate(num, status, id) {
 											<span><b>입실시간: ${fn:substring(user.seat_start_Time,2,16) }</b></span>
 											<br>
 											<span style="color:red;"><b>퇴실시간: ${fn:substring(user.seat_end_Time,2,16) }</b></span>
+											<br>
+											<button onclick="checkOut('${user.seat_Num }')">퇴실하기</button>
 										</c:when>
 										<c:otherwise>
-											<span><b>현재 예약좌석이 없습니다.</b></span>
+											<span><b>현재 이용중인 좌석이 없습니다.</b></span>
 										</c:otherwise>
 									</c:choose>
 							</div>

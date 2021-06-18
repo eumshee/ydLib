@@ -5,6 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+function goBack() {
+	window.history.back(); 
+}
+</script>
 <script type="text/javascript">
 	function yeyak(userId, bookNum) {
 		userGubun = '${loginUserVO.user_Gubun}';
@@ -149,7 +154,7 @@ th, td {
 				<div class="col-lg-8">
 					<c:forEach items="${bookDetail }" var="bookInfo" end="0">
 						<div>
-							<button type="button" onclick="location.href='bookSerchForm.do'"
+							<button type="button" onclick="goBack()"
 								class="btn btn-light">목록으로</button>
 							<br> <br>
 						</div>
@@ -219,7 +224,7 @@ th, td {
 								<td>
 									<c:choose>
 										<c:when test="${bookInfo.book_Byn eq 'Y' or bookInfo.yeyak_Processing eq '예약신청' or bookInfo.yeyak_Processing eq '예약중'}">
-											<button class="badge badge-light">예약불가</button> 
+											<span class="badge badge-light">예약불가</span> 
 										</c:when>
 										<c:when test="${bookInfo.book_Byn eq 'N'}">
 											<button class="badge badge-light" onclick="yeyak('${loginUserVO.user_Id}' , '${bookInfo.book_Num }')">예약신청</button> 

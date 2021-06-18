@@ -2,11 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
-#name{
-width: 80px;
-text-align: center;
-}
-
 .bbtn{
 	margin-top: 5px;
 	border: 1px solid black;
@@ -43,9 +38,6 @@ text-align: center;
 <section class="site-section block__18514" id="next-section">
 	<div class="container">
 	<div class="card shadow mb-4">
-				<div class="card-header py-3">
-					<h6 class="m-0 font-weight-bold text-primary">회원관리</h6>
-				</div>
 				<div class="card-body">
 					<div class="table-responsive">
 					<form id="frm" action="adminMemberUpdate.do" method="post">
@@ -83,7 +75,7 @@ text-align: center;
 								<c:forEach items="${users }" var="vo">
 										<tr>
 											<td>${vo.user_Id }</td>
-											<td><input type="text" id="Name${vo.user_Id }" value="${vo.user_Name }"></td>
+											<td><input type="text" id="Name${vo.user_Id }" value="${vo.user_Name }" size="3"></td>
 											<td>
 												<c:if test="${vo.user_Gender eq 'M'}">남자</c:if>
 												<c:if test="${vo.user_Gender eq 'W'}">여자</c:if>

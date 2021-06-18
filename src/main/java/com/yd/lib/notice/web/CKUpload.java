@@ -20,9 +20,9 @@ public class CKUpload extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setCharacterEncoding("UTF-8");
-		String path = "/resources/";
+		String path = "/resources/upload/";
 		ServletContext sc = this.getServletContext();
-		path = sc.getRealPath("/resources/");
+		path = sc.getRealPath("/resources/upload/");
 
 		MultipartRequest multi = new MultipartRequest(req, //
 				path, //
