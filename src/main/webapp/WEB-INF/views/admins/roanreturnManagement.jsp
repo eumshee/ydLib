@@ -31,10 +31,10 @@ h2{
 <script>
 
 		function seachcheck(){
-			let count = $('#count'+5).val();
+			let count = $('#count'+10).val();
 			console.log(count);
-			if(count == 5){
-				alert('총대여 권수는 5권 입니다. 대출이 불가능합니다.')
+			if(count == 10){
+				alert('총대여 권수는 10권 입니다. 대출이 불가능합니다.')
 				return;
 			}
 			
