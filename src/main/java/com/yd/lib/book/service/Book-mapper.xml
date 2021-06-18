@@ -50,6 +50,11 @@
 											 select  book_isbn , count(book_isbn) as can_book_cnt
 											 from book
 											 where book_byn = 'Y'
+											 and book_num not in (
+                              									  select book_num from yeyak
+                              									  where YEYAK_PROCESSING != '예약중'
+                              									  or YEYAK_PROCESSING != '예약신청'
+                              									  )
 											 group by book_isbn
                                   ) b3
                                   on b1.book_isbn = b3.book_isbn
@@ -146,8 +151,13 @@
                                   on b1.book_isbn = b2.book_isbn
                                   full join (
 											 select  book_isbn , count(book_isbn) as can_book_cnt
-											 from book
-											 where book_byn = 'Y'
+											 from book b4
+											 where b4.book_byn = 'Y'
+                       						 and book_num not in (
+                              									  select book_num from yeyak
+                              									  where YEYAK_PROCESSING != '예약중'
+                              									  or YEYAK_PROCESSING != '예약신청'
+                              									  )
 											 group by book_isbn
                                   ) b3
                                   on b1.book_isbn = b3.book_isbn
@@ -165,25 +175,38 @@
 	
 	<select id="bookBestTop10" resultType="com.yd.lib.book.vo.BookVO">
 		<![CDATA[
-		select * from(
-					  select book.* , ROW_NUMBER() OVER(PARTITION BY book_isbn ORDER BY book_num asc ) AS RNUM
-					  from book
-					  where book_num in (
-										 select book_num from(
-															  select book_num , count(*) as cnt
-															  from HISTORY
-															  group by book_num
-															  order by cnt desc
-															  )
-										 where ROWNUM < 11
-										 )
-					  )
-		where rnum = 1
-		order by book_num asc
+		select * from (
+					   SELECT ROW_NUMBER() OVER(PARTITION BY b1.book_isbn ORDER BY b1.book_num DESC ) AS RNUM, b1.* , b2.all_book_cnt , NVL(b3.can_book_cnt,0) as can_book_cnt
+					   FROM book b1 
+					   join (
+							 select book_isbn , COUNT(book_isbn) as all_book_cnt
+							 from book 
+							 GROUP BY book_isbn
+							 ) b2
+					   on b1.book_isbn = b2.book_isbn
+					   join (
+							 select  book_isbn , count(book_isbn) as can_book_cnt
+							 from book
+							 where book_byn = 'Y'
+							 and book_num in (
+											  select book_num from(
+																   select book_num , count(*) as cnt
+																   from HISTORY
+																   group by book_num
+																   order by cnt desc
+																   )
+											  where ROWNUM < 11
+											  )
+							 group by book_isbn
+							 ) b3 
+					   on b1.book_isbn = b3.book_isbn
+					   )bk
+		where RNUM = 1
+		order by book_indate asc
 		]]>
 	</select>
 	
-		<select id="bookBest2" resultType="com.yd.lib.book.vo.BookVO">
+	<select id="bookBest2" resultType="com.yd.lib.book.vo.BookVO">
 		<![CDATA[
 		select * from(
 					  select book.* , ROW_NUMBER() OVER(PARTITION BY book_isbn ORDER BY book_num asc ) AS RNUM
@@ -205,25 +228,36 @@
 	
 	
 	<select id="subjectBookBestTop10" parameterType="com.yd.lib.book.vo.BookVO" resultType="com.yd.lib.book.vo.BookVO">
-		select * from(
-					  select book.* , ROW_NUMBER() OVER(PARTITION BY book_isbn ORDER BY book_num asc ) AS RNUM
-					  from book
-					  where book_num in (
-										 select book_num from(
-															  select h.book_num , count(*) as cnt
-															  from HISTORY h join BOOK b
-															  on h.book_num = b.book_num
-															  where b.book_subject = #{book_Subject}
-															  group by h.book_num
-															  order by cnt desc
-															  )
-										 <![CDATA[
-										 where ROWNUM < 11
-										 ]]>
-										 )
-					  )
-		where rnum = 1
-		order by book_num asc
+		select * from (
+						   SELECT ROW_NUMBER() OVER(PARTITION BY b1.book_isbn ORDER BY b1.book_num DESC ) AS RNUM, b1.* , b2.all_book_cnt , NVL(b3.can_book_cnt,0) as can_book_cnt
+						   FROM book b1 
+						   join (
+								 select book_isbn , COUNT(book_isbn) as all_book_cnt
+								 from book 
+								 GROUP BY book_isbn
+								 ) b2
+						   on b1.book_isbn = b2.book_isbn
+						   join (
+								 select  book_isbn , count(book_isbn) as can_book_cnt
+								 from book
+								 where book_byn = 'Y'
+								 and book_num in (
+												  select book_num from(
+																	   select h.book_num , count(*) as cnt
+																	   from HISTORY h join BOOK b
+																	   on h.book_num = b.book_num
+																	   where b.book_subject = #{book_Subject}
+																	   group by h.book_num
+																	   order by cnt desc
+																	   )
+												  where ROWNUM <![CDATA[<]]> 11
+												  )
+								 group by book_isbn
+								 ) b3 
+						   on b1.book_isbn = b3.book_isbn
+						   )bk
+			where RNUM = 1
+			order by book_indate asc
 	</select>
 	<insert id="wishBookInsert" parameterType="com.yd.lib.wish.vo.WishVO">
 		insert into wish values(#{user_Id} , #{wish_Title} , #{wish_Aut} , #{wish_Pub} , null , null , #{wish_Bigo} , #{wish_Price} , sysdate ,'신청중' , wish_seq.nextval,null)

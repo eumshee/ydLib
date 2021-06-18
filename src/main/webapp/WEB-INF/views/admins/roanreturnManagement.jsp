@@ -27,6 +27,12 @@ h2{
 	display: inline-block;
 	padding-right: 20px; 
 }
+ .col-md-12 a {
+ 	font-size: 1em;
+ 	color: lightgray;
+ 	text-decoration: none;
+ }
+ .col-md-12 a:hover { color: white; }
 </style>
 <script>
 
@@ -104,10 +110,10 @@ h2{
 		<div class="row">
 			<div class="col-md-12" align="center">
 				<h1 class="text-white font-weight-bold">대출 반납 관리</h1>
-				<div class="custom-breadcrumbs">
-					<a href="adminPage.do">Home</a> <span class="mx-2 slash">/</span> <span
-						class="text-white"><strong>대출/반납</strong></span>
-				</div>
+			</div>
+			<div class="col-md-12" align="center">
+				<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
+						class="text-white"><a href="adminPage.do">관리자 홈</a></span>
 			</div>
 		</div>
 	</div>
