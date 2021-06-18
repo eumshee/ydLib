@@ -184,49 +184,54 @@ th, td {
 										<td>${bookInfo.book_Gubun}</td>
 									</tr>
 									<tr>
-										<th>등록번호</th>
-										<td>${bookInfo.book_Num }</td>
-									</tr>
-									<tr>
 										<th>배가위치</th>
 										<td>${bookInfo.book_Location }번서가</td>
 									</tr>
+									
 								</table>
 							</div>
 						</div>
 						<br>
-						<div class="row" align="center">
-							<div class="col-2"></div>
-							<div class="col-3">
-								<c:if
-									test="${bookInfo.book_Byn eq 'Y' or bookInfo.yeyak_Processing eq '예약신청' or bookInfo.yeyak_Processing eq '예약중'}">
-									<button class="badge badge-light">예약불가</button><br>
-									<span>예약중이거나 서가에 비치된 도서는 예약이 불가능합니다.</span>
-								</c:if>
-								<c:if test="${bookInfo.book_Byn eq 'N'}">
-									<button class="badge badge-light"
-										onclick="yeyak('${loginUserVO.user_Id}' , '${bookInfo.book_Num }')">예약신청</button>
-								</c:if>
-							</div>
-							<div class="col-3">
-								<c:if
-									test="${bookInfo.yeyak_Processing eq '예약중' or bookInfo.yeyak_Processing eq '예약신청'}">
-									<span class="badge badge-danger">예약중</span>
-									<div class="bubble">예약중이거나 서가에 비치된 도서는 예약이 불가능합니다.</div>
-									<br>
-								</c:if>
-								<c:if
-									test="${bookInfo.book_Byn eq 'Y' and (bookInfo.yeyak_Processing eq '예약만료' or bookInfo.yeyak_Processing eq '예약취소' or empty bookInfo.yeyak_Processing )}">
-									<span class="badge badge-success">대출가능</span>
+						</c:forEach>
+						<table>
+						<tr align="center">
+							<th>청구기호</th><th>등록번호</th><th>배가위치</th><th>반납예정일</th><th>대출상태</th><th>대출예약</th>
+						</tr>
+						<c:forEach items="${bookDetail }" var="bookInfo">
+							<tr>
+								<td>${bookInfo.book_Gubun  }</td><td>${bookInfo.book_Num }</td><td>${bookInfo.book_Location }번 서가</td>
+								<c:if test="${bookInfo.book_Byn eq 'Y' }">
+									<td></td>
 								</c:if>
 								<c:if test="${bookInfo.book_Byn eq 'N' }">
-									<span class="badge badge-danger">대출중</span>
-									<br>반납예정일 : ${x:substring(bookInfo.return_Duedate,0,10)}
+									<td>${x:substring(bookInfo.return_Duedate,0,10)}</td>
 								</c:if>
-							</div>
-
-						</div>
-					</c:forEach>
+								<td>
+									<div class="job-listing-meta">
+										<c:if test="${bookInfo.book_Byn eq 'N' or bookInfo.yeyak_Processing eq '예약중' or bookInfo.yeyak_Processing eq '예약신청'}">
+											<span class="badge badge-danger">대출불가</span>
+										</c:if>
+										<c:if test="${bookInfo.book_Byn eq 'Y' and (bookInfo.yeyak_Processing eq '예약만료' or bookInfo.yeyak_Processing eq '예약취소' or empty bookInfo.yeyak_Processing )}">
+											<span class="badge badge-success">대출가능</span>
+										</c:if>
+									</div>
+								</td>
+								<td>
+									<c:choose>
+										<c:when test="${bookInfo.book_Byn eq 'Y' or bookInfo.yeyak_Processing eq '예약신청' or bookInfo.yeyak_Processing eq '예약중'}">
+											<button class="badge badge-light">예약불가</button> 
+										</c:when>
+										<c:when test="${bookInfo.book_Byn eq 'N'}">
+											<button class="badge badge-light" onclick="yeyak('${loginUserVO.user_Id}' , '${bookInfo.book_Num }')">예약신청</button> 
+										</c:when>
+										<c:otherwise>
+											<button class="badge badge-light" onclick="yeyak('${loginUserVO.user_Id}' , '${bookInfo.book_Num }')">예약신청</button>
+										</c:otherwise>
+									</c:choose>								
+								</td>
+							</tr>
+						</c:forEach>
+						</table>
 				</div>
 			</div>
 		</div>
