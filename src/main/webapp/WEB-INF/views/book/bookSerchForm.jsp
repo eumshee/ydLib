@@ -51,6 +51,7 @@
 .sorting .left { width: 80%; float: left; }
 .sorting .right { width: 20%; float: right; }
 
+
 </style>
 <script type="text/javascript">
 	function order() {

@@ -4,6 +4,8 @@
 
 <style>
 
+.site-footer { height: 250px;}
+
 .main1 .search-box {width:750px;margin-top:38px;}
 .main1 .search-box fieldset{position:relative;overflow:hidden;}
 .main1 .search-box legend {background:#89BA16;color:#fff;}
