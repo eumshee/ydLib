@@ -36,12 +36,17 @@ function seatUpdate(num, status, id) {
        }
     }else{ //좌석이 비었을때
     	if($('#sessionId').val()!='') { //회원이면
-	       if(confirm(num + "번 좌석을 사용 하시겠습니까?")){
-	          location.href="seatOneInsert.do?seat_Num="+num+"&user_Id="+$('#sessionId').val();
-	       } else{
-	          alert('좌석 선택이 취소되었습니다.')
-	          return;
-	       }    			
+    		if($('#endEarly').val()=='') { //사용중이면
+		          alert('한 자리만 예약할 수 있습니다!')
+		          return;
+    		} else {
+		       if(confirm(num + "번 좌석을 사용 하시겠습니까?")){
+		          location.href="seatOneInsert.do?seat_Num="+num+"&user_Id="+$('#sessionId').val();
+		       } else{
+		          alert('좌석 선택이 취소되었습니다.')
+		          return;
+		       }    			
+    		}
     	} else { //비회원이면
 	          alert('로그인 후 예약가능합니다.')
 	          return;    		
@@ -73,23 +78,34 @@ function seatUpdate(num, status, id) {
 <div class="container-fluid" style="width:80%">
 	<div class="row">
 		<!-- 왼쪽네비 -->
-		<c:if test="${!empty loginUserId }">
-			 <div class="col-lg-2.5" align="center" style="width: 25%; margin: 1em;">
-	            <div class="bg-light p-3 border rounded mb-4">
-					<div class="rounded">
-						<div class="sidenav">
-								<p><b>${loginUserVO.user_Name } 님 좌석예약정보입니다.</b></p>
-								<span><b>좌석번호: ${user.seat_Num }</b></span>
-								<br>
-								<span><b>입실시간: ${fn:substring(user.seat_start_Time,2,16) }</b></span>
-								<br>
-								<span style="color:red;"><b>퇴실시간: ${fn:substring(user.seat_end_Time,2,16) }</b></span>
+		<c:choose>
+			<c:when test="${!empty loginUserId }">
+			<input type="hidden" id="endEarly" value="${user.seat_end_Early}">
+				 <div class="col-lg-2.5" align="center" style="width: 25%; margin: 1em;">
+		            <div class="bg-light p-3 border rounded mb-4">
+						<div class="rounded">
+							<div class="sidenav">
+									<p><b>${loginUserVO.user_Name } 님 좌석예약정보입니다.</b></p>
+									<c:choose>
+										<c:when test="${user.seat_Status==1}">
+											<span><b>좌석번호: ${user.seat_Num }</b></span>
+											<br>
+											<span><b>입실시간: ${fn:substring(user.seat_start_Time,2,16) }</b></span>
+											<br>
+											<span style="color:red;"><b>퇴실시간: ${fn:substring(user.seat_end_Time,2,16) }</b></span>
+										</c:when>
+										<c:otherwise>
+											<span><b>현재 예약좌석이 없습니다.</b></span>
+										</c:otherwise>
+									</c:choose>
+							</div>
 						</div>
-					</div>
-	              
-	            </div>
-			</div>
-		</c:if>
+		              
+		            </div>
+				</div>
+			</c:when>
+			<c:otherwise></c:otherwise>
+		</c:choose>
 		<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 		<div align="center" <c:if test="${empty loginUserId }"> style="width:100%;"</c:if>>
 			<h1>열람실 좌석배치도</h1>

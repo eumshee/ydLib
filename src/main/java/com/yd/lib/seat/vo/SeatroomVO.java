@@ -6,7 +6,7 @@ public class SeatroomVO {
 	private int seat_Num;
 	private String seat_start_Time;
 	private String seat_end_Time;
-	private String seat_end_early;
+	private String seat_end_Early;
 
 	// seat테이블
 	private int seat_Status;
@@ -14,8 +14,8 @@ public class SeatroomVO {
 	@Override
 	public String toString() {
 		return "SeatroomVO [seat_pick_Num=" + seat_pick_Num + ", user_Id=" + user_Id + ", seat_Num=" + seat_Num
-				+ ", seat_pick_Date=" + ", seat_start_Time=" + seat_start_Time + ", seat_end_Time="
-				+ seat_end_Time + ", seat_Status=" + seat_Status + "]";
+				+ ", seat_pick_Date=" + ", seat_start_Time=" + seat_start_Time + ", seat_end_Time=" + seat_end_Time
+				+ ", seat_Status=" + seat_Status + "]";
 	}
 
 	public int getSeat_pick_Num() {
@@ -58,12 +58,12 @@ public class SeatroomVO {
 		this.seat_end_Time = seat_end_Time;
 	}
 
-	public String getSeat_end_ealry() {
-		return seat_end_early;
+	public String getSeat_end_Early() {
+		return seat_end_Early;
 	}
 
-	public void setSeat_end_ealry(String seat_end_ealry) {
-		this.seat_end_early = seat_end_ealry;
+	public void setSeat_end_Early(String seat_end_Early) {
+		this.seat_end_Early = seat_end_Early;
 	}
 
 	public int getSeat_Status() {
