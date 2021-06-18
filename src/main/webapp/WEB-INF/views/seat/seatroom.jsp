@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
 <style>
 	td {
 		text-align: center;
@@ -34,15 +35,20 @@ function seatUpdate(num, status, id) {
           return;
        }
     }else{ //좌석이 비었을때
-       if(confirm(num + "번 좌석을 사용 하시겠습니까?")){
-          location.href="seatOneInsert.do?seat_Num="+num+"&user_Id="+$('#sessionId').val();
-       }else{
-          alert('좌석 선택이 취소되었습니다.')
-          return;
-       }
+    	if($('#sessionId').val()!='') { //회원이면
+	       if(confirm(num + "번 좌석을 사용 하시겠습니까?")){
+	          location.href="seatOneInsert.do?seat_Num="+num+"&user_Id="+$('#sessionId').val();
+	       } else{
+	          alert('좌석 선택이 취소되었습니다.')
+	          return;
+	       }    			
+    	} else { //비회원이면
+	          alert('로그인 후 예약가능합니다.')
+	          return;    		
+    	}
     }
  }
-	
+
 </script>
 <input type="hidden" id="sessionId" value="${loginUserId }">
 
@@ -66,7 +72,6 @@ function seatUpdate(num, status, id) {
 <section class="site-section block__18514" id="next-section">
 <div class="container-fluid" style="width:80%">
 	<div class="row">
-
 		<!-- 왼쪽네비 -->
 		<c:if test="${!empty loginUserId }">
 			 <div class="col-lg-2.5" align="center" style="width: 25%; margin: 1em;">
@@ -86,7 +91,7 @@ function seatUpdate(num, status, id) {
 			</div>
 		</c:if>
 		<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-		<div align="center">
+		<div align="center" <c:if test="${empty loginUserId }"> style="width:100%;"</c:if>>
 			<h1>열람실 좌석배치도</h1>
 			<table border="1">
 				<tr>

@@ -129,7 +129,6 @@
 												</c:choose>
 												</h6>
 												<h6>위치 : ${book.book_Location }번서가</h6>
-												<h6>수량 : ${book.all_Book_Cnt }권</h6>
 											</div>
 										<div class="job-listing-meta">
 												<c:if test="${book.can_Book_Cnt <= 0 }">
