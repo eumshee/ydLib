@@ -3,12 +3,6 @@
 
 <Style>
 
-.site-footer {
-    padding: 3rem 0;
-    position: relative;
-    background: #555;
-}
-
 /*공통 푸터*/
 #footer {
 	z-index: 3;

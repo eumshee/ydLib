@@ -48,7 +48,7 @@ $(function() {CKEDITOR.replace('re_Content',
 			<div class="col-lg-8">
 				<form class="p-4 p-md-5 border rounded" action="replyInsert.do" method="post">
 					<input type="hidden" id="re_Bnum" name="re_Bnum" value="${vo.board_Id }">
-					<h3 class="text-black mb-5 border-bottom pb-2">답변 작성 ${vo.board_Id }</h3>
+					<h3 class="text-black mb-5 border-bottom pb-2">답변 작성</h3>
 					<div class="form-group">
 						<label for="re_Title">글 제목</label> <input type="text"
 							class="form-control" id="re_Title" name="re_Title" value="RE: ${vo.board_Title }">
