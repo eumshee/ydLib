@@ -36,7 +36,7 @@ function seatUpdate(num, status, id) {
        }
     }else{ //좌석이 비었을때
     	if($('#sessionId').val()!='') { //회원이면
-    		if($('#endEarly').val()=='') { //사용중이면
+    		if($('#endEarly').val()!='') { //사용중이면
 		          alert('이미 사용 중인 좌석이 있습니다. \n좌석 변경을 원하시면 기존의 좌석을 퇴실처리 하세요.')
 		          return;
     		} else {
@@ -61,6 +61,14 @@ function checkOut(num) {
         return;
      }
 }
+
+function seatInfo() {
+	var url= "seatInfoChk.do";   
+	var winWidth = 700;
+    var winHeight = 600;
+    var popupOption= "width="+winWidth+", height="+winHeight;
+	window.open(url,"",popupOption);
+}
 </script>
 <input type="hidden" id="sessionId" value="${loginUserId }">
 
@@ -71,15 +79,16 @@ function checkOut(num) {
 	<div class="container">
 		<div class="row" >
 			<div class="col-md-12" align="center">
-				<h1 class="text-white font-weight-bold">좌석배치도</h1>
+				<h1 class="text-white font-weight-bold">열람실예약</h1>
 				<div class="custom-breadcrumbs">
 					<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
-						class="text-white"><strong>좌석배치도</strong></span>
+						class="text-white"><strong>열람실예약</strong></span>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+
 
 <section class="site-section block__18514" id="next-section">
 <div class="container-fluid" style="width:80%">
@@ -89,6 +98,16 @@ function checkOut(num) {
 			<c:when test="${!empty loginUserId }">
 			<input type="hidden" id="endEarly" value="${user.seat_end_Early}">
 				 <div class="col-lg-2.5" align="center" style="width: 25%; margin: 1em;">
+		            <div class="bg-light p-3 border rounded mb-4">
+						<div class="rounded">
+							<div class="sidenav" style="text-align: left;">
+								<b><span class="icon-clock-o" style="text-align: left;"></span>&nbsp;운영시간</b>
+								<b><span class="icon-keyboard_arrow_right"></span>&nbsp;평일 오전 9시 ~ 오후 9시</b>
+								<br>
+								<b onclick="seatInfo()">&nbsp;<i class="icon-external-link" onclick="seatInfo()"></i>&nbsp;확인사항</b>
+							</div>
+						</div>
+		            </div>
 		            <div class="bg-light p-3 border rounded mb-4">
 						<div class="rounded">
 							<div class="sidenav">
@@ -109,7 +128,6 @@ function checkOut(num) {
 									</c:choose>
 							</div>
 						</div>
-		              
 		            </div>
 				</div>
 			</c:when>
@@ -117,7 +135,7 @@ function checkOut(num) {
 		</c:choose>
 		<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 		<div align="center" <c:if test="${empty loginUserId }"> style="width:100%;"</c:if>>
-			<h1>열람실 좌석배치도</h1>
+			<h3>좌석배치도</h3>
 			<table border="1">
 				<tr>
 					<c:forEach items="${seatList }" begin="0" end="10" var="vo">
@@ -150,5 +168,6 @@ function checkOut(num) {
 			<br> <br>
 		</div>
 	</div>
-</div>
+	</div>
 </section>
+
