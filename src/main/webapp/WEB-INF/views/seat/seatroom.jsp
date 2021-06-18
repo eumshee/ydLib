@@ -36,7 +36,9 @@ function seatUpdate(num, status, id) {
        }
     }else{ //좌석이 비었을때
     	if($('#sessionId').val()!='') { //회원이면
-    		if($('#endEarly').val()!='') { //사용중이면
+    		if($('#seat_Num').val()!='' && $('#endEarly').val()=='') { //좌석정보가 있고 만료하기 전이면
+    			console.log($('#seat_Num').val());
+    			console.log($('#endEarly').val());
 		          alert('이미 사용 중인 좌석이 있습니다. \n좌석 변경을 원하시면 기존의 좌석을 퇴실처리 하세요.')
 		          return;
     		} else {
@@ -114,6 +116,7 @@ function seatInfo() {
 									<p><b>${loginUserVO.user_Name } 님 좌석예약정보입니다.</b></p>
 									<c:choose>
 										<c:when test="${user.seat_Status==1}">
+										<input type="hidden" id="seat_Num" value="${user.seat_Num }">
 											<span><b>좌석번호: ${user.seat_Num }</b></span>
 											<br>
 											<span><b>입실시간: ${fn:substring(user.seat_start_Time,2,16) }</b></span>
