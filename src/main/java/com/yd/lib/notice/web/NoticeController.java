@@ -6,21 +6,18 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.yd.lib.book.vo.BookVO;
 import com.yd.lib.notice.serviceImpl.NoticeServiceImpl;
 import com.yd.lib.notice.vo.NoticeVO;
 
 @Controller
 public class NoticeController {
-	
+	private static final String FILE_SERVER_PATH = "D:/git/ydLib/src/main/webapp/resources/upload";
 	@Autowired
 	private NoticeServiceImpl dao;
 	
@@ -70,8 +67,25 @@ public class NoticeController {
 		return "redirect:noticeList.do";
 	}
 	
+	
 	@RequestMapping("/noticeUpdate.do")
-	public String noticeUpdate(Model model, NoticeVO vo) {
+	public String  noticeUpdate(NoticeVO vo, HttpServletRequest req) throws IOException {
+		String fileName=null;
+
+		MultipartFile uploadFile = vo.getUploadFile();
+		if (!uploadFile.isEmpty()) {
+			String originalFileName = uploadFile.getOriginalFilename();
+			//String ext = FilenameUtils.getExtension(originalFileName);	//확장자 구하기
+			//UUID uuid = UUID.randomUUID();	//UUID 구하기
+			fileName=originalFileName;
+			uploadFile.transferTo(new File("D:\\git\\ydLib\\src\\main\\webapp\\resources\\upload\\" + fileName));
+			System.out.println(fileName);
+			vo.setNotice_File(fileName);
+		} else {
+			NoticeVO old = dao.noticeSelect(vo);
+			vo.setNotice_File(old.getNotice_File());
+		}
+		
 		dao.noticeUpdate(vo);
 		return "redirect:noticeSelect.do?notice_Id="+vo.getNotice_Id();
 	}

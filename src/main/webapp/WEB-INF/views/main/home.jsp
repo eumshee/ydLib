@@ -3,21 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <style>
-.site-footer .scroll-top {
-	position: absolute;
-	z-index: 5;
-	top: 0;
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
-	background: #fff;
-	left: 50%;
-	-webkit-transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-	-webkit-box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.1);
-	box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.1);
-}
 
 .main1 .search-box {width:750px;margin-top:38px;}
 .main1 .search-box fieldset{position:relative;overflow:hidden;}
@@ -76,7 +61,7 @@ tr {	height: 35px; }
 	position: relative;
     display: inline-block;
     width: 170px;
-    padding: 20px 0px 20px 0px;
+    padding: 23px 0px 23px 0px;
     vertical-align: bottom;
     list-style: none;
     text-align: center;
@@ -99,6 +84,9 @@ tr {	height: 35px; }
 	color: #4d4d4d;
 	font-size: 43px;
 }
+
+
+.container-fluid { height: 180px;}
 
 </style>
 
@@ -175,9 +163,11 @@ function formSubmit(id) {
 								</c:forEach>
 							</table>
 						</li>
-						<li></li>
+						<br>
 						<!-- 휴관일 -->
-						<li><h3>휴관일</h3></li>
+						<li><h3>이용시간/휴관일</h3></li>
+						<li style="line-height: 2.3em;">• 이용시간 : 평일 오전 9시~오후 6시</li>
+						<li><b style="color: #515151;">• 휴관일 : 매주 토, 일요일 및 법정공휴일</b></li>
 					</ul>
 				</div>
 				<!-- 추천도서 -->
@@ -198,7 +188,7 @@ function formSubmit(id) {
 						<div align="center"><h6>도서관 홈페이지에 회원가입 하시면 맞춤도서를 추천해드립니다.</h6></div>
 					</c:if>
 					<c:if test="${loginUserVO.user_Id ne null}">
-						<h3>${loginUserVO.user_Name }님을위한 추천도서</h3>
+						<h3>${loginUserVO.user_Name }님을 위한 추천도서</h3>
 						<ul class="recommend">
 							<c:forEach var="vo" items="${bookRecommend }">
 								<li class="book-img">
@@ -210,6 +200,7 @@ function formSubmit(id) {
 								</li>
 							</c:forEach>
 						</ul>
+						<div align="center"><h6>회원님의 대출내역을 분석한 맞춤도서입니다.</h6></div>
 					</c:if>
 				</div>
 			</div>
@@ -223,31 +214,31 @@ function formSubmit(id) {
 					</a>
 				</li>
 				<li class="items">
-					<a href="userLoan.do">
+					<a href="wishBookInfo.do">
 					<span class="icon-edit qicon"></span><br>
 					<span><b>희망도서신청</b></span>
 					</a>
 				</li>
 				<li class="items">
-					<a href="userLoan.do">
+					<a href="newBook.do">
 					<span class=" icon-tags qicon"></span><br>
 					<span><b>신착도서</b></span>
 					</a>
 				</li>
 				<li class="items">
-					<a href="userLoan.do">
+					<a href="seatroom.do">
 					<span class="icon-th-large qicon"></span><br>
 					<span><b>열람실현황</b></span>
 					</a>
 				</li>
 				<li class="items">
-					<a href="userLoan.do">
+					<a href="boardList.do">
 					<span class="icon-question-circle-o qicon"></span><br>
 					<span><b>묻고답하기</b></span>
 					</a>
 				</li>
 				<li class="items">
-					<a href="userLoan.do">
+					<a href="map.do">
 					<span class="icon-map-signs qicon"></span><br>
 					<span><b>찾아오시는길</b></span>
 					</a>
