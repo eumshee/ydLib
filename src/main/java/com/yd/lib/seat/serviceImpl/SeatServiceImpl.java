@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import com.yd.lib.seat.service.SeatService;
 import com.yd.lib.seat.vo.SeatVO;
 import com.yd.lib.seat.vo.SeatroomVO;
-import com.yd.lib.users.vo.UsersVO;
 
 @Repository
 public class SeatServiceImpl implements SeatService {

@@ -21,9 +21,11 @@ public class SeatController {
       model.addAttribute("seatList", ssi.seatList());
 
       HttpSession session = req.getSession();
-      String name = (String) session.getAttribute("loginUserId");
-      vo.setUser_Id(name);
-      model.addAttribute("user",ssi.seatSearch(vo));
+      if(session.getAttribute("loginUserId") != null) {
+	      String name = (String) session.getAttribute("loginUserId");
+	      vo.setUser_Id(name);
+	      model.addAttribute("user",ssi.seatSearch(vo));
+      }
       return "seat/seatroom";
    }
 
@@ -47,6 +49,5 @@ public class SeatController {
 		ssi.seatEnd(vo);
 		return "redirect:seatroom.do";
 	}
-	
 	
 }
