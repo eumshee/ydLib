@@ -124,7 +124,7 @@
 			<div class="col-lg-12">
 				<form class="p-4 p-md-5 border rounded" id="frm"
 					action="bookOneUpdate.do" method="post">
-					<h3 class="text-black mb-5 border-bottom pb-2">Book Detail</h3>
+					<h3 class="text-black mb-5 border-bottom pb-2">도서정보</h3>
 					<table style="width: 100%;">
 						<tr>
 							<td rowspan="16" style="width: 50%; text-align: center;"><img
@@ -281,7 +281,7 @@
 		</div>
 
 		<c:if test="${!empty bookMgOver }">
-			<h3 class="text-black my-5 border-bottom pb-2">Book List</h3>
+			<h3 class="text-black my-5 border-bottom pb-2">동일도서</h3>
 			<table class="table" style="width: 100%;">
 				<tr>
 					<th class="form-group">번호</th>

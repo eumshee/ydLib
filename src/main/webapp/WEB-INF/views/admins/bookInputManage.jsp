@@ -12,6 +12,7 @@
 	 	text-decoration: none;
  	}
 	 .col-md-12 a:hover { color: white; }
+
 </style>
 <script>	
 	function imgCheck() {
@@ -66,7 +67,7 @@
 	// 상세검색창
 	function popupOpen(){
 		//var url= "bookDetailSearch.do"; //팝업창 페이지 URL
-		var url= "https://www.nl.go.kr/";   
+		var url= "https://www.nl.go.kr/NL/contents/search.do?srchTarget=total&pageNum=1&pageSize=10&kwd=++";   
 		var winWidth = 700;
 	    var winHeight = 600;
 	    var popupOption= "width="+winWidth+", height="+winHeight; //팝업창 옵션(optoin)
@@ -82,6 +83,9 @@
 		window.open(url,"",popupOption);
 	}
 	
+	function goBack() {
+		window.history.back();
+	}
 </script>
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
@@ -112,30 +116,29 @@
 				<div class="col-6">
 					<button type="button" class="btn btn-primary text-white btn-search"
 					onclick="bookMgPopup()">
-						<span class="icon-th-list mx-auto"></span>&nbsp;도서목록창
+						<span class="icon-th-list mx-auto"></span>&nbsp;소장도서목록
 					</button>
 				</div>	
 				<br>			
 				<span class="col-3">
 					<button type="button" class="btn btn-primary text-white btn-search"
-					id="bookDetailSearch"
-					onclick="popupOpen()">
-						<span class="icon-search-plus mx-auto"></span>&nbsp;상세
+						onclick="goBack()">
+						<span class="icon-reply-all mx-auto"></span>&nbsp;목록보기
 					</button>
 				</span>				
 				<span class="col-3">
 					<button type="button" class="btn btn-primary text-white btn-search"
-						onclick="frmCheck()">
-						<span class="icon-plus mx-auto"></span>&nbsp;등록
+					id="bookDetailSearch"
+					onclick="popupOpen()">
+						<span class="icon-search-plus mx-auto"></span>&nbsp;상세검색
 					</button>
-				</span>
+				</span>				
 			</div>
 		</div>
 		<div class="row mb-5">
 			<div class="col-lg-12">
 				<form id="frm" class="p-4 p-md-5 border rounded"
 					action="bookOneInsert.do" method="post">
-					<h3 class="text-black mb-5 border-bottom pb-2">Book Input</h3>
 					<table style="width: 100%;">
 						<tr>
 							<td rowspan="12" style="width: 40%; text-align: center;">
@@ -239,8 +242,8 @@
 		<div class="col-lg-3">
 			<div class="col-5">
 				<button type="button" class="btn btn-primary text-white btn-search"
-					onclick="location.href='bookManagement.do'">
-					<span class="icon-reply-all mx-auto"></span>&nbsp;목록보기
+						onclick="frmCheck()">
+						<span class="icon-plus mx-auto"></span>&nbsp;도서추가
 				</button>
 			</div>
 		</div>
