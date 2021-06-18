@@ -76,7 +76,7 @@ h4 {
 			</div>
 			<!--컨텐츠 영역-->
 			<div class="col-lg-8">
-				<form id="frmUpdate" action="noticeUpdate.do" method="post">
+				<form id="frmUpdate" action="noticeUpdate.do" method="post" enctype="multipart/form-data">
 					<input type="hidden" id="notice_Id" name="notice_Id" value="${vo.notice_Id }">
 				<table class="table">
 					<tr>
@@ -109,9 +109,16 @@ h4 {
 						</td>
 					</tr>
 					<tr>
-					<th>첨부파일</th>
-					<td colspan="4" align="left"><a href="fileDownload.do?notice_File=${vo.notice_File}">${vo.notice_File }</a></td>
+						<th>등록된 파일</th>
+						<td colspan="4" align="left"><a href="fileDownload.do?notice_File=${vo.notice_File}">${vo.notice_File }</a>
+						</td>
 					</tr>
+					<c:if test="${loginUserVO.user_Id eq 'admin'}">
+					<tr>
+						<th>수정할 파일</th>
+						<td colspan="4" align="left"><input type="file" name="uploadFile" size="50"></td>
+					</tr>
+					</c:if>
 				</table>
 				</form>
 				<c:if test="${loginUserVO.user_Id eq 'admin'}">

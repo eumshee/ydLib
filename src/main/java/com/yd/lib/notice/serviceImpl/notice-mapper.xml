@@ -46,7 +46,8 @@
 	<update id="noticeUpdate" parameterType="com.yd.lib.notice.vo.NoticeVO">
 		update notice set 
 		notice_Title = #{notice_Title},
-		notice_Content = #{notice_Content}
+		notice_Content = #{notice_Content},
+		notice_File = #{notice_File,jdbcType=VARCHAR}
 		where notice_Id = #{notice_Id}
 	</update>
 

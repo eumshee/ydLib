@@ -17,12 +17,8 @@
 				<h1 class="text-white font-weight-bold">관리자페이지</h1>
 			</div>
 			<div class="col-md-12" align="center">
-				<span><a href="memberManagemant.do">회원목록관리</a></span>&nbsp;&nbsp;
-				<span><a href="loanreManagemant.do">대출/반납관리</a></span>&nbsp;&nbsp;
-				<span><a href="yeyakmanagemant.do">예약도서관리</a></span>&nbsp;&nbsp;
-				<span><a href="wishManagement.do">희망도서관리</a></span>&nbsp;&nbsp;
-				<span><a href="bookManagement.do">장서관리</a></span>&nbsp;&nbsp;
-				<span><a href="home.do">홈</a></span>
+				<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
+						class="text-white"><a href="adminPage.do">관리자 홈</a></span>
 			</div>
 		</div>
 	</div>
@@ -37,8 +33,7 @@
 				<a href="memberManagemant.do"
 					class="block__16443 text-center d-block"> <span
 					class="custom-icon mx-auto"><span class="icon-users d-block"></span></span>
-					<h3>회원목록 관리</h3>
-					<p>ㄱㄴㄷㄻㅄㅇ</p>
+					<h2>회원목록 관리</h2>
 				</a>
 			</div>
 
@@ -46,8 +41,7 @@
 				<a href="loanreManagemant.do"
 					class="block__16443 text-center d-block"> <span
 					class="custom-icon mx-auto"><span class="icon-vcard d-block"></span></span>
-					<h3>대출/반납 관리</h3>
-					<p>가나다</p>
+					<h2>대출/반납 관리</h2>
 				</a>
 			</div>
 
@@ -56,8 +50,7 @@
 					class="block__16443 text-center d-block"> <span
 					class="custom-icon mx-auto"><span
 						class="icon-bookmark d-block"></span></span>
-					<h3>예약도서 관리</h3>
-					<p>가나다</p>
+					<h2>예약도서 관리</h2>
 				</a>
 			</div>
 
@@ -65,8 +58,7 @@
 				<a href="wishManagement.do" class="block__16443 text-center d-block"> <span
 					class="custom-icon mx-auto"><span
 						class="icon-collections_bookmark d-block"></span></span>
-					<h3>희망도서 관리</h3>
-					<p>가나다</p>
+					<h2>희망도서 관리</h2>
 				</a>
 
 			</div>
@@ -75,16 +67,14 @@
 				<a href="bookManagement.do" class="block__16443 text-center d-block">
 					<span class="custom-icon mx-auto"><span
 						class="icon-list d-block"></span></span>
-					<h3>장서관리</h3>
-					<p>가나다</p>
+					<h2>장서관리</h2>
 				</a>
 			</div>
 
 			<div class="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5">
 				<a href="home.do" class="block__16443 text-center d-block"> <span
 					class="custom-icon mx-auto"><span class="icon-reply-all d-block"></span></span>
-					<h3>홈으로</h3>
-					<p>가나다</p>
+					<h2>홈으로</h2>
 				</a>
 			</div>
 		</div>

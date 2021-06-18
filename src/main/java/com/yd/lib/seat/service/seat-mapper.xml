@@ -28,8 +28,8 @@
 	
 	<!-- 가장 최근에 신청한 좌석예약정보 조회 -->
 	<select id="seatSearch" parameterType="com.yd.lib.seat.vo.SeatroomVO" resultType="com.yd.lib.seat.vo.SeatroomVO">
-		select * from SEATROOM
+		select sr.*, s.SEAT_STATUS from SEATROOM sr join SEAT s on sr.SEAT_NUM=s.SEAT_NUM
 		where user_id = #{user_Id}
-    	and SEAT_PICK_NUM = (select MAX(SEAT_PICK_NUM) from SEATROOM)
+    	and SEAT_PICK_NUM = (select MAX(SEAT_PICK_NUM) from SEATROOM where USER_ID=#{user_Id})
 	</select>
 </mapper>
