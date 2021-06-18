@@ -7,10 +7,12 @@ width: 80px;
 text-align: center;
 }
 
-.btn{
+.bbtn{
 	margin-top: 5px;
 	border: 1px solid black;
 	border-radius: 10px;
+	padding: 0.375rem 0.75rem;
+	text-align: center;
 }
 </style>
 <script>
@@ -96,7 +98,7 @@ text-align: center;
 												<option value="삭제 회원" <c:if test="${vo.user_Gubun eq '삭제 회원'}"> selected</c:if>>삭제 회원</option>
 												<option value="관리자" <c:if test="${vo.user_Gubun eq '관리자'}"> selected</c:if>>관리자</option>
 											</select></td>
-											<td><button class="btn" type="button" onclick="nameUpdate('${vo.user_Id }')">수정</button><br>
+											<td><button class="bbtn" type="button" onclick="nameUpdate('${vo.user_Id }')">수정</button><br>
 											</td>
 										</tr>
 								</c:forEach>

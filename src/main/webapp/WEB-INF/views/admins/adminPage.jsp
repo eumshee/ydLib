@@ -37,8 +37,7 @@
 				<a href="memberManagemant.do"
 					class="block__16443 text-center d-block"> <span
 					class="custom-icon mx-auto"><span class="icon-users d-block"></span></span>
-					<h3>회원목록 관리</h3>
-					<p>ㄱㄴㄷㄻㅄㅇ</p>
+					<h2>회원목록 관리</h2>
 				</a>
 			</div>
 
@@ -46,8 +45,7 @@
 				<a href="loanreManagemant.do"
 					class="block__16443 text-center d-block"> <span
 					class="custom-icon mx-auto"><span class="icon-vcard d-block"></span></span>
-					<h3>대출/반납 관리</h3>
-					<p>가나다</p>
+					<h2>대출/반납 관리</h2>
 				</a>
 			</div>
 
@@ -56,8 +54,7 @@
 					class="block__16443 text-center d-block"> <span
 					class="custom-icon mx-auto"><span
 						class="icon-bookmark d-block"></span></span>
-					<h3>예약도서 관리</h3>
-					<p>가나다</p>
+					<h2>예약도서 관리</h2>
 				</a>
 			</div>
 
@@ -65,8 +62,7 @@
 				<a href="wishManagement.do" class="block__16443 text-center d-block"> <span
 					class="custom-icon mx-auto"><span
 						class="icon-collections_bookmark d-block"></span></span>
-					<h3>희망도서 관리</h3>
-					<p>가나다</p>
+					<h2>희망도서 관리</h2>
 				</a>
 
 			</div>
@@ -75,16 +71,14 @@
 				<a href="bookManagement.do" class="block__16443 text-center d-block">
 					<span class="custom-icon mx-auto"><span
 						class="icon-list d-block"></span></span>
-					<h3>장서관리</h3>
-					<p>가나다</p>
+					<h2>장서관리</h2>
 				</a>
 			</div>
 
 			<div class="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5">
 				<a href="home.do" class="block__16443 text-center d-block"> <span
 					class="custom-icon mx-auto"><span class="icon-reply-all d-block"></span></span>
-					<h3>홈으로</h3>
-					<p>가나다</p>
+					<h2>홈으로</h2>
 				</a>
 			</div>
 		</div>
