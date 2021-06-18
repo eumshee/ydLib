@@ -79,6 +79,11 @@ public class UsersServiceImpl {
 		return sqlSession.selectList("userLoanList" , user_Id);
 	}
 	
+	//회원 연체된 권수
+	public int overDueBooksCount(String user_Id) {
+		return sqlSession.selectOne("overDueBooksCount" , user_Id);
+	}
+	
 	//회원 예약내역조회
 	public List<UserYeyakInfoVO> userYeyakList(String user_Id) {
 		return sqlSession.selectList("userYeyakList" , user_Id);

@@ -31,7 +31,7 @@ function formSubmit(Isbn) {
 
 <!-- 상단배너 -->
 	<section class="section-hero overlay inner-page bg-image"
-		style="background-image: url('resources/images/hero_1.jpg');"
+		style="background-image: url('resources/images/main.jpg');"
 		id="home-section">
 		<div class="container">
 			<div class="row">

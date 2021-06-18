@@ -234,7 +234,7 @@ function findAddr(){
 			frm.smsKey.focus();
 			return false;
 		}
-		/* if (frm.checkEmail.value == "unChecked") {
+		if (frm.checkEmail.value == "unChecked") {
 			alert("이메일을 인증 하세요");
 			frm.emailCode.focus();
 			return false;
@@ -243,15 +243,15 @@ function findAddr(){
 			alert("문자 인증을 하세요");
 			frm.smsKey.focus();
 			return false;
-		}    */
+		}    
 		frm.submit();
 		alert("정상적으로 회원가입 되었습니다");
 	}
 </script>
-
+<body>
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
-	style="background-image: url('images/hero_1.jpg');" id="home-section">
+	style="background-image: url('resources/images/main.jpg');" id="home-section">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" align="center">
@@ -264,7 +264,6 @@ function findAddr(){
 		</div>
 	</div>
 </section>
-
 <section class="site-section block__18514" id="next-section">
 	<div class="container">
 		<div class="row">
@@ -279,8 +278,10 @@ function findAddr(){
 				</div>
 			</div>
 			<!--회원가입 화면-->
-			<div align="center">
-					<h4>회원가입</h4>
+			
+			<div class="col-lg-7" align="center">
+					<br>
+					<h2>회원가입</h2>
 			<br>
 			<form id="frm" action="userJoin.do" method="post">
 			<table style="border:1; border-collapse:collapse;">
@@ -414,10 +415,11 @@ function findAddr(){
 					</tr>
 			</table>
 			</form>
-			<br><br>
+			<br>
 				<button class="btn btn-light" type="button" onclick="formCheck()">회원가입</button>
 			</div>
 			
 			</div>
 		</div>
 </section>
+</body>

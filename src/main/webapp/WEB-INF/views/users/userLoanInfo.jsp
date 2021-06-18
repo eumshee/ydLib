@@ -31,7 +31,7 @@ function formSubmit(Isbn) {
 
 <!-- 상단배너 -->
 	<section class="section-hero overlay inner-page bg-image"
-		style="background-image: url('resources/images/hero_1.jpg');"
+		style="background-image: url('resources/images/main.jpg');"
 		id="home-section">
 		<div class="container">
 			<div class="row">
@@ -64,7 +64,45 @@ function formSubmit(Isbn) {
 				
 				
 			<!--컨텐츠 영역-->
-			<div class="col-lg-8">
+			<div class="col-lg-8"  >
+			
+			<div style="width:100%;">
+			<div class="row">
+			
+			<br>
+				<div class="col-lg-4 ">
+				<div
+					class="block__16443 text-center d-block"> 
+					<span class="custom-icon mx-auto">
+					<span class="icon-vcard d-block"></span>
+					</span>
+					<h6>대출 중인 도서</h6>
+				</div>
+				</div>
+				
+				<div class="col-lg-4">
+				<div
+					class="block__16443 text-center d-block"> 
+					<span class="custom-icon mx-auto">
+					<span class="icon-vcard d-block"></span>
+					</span>
+					<h6>연체 중인 도서</h6>
+					${overDueBooksCount}
+				</div>
+				</div>
+				
+				<div class="col-lg-4">
+				<div
+					class="block__16443 text-center d-block"> 
+					<span class="custom-icon mx-auto">
+					<span class="icon-vcard d-block"></span>
+					</span>
+					<h6>대출 정지 만기일</h6>
+				</div>
+				</div>
+				</div>
+			
+				<br>
 				<form id="frm" action="bookInfo.do" method="post">
 				<input type="hidden" id="book_Isbn" name="book_Isbn">
 				<!-- DataTales Example -->

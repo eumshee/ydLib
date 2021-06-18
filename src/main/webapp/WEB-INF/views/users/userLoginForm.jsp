@@ -1,11 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<title>로그인페이지</title>
+<!DOCTYPE html>
+<html>
 <head>
-
+<meta charset="UTF-8">
+<title>memberLoginForm.jsp</title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
+	//로그인 function 변수로 지정
 	function loginCheck() {
+		
 		if (frm.user_Id.value == "") {
 			alert("아이디를 입력하세요.");
 			frm.user_Id.focus();
@@ -24,20 +31,229 @@
 			success : function(user) {
 				
 				if(user_Id != null) {
-					window.location="home.do";
-				} 
+					window.location.href="${redirectURI}"
+					
+			}
 			},
 			error : function(err) {
 				alert("해당하는 회원정보가 없습니다. 다시 시도해주세요.");
 			}
 		});
-		
 	}
+	
+
 </script>
 
+ <script>
+ window.history.forward();
+ function noBack(){window.history.forward();}
+</script>
+
+<style>
+/* STRUCTURE */
+.wrapper {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	height: 60%;
+	padding: 20px;
+}
+
+a {
+	text-decoration: none;
+	outline: none;
+	color: #000;	
+}
+
+a:hover,
+a:focus {
+	text-decoration: none;
+	outline: none;
+	color: #000;
+}
+
+.swal-text {
+ 	color: #212529;
+}
+
+.swal-button{
+  padding: 7px 19px;
+  border-radius: 2px;
+  background-color: #212529;
+  font-size: 12px;
+  font-color: #212529;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+}
+
+#formContent {
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+	background: #fff;
+	padding: 30px;
+	width: 90%;
+	max-width: 450px;
+	position: relative;
+	padding: 0px;
+	-webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+	box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+	text-align: center;
+}
+
+/* FORM TYPOGRAPHY*/
+input[type=button], input[type=submit], input[type=reset] {
+	background-color: #56baed;
+	border: none;
+	color: white;
+	padding: 15px 80px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	text-transform: uppercase;
+	font-size: 13px;
+	-webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+	box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+	-webkit-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+	margin: 5px 20px 40px 20px;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+input[type=button]:active, input[type=submit]:active, input[type=reset]:active,
+	input[type=password]:active {
+	-moz-transform: scale(0.95);
+	-webkit-transform: scale(0.95);
+	-o-transform: scale(0.95);
+	-ms-transform: scale(0.95);
+	transform: scale(0.95);
+}
+
+input[type=text], input[type=password] {
+	background-color: #f6f6f6;
+	border: none;
+	color: #0d0d0d;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 5px;
+	width: 85%;
+	border: 2px solid #f6f6f6;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+	background-color: #fff;
+	border-bottom: 2px solid #212529;
+}
+
+input[type=text]:placeholder, input[type=password]:placeholder {
+	color: #cccccc;
+}
+
+/* ANIMATIONS */
+
+/* Simple CSS3 Fade-in-down Animation */
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+/* Simple CSS3 Fade-in Animation */
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fadeIn {
+  opacity:0;
+  -webkit-animation:fadeIn ease-in 1;
+  -moz-animation:fadeIn ease-in 1;
+  animation:fadeIn ease-in 1;
+
+  -webkit-animation-fill-mode:forwards;
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  -webkit-animation-duration:1s;
+  -moz-animation-duration:1s;
+  animation-duration:1s;
+}
+
+.fadeIn.first {
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+.fadeIn.second {
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+
+.fadeIn.third {
+  -webkit-animation-delay: 0.8s;
+  -moz-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+}
+
+.fadeIn.fourth {
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  animation-delay: 1s;
+}
+
+}
+
+</style>
+</head>
+<!--로그인 후 다시 로그인 화면으로 못돌아가게 하기 -->
+<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
-	style="background-image: url('images/hero_1.jpg');" id="home-section">
+	style="background-image: url('resources/images/main.jpg');" id="home-section">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" align="center">
@@ -65,37 +281,34 @@
 				</div>
 			</div>
 			<!--로그인 화면-->
-				<div align="center">
-					<h3>로그인</h3>
-					<form id="frm" action="userLogin.do" method="post">
-						<div>
-							<table style="border: '1'; border-collapse: collapse;">
-								<tr>
-									<th>아이디:</th>
-									<td>
-									<input type="text" class="form-control" id="user_Id" name="user_Id" >
-									</td>
-								</tr>
-								<tr >
-									<th>패스워드:</th>
-									<td>
-									 <input type="password" class="form-control" id="user_Pw" name="user_Pw">
-									</td>
-								</tr>
-							</table>
-						</div>
-						<br>
-						
-						
-					</form>
-					
-					<div align="center">
-					<button class="btn btn-light" type="button" onclick="loginCheck()">로그인</button>
-					<button class="btn btn-light" type="button" onclick="location.href='userJoinForm.do'">회원가입</button>
+			
+			
+		 		<div class="col-lg-6" align = "center">
+			<div class="container">
+				<br>
+				<h2>로그인</h2>
+				<br>
+			</div>
+			<form id="frm" action="loginCheck()" method="post">
+				<input type="text" id="user_Id" name="user_Id" class="fadeIn first" placeholder="ID" value="">
+				<input type="password" id="user_Pw" name="user_Pw" class="fadeIn first" placeholder="PASSWORD"
+				 onkeyup="if(window.event.keyCode==13){loginCheck()}" value="">
+				 <input type="hidden" name="next_url" value="${redirectURI }">
+				<div class="fadeIn Second">
+					<br>
+					<button class="btn btn-light" type="button"
+						onclick="location.href='home.do'" style="width: 185px; background: #89ba10; color: white;" >HOME</button>
+					<button class="btn btn-light" type="button"
+						onclick="loginCheck()" style="width: 185px; background: #89ba10; color: white;">로그인</button>
+					<br> <br>
+					<p>아직 회원이 아니신가요? <a href="userJoinForm.do"> > 가입하기</a></p>
+					<br> <br>
 				</div>
-				</div>
-				
-				
+			</form>
+		</div> 
 			</div>
 		</div>
 </section>
+</body>
+
+</html>

@@ -1,11 +1,14 @@
 package com.yd.lib.users.web;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,16 +37,21 @@ public class UsersController {
 	//------------------------------- 로그인 ------------------------------ //
 	
 	@RequestMapping("/userLoginForm.do")
-	public String userLoginForm(Model model) {
+	public String userLoginForm(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		String referer = request.getHeader("Referer");
+        session.setAttribute("redirectURI", referer);
+        
 		return "users/userLoginForm";
+		
 	}
 	
 	
 	@RequestMapping("/userLoginIdCheck.do")
 	@ResponseBody
-	public String userLoginIdCheck(UsersVO vo, HttpServletRequest request, Model model) {
+	public String userLoginIdCheck(UsersVO vo, HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
 			
-		
+			
 			UsersVO rvo = UsersDAO.userLoginCheck(vo);
 			String id = rvo.getUser_Id();
 			String userBirth = rvo.getUser_Birth();
@@ -60,7 +68,10 @@ public class UsersController {
 	        session.setAttribute("loginUserVOBirth", userBirthYear+"년 " + userBirthMonth+"월 " + userBirthDay +"일 ");
 	        } 
 	        
+	        
+	        
 	        return id;
+	        
 		 
 	}
 	
@@ -69,6 +80,7 @@ public class UsersController {
 	public String userLogOut(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.invalidate();
+		
 		return "redirect:home.do";
 	}
 	

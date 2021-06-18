@@ -55,6 +55,17 @@
        			h.loan_date asc
 	</select>
 	
+	<select id="overDueBooksCount" parameterType="string" resultType="int">
+		<![CDATA[ SELECT 	COUNT(*)
+				from users u join history h on (u.user_id = h.user_id)
+				join book b on (b.book_num = h.book_num) 
+        		where u.user_id = #{user_Id}
+       			and h.return_duedate < sysdate
+       			and loan_status = '대출'
+				]]>
+	</select>
+	
+	
 	<select id="userYeyakList" parameterType="string" resultType="com.yd.lib.users.vo.UserYeyakInfoVO">
 		SELECT 	y.user_Id, u.user_Name, b.book_Title, b.book_Aut, b.book_Location, b.book_Img,b.book_Pub, b.book_subject,y.yeyak_Num,
        			TO_CHAR(y.yeyak_submit,'YYYY/MM/DD') yeyak_Submit, 

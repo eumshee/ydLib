@@ -33,8 +33,11 @@ public class MyLibraryController {
 			
 			
 			 List<UserLoanInfoVO> total = UsersDAO.userLoanList(userId);//전체 검색결과
+			 int overDueBooksCount =UsersDAO.overDueBooksCount(userId);
 			 
 			 model.addAttribute("userLoanList",total);
+			 model.addAttribute("overDueBooksCount",overDueBooksCount);
+			 
 			return "users/userLoanInfo";	
 		} else {
 			model.addAttribute("msg", "로그인이 필요한 서비스입니다.");
