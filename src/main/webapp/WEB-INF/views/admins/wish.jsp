@@ -46,12 +46,8 @@
 				<h1 class="text-white font-weight-bold">희망도서관리</h1>
 			</div>
 			<div class="col-md-12" align="center">
-				<span><a href="memberManagemant.do">회원목록관리</a></span>&nbsp;&nbsp;
-				<span><a href="loanreManagemant.do">대출/반납관리</a></span>&nbsp;&nbsp;
-				<span><a href="yeyakmanagemant.do">예약도서관리</a></span>&nbsp;&nbsp;
-				<span><a href="wishManagement.do" style="color:#89ba16;">희망도서관리</a></span>&nbsp;&nbsp;
-				<span><a href="bookManagement.do">장서관리</a></span>&nbsp;&nbsp;
-				<span><a href="home.do">홈</a></span>
+				<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
+						class="text-white"><a href="adminPage.do">관리자 홈</a></span>
 			</div>
 		</div>
 	</div>

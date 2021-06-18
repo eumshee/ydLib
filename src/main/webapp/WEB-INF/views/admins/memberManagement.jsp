@@ -9,11 +9,18 @@
 	padding: 0.375rem 0.75rem;
 	text-align: center;
 }
+ .col-md-12 a {
+ 	font-size: 1em;
+ 	color: lightgray;
+ 	text-decoration: none;
+ }
+ .col-md-12 a:hover { color: white; }
 </style>
 <script>
 	function nameUpdate(id) {
 		frm.user_Name.value = $('#Name'+id).val();
 		frm.user_Gubun.value = $('#Gubun'+id+' option:selected').val();
+		console.log($('#Name'+id).val(),$('#Gubun'+id+' option:selected').val())
 		frm.user_Id.value = id;
 		frm.submit();
 	}
@@ -25,10 +32,10 @@
 		<div class="row">
 			<div class="col-md-12" align="center">
 				<h1 class="text-white font-weight-bold">회원 관리</h1>
-				<div class="custom-breadcrumbs">
-					<a href="adminPage.do">Home</a> <span class="mx-2 slash">/</span> <span
-						class="text-white"><strong>회원 관리</strong></span>
-				</div>
+			</div>
+			<div class="col-md-12" align="center">
+				<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
+						class="text-white"><a href="adminPage.do">관리자 홈</a></span>
 			</div>
 		</div>
 	</div>
