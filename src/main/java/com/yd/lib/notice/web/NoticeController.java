@@ -6,17 +6,12 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.yd.lib.book.vo.BookVO;
 import com.yd.lib.notice.serviceImpl.NoticeServiceImpl;
 import com.yd.lib.notice.vo.NoticeVO;
 
@@ -75,17 +70,8 @@ public class NoticeController {
 	
 	@RequestMapping("/noticeUpdate.do")
 	public String  noticeUpdate(NoticeVO vo, HttpServletRequest req) throws IOException {
-		if(req.getParameter("reloadFile").isEmpty()) {
-			int noticeNo = vo.getNotice_Id();
-			NoticeVO oldvo = new NoticeVO();
-			oldvo.setNotice_Id(noticeNo);
-			dao.noticeSelect(oldvo);
-			String oldfile = oldvo.getNotice_File();
-			File file = new File("D:/git/ydLib/src/main/webapp/resources/upload/"+oldfile);
-			file.delete();	
-		}
-		
 		String fileName=null;
+
 		MultipartFile uploadFile = vo.getUploadFile();
 		if (!uploadFile.isEmpty()) {
 			String originalFileName = uploadFile.getOriginalFilename();
@@ -94,12 +80,11 @@ public class NoticeController {
 			fileName=originalFileName;
 			uploadFile.transferTo(new File("D:\\git\\ydLib\\src\\main\\webapp\\resources\\upload\\" + fileName));
 			System.out.println(fileName);
+			vo.setNotice_File(fileName);
 		} else {
-			System.out.println("첨부파일이 없습니다.");
+			NoticeVO old = dao.noticeSelect(vo);
+			vo.setNotice_File(old.getNotice_File());
 		}
-		vo.setNotice_File(fileName);
-		System.out.println(vo.getNotice_File());
-		
 		
 		dao.noticeUpdate(vo);
 		return "redirect:noticeSelect.do?notice_Id="+vo.getNotice_Id();

@@ -113,11 +113,12 @@ h4 {
 						<td colspan="4" align="left"><a href="fileDownload.do?notice_File=${vo.notice_File}">${vo.notice_File }</a>
 						</td>
 					</tr>
+					<c:if test="${loginUserVO.user_Id eq 'admin'}">
 					<tr>
 						<th>수정할 파일</th>
-						<td colspan="4" align="left"><input type="file" name="reloadFile" size="50"></td>
+						<td colspan="4" align="left"><input type="file" name="uploadFile" size="50"></td>
 					</tr>
-					
+					</c:if>
 				</table>
 				</form>
 				<c:if test="${loginUserVO.user_Id eq 'admin'}">
