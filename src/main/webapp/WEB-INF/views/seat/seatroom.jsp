@@ -73,7 +73,7 @@ function seatInfo() {
 }
 </script>
 <input type="hidden" id="sessionId" value="${loginUserId }">
-
+<input type="hidden" id="seat_Num" value="${user.seat_Num }">
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
 	style="background-image: url('resources/images/main.jpg');"
@@ -116,7 +116,7 @@ function seatInfo() {
 									<p><b>${loginUserVO.user_Name } 님 좌석예약정보입니다.</b></p>
 									<c:choose>
 										<c:when test="${user.seat_Status==1}">
-										<input type="hidden" id="seat_Num" value="${user.seat_Num }">
+										
 											<span><b>좌석번호: ${user.seat_Num }</b></span>
 											<br>
 											<span><b>입실시간: ${fn:substring(user.seat_start_Time,2,16) }</b></span>
