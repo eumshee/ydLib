@@ -280,8 +280,7 @@ function findAddr(){
 			<!--회원가입 화면-->
 			
 			<div class="col-lg-7" align="center">
-					<br>
-					<h2>회원가입</h2>
+					<h2><b>회원가입</b></h2>
 			<br>
 			<form id="frm" action="userJoin.do" method="post">
 			<table style="border:1; border-collapse:collapse;">

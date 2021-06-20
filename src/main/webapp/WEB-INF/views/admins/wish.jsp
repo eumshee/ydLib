@@ -6,12 +6,6 @@
 	th, td {
 		vertical-align: middle !important;
 	}
-	 .col-md-12 a {
-	 	font-size: 1em;
-	 	color: white;
-	 	text-decoration: none;
- 	}
-	 .col-md-12 a:hover { color: #89ba16; }
 </style>
 <script>
 		function bigoSubmit(userId,wishId) {
@@ -26,6 +20,14 @@
 			cmt.wish_Id.value = wishId;
 			cmt.submit();
 		}
+		
+		$(document).ready(function() {
+			var table = $('#dataTable1').DataTable({
+			   order: [ [ 0, "desc" ] ],
+			   ordering: true,
+			   serverSide: false
+			   });
+			});
 </script>
 <form id="Process" action="wishProcessUpdate.do" method="post">
 	<input type="text" id="wish_Processing" name="wish_Processing" hidden="">
@@ -44,10 +46,11 @@
 		<div class="row">
 			<div class="col-md-12" align="center">
 				<h1 class="text-white font-weight-bold">희망도서관리</h1>
-			</div>
-			<div class="col-md-12" align="center">
-				<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
-						class="text-white"><a href="adminPage.do">관리자 홈</a></span>
+				<div class="custom-breadcrumbs">
+					<a href="home.do">Home</a> <span class="mx-2 slash">/</span>
+					<a href="adminPage.do"><span
+						class="text-white"><strong>관리자</strong></span></a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -64,7 +67,7 @@
 					<div class="table-responsive">
 						<b>&ldquo;중복신청 된 경우 먼저 신청한 이용자 선정, 이후 신청자는
 							순서대로 예약 처리&rdquo;</b><hr><br>
-						<table class="table table-bordered" id="dataTable"
+						<table class="table table-bordered" id="dataTable1"
 							style="width: 100%; cellspacing: 0;">
 							<thead>
 								<tr>

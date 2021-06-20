@@ -99,7 +99,9 @@
 				</div>
 				<!--컨텐츠 영역-->
 				<div class="col-lg-8">
-					<h2>신착 도서는 한달 이내에 입고된 도서들 입니다.</h2>
+					<h3><b>새로운 도서</b>를 찾고싶으세요?</h3>
+					<h5>우리 도서관에 한달 이내에 입고된 도서들 입니다.</h5>
+					<br><br>
 					<form action="bookInfo.do" id="ifrm">
 						<input type="hidden" id="book_Isbn" name="book_Isbn">
 						<ul class="job-listings mb-5">

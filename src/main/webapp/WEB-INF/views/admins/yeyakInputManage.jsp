@@ -1,15 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <style>
-	th, td {
-		vertical-align: middle !important;
-	}
-	 .col-md-12 a {
- 	font-size: 1em;
- 	color: lightgray;
- 	text-decoration: none;
- 	}
-	 .col-md-12 a:hover { color: white; }
+th, td {
+	vertical-align: middle !important;
+}
+
+.left {
+	width: 50%;
+	float: left;
+}
+
+.right {
+	width: 50%;
+	float: right;
+}
 </style>
 <script>
 	function frmCheck() {
@@ -28,36 +32,35 @@
 			frm.submit();
 		}
 	}
-	
+
 	// 유저체크창
 	function yeyakUserCheck() {
 		var userid = frm.user_Id.value;
 		console.log(userid);
-		var url= 'yeyakManageCheck.do?user_Id='+userid;  
+		var url = 'yeyakManageCheck.do?user_Id=' + userid;
 		var winWidth = 700;
-	    var winHeight = 600;
-	    var popupOption= "width="+winWidth+", height="+winHeight;
-		window.open(url,"",popupOption);
+		var winHeight = 600;
+		var popupOption = "width=" + winWidth + ", height=" + winHeight;
+		window.open(url, "", popupOption);
 	}
 
 	// 도서목록창
-	function bookMgPopup(){
-		var url= "bookManagement.do";  
-		var winWidth = 700;
-	    var winHeight = 600;
-	    var popupOption= "width="+winWidth+", height="+winHeight;
-		window.open(url,"",popupOption);
+	function bookMgPopup() {
+		var url = "bookManagement.do";
+		var winWidth = 1000;
+		var winHeight = 600;
+		var popupOption = "width=" + winWidth + ", height=" + winHeight;
+		window.open(url, "", popupOption);
 	}
 
 	// 유저검색창
-	function userSearchPopup(){
-		var url= "yeyakUserSearch.do";
+	function userSearchPopup() {
+		var url = "yeyakUserSearch.do";
 		var winWidth = 700;
-	    var winHeight = 600;
-	    var popupOption= "width="+winWidth+", height="+winHeight;
-		window.open(url,"",popupOption);
+		var winHeight = 600;
+		var popupOption = "width=" + winWidth + ", height=" + winHeight;
+		window.open(url, "", popupOption);
 	}
-
 </script>
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
@@ -66,11 +69,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" align="center">
-				<h1 class="text-white font-weight-bold">예약도서관리</h1>
-			</div>
-			<div class="col-md-12" align="center">
-				<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
-						class="text-white"><a href="adminPage.do">관리자 홈</a></span>
+				<h1 class="text-white font-weight-bold">예약도서등록</h1>
+				<div class="custom-breadcrumbs">
+					<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <a
+						href="adminPage.do"><span class="text-white"><strong>관리자</strong></span></a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -78,33 +81,21 @@
 
 <!-- 예약도서 입력폼 -->
 <section class="site-section">
- 	<div class="container-fluid" style="width:50%;">
-		<div align="right">
-				<div class="col-6">
-					<button type="button" class="btn btn-primary text-white btn-search"
+	<div class="container-fluid" style="width: 50%;">
+			<div align="right">
+				<button type="button" class="btn btn-primary text-white btn-search"
 					onclick="bookMgPopup()">
-						<span class="icon-th-list mx-auto"></span>&nbsp;도서목록창
-					</button>
-				</div>	
-				<br>			
-			<div class="col-lg-7">			
-				<span class="col-3">
-					<button type="button" class="btn btn-primary text-white btn-search"
-						onclick="userSearchPopup()">
-						<span class="icon-search-plus mx-auto"></span>&nbsp;회원검색
-					</button>
-					<button type="button" class="btn btn-primary text-white btn-search"
-						onclick="frmCheck()">
-						<span class="icon-plus mx-auto"></span>&nbsp;등록
-					</button>
-				</span>
+					<span class="icon-th-list mx-auto"></span>&nbsp;도서검색
+				</button>
+				<button type="button" class="btn btn-primary text-white btn-search"
+					onclick="userSearchPopup()">
+					<span class="icon-search-plus mx-auto"></span>&nbsp;회원검색
+				</button><br><br>
 			</div>
-		</div>
 		<div class="row mb-5">
 			<div class="col-lg-12">
 				<form id="frm" class="p-4 p-md-5 border rounded"
 					action="yeyakOneInsert.do" method="post">
-					<h3 class="text-black mb-5 border-bottom pb-2">도서예약등록</h3>
 					<table style="width: 100%;">
 						<tr>
 							<th class="form-group"><label for="book_Num">책번호</label>&nbsp;<span
@@ -115,8 +106,8 @@
 						<tr>
 							<th class="form-group"><label for="user_Id">아이디</label>&nbsp;<span
 								class="icon-asterisk mx-auto" style="color: red;"></span></th>
-							<td><input type="text" placeholder="아이디" class="form-control"
-								id="user_Id" name="user_Id"></td>
+							<td><input type="text" placeholder="아이디"
+								class="form-control" id="user_Id" name="user_Id"></td>
 							<td><button type="button" onclick="yeyakUserCheck()">체크</button></td>
 						</tr>
 					</table>
@@ -126,12 +117,12 @@
 	</div>
 	<div align="center">
 		<div class="col-lg-5">
-			<div class="col-5">
-				<button type="button" class="btn btn-primary text-white btn-search"
-					onclick="location.href='yeyakmanagemant.do'">
-					<span class="icon-reply-all mx-auto"></span>&nbsp;목록보기
-				</button>
-			</div>
+			<button type="button" class="btn btn-light"
+				onclick="location.href='yeyakmanagemant.do'">목록으로</button>
+			<button type="button" class="btn btn-primary text-white btn-search"
+				onclick="frmCheck()">
+				<span class="icon-plus mx-auto"></span>&nbsp;등록
+			</button>
 		</div>
 	</div>
 </section>

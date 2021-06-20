@@ -6,12 +6,6 @@
 	th, td {
 		vertical-align: middle !important;
 	}
-	 .col-md-12 a {
- 	font-size: 1em;
- 	color: lightgray;
- 	text-decoration: none;
- 	}
-	 .col-md-12 a:hover { color: white; }
 </style>
 <script>
 		function formSubmit(num,isbn) {
@@ -44,11 +38,12 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" align="center">
-				<h1 class="text-white font-weight-bold">도서목록</h1>
-			</div>
-			<div class="col-md-12" align="center">
-				<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
-						class="text-white"><a href="adminPage.do">관리자 홈</a></span>
+				<h1 class="text-white font-weight-bold">장서관리</h1>
+				<div class="custom-breadcrumbs">
+					<a href="home.do">Home</a> <span class="mx-2 slash">/</span>
+					<a href="adminPage.do"><span
+						class="text-white"><strong>관리자</strong></span></a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -74,14 +69,14 @@
 								style="width: 100%; cellspacing: 0">
 								<thead>
 									<tr>
-										<th>번호</th>
+										<th width="5%">번호</th>
 										<th>구분</th>
 										<th>책제목</th>
-										<th>저자</th>
-										<th>출판사</th>
-										<th>출판일</th>
-										<th>입고일</th>
-										<th>위치</th>
+										<th width="15%">저자</th>
+										<th width="15%">출판사</th>
+										<th width="8%">출판일</th>
+										<th width="8%">입고일</th>
+										<th width="6%">위치</th>
 										<th>비고</th>
 									</tr>
 								</thead>

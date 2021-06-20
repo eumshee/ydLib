@@ -27,12 +27,6 @@ h2{
 	display: inline-block;
 	padding-right: 20px; 
 }
- .col-md-12 a {
- 	font-size: 1em;
- 	color: lightgray;
- 	text-decoration: none;
- }
- .col-md-12 a:hover { color: white; }
 </style>
 <script>
 
@@ -109,11 +103,12 @@ h2{
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" align="center">
-				<h1 class="text-white font-weight-bold">대출 반납 관리</h1>
-			</div>
-			<div class="col-md-12" align="center">
-				<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
-						class="text-white"><a href="adminPage.do">관리자 홈</a></span>
+				<h1 class="text-white font-weight-bold">대출/반납관리</h1>
+				<div class="custom-breadcrumbs">
+					<a href="home.do">Home</a> <span class="mx-2 slash">/</span>
+					<a href="adminPage.do"><span
+						class="text-white"><strong>관리자</strong></span></a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -139,20 +134,20 @@ h2{
 					</form>
 				<table class="table">
 					<tr>
-						<td>id</td><td><b>${user.user_Id }</b></td><td>이름</td><td><b>${user.user_Name }</b></td>
+						<th>id</th><td>${user.user_Id }</td><th>이름</th><td>${user.user_Name }</td>
 					</tr>
 					<tr>
-						<td>회원등급</td><td><b>${user.user_Gubun }</b></td><td>성별</td>
+						<th>회원등급</th><td>${user.user_Gubun }</td><th>성별</th>
 						<td>
-							<c:if test="${user.user_Gender eq 'M'}"><b>남자</b></c:if>
-							<c:if test="${user.user_Gender eq 'W'}"><b>여자</b></c:if>
+							<c:if test="${user.user_Gender eq 'M'}">남자</c:if>
+							<c:if test="${user.user_Gender eq 'W'}">여자</c:if>
 						</td>
 					</tr>
 					<tr>
-						<td>생년월일</td><td><b>${user.user_Birth }</b></td><td>전화번호</td><td><b>${user.user_Phone }</b></td>
+						<th>생년월일</th><td>${user.user_Birth }</td><th>전화번호</th><td>${user.user_Phone }</td>
 					</tr>
 					<tr>
-						<td > 이메일 </td><td><b>${user.user_Email }</b></td><td>연체일</td><td><b style="color: red;">${user_Loansus }</b></td>
+						<th > 이메일 </th><td>${user.user_Email }</td><th>연체일</th><td><b style="color: red;">${user_Loansus }</b></td>
 					</tr>
 				</table>
 			</div>

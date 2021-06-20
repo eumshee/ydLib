@@ -6,12 +6,6 @@
 	th, td {
 		vertical-align: middle !important;
 	}
-	 .col-md-12 a {
- 	font-size: 1em;
- 	color: lightgray;
- 	text-decoration: none;
- 	}
-	 .col-md-12 a:hover { color: white; }
 </style>
 <script>
 
@@ -88,11 +82,12 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" align="center">
-				<h1 class="text-white font-weight-bold">도서관리</h1>
-			</div>
-			<div class="col-md-12" align="center">
-				<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
-						class="text-white"><a href="adminPage.do">관리자 홈</a></span>
+				<h1 class="text-white font-weight-bold">관리자페이지</h1>
+				<div class="custom-breadcrumbs">
+					<a href="home.do">Home</a> <span class="mx-2 slash">/</span>
+					<a href="adminPage.do"><span
+						class="text-white"><strong>관리자</strong></span></a>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -48,11 +48,12 @@ tr:hover:not(:first-of-type) {	background-color: #ebebec;	}
 tr {	height: 35px; }
 
 .book-img>a>img{ width: 150px; box-shadow: 4px 3px 17px 1px rgb(0 0 0 / 25%); }
+
 .recommend>li{
 	position: relative;
     display: inline-block;
     width: 170px;
-    padding: 17px 0px 17px 0px;
+    padding: 17px 3px 17px 0px;
     vertical-align: bottom;
     list-style: none;
 }
@@ -75,10 +76,11 @@ tr {	height: 35px; }
 
 .qmenu>li>a:hover{
 	text-decoration: none;
+	color: #000000;
 }
    
 .items {
-	background: url('https://probonoaustralia.com.au/wp-content/themes/devdmbootstrap3/files/graphic01/images/globe-bg.svg') no-repeat center;
+	background: url('resources/images/circle.png') no-repeat center;
     background-size: contain;
 }
 

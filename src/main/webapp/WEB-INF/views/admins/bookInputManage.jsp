@@ -2,19 +2,23 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
-	th, td {
-		vertical-align: middle !important;
-		padding: 1em;
-	}
-	 .col-md-12 a {
-	 	font-size: 1em;
-	 	color: lightgray;
-	 	text-decoration: none;
- 	}
-	 .col-md-12 a:hover { color: white; }
+th, td {
+	vertical-align: middle !important;
+	padding: 0.5em;
+}
+
+.align {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon-asterisk {
+ font-size:0.3em;
+ color: red;
+}
 
 </style>
-<script>	
+<script>
 	function imgCheck() {
 		let imgChk = frm.book_Img.value;
 		$('#book_Img').attr("src", imgChk);
@@ -65,24 +69,24 @@
 	}
 
 	// 상세검색창
-	function popupOpen(){
+	function popupOpen() {
 		//var url= "bookDetailSearch.do"; //팝업창 페이지 URL
-		var url= "https://www.nl.go.kr/NL/contents/search.do?srchTarget=total&pageNum=1&pageSize=10&kwd=++";   
+		var url = "https://www.nl.go.kr/NL/contents/search.do?srchTarget=total&pageNum=1&pageSize=10&kwd=++";
 		var winWidth = 700;
-	    var winHeight = 600;
-	    var popupOption= "width="+winWidth+", height="+winHeight; //팝업창 옵션(optoin)
-		window.open(url,"",popupOption);
+		var winHeight = 600;
+		var popupOption = "width=" + winWidth + ", height=" + winHeight; //팝업창 옵션(optoin)
+		window.open(url, "", popupOption);
 	}
-	
+
 	// 도서목록창
-	function bookMgPopup(){
-		var url= "bookManagement.do";  
+	function bookMgPopup() {
+		var url = "bookManagement.do";
 		var winWidth = 700;
-	    var winHeight = 600;
-	    var popupOption= "width="+winWidth+", height="+winHeight;
-		window.open(url,"",popupOption);
+		var winHeight = 600;
+		var popupOption = "width=" + winWidth + ", height=" + winHeight;
+		window.open(url, "", popupOption);
 	}
-	
+
 	function goBack() {
 		window.history.back();
 	}
@@ -95,10 +99,10 @@
 		<div class="row">
 			<div class="col-md-12" align="center">
 				<h1 class="text-white font-weight-bold">도서등록</h1>
-			</div>
-			<div class="col-md-12" align="center">
-				<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
-						class="text-white"><a href="adminPage.do">관리자 홈</a></span>
+				<div class="custom-breadcrumbs">
+					<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <a
+						href="adminPage.do"><span class="text-white"><strong>관리자</strong></span></a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -106,30 +110,22 @@
 
 <!-- 도서입력폼 -->
 <section class="site-section">
- 	<div class="container-fluid" style="width:80%;">
-		<div align="right">
-			<div class="col-lg-3">
-				<div class="col-6">
-					<button type="button" class="btn btn-primary text-white btn-search"
-					onclick="bookMgPopup()">
-						<span class="icon-th-list mx-auto"></span>&nbsp;소장도서목록
-					</button>
-				</div>	
-				<br>			
-				<span class="col-3">
-					<button type="button" class="btn btn-primary text-white btn-search"
-						onclick="goBack()">
-						<span class="icon-reply-all mx-auto"></span>&nbsp;목록보기
-					</button>
-				</span>				
-				<span class="col-3">
-					<button type="button" class="btn btn-primary text-white btn-search"
-					id="bookDetailSearch"
-					onclick="popupOpen()">
-						<span class="icon-search-plus mx-auto"></span>&nbsp;상세검색
-					</button>
-				</span>				
-			</div>
+	<div class="container-fluid" style="width: 70%;">
+		<div class="align">
+		<div class="left">
+			<button type="button" class="btn btn-light" onclick="goBack()">목록으로</button>
+		</div>
+		<div class="right">
+			<button type="button" class="btn btn-primary text-white btn-search"
+				onclick="bookMgPopup()">
+				<span class="icon-th-list mx-auto"></span>&nbsp;소장도서목록
+			</button>
+				<button type="button" class="btn btn-primary text-white btn-search"
+					id="bookDetailSearch" onclick="popupOpen()">
+					<span class="icon-search-plus mx-auto"></span>&nbsp;상세검색
+				</button>
+				<br><br>
+		</div>
 		</div>
 		<div class="row mb-5">
 			<div class="col-lg-12">
@@ -139,8 +135,8 @@
 						<tr>
 							<td rowspan="12" style="width: 40%; text-align: center;">
 								<div class="form-group">
-									<img id="book_Img" alt="Upload Image"><br>
-									<button type="button" class="btn btn-primary btn-md btn-file"
+									<img id="book_Img" alt="Upload Image" width="85%"><br>
+									<button type="button" class="btn btn-light"
 										onclick="imgCheck()">이미지 확인</button>
 								</div>
 							</td>
@@ -166,37 +162,37 @@
 						</tr>
 						<tr>
 							<th class="form-group"><label for="book_Gubun">분류</label>&nbsp;<span
-								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+								class="icon-asterisk mx-auto"></span></th>
 							<td><input type="text" class="form-control" id="book_Gubun"
 								placeholder="분류" name="book_Gubun"></td>
 						</tr>
 						<tr>
 							<th class="form-group"><label for="book_Title">제목</label>&nbsp;<span
-								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+								class="icon-asterisk mx-auto"></span></th>
 							<td><input type="text" placeholder="제목" class="form-control"
 								id="book_Title" name="book_Title"></td>
 						</tr>
 						<tr>
 							<th class="form-group"><label for="book_Aut">저자</label>&nbsp;<span
-								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+								class="icon-asterisk mx-auto"></span></th>
 							<td><input type="text" placeholder="저자" class="form-control"
 								id="book_Aut" name="book_Aut"></td>
 						</tr>
 						<tr>
 							<th class="form-group"><label for="book_Pub">출판사</label>&nbsp;<span
-								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+								class="icon-asterisk mx-auto"></span></th>
 							<td><input type="text" placeholder="출판사"
 								class="form-control" id="book_Pub" name="book_Pub"></td>
 						</tr>
 						<tr>
 							<th class="form-group"><label for="book_Pubdate">출판일</label>&nbsp;<span
-								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+								class="icon-asterisk mx-auto"></span></th>
 							<td><input type="text" class="form-control"
 								id="book_Pubdate" name="book_Pubdate" placeholder="yyyy-mm-dd"></td>
 						</tr>
 						<tr>
 							<th class="form-group"><label for="book_Indate">입고일</label>&nbsp;<span
-								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+								class="icon-asterisk mx-auto"></span></th>
 							<td><input type="text" class="form-control" id="book_Indate"
 								name="book_Indate" placeholder="yyyy-mm-dd"></td>
 						</tr>
@@ -220,7 +216,7 @@
 						</tr>
 						<tr>
 							<th class="form-group"><label for="book_Isbn">ISBN</label>&nbsp;<span
-								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+								class="icon-asterisk mx-auto"></span></th>
 							<td><input type="text" placeholder="ISBN"
 								class="form-control" id="book_Isbn" name="book_Isbn"></td>
 						</tr>
@@ -238,8 +234,8 @@
 		<div class="col-lg-3">
 			<div class="col-5">
 				<button type="button" class="btn btn-primary text-white btn-search"
-						onclick="frmCheck()">
-						<span class="icon-plus mx-auto"></span>&nbsp;도서추가
+					onclick="frmCheck()">
+					<span class="icon-plus mx-auto"></span>&nbsp;도서등록
 				</button>
 			</div>
 		</div>

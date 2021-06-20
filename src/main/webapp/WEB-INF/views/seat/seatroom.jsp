@@ -2,22 +2,28 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
 <style>
-	td {
-		text-align: center;
-		width: 50px;
-		padding: 30px;
-	}
-	
-	.none {
-		border-bottom: 0;
-		border-top: 0;
-	}
-	
-	.bg {
-		background: pink;
-	}
+td {
+	text-align: center;
+	width: 50px;
+	padding: 30px;
+	font-weight: bold;
+}
+
+.none {
+	border-bottom: 0;
+	border-top: 0;
+}
+
+.bg {
+	background: pink;
+}
+
+.tr-none {
+	border-right: 0px white;
+	border-left: 0px white;
+}
 </style>
 <script>
 function seatUpdate(num, status, id) {
@@ -79,7 +85,7 @@ function seatInfo() {
 	style="background-image: url('resources/images/main.jpg');"
 	id="home-section">
 	<div class="container">
-		<div class="row" >
+		<div class="row">
 			<div class="col-md-12" align="center">
 				<h1 class="text-white font-weight-bold">열람실예약</h1>
 				<div class="custom-breadcrumbs">
@@ -93,84 +99,93 @@ function seatInfo() {
 
 
 <section class="site-section block__18514" id="next-section">
-<div class="container-fluid" style="width:80%">
-	<div class="row">
-		<!-- 왼쪽네비 -->
-		<c:choose>
-			<c:when test="${!empty loginUserId }">
+	<div class="container-fluid" style="width: 80%; color: #626263;">
+		<div class="row">
+			<!-- 왼쪽네비 -->
 			<input type="hidden" id="endEarly" value="${user.seat_end_Early}">
-				 <div class="col-lg-2.5" align="center" style="width: 25%; margin: 1em;">
-		            <div class="bg-light p-3 border rounded mb-4">
-						<div class="rounded">
-							<div class="sidenav" style="text-align: left;">
-								<b><span class="icon-clock-o" style="text-align: left;"></span>&nbsp;운영시간</b>
-								<b><span class="icon-keyboard_arrow_right"></span>&nbsp;평일 오전 9시 ~ 오후 9시</b>
-								<br>
-								<b onclick="seatInfo()">&nbsp;<i class="icon-external-link" onclick="seatInfo()"></i>&nbsp;확인사항</b>
-							</div>
+			<div class="col-lg-2.5" align="center"
+				style="width: 20%; margin-right: 2em;">
+				<div class="bg-light p-3 border rounded mb-4">
+					<div class="rounded">
+						<div class="sidenav" style="text-align: center;padding: 0.5em 0em 0.5em 0em; line-height: 2em;">
+							<b><span class="icon-clock-o" style="text-align: left;"></span>&nbsp;운영시간
+							<span class="icon-keyboard_arrow_right"></span>&nbsp;평일 오전
+								9시 ~ 오후 6시 <br>
+							<button class="btn btn-primary text-white" onclick="seatInfo()"><i class="icon-external-link"></i>&nbsp;이용수칙
+							</button>
+							</b>
 						</div>
-		            </div>
-		            <div class="bg-light p-3 border rounded mb-4">
-						<div class="rounded">
-							<div class="sidenav">
-									<p><b>${loginUserVO.user_Name } 님 좌석예약정보입니다.</b></p>
-									<c:choose>
-										<c:when test="${user.seat_Status==1}">
-										
-											<span><b>좌석번호: ${user.seat_Num }</b></span>
-											<br>
-											<span><b>입실시간: ${fn:substring(user.seat_start_Time,2,16) }</b></span>
-											<br>
-											<span style="color:red;"><b>퇴실시간: ${fn:substring(user.seat_end_Time,2,16) }</b></span>
-											<br>
-											<button onclick="checkOut('${user.seat_Num }')">퇴실하기</button>
-										</c:when>
-										<c:otherwise>
-											<span><b>현재 이용중인 좌석이 없습니다.</b></span>
-										</c:otherwise>
-									</c:choose>
-							</div>
-						</div>
-		            </div>
+					</div>
 				</div>
-			</c:when>
-			<c:otherwise></c:otherwise>
-		</c:choose>
-		<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-		<div align="center" <c:if test="${empty loginUserId }"> style="width:100%;"</c:if>>
-			<h3>좌석배치도</h3>
-			<table border="1">
-				<tr>
-					<c:forEach items="${seatList }" begin="0" end="10" var="vo">
-						<c:if test="${vo.seat_Num le 10}">
-							<td onclick="seatUpdate(${vo.seat_Num },${vo.seat_Status },'${vo.user_Id }')"
-							<c:if test="${vo.seat_Status == 1}">class="bg"</c:if>>${vo.seat_Num }</td>
-						</c:if>
-					</c:forEach>
-				</tr>
-				<tr style="border-left: 0; border-right: 0"><td colspan="10"></td></tr>
-				<tr>
-					<c:forEach items="${seatList }" begin="10" end="20" var="vo">
-						<c:if test="${ vo.seat_Num le 20}">
-							<td onclick="seatUpdate(${vo.seat_Num },${vo.seat_Status },'${vo.user_Id }')"
-							<c:if test="${vo.seat_Status == 1}">class="bg"</c:if>>${vo.seat_Num }</td>
-						</c:if>
-					</c:forEach>
-				</tr>
-				<tr style="border-left: 0; border-right: 0"><td colspan="10"></td></tr>
-				
-				<tr>
-					<c:forEach items="${seatList }" begin="20" end="30" var="vo">
-						<c:if test="${vo.seat_Num le 30 }">
-							<td onclick="seatUpdate(${vo.seat_Num },${vo.seat_Status },'${vo.user_Id }')"
-							<c:if test="${vo.seat_Status == 1}">class="bg"</c:if>>${vo.seat_Num }</td>
-						</c:if>
-					</c:forEach>
-				</tr>
-			</table>
-			<br> <br>
+				<div class="bg-light p-3 border rounded mb-4">
+					<div class="rounded">
+						<div class="sidenav">
+							<p>
+								<b>${loginUserVO.user_Name } 님 좌석예약정보입니다.</b>
+							</p>
+							<c:choose>
+								<c:when test="${user.seat_Status==1}">
+
+									<span><b>좌석번호: ${user.seat_Num }</b></span>
+									<br>
+									<span><b>입실시간:
+											${fn:substring(user.seat_start_Time,2,16) }</b></span>
+									<br>
+									<span style="color: red;"><b>퇴실시간:
+											${fn:substring(user.seat_end_Time,2,16) }</b></span>
+									<br><br>
+									<button class="btn btn-outline-black" onclick="checkOut('${user.seat_Num }')">퇴실하기</button>
+								</c:when>
+								<c:otherwise>
+									<span><b>현재 이용중인 좌석이 없습니다.</b></span>
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-7" align = "center">
+				<h3><b>좌석배치도</b></h3>
+				<br>
+				<table border="1">
+					<tr>
+						<c:forEach items="${seatList }" begin="0" end="10" var="vo">
+							<c:if test="${vo.seat_Num le 10}">
+								<td
+									onclick="seatUpdate(${vo.seat_Num },${vo.seat_Status },'${vo.user_Id }')"
+									<c:if test="${vo.seat_Status == 1}">class="bg"</c:if>>${vo.seat_Num }</td>
+							</c:if>
+						</c:forEach>
+					</tr>
+					<tr class="tr-none">
+						<td colspan="10"></td>
+					</tr>
+					<tr>
+						<c:forEach items="${seatList }" begin="10" end="20" var="vo">
+							<c:if test="${ vo.seat_Num le 20}">
+								<td
+									onclick="seatUpdate(${vo.seat_Num },${vo.seat_Status },'${vo.user_Id }')"
+									<c:if test="${vo.seat_Status == 1}">class="bg"</c:if>>${vo.seat_Num }</td>
+							</c:if>
+						</c:forEach>
+					</tr>
+					<tr class="tr-none">
+						<td colspan="10"></td>
+					</tr>
+
+					<tr>
+						<c:forEach items="${seatList }" begin="20" end="30" var="vo">
+							<c:if test="${vo.seat_Num le 30 }">
+								<td
+									onclick="seatUpdate(${vo.seat_Num },${vo.seat_Status },'${vo.user_Id }')"
+									<c:if test="${vo.seat_Status == 1}">class="bg"</c:if>>${vo.seat_Num }</td>
+							</c:if>
+						</c:forEach>
+					</tr>
+				</table>
+				<br> <br>
+			</div>
 		</div>
-	</div>
 	</div>
 </section>
 

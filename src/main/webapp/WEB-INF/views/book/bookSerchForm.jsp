@@ -141,7 +141,7 @@
 					</c:if>
 					<c:if test="${!empty bookSerchList}">
 						<div class="sorting">
-							<div class="left"><b>총 ${paging.totalCount }</b>건이 검색되었습니다. </div>
+							<div class="left">총 <b>${paging.totalCount }건</b>이 검색되었습니다. </div>
 							<div class="right">
 							<select id="orderSelect" name="orderSelect">
 								<option value="정렬종류">정렬종류</option>

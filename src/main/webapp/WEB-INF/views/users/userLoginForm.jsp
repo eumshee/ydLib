@@ -143,7 +143,7 @@ input[type=text], input[type=password] {
 	display: inline-block;
 	font-size: 16px;
 	margin: 5px;
-	width: 85%;
+	width: 60%;
 	border: 2px solid #f6f6f6;
 	-webkit-transition: all 0.5s ease-in-out;
 	-moz-transition: all 0.5s ease-in-out;
@@ -161,90 +161,6 @@ input[type=text]:focus, input[type=password]:focus {
 
 input[type=text]:placeholder, input[type=password]:placeholder {
 	color: #cccccc;
-}
-
-/* ANIMATIONS */
-
-/* Simple CSS3 Fade-in-down Animation */
-.fadeInDown {
-  -webkit-animation-name: fadeInDown;
-  animation-name: fadeInDown;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-@-webkit-keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
-}
-
-@keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
-}
-
-/* Simple CSS3 Fade-in Animation */
-@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-
-.fadeIn {
-  opacity:0;
-  -webkit-animation:fadeIn ease-in 1;
-  -moz-animation:fadeIn ease-in 1;
-  animation:fadeIn ease-in 1;
-
-  -webkit-animation-fill-mode:forwards;
-  -moz-animation-fill-mode:forwards;
-  animation-fill-mode:forwards;
-
-  -webkit-animation-duration:1s;
-  -moz-animation-duration:1s;
-  animation-duration:1s;
-}
-
-.fadeIn.first {
-  -webkit-animation-delay: 0.4s;
-  -moz-animation-delay: 0.4s;
-  animation-delay: 0.4s;
-}
-
-.fadeIn.second {
-  -webkit-animation-delay: 0.6s;
-  -moz-animation-delay: 0.6s;
-  animation-delay: 0.6s;
-}
-
-.fadeIn.third {
-  -webkit-animation-delay: 0.8s;
-  -moz-animation-delay: 0.8s;
-  animation-delay: 0.8s;
-}
-
-.fadeIn.fourth {
-  -webkit-animation-delay: 1s;
-  -moz-animation-delay: 1s;
-  animation-delay: 1s;
-}
-
 }
 
 </style>
@@ -281,12 +197,9 @@ input[type=text]:placeholder, input[type=password]:placeholder {
 				</div>
 			</div>
 			<!--로그인 화면-->
-			
-			
-		 		<div class="col-lg-6" align = "center">
+		 		<div class="col-lg-7" align = "center">
 			<div class="container">
-				<br>
-				<h2>로그인</h2>
+				<h2><b>로그인</b></h2>
 				<br>
 			</div>
 			<form id="frm" action="loginCheck()" method="post">
@@ -297,7 +210,7 @@ input[type=text]:placeholder, input[type=password]:placeholder {
 				<div class="fadeIn Second">
 					<br>
 					<button class="btn btn-light" type="button"
-						onclick="location.href='home.do'" style="width: 185px; background: #89ba10; color: white;" >HOME</button>
+						onclick="location.href='home.do'" style="width: 185px;" >HOME</button>
 					<button class="btn btn-light" type="button"
 						onclick="loginCheck()" style="width: 185px; background: #89ba10; color: white;">로그인</button>
 					<br> <br>

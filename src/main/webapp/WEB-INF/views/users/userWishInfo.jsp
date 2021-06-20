@@ -39,7 +39,7 @@ function formSubmit(Isbn) {
 					<h1 class="text-white font-weight-bold">희망도서 신청현황</h1>
 					<div class="custom-breadcrumbs">
 					<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <span
-						class="text-white"><strong>희망도서 신청현황</strong></span>
+						class="text-white"><strong>나의도서관</strong></span>
 				</div>
 				</div>
 			</div>

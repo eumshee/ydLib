@@ -39,7 +39,7 @@ function goBack() {
 							},
 							type : 'post',
 							success : function(suc) {
-								alert("예약됐습니다.");
+								alert("예약이 신청되었습니다. \n도서가 반납되면 예약안내 문자를 보내드립니다.");
 								location.reload(true);
 							},
 							error : function(err) {

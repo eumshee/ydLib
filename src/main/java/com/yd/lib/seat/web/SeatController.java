@@ -25,6 +25,9 @@ public class SeatController {
 	      String name = (String) session.getAttribute("loginUserId");
 	      vo.setUser_Id(name);
 	      model.addAttribute("user",ssi.seatSearch(vo));
+      } else {
+			model.addAttribute("msg", "로그인이 필요한 서비스입니다.");
+			return "users/loginAlert";
       }
       return "seat/seatroom";
    }
