@@ -34,9 +34,13 @@ public class MyLibraryController {
 			
 			 List<UserLoanInfoVO> total = UsersDAO.userLoanList(userId);//전체 검색결과
 			 int overDueBooksCount =UsersDAO.overDueBooksCount(userId);
+			 int loanBooksCount =UsersDAO.loanBooksCount(userId);
+			 String loanSuspensionDate =UsersDAO.loanSuspensionDate(userId);
 			 
 			 model.addAttribute("userLoanList",total);
 			 model.addAttribute("overDueBooksCount",overDueBooksCount);
+			 model.addAttribute("loanBooksCount",loanBooksCount);
+			 model.addAttribute("loanSuspensionDate",loanSuspensionDate);
 			 
 			return "users/userLoanInfo";	
 		} else {

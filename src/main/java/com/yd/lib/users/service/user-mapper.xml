@@ -55,6 +55,15 @@
        			h.loan_date asc
 	</select>
 	
+	<select id="loanBooksCount" parameterType="string" resultType="int">
+		<![CDATA[ SELECT 	COUNT(*)
+				from users u join history h on (u.user_id = h.user_id)
+				join book b on (b.book_num = h.book_num) 
+        		where u.user_id = #{user_Id}
+       			and loan_status = '대출'
+				]]>
+	</select>
+	
 	<select id="overDueBooksCount" parameterType="string" resultType="int">
 		<![CDATA[ SELECT 	COUNT(*)
 				from users u join history h on (u.user_id = h.user_id)
@@ -64,6 +73,15 @@
        			and loan_status = '대출'
 				]]>
 	</select>
+	
+	<select id="loanSuspensionDate" parameterType="string" resultType="string">
+		<![CDATA[ SELECT TO_CHAR((sysdate + 
+											(select max(return_delaydays) -1 from history where
+											return_delaydays > 0 and user_id= #{user_Id})) , 'YYYY/MM/DD')  from dual
+				]]>
+	</select>
+	
+	
 	
 	
 	<select id="userYeyakList" parameterType="string" resultType="com.yd.lib.users.vo.UserYeyakInfoVO">

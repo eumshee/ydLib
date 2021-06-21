@@ -79,7 +79,7 @@ function formSubmit(Isbn) {
 									<h5>
 										<b>대출 중인 도서</b>
 									</h5>
-									<span>0건</span>
+									<span>${loanBooksCount}건</span>
 								</div>
 							</div>
 						</div>
@@ -99,9 +99,14 @@ function formSubmit(Isbn) {
 								<div class="sidenav" style="text-align: center">
 									<h3 class="icon-ban"></h3>
 									<h5>
-										<b>대출정지 만기일</b>
+										<b>대출정지 기간</b>
 									</h5>
+									<c:if test="${loanSuspensionDate eq null}" >
 									<p>해당없음</p>
+									</c:if>
+									<c:if test="${loanSuspensionDate ne null }">
+									<p>${loanSuspensionDate } 까지 대출불가</p>
+									</c:if> 
 								</div>
 							</div>
 						</div>

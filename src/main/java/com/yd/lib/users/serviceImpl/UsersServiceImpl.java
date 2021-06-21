@@ -70,8 +70,7 @@ public class UsersServiceImpl {
 	sqlSession.update("userAddrUpdate", param);
 	}
 	
-	
-	
+
 
 	
 	//회원 대출내역조회
@@ -79,12 +78,21 @@ public class UsersServiceImpl {
 		return sqlSession.selectList("userLoanList" , user_Id);
 	}
 	
-	//회원 연체된 권수
-	public int overDueBooksCount(String user_Id) {
-		return sqlSession.selectOne("overDueBooksCount" , user_Id);
+	//대출중인도서 권수
+		public int loanBooksCount(String user_Id) {
+				return sqlSession.selectOne("loanBooksCount" , user_Id);
 	}
-	
-	//회원 예약내역조회
+		
+	//연체중인도서 권수
+		public int overDueBooksCount(String user_Id) {
+			return sqlSession.selectOne("overDueBooksCount" , user_Id);
+	}
+	//대출정지 만료일
+		public String loanSuspensionDate(String user_Id) {
+			return sqlSession.selectOne("loanSuspensionDate" , user_Id);
+	}
+		
+	//회원 예약현황조회
 	public List<UserYeyakInfoVO> userYeyakList(String user_Id) {
 		return sqlSession.selectList("userYeyakList" , user_Id);
 	}
