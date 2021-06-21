@@ -115,7 +115,7 @@ div.dataTables_wrapper div.dataTables_paginate {
 						<c:forEach var="vo" items="${notice }">
 							<tr onclick="formSubmit(${vo.notice_Id})">
 								<td>${vo.notice_Id }</td>
-								<td>${vo.notice_Title }</td>
+								<td align="left">${vo.notice_Title }</td>
 								<td>관리자</td>
 								<td>${vo.notice_Date }</td>
 								<td>${vo.notice_Hit }</td>

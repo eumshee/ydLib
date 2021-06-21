@@ -63,16 +63,8 @@ function nochk(){
 <form action="userJoinForm2.do" name="form" method="post">
  <table>
   <tr>
-   <td>
-   </td>
-  </tr>
-  <tr>
    <td align="center">
-   <hr><br>
-   <p align="left">
-   <span style="padding-left: 50px">
-   <b>대구광역시 도서관 통합회원 이용약관</b></span>
-   </p>
+   <h3><b>대구광역시 도서관 통합회원 이용약관</b></h3>
    <br>
    <textarea
      rows="20" cols="100">제1장 총칙
@@ -230,17 +222,17 @@ function nochk(){
 본 약관은 2019년 12월 19일부터 적용한다.
    </textarea>
    <br><br>
-   <input type="checkbox" name="req"> 개인정보 수집 및 이용에 동의합니다.
+   <input type="checkbox" name="req"><b>&nbsp;개인정보 수집 및 이용에 동의합니다.</b>
    <br>
    <hr>
    </td>
   </tr>
   <tr>
    <td align="center" valign="top">
-    <button class="btn btn-light" type="button"
-						onclick="chk()" style="width: 130px; height: 38px; background: #89ba10; color: white;">동의합니다.</button>
+    <button class="btn btn-primary btn-md" type="button"
+						onclick="chk()">동의합니다.</button>
 						&nbsp;&nbsp;&nbsp;
-    <button class="btn btn-light" type="button"
+    <button class="btn btn-light btn-md" type="button"
 						onclick="nochk()" style="width: 186px;">동의하지 않습니다.</button>
    </td>
   </tr>
