@@ -4,9 +4,9 @@
 	<!-- 좌석정보 확인 -->
 	<select id="seatList" resultType="com.yd.lib.seat.vo.SeatroomVO">
 		select s.*, r.* from seat s
-		left join SEATROOM r on s.seat_num = r.seat_num
-	    where r.seat_end_early is null
-		order by s.seat_num
+		left join ( select * from SEATROOM where seat_end_early is null) r
+		on (s.seat_num = r.seat_num)
+    	order by s.seat_num
 	</select>
 
 	<!-- 좌석 예약 등록 -->
