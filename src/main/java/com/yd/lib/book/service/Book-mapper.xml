@@ -184,11 +184,14 @@
 							 GROUP BY book_isbn
 							 ) b2
 					   on b1.book_isbn = b2.book_isbn
-					   join (
+					   full join (
 							 select  book_isbn , count(book_isbn) as can_book_cnt
 							 from book
 							 where book_byn = 'Y'
-							 and book_num in (
+							 group by book_isbn
+							 ) b3 
+					   on b1.book_isbn = b3.book_isbn
+					   where book_num in (
 											  select book_num from(
 																   select book_num , count(*) as cnt
 																   from HISTORY
@@ -197,9 +200,6 @@
 																   )
 											  where ROWNUM < 11
 											  )
-							 group by book_isbn
-							 ) b3 
-					   on b1.book_isbn = b3.book_isbn
 					   )bk
 		where RNUM = 1
 		order by book_indate asc
@@ -237,11 +237,14 @@
 								 GROUP BY book_isbn
 								 ) b2
 						   on b1.book_isbn = b2.book_isbn
-						   join (
+						   full join (
 								 select  book_isbn , count(book_isbn) as can_book_cnt
 								 from book
 								 where book_byn = 'Y'
-								 and book_num in (
+								 group by book_isbn
+								 ) b3 
+						   on b1.book_isbn = b3.book_isbn
+						   where book_num in (
 												  select book_num from(
 																	   select h.book_num , count(*) as cnt
 																	   from HISTORY h join BOOK b
@@ -252,9 +255,6 @@
 																	   )
 												  where ROWNUM <![CDATA[<]]> 11
 												  )
-								 group by book_isbn
-								 ) b3 
-						   on b1.book_isbn = b3.book_isbn
 						   )bk
 			where RNUM = 1
 			order by book_indate asc
