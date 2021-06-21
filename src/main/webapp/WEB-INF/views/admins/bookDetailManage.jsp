@@ -3,9 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <style>
-	th, td {
-		vertical-align: middle !important;
-	}
+th, td {
+	vertical-align: middle !important;
+}
+
+.icon-asterisk {
+	font-size: 0.3em;
+	color: red;
+}
 </style>
 <script>
 
@@ -70,9 +75,9 @@
 </script>
 
 <form id="bigo" action="bookManageBigoUpdate.do" method="post">
-	<input type="text" name="book_Bigo" hidden="">
-	<input type="text" name="book_Num" hidden="">
-	<input type="text" name="book_Isbn" hidden="">
+	<input type="text" name="book_Bigo" hidden=""> <input
+		type="text" name="book_Num" hidden=""> <input type="text"
+		name="book_Isbn" hidden="">
 </form>
 
 <!-- 상단배너 -->
@@ -82,11 +87,10 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" align="center">
-				<h1 class="text-white font-weight-bold">관리자페이지</h1>
+				<h1 class="text-white font-weight-bold">도서정보</h1>
 				<div class="custom-breadcrumbs">
-					<a href="home.do">Home</a> <span class="mx-2 slash">/</span>
-					<a href="adminPage.do"><span
-						class="text-white"><strong>관리자</strong></span></a>
+					<a href="home.do">Home</a> <span class="mx-2 slash">/</span> <a
+						href="adminPage.do"><span class="text-white"><strong>관리자</strong></span></a>
 				</div>
 			</div>
 		</div>
@@ -95,27 +99,23 @@
 
 <!-- 도서조회폼 -->
 <section class="site-section">
-	<div class="container-fluid" style="width:80%">
+	<div class="container-fluid" style="width: 80%">
 		<div align="right">
 			<div class="col-lg-3">
-				<span class="col-3">
 					<button type="button" class="btn btn-primary text-white btn-search"
 						onclick="bookOneDelete(${bookMgOne.book_Num })">
 						<span class="icon-minus mx-auto"></span>&nbsp;삭제
 					</button>
-				</span> <span class="col-3">
 					<button type="button" class="btn btn-primary text-white btn-search"
 						onclick="bookOneUpdate()">
 						<span class="icon-pencil-square mx-auto"></span>&nbsp;수정
-					</button>
-				</span>
+					</button><br><br>
 			</div>
 		</div>
 		<div class="row mb-5">
 			<div class="col-lg-12">
 				<form class="p-4 p-md-5 border rounded" id="frm"
 					action="bookOneUpdate.do" method="post">
-					<h3 class="text-black mb-5 border-bottom pb-2">도서정보</h3>
 					<table style="width: 100%;">
 						<tr>
 							<td rowspan="16" style="width: 50%; text-align: center;"><img
@@ -151,45 +151,45 @@
 						</tr>
 						<tr>
 							<th class="form-group"><label for="book_Gubun">분류</label>&nbsp;<span
-								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+								class="icon-asterisk mx-auto"></span></th>
 							<td><input type="text" class="form-control" id="book_Gubun"
 								name="book_Gubun" value="${bookMgOne.book_Gubun }"></td>
 						</tr>
 						<tr>
 							<th class="form-group"><label for="book_Num">번호</label>&nbsp;<span
-								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+								class="icon-asterisk mx-auto"></span></th>
 							<td><input type="text" class="form-control" id="book_Num"
 								name="book_Num" value="${bookMgOne.book_Num }"
 								readonly="readonly"></td>
 						</tr>
 						<tr>
 							<th class="form-group"><label for="book_Title">제목</label>&nbsp;<span
-								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+								class="icon-asterisk mx-auto"></span></th>
 							<td><input type="text" class="form-control" id="book_Title"
 								name="book_Title" value="${bookMgOne.book_Title }"></td>
 						</tr>
 						<tr>
 							<th class="form-group"><label for="book_Aut">저자</label>&nbsp;<span
-								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+								class="icon-asterisk mx-auto"></span></th>
 							<td><input type="text" class="form-control" id="book_Aut"
 								name="book_Aut" value="${bookMgOne.book_Aut }"></td>
 						</tr>
 						<tr>
 							<th class="form-group"><label for="book_Pub">출판사</label>&nbsp;<span
-								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+								class="icon-asterisk mx-auto"></span></th>
 							<td><input type="text" class="form-control" id="book_Pub"
 								name="book_Pub" value="${bookMgOne.book_Pub }"></td>
 						</tr>
 						<tr>
 							<th class="form-group"><label for="book_Pubdate">출판일</label>&nbsp;<span
-								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+								class="icon-asterisk mx-auto"></span></th>
 							<td><input type="text" class="form-control"
 								id="book_Pubdate" name="book_Pubdate" placeholder="yyyy-mm-dd"
 								value="${fn:substring(bookMgOne.book_Pubdate,0,10) }"></td>
 						</tr>
 						<tr>
 							<th class="form-group"><label for="book_Indate">입고일</label>&nbsp;<span
-								class="icon-asterisk mx-auto" style="color: red;"></span></th>
+								class="icon-asterisk mx-auto"></span></th>
 							<td><input type="text" class="form-control" id="book_Indate"
 								name="book_Indate" placeholder="yyyy-mm-dd"
 								value="${fn:substring(bookMgOne.book_Indate,0,10) }"></td>
@@ -240,21 +240,17 @@
 								value="${bookMgOne.book_Bigo }"></td>
 						</tr>
 						<tr>
-							<th class="form-group"><label for="">예약상태</label>
-							<c:choose>
-								<c:when test="${!empty bookMgOne.yeyak_Processing }">
-									<td>
-										<input type="text" class="form-control" readonly="readonly"
-										value="${bookMgOne.yeyak_Processing }">
-									</td>
-								</c:when>
-								<c:otherwise>
-									<td>
-										<input type="text" class="form-control" readonly="readonly"
-										value="-">
-									</td>
-								</c:otherwise>
-							</c:choose>
+							<th class="form-group"><label for="">예약상태</label> <c:choose>
+									<c:when test="${!empty bookMgOne.yeyak_Processing }">
+										<td><input type="text" class="form-control"
+											readonly="readonly" value="${bookMgOne.yeyak_Processing }">
+										</td>
+									</c:when>
+									<c:otherwise>
+										<td><input type="text" class="form-control"
+											readonly="readonly" value="-"></td>
+									</c:otherwise>
+								</c:choose>
 						</tr>
 					</table>
 				</form>
@@ -264,8 +260,7 @@
 			<div class="col-lg-3">
 				<div class="col-5">
 					<button type="button" class="btn btn-primary text-white btn-search"
-						onclick="location.href='bookManagement.do'">
-						<span class="icon-reply-all mx-auto"></span>&nbsp;목록보기
+						onclick="location.href='bookManagement.do'">목록보기
 					</button>
 				</div>
 			</div>
@@ -299,7 +294,8 @@
 								<option value="서가정리"
 									<c:if test="${vo.book_Bigo eq '서가정리'}">selected</c:if>>서가정리</option>
 						</select>
-							<button type="button" id="bigoUpdate${vo.book_Num}" onclick="bigoSubmit(${vo.book_Num},'${vo.book_Isbn }')">수정</button>
+							<button type="button" id="bigoUpdate${vo.book_Num}"
+								onclick="bigoSubmit(${vo.book_Num},'${vo.book_Isbn }')">수정</button>
 						</td>
 						<td>
 							<button type="button" onclick="bookOneDelete(${vo.book_Num})">삭제</button>

@@ -71,16 +71,15 @@
 							style="width: 100%; cellspacing: 0;">
 							<thead>
 								<tr>
-									<th>번호</th>
+									<th width="5%">번호</th>
 									<th>신청자</th>
 									<th>책제목</th>
 									<th>저자</th>
 									<th>출판사</th>
 									<th>신청사유</th>
-									<th>가격</th>
 									<th>신청일</th>
 									<th>처리과정</th>
-									<th>처리결과</th>
+									<th width="15%">처리결과</th>
 								</tr>
 							</thead>
 							<tfoot>
@@ -91,7 +90,6 @@
 									<th>저자</th>
 									<th>출판사</th>
 									<th>신청사유</th>
-									<th>가격</th>
 									<th>신청일</th>
 									<th>처리과정</th>
 									<th>처리결과</th>
@@ -106,7 +104,6 @@
 										<td>${vo.wish_Aut }</td>
 										<td>${vo.wish_Pub }</td>
 										<td>${vo.wish_Bigo }</td>
-										<td>${vo.wish_Price }</td>
 										<td>${fn:substring(vo.wish_Date,0,10) }</td>
 										<td><select id="WishId${vo.wish_Id}">
 												<option value="신청중"
