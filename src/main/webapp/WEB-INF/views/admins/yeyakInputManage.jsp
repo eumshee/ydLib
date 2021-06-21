@@ -27,10 +27,34 @@ th, td {
 			alert('아이디를 입력하세요.');
 			return;
 		}
-		let yeyakChk = confirm("예약상태를 확인하셨습니까?");
-		if (yeyakChk) {
-			frm.submit();
-		}
+		
+		var userId=$('#user_Id').val();
+		console.log(userId);
+		
+		$.ajax({
+			url : 'yeyakCntChk.do',
+			data : {
+				user_Id : userId
+			},
+			dataType:'text',
+			type : 'post',
+			success : function(r) {
+				if(r > 0){
+					alert("예약도서 신청권수를 초과하였습니다. \n1권의 책만 예약할 수 있습니다.");
+				}else{
+					alert("예약도서가 신청됐습니다.")
+					frm.submit();
+				}
+			},
+			error : function(err) {
+				console.log(err);
+			}
+		});
+		
+		//let yeyakChk = confirm("예약상태를 확인하셨습니까?");
+		//if (yeyakChk) {
+		//	frm.submit();
+		//}
 	}
 
 	// 유저체크창
@@ -61,6 +85,7 @@ th, td {
 		var popupOption = "width=" + winWidth + ", height=" + winHeight;
 		window.open(url, "", popupOption);
 	}
+	
 </script>
 <!-- 상단배너 -->
 <section class="section-hero overlay inner-page bg-image"
