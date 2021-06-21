@@ -50,6 +50,7 @@ h2{
 				return;
 			}else{
 				frm.book_Num.value=$('#bookSeach').val();
+				console.log($('#bookSeach').val());
 				$.ajax({
 					url:'checkBook.do',
 					type: 'post',
@@ -188,7 +189,6 @@ h2{
 				<h2>처리된 내용</h2>
 				<div class="card-body">
 					<div class="table-responsive">
-					<form id="frm" action="adminMemberUpdate.do" method="post">
 						<input type="hidden" name="user_Name">
 						<input type="hidden" name="user_Id">
 						<input type="hidden" id="user_Gubun" name="user_Gubun">
@@ -227,7 +227,6 @@ h2{
 								</c:forEach>
 							</tbody>
 						</table>
-						</form>
 					</div>
 				</div>			
 			</div>
