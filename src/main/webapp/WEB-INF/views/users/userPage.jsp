@@ -189,13 +189,14 @@ input {
 			}
 		}
 
-		/* if (frm.user_Email.value != "") {
+		 if (frm.user_Email.value != "") {
 		if (frm.checkEmail.value == "unChecked") {
 			alert("이메일을 인증 하세요");
 			frm.emailCode.focus();
 			return false;
 			}
 		}
+		/*
 		if (frm.user_Phone.value != "") {
 		if (frm.checkSMS.value == "unChecked") {
 			alert("문자 인증을 하세요");
