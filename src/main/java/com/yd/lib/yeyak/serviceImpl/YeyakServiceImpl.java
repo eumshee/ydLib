@@ -39,5 +39,10 @@ public class YeyakServiceImpl implements YeyakService {
 	public YeyakVO yeyakCheck(YeyakVO vo) {
 		return sqlSession.selectOne("yeyakCheck", vo);
 	}
+
+	@Override
+	public int yeyakCntChk(YeyakVO vo) {
+		return sqlSession.selectOne("yeyakCntChk", vo);
+	}
 	
 }

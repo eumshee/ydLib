@@ -45,4 +45,10 @@
 	 	join book b on y.book_num=b.book_num 
 		where y.user_id = #{user_Id} and y.yeyak_processing in('예약신청','예약중')
 	</select>
+
+	<select id="yeyakCntChk" parameterType="com.yd.lib.yeyak.vo.YeyakVO" resultType="int">
+	    select count(*) from yeyak
+		where YEYAK_PROCESSING in('예약신청','예약중')
+		and user_id = #{user_Id}
+	</select>
 </mapper>

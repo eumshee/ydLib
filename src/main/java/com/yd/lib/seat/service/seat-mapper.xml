@@ -33,4 +33,11 @@
 		where user_id = #{user_Id}
     	and SEAT_PICK_NUM = (select MAX(SEAT_PICK_NUM) from SEATROOM where USER_ID=#{user_Id})
 	</select>
+	
+	<!-- 일괄 좌석 만료처리 -->
+	<update id="allChkOut" parameterType="com.yd.lib.seat.vo.SeatroomVO">
+		update SEATROOM
+		set seat_end_early = SYSDATE
+		where SEAT_END_EARLY is null
+	</update>
 </mapper>

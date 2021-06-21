@@ -77,6 +77,15 @@ function seatInfo() {
     var popupOption= "width="+winWidth+", height="+winHeight;
 	window.open(url,"",popupOption);
 }
+
+function allChkOut() {
+	if(confirm("일괄퇴실 처리하시겠습니까?")){
+        location.href="allChkOut.do";
+     }else{
+        alert('퇴실처리가 취소되었습니다.')
+        return;
+     }
+}
 </script>
 <input type="hidden" id="sessionId" value="${loginUserId }">
 <input type="hidden" id="seat_Num" value="${user.seat_Num }">
@@ -135,6 +144,9 @@ function seatInfo() {
 											${fn:substring(user.seat_end_Time,2,16) }</b></span>
 									<br><br>
 									<button class="btn btn-outline-black" onclick="checkOut('${user.seat_Num }')">퇴실하기</button>
+								</c:when>
+								<c:when test="${loginUserVO.user_Id eq 'admin'}">
+									<button class="btn btn-outline-black" onclick="allChkOut()">일괄퇴실</button>									
 								</c:when>
 								<c:otherwise>
 									<span><b>현재 이용중인 좌석이 없습니다.</b></span>

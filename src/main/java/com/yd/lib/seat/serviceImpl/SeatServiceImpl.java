@@ -27,7 +27,6 @@ public class SeatServiceImpl implements SeatService {
 		return sqlsession.insert("seatOneInsert",vo);
 	}
 
-
 	// 자리반납시간
 	@Override
 	public int seatEnd(SeatroomVO vo) {
@@ -37,6 +36,12 @@ public class SeatServiceImpl implements SeatService {
 	@Override
 	public SeatroomVO seatSearch(SeatroomVO vo) {
 		return sqlsession.selectOne("seatSearch", vo);
+	}
+
+	// 일괄 좌석 반납
+	@Override
+	public int allSeatEnd() {
+		return sqlsession.update("allChkOut");
 	}
 
 

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yd.lib.yeyak.serviceImpl.YeyakServiceImpl;
 import com.yd.lib.yeyak.vo.YeyakVO;
@@ -52,6 +53,12 @@ public class YeyakController {
 	public String yeyakCheck(Model model, YeyakVO vo) {
 		model.addAttribute("yeyakUser",ysi.yeyakCheck(vo));
 		return "yeyak/empty/yeyakManageCheck";
+	}
+	
+	@RequestMapping("/yeyakCntChk.do")
+	@ResponseBody
+	public int yeyakCntChk(Model model, YeyakVO vo) {
+		return ysi.yeyakCntChk(vo);
 	}
 
 }
