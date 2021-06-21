@@ -69,10 +69,11 @@ h2{
 			}
 		}
 
-		function returncheck(){
-			let book_Num = $('#returnBookNum').val();
+		function returncheck(id){
+			let book_Num = $('#returnBookNum'+id).val();
 			let user_Id = $('#returnUserId').val();
 			let user_Name =$('#returnUserName').val();
+			console.log(book_Num,user_Id,user_Name)
 			$.ajax({
 				url: 'returncheck.do',
 				type: 'post',
@@ -164,12 +165,12 @@ h2{
 							<c:forEach items="${historty }" var="vo" varStatus="status">
 								<input type="hidden" id= "count${status.count }" value="${status.count }">
 								<input type="hidden" id= "returnUserId" name="user_Id" value="${user.user_Id }">
-								<input type="hidden" id= "returnBookNum" name="book_Num" value="${vo.book_Num }">
+								<input type="hidden" id= "returnBookNum${vo.loan_Id}" name="book_Num" value="${vo.book_Num }">
 								<input type="hidden" id= "returnUserName" name="user_Name" value="${user.user_Name }">
 								<tr>
 									<td>${vo.loan_Id } </td><td>${vo.book_Num }</td><td>${vo.loan_Date }</td>
 									<td>${vo.return_Duedate }</td><td>${vo.return_Delaydays }</td><td>${vo.loan_Status }</td>
-									<td><input type="button" value="반납" onclick="returncheck()"></td>
+									<td><input type="button" value="반납" onclick="returncheck(${vo.loan_Id})"></td>
 								</tr>
 							</c:forEach>
 						</c:when>
