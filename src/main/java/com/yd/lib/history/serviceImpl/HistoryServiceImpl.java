@@ -60,12 +60,6 @@ public class HistoryServiceImpl implements HistoryService{
 		return sqlSession.selectList("historyListSelect");
 	}
 	
-	//user 대출 전체 목록
-	public List<HistoryVO> userHistorySelectList(HistoryVO vo){
-		
-		return sqlSession.selectList("userHistorySelectList",vo);
-	}
-	
 	//한명 대출목록
 	public HistoryVO historyOneSelect(HistoryVO vo) {
 		return sqlSession.selectOne("historyOneSelect",vo);

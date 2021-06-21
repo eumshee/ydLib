@@ -93,11 +93,4 @@ private HistoryServiceImpl his;
 		}
 		resp.getWriter().print(m);
 		}
-	
-	//검색유저 history목록
-	@RequestMapping("/userHistory.do")
-	public String userHistory(HistoryVO vo, Model model) {
-		model.addAttribute("userHistory", his.userHistorySelectList(vo));
-		return "admins/roanreturnManagement";
-	}
 }

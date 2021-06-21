@@ -23,10 +23,6 @@
 		or to_char(loan_date, 'yy/mm/dd') = to_char(sysdate, 'yy/mm/dd')
 	</select>
 	
-	<!-- user1명 대출 전체목록 -->
-	<select id="userHistorySelectList" parameterType="com.yd.lib.history.vo.HistoryVO" resultType="com.yd.lib.history.vo.HistoryVO">
-	select * from history where user_Id =#{user_Id}
-	</select>
 	
 	<!-- user 한명에 대한 대출리스트 -->
 	<select id="adminHistorySelect" resultType="com.yd.lib.history.vo.HistoryVO" parameterType="com.yd.lib.history.vo.HistoryVO">
