@@ -46,6 +46,13 @@ public class SeatController {
 		return "redirect:seatroom.do";
 	}
 
+	//일괄퇴실
+	@RequestMapping("/allChkOut.do")
+	public String allChkOut(Model model) {
+		ssi.allSeatEnd();
+		return "redirect:seatroom.do";
+	}
+
 	//확인사항
 	@RequestMapping("/seatInfoChk.do")
 	public String seatInfoChk(Model model, SeatroomVO vo) {

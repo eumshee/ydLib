@@ -10,4 +10,5 @@ public interface SeatService {
 	SeatroomVO seatSearch(SeatroomVO vo);
 	int seatOneInsert(SeatroomVO vo);
 	int seatEnd(SeatroomVO vo);
+	int allSeatEnd();
 }
