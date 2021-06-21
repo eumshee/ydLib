@@ -122,12 +122,12 @@ function formSubmit(Isbn) {
 										style="width: 100%; cellspacing: 0">
 
 										<tr>
-											<th width="60px">순번</th>
-											<th>책제목</th>
-											<th>저자</th>
-											<th>대출일</th>
-											<th>반납기한</th>
-											<th width="60px">상태</th>
+											<th width="6%">순번</th>
+											<th width="35%">책제목</th>
+											<th width="30%">저자</th>
+											<th width="8%">대출일</th>
+											<th width="8%">반납기한</th>
+											<th width="6%">상태</th>
 										</tr>
 
 										<c:choose>
