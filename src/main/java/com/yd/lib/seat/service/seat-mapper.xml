@@ -5,6 +5,7 @@
 	<select id="seatList" resultType="com.yd.lib.seat.vo.SeatroomVO">
 		select s.*, r.* from seat s
 		left join SEATROOM r on s.seat_num = r.seat_num
+	    where r.seat_end_early is null
 		order by s.seat_num
 	</select>
 
