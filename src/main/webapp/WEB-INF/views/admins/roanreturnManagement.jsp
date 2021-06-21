@@ -27,6 +27,10 @@ h2{
 	display: inline-block;
 	padding-right: 20px; 
 }
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: clip;
 </style>
 <script>
 
@@ -182,34 +186,50 @@ h2{
 			</div>
 			<div class="prosessbox">
 				<h2>처리된 내용</h2>
-					<form action ="userHistory.do" method="post" style=" display: inline-block;">
-						<input type="text" id="user_Id" name="user_Id" placeholder="아이디를 입력하세요." size="20">
-						<button type="submit" class="btn btn-primary text-white btn-search"><span class="icon-search icon mr-2"></span>조회</button>
-					</form>
-				
-				<table class="table">
-					<tr>
-						<th>대출번호</th><th>사용자</th><th>책번호</th><th>대출일자</th><th>반납예정일</th><th>반납일</th><th>연체일</th><th>대출상태</th>
-					</tr>
-						<c:if test="${empty userHistory }">
-							<c:forEach items="${historyList }" var="list">
+				<div class="card-body">
+					<div class="table-responsive">
+					<form id="frm" action="adminMemberUpdate.do" method="post">
+						<input type="hidden" name="user_Name">
+						<input type="hidden" name="user_Id">
+						<input type="hidden" id="user_Gubun" name="user_Gubun">
+						<table class="table table-bordered" id="dataTable" style="width: 100%; cellspacing: 0;">
+							<thead>
+								<tr>
+									<th>대출번호</th>
+									<th>사용자</th>
+									<th>책번호</th>
+									<th>대출일자</th>
+									<th>반납예정일</th>
+									<th>반납일</th>
+									<th>연체일</th>
+									<th>대출상태</th>
+								</tr>
+							</thead>
+							<tfoot>
+								<tr>
+									<th>대출번호</th>
+									<th>사용자</th>
+									<th>책번호</th>
+									<th>대출일자</th>
+									<th>반납예정일</th>
+									<th>반납일</th>
+									<th>연체일</th>
+									<th>대출상태</th>
+								</tr>
+							</tfoot>
+							<tbody>
+								<c:forEach items="${historyList }" var="list">
 									<tr>
 										<td>${list.loan_Id }</td><td>${list.user_Id }</td><td>${list.book_Num }</td>
 										<td>${list.loan_Date }</td><td>${list.return_Duedate }</td><td>${list.return_Date }</td>
 										<td>${list.return_Delaydays }</td><td>${list.loan_Status }</td>
 									</tr>
-							</c:forEach>
-						</c:if>
-						<c:if test="${!empty userHistory }">
-							<c:forEach items="${userHistory }" var="list">
-									<tr>
-										<td>${list.loan_Id }</td><td>${list.user_Id }</td><td>${list.book_Num }</td>
-										<td>${list.loan_Date }</td><td>${list.return_Duedate }</td><td>${list.return_Date }</td>
-										<td>${list.return_Delaydays }</td><td>${list.loan_Status }</td>
-									</tr>
-							</c:forEach>
-						</c:if>
-				</table>				
+								</c:forEach>
+							</tbody>
+						</table>
+						</form>
+					</div>
+				</div>			
 			</div>
 		</div>
 </section>

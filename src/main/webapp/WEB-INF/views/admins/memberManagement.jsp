@@ -9,6 +9,10 @@
 	padding: 0.375rem 0.75rem;
 	text-align: center;
 }
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: clip;
 </style>
 <script>
 	function nameUpdate(id) {
