@@ -86,10 +86,14 @@ public class UsersController {
 	
 	//------------------------------- 회원가입 ------------------------------ //
 	@RequestMapping("/userJoinForm.do")
-	public String userJoinForm(Model model) {
-		return "users/userJoinForm";
+	public String userJoinForm() {
+		return "users/userJoinForm1";
 	}
 	
+	@RequestMapping("/userJoinForm2.do")
+	public String userJoinForm2() {
+		return "users/userJoinForm";
+	}
 	
 	@RequestMapping("/sameEmailCheck.do")
 	@ResponseBody
