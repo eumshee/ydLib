@@ -415,7 +415,8 @@ function findAddr(){
 			</table>
 			</form>
 			<br>
-				<button class="btn btn-light" type="button" onclick="formCheck()">회원가입</button>
+				<button class="btn btn-light" type="button"
+					onclick="formCheck()" style="width: 110px; height: 45px; background: #89ba10; color: white;">회원가입</button>
 			</div>
 			
 			</div>

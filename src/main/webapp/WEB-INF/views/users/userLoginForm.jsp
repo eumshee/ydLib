@@ -206,7 +206,6 @@ input[type=text]:placeholder, input[type=password]:placeholder {
 				<input type="text" id="user_Id" name="user_Id" class="fadeIn first" placeholder="ID" value="">
 				<input type="password" id="user_Pw" name="user_Pw" class="fadeIn first" placeholder="PASSWORD"
 				 onkeyup="if(window.event.keyCode==13){loginCheck()}" value="">
-				 <input type="hidden" name="next_url" value="${redirectURI }">
 				<div class="fadeIn Second">
 					<br>
 					<button class="btn btn-light" type="button"
